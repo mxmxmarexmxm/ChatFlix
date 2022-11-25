@@ -1,0 +1,30 @@
+header {
+  height: 5rem;
+  width: 100%;
+  background-color: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: #242526 solid 3px;
+  padding:0 2.3rem;
+  position: fixed;
+  top: 0;
+  color: white;
+  z-index: 1000;
+}
+
+header button {
+  background-color: #212324;
+  border: none;
+  text-align: center;
+  margin: .7rem;
+  padding: 1rem;
+  border-radius: 15px;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
