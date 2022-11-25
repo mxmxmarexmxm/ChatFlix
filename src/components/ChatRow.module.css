@@ -1,0 +1,55 @@
+.container {
+  margin: 3rem auto 0;
+  min-width: 90vw;
+}
+
+.container h2 {
+  color: white;
+  margin: -1rem 4rem;
+}
+
+.row  {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  object-fit: cover;
+  height: 200px;
+  width: 200px;
+  cursor: pointer;
+  margin: .5rem;
+}
+
+.topic-img:hover {
+  transform: scale(1.2);
+}
+
+.scroll {
+  height: 250px;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  padding: 1rem 1rem 1rem 1rem;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.scroll::-webkit-scrollbar {
+  width: 0;
+  height: 0; 
+}
+
+.row button {
+  font-size: 3.3rem;
+  background-color: inherit;
+  color: #666a6e;
+  cursor: pointer;
+  border: none;
+}
+
+.row button:hover {
+  transform: scale(1.15);
+}
