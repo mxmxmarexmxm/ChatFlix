@@ -4,11 +4,11 @@ import firebase from '../../Firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Header = () => {
-  const auth = firebase.auth();
+  let auth = firebase.auth();
   const [user] = useAuthState(firebase.auth());
 
   const singInWithGoogle = () => {
-    console.log('dadaad');
+    auth = firebase.auth();
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
   };

@@ -33,7 +33,6 @@ const Home = (props) => {
   };
 
   const onCloseHandler = (chatName) => {
-    console.log(chatName);
     const chats = [...activeChatsBottom];
     const filtered = chats.filter((chat) => chat.chatName !== chatName);
     setActiveChatsBottom(filtered);
@@ -47,7 +46,8 @@ const Home = (props) => {
     if (fullScreenChat) {
       setFullScreenChat(null);
     }
-    const fullChat = activeChatsBottom.filter((c) => c.chatName === chatName);
+    const fullChat = activeChatsBottom.find((c) => c.chatName === chatName);
+    console.log(fullChat)
     setFullScreenChat(fullChat);
   };
 
