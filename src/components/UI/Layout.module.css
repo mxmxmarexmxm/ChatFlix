@@ -8,3 +8,20 @@
   width: 100%;
   background-color: #141414;
 }
+
+::-webkit-scrollbar {
+  width: 11px;
+  background: #aaa;
+  -webkit-border-radius: 1ex;
+
+}
+
+::-webkit-scrollbar-thumb {
+  background: #363535;
+  -webkit-border-radius: 1ex;
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+}
+
+::-webkit-scrollbar-corner {
+  background: #000;
+}

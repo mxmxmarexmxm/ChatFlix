@@ -8,6 +8,7 @@
   border: 3px solid #242425;
   width: 27vw;
   color: white;
+  overflow: scroll;
 }
 
 .active-chat {

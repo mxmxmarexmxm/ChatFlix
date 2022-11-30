@@ -3,6 +3,7 @@ import Chat from './Chat';
 import classes from './FullScreen.module.css';
 
 const FullScreen = (props) => {
+  const {fullScreenChat} = props
   return (
     <div className={classes.screen}>
       <div className={classes['active-chats-container']}>
@@ -35,9 +36,10 @@ const FullScreen = (props) => {
       <div className={classes['full-screen-chat-container']}>
         <Chat
           isFullScreen={true}
-          logo={props.fullScreenChat.logo}
-          chatName={props.fullScreenChat.chatName}
-          key={props.fullScreenChat.chatName}
+          maximizeChat={props.maximizeChat}
+          logo={fullScreenChat.logo}
+          chatName={fullScreenChat.chatName}
+          key={fullScreenChat.chatName}
           onClose={props.onClose}
         />
       </div>

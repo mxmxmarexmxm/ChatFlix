@@ -15,8 +15,10 @@ const Chat = (props) => {
   const dummy = useRef();
   const { chatName, showMessages, logo } = props;
 
+  console.log(auth.currentUser)
+
   const messageCollection = firestore.collection(
-    `/chatRooms/categories/${props.category}/${props.chatName}/messages/`
+    `/chats/${props.chatName}/messages/`
   );
   const query = messageCollection.orderBy('createdAt', 'asc');
 
@@ -29,7 +31,7 @@ const Chat = (props) => {
   const sendMessage = async (e) => {
     e.preventDefault();
 
-    const { uid, photoURL } = auth.currentUser;
+    const { uid, photoURL, displayName} = auth.currentUser;
     if (formValue !== '') {
       await messageCollection.add({
         text: formValue,
@@ -37,6 +39,7 @@ const Chat = (props) => {
         uid,
         photoURL,
         id: Math.random() * 10,
+        displayName,
       });
     }
     dummy.current.scrollIntoView({ behavior: 'smooth' });
@@ -45,8 +48,8 @@ const Chat = (props) => {
   };
 
   const showChatHandler = () => {
-    if(props.isFullScreen) {
-      return
+    if (props.isFullScreen) {
+      return;
     }
     setShowChatMessages((curr) => !curr);
     setUnreadMessages(0);
@@ -61,7 +64,7 @@ const Chat = (props) => {
 
   const maximizeHandler = (event) => {
     event.stopPropagation();
-    props.fullScreenChat(chatName);
+    props.maximizeChat(chatName);
   };
 
   let chatBodyClass = showChatMessages
@@ -103,13 +106,15 @@ const Chat = (props) => {
       <div className={chatBodyClass}>
         <div className={messagesContainerClass}>
           {loading ? (
-            <p>loading</p>
+            <p className={classes['empty-chat']}>Loading...</p>
           ) : messages.length !== 0 ? (
             messages.map((msg) => (
               <Message key={msg.id} message={msg} auth={auth} />
             ))
           ) : (
-            <p>There are no messages yet! Start conversation!</p>
+            <p className={classes['empty-chat']}>
+              There are no messages yet! Start conversation!
+            </p>
           )}
           <span ref={dummy}></span>
         </div>

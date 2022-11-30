@@ -1,63 +1,145 @@
 import classes from './Home.module.css';
-import { chatsData } from '../data/data.js';
-import { useState } from 'react';
+import { chatsData, rowTitles } from '../data/data.js';
+import { useEffect, useState } from 'react';
 import Chat from './Chat';
 import ChatRow from './ChatRow';
 import FullScreen from './FullScreen';
 
-const rowTitles = [
-  'frontend',
-  'backend',
-  'JS',
-  'frameworks',
-  'language',
-  'markup',
-  'frontend frameworks',
-];
-
 const Home = (props) => {
   const [activeChatsBottom, setActiveChatsBottom] = useState([]);
+  const [activeChatsRight, setActiveChatsRight] = useState([]);
   const [showMessages, setShowMessages] = useState(null);
   const [fullScreenChat, setFullScreenChat] = useState(null);
+  const [showChatHeads, setShowChatHeads] = useState(false);
+
+  useEffect(() => {
+    const chatsRight = localStorage.getItem('chatsRight');
+    const chatsBottom = localStorage.getItem('chatsBottom');
+
+    if (chatsBottom) {
+      let chatsBottomParsed = JSON.parse(chatsBottom);
+      setActiveChatsBottom(chatsBottomParsed);
+    }
+    if (chatsRight) {
+      let chatsRightParsed = JSON.parse(chatsRight);
+      setActiveChatsRight(chatsRightParsed);
+    }
+  }, []);
+
+  useEffect(() => {
+    const setLocalStorage = () => {
+      localStorage.setItem('chatsBottom', JSON.stringify(activeChatsBottom));
+      localStorage.setItem('chatsRight', JSON.stringify(activeChatsRight));
+    };
+    setLocalStorage();
+  }, [activeChatsBottom, activeChatsRight]);
 
   const onSelectChatHandler = (chatData) => {
-    const indexOfChat = activeChatsBottom.findIndex(
+    const indexOfChatBottom = activeChatsBottom.findIndex(
       (chat) => chat.chatName === chatData.chatName
     );
 
-    if (indexOfChat < 0) {
+    const indexOfChatRight = activeChatsRight.findIndex(
+      (chat) => chat.chatName === chatData.chatName
+    );
+
+    let activeBottom = [...activeChatsBottom];
+
+    const isActive = indexOfChatBottom >= 0 || indexOfChatRight >= 0;
+
+    // Add to bottom
+    if (!isActive && activeBottom.length <= 2) {
       setActiveChatsBottom((cur) => [chatData, ...cur]);
     }
 
+    if (!isActive && activeBottom.length > 2) {
+      const elementToMove = activeBottom[2];
+      setActiveChatsRight((c) => [...c, elementToMove]);
+      setActiveChatsBottom([
+        chatData,
+        ...activeBottom.filter((c) => c.chatName !== elementToMove.chatName),
+      ]);
+    }
+
+    if (indexOfChatRight >= 0 && activeChatsBottom.length < 2) {
+      setActiveChatsRight(
+        activeChatsRight.filter((c) => c.chatName !== chatData.chatName)
+      );
+      setActiveChatsBottom((c) => [chatData, ...c]);
+    }
+
+    if (
+      indexOfChatRight >= 0 &&
+      indexOfChatBottom < 0 &&
+      activeChatsBottom.length > 2
+    ) {
+      const elementToMove = activeBottom[2];
+      setActiveChatsRight((c) => [
+        ...c.filter((c) => c.chatName !== chatData.chatName),
+        elementToMove,
+      ]);
+      setActiveChatsBottom([
+        chatData,
+        ...activeBottom.filter((c) => c.chatName !== elementToMove.chatName),
+      ]);
+    }
     setShowMessages(chatData.chatName);
   };
 
   const onCloseHandler = (chatName) => {
-    const chats = [...activeChatsBottom];
-    const filtered = chats.filter((chat) => chat.chatName !== chatName);
-    setActiveChatsBottom(filtered);
+    let allChats = [...activeChatsBottom, ...activeChatsRight];
+    const isFirst = allChats[0].chatName === chatName;
+    const isFullScreen = chatName === fullScreenChat?.chatName;
+
+    if (isFullScreen) {
+      isFirst ? setFullScreenChat(allChats[1]) : setFullScreenChat(allChats[0]);
+    }
+
+    setActiveChatsBottom(
+      activeChatsBottom.filter((chat) => chat.chatName !== chatName)
+    );
+
+    setActiveChatsRight(
+      activeChatsRight.filter((chat) => chat.chatName !== chatName)
+    );
   };
 
   const clearShowHandler = () => {
     setShowMessages(null);
   };
 
-  const fullScreenChatHandler = (chatName) => {
+  const maximizeChatHandler = (chatName) => {
     if (fullScreenChat) {
       setFullScreenChat(null);
     }
-    const fullChat = activeChatsBottom.find((c) => c.chatName === chatName);
-    console.log(fullChat)
+
+    const fullChat =
+      activeChatsBottom.find((c) => c.chatName === chatName) ||
+      activeChatsRight.find((c) => c.chatName === chatName);
+
     setFullScreenChat(fullChat);
+  };
+
+  if (
+    activeChatsBottom?.length === 0 &&
+    activeChatsRight.length === 0 &&
+    fullScreenChat
+  ) {
+    setFullScreenChat(null);
+  }
+
+  const maximizeChatHandler2 = () => {
+    setFullScreenChat(null);
   };
 
   if (fullScreenChat) {
     return (
       <FullScreen
-        onClick={fullScreenChatHandler}
+        onClick={maximizeChatHandler}
+        maximizeChat={maximizeChatHandler2}
         onClose={onCloseHandler}
         fullScreenChat={fullScreenChat}
-        activeChats={activeChatsBottom}
+        activeChats={[...activeChatsBottom, ...activeChatsRight]}
       />
     );
   }
@@ -75,18 +157,43 @@ const Home = (props) => {
         ))}
       </div>
       <div className={classes['active-chats-container']}>
-        {activeChatsBottom &&
-          activeChatsBottom.map((chat) => (
-            <Chat
-              fullScreenChat={fullScreenChatHandler}
-              clearShow={clearShowHandler}
-              showMessages={showMessages}
-              activeChatsLength={activeChatsBottom.length}
-              {...chat}
-              key={chat.chatName}
-              onClose={onCloseHandler}
-            />
-          ))}
+        <div className={classes['active-chats-bottom']}>
+          {activeChatsBottom &&
+            activeChatsBottom.map((chat) => (
+              <Chat
+                maximizeChat={maximizeChatHandler}
+                clearShow={clearShowHandler}
+                showMessages={showMessages}
+                activeChatsLength={activeChatsBottom.length}
+                {...chat}
+                key={chat.chatName}
+                onClose={onCloseHandler}
+              />
+            ))}
+        </div>
+        <div className={classes['active-chat-right']}>
+          {showChatHeads &&
+            activeChatsRight.map((chat) => (
+              <div
+                className={classes['chat-head']}
+                key={chat.chatName}
+                onClick={onSelectChatHandler.bind(this, chat)}
+              >
+                <img src={chat.logo} alt='chet head' />
+              </div>
+            ))}
+          {activeChatsRight && (
+            <div
+              className={classes['chat-head']}
+              onClick={() => setShowChatHeads((c) => !c)}
+            >
+              <img
+                src='https://e7.pngegg.com/pngimages/354/728/png-clipart-plus-and-minus-signs-computer-icons-emoji-logo-plus.png'
+                alt='plus sing'
+              />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -27,42 +27,42 @@ export const chatsData = [
     chatName: 'React Native',
     logo:
       'https://www.datocms-assets.com/45470/1631026680-logo-react-native.png',
-    tags: ['frontend', 'frameworks', 'JS', 'mobile'],
+    tags: ['frontend', 'frameworks','frontend frameworks','JS', 'mobile'],
   },
   {
     chatName: 'jQuery',
     logo:
       'https://www.nicepng.com/png/detail/274-2741860_jquery-in-easy-steps-create-dynamic-web-pages.png',
-    tags: ['frontend', 'frameworks', 'JS'],
+    tags: ['frontend', 'frameworks', 'frontend frameworks', 'JS'],
   },
   {
     chatName: 'NodeJS',
     logo:
       'https://res.cloudinary.com/practicaldev/image/fetch/s--e_rqeB7o--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://cdn-images-1.medium.com/max/2400/1%2AFPtQLT2Zk-baHficCz_mXQ.png',
-    tags: ['backend', 'frameworks', 'JS'],
+    tags: ['backend', 'frameworks','backend frameworks', 'JS'],
   },
   {
     chatName: 'AngularJS',
     logo: 'https://www.strivemindz.com/images/angularr.png',
-    tags: ['frontend', 'frameworks', 'JS'],
+    tags: ['frontend', 'frameworks','frontend frameworks', 'JS'],
   },
   {
     chatName: 'Vue.js',
     logo:
       'https://res.cloudinary.com/practicaldev/image/fetch/s--I4FWon9Y--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ll22z8mea106b4vjdjy7.jpeg',
-    tags: ['frontend', 'frameworks', 'JS'],
+    tags: ['frontend', 'frameworks','frontend frameworks', 'JS'],
   },
   {
     chatName: 'Next.js',
     logo:
       'https://images.ctfassets.net/23aumh6u8s0i/c04wENP3FnbevwdWzrePs/1e2739fa6d0aa5192cf89599e009da4e/nextjs',
-    tags: ['frontend', 'frameworks', 'JS'],
+    tags: ['frontend', 'frameworks','frontend frameworks', 'JS'],
   },
   {
     chatName: 'Express.js',
     logo:
       'https://assets.website-files.com/61ca3f775a79ec5f87fcf937/6202fcdee5ee8636a145a41b_1234.png',
-    tags: ['backend', 'frameworks', 'JS'],
+    tags: ['backend', 'frameworks','backend frameworks', 'JS'],
   },
   {
     chatName: 'Flutter',
@@ -79,7 +79,7 @@ export const chatsData = [
   {
     chatName: 'django',
     logo: 'https://miro.medium.com/max/1200/1*1OBwwxzJksMv0YDD-XmyBw.png',
-    tags: ['backend', 'frameworks', 'pyton'],
+    tags: ['backend', 'frameworks','backend frameworks', 'pyton'],
   },
   {
     chatName: 'Java',
@@ -112,6 +112,18 @@ export const chatsData = [
     chatName: 'Laravel',
     logo:
       'https://i.pinimg.com/736x/ab/8b/5e/ab8b5ea6637ebd8e5755c838d952b8c1.jpg',
-    tags: ['backend', 'frameworks', 'php'],
+    tags: ['backend', 'frameworks','backend frameworks', 'php'],
   },
 ];
+
+export const rowTitles = [
+  'frontend',
+  'backend',
+  'JS',
+  'frameworks',
+  'language',
+  'markup',
+  'frontend frameworks',
+  'backend frameworks',
+];
+

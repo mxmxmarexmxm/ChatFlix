@@ -1,6 +1,5 @@
 .chat {
-  min-width: 300px;
-  width: 30%;
+  width: 350px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -20,17 +19,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  overflow: hidden;
   background-color: #161617;
   color: #ffffff;
   cursor: pointer;
 }
 
-.chat-head-small{
-  height:50px;
-  overflow: hidden;
-  width: 1000px;
-
-}
 .chat-head-image-container {
   height: 25px;
   width: 25px;
@@ -55,7 +49,7 @@
   display: flex;
   flex-direction: column;
   padding: .5rem;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .messages-container > :first-child {
@@ -119,4 +113,10 @@ h2::first-letter {
 
 .messages-container-full {
   height: 74vh;
+}
+
+.empty-chat {
+  color: white;
+  margin-bottom: 33%;
+  text-align: center;
 }
