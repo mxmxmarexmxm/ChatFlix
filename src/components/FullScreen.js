@@ -1,9 +1,10 @@
 import React from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
 import Chat from './Chat';
 import classes from './FullScreen.module.css';
 
 const FullScreen = (props) => {
-  const {fullScreenChat} = props
+  const { fullScreenChat } = props;
   return (
     <div className={classes.screen}>
       <div className={classes['active-chats-container']}>
@@ -19,16 +20,13 @@ const FullScreen = (props) => {
               </div>
               <h2>{c.chatName}</h2>
             </div>
-            <div
-              className={classes['button-wrapper']}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                className={classes['close-btn']}
+            <div onClick={(e) => e.stopPropagation()}>
+              <div
+                className={classes['icon-btn-wrapper']}
                 onClick={props.onClose.bind(this, c.chatName)}
               >
-                x
-              </button>
+                <AiOutlineClose className={classes.icon} />
+              </div>
             </div>
           </div>
         ))}

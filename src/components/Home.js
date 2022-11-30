@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Chat from './Chat';
 import ChatRow from './ChatRow';
 import FullScreen from './FullScreen';
+import { BsPlusSquareFill } from 'react-icons/bs';
 
 const Home = (props) => {
   const [activeChatsBottom, setActiveChatsBottom] = useState([]);
@@ -184,13 +185,10 @@ const Home = (props) => {
             ))}
           {activeChatsRight && (
             <div
-              className={classes['chat-head']}
+              className={classes['icon-wrapper']}
               onClick={() => setShowChatHeads((c) => !c)}
             >
-              <img
-                src='https://e7.pngegg.com/pngimages/354/728/png-clipart-plus-and-minus-signs-computer-icons-emoji-logo-plus.png'
-                alt='plus sing'
-              />
+              <BsPlusSquareFill className={classes.icon}/>
             </div>
           )}
         </div>

@@ -3,6 +3,11 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 import Message from './Message';
 import classes from './Chat.module.css';
 import firebase from 'firebase/compat/app';
+import {
+  AiOutlineClose,
+  AiOutlineFullscreen,
+  AiOutlineFullscreenExit,
+} from 'react-icons/ai';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 const auth = firebase.auth();
@@ -14,8 +19,6 @@ const Chat = (props) => {
   const [unreadMessages, setUnreadMessages] = useState(0);
   const dummy = useRef();
   const { chatName, showMessages, logo } = props;
-
-  console.log(auth.currentUser)
 
   const messageCollection = firestore.collection(
     `/chats/${props.chatName}/messages/`
@@ -31,7 +34,7 @@ const Chat = (props) => {
   const sendMessage = async (e) => {
     e.preventDefault();
 
-    const { uid, photoURL, displayName} = auth.currentUser;
+    const { uid, photoURL, displayName } = auth.currentUser;
     if (formValue !== '') {
       await messageCollection.add({
         text: formValue,
@@ -92,15 +95,22 @@ const Chat = (props) => {
         </div>
         {!showChatMessages && unreadMessages !== 0 && unreadMessages}
         <div className={classes[`button-wrapper`]}>
-          <button className={classes['close-btn']} onClick={maximizeHandler}>
-            []
-          </button>
-          <button
-            className={classes['close-btn']}
+          <div
+            className={classes['icon-btn-wrapper']}
+            onClick={maximizeHandler}
+          >
+            {props.isFullScreen ? (
+              <AiOutlineFullscreenExit className={classes.icon} />
+            ) : (
+              <AiOutlineFullscreen className={classes.icon} />
+            )}
+          </div>
+          <div
+            className={classes['icon-btn-wrapper']}
             onClick={props.onClose.bind(this, chatName)}
           >
-            x
-          </button>
+            <AiOutlineClose className={classes.icon} />
+          </div>
         </div>
       </div>
       <div className={chatBodyClass}>

@@ -81,15 +81,21 @@ form button {
   border-radius: 15px;
 }
 
-.close-btn{
+.icon-btn-wrapper{
   width: 2rem;
   height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #ffffff55;
-  font-weight: bold;
   border-radius: 50px;
   cursor: pointer;
   background-color: #242526;
   border: none;
+}
+
+.icon {
+  font-size: 1.3rem
 }
 
 .button-wrapper{ 
