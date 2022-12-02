@@ -27,12 +27,13 @@ const Chat = (props) => {
   const query = messageCollection.orderBy('createdAt', 'asc');
 
   const [messages, loading] = useCollectionData(query, { idField: 'id' });
+  // const ml = messages?.length;
 
   useEffect(() => {
-    if (messages) {
+    if (!showChatMessages && messages.length !== 0) {
       setUnreadMessages((c) => c + 1);
     }
-  }, [messages]);
+  }, [messages, showChatMessages]);
 
   const sendMessage = async (e) => {
     e.preventDefault();

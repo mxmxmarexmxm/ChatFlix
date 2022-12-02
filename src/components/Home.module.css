@@ -49,12 +49,12 @@ pointer-events: visible
 }
 
 .chat-heads-container {
-  animation: fadeIn 200ms linear forwards;
+  animation: fadeIn 150ms ease-in backwards;
 }
 
 @keyframes fadeIn {
   from {
-    transform: translateY(15px);
+    transform: translateY(100px);
     opacity: 0;
   }
   to {

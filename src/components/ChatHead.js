@@ -3,11 +3,13 @@ import { AiOutlineClose } from 'react-icons/ai';
 import classes from './ChatHead.module.css';
 
 const ChatHead = (props) => {
-  const unreadMessagesNum = props.unreadMessages - 1;
-  
+  const unreadMessagesNum = props.unreadMessages +1;
+
   return (
     <div className={classes['chat-head-mini']} onClick={props.onClick}>
-      {unreadMessagesNum !== 0 && <div>{unreadMessagesNum}</div>}
+      {unreadMessagesNum !== 0 && (
+        <span className={classes.unreadMessages}>{unreadMessagesNum}</span>
+      )}
       <div onClick={props.readMessages}>
         <img src={props.logo} alt='chat head' />
       </div>
