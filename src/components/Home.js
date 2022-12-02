@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Chat from './Chat';
 import ChatRow from './ChatRow';
 import FullScreen from './FullScreen';
-import { BsPlusSquareFill } from 'react-icons/bs';
+import ToggleChatHeadsBtn from './UI/ToggleChatHeadsBtn';
 
 const Home = (props) => {
   const [activeChatsBottom, setActiveChatsBottom] = useState([]);
@@ -48,7 +48,6 @@ const Home = (props) => {
 
     const isActive = indexOfChatBottom >= 0 || indexOfChatRight >= 0;
 
-    // Add to bottom
     if (!isActive && activeBottom.length <= 2) {
       setActiveChatsBottom((cur) => [chatData, ...cur]);
     }
@@ -75,13 +74,15 @@ const Home = (props) => {
       activeChatsBottom.length > 2
     ) {
       const elementToMove = activeBottom[2];
-      setActiveChatsRight((c) => [
-        ...c.filter((c) => c.chatName !== chatData.chatName),
+      setActiveChatsRight((chat) => [
+        ...chat.filter((chat) => chat.chatName !== chatData.chatName),
         elementToMove,
       ]);
       setActiveChatsBottom([
         chatData,
-        ...activeBottom.filter((c) => c.chatName !== elementToMove.chatName),
+        ...activeBottom.filter(
+          (chat) => chat.chatName !== elementToMove.chatName
+        ),
       ]);
     }
     setShowMessages(chatData.chatName);
@@ -165,7 +166,6 @@ const Home = (props) => {
                 maximizeChat={maximizeChatHandler}
                 clearShow={clearShowHandler}
                 showMessages={showMessages}
-                activeChatsLength={activeChatsBottom.length}
                 {...chat}
                 key={chat.chatName}
                 onClose={onCloseHandler}
@@ -173,23 +173,24 @@ const Home = (props) => {
             ))}
         </div>
         <div className={classes['active-chat-right']}>
-          {showChatHeads &&
-            activeChatsRight.map((chat) => (
-              <div
-                className={classes['chat-head']}
-                key={chat.chatName}
-                onClick={onSelectChatHandler.bind(this, chat)}
-              >
-                <img src={chat.logo} alt='chet head' />
-              </div>
-            ))}
-          {activeChatsRight && (
-            <div
-              className={classes['icon-wrapper']}
-              onClick={() => setShowChatHeads((c) => !c)}
-            >
-              <BsPlusSquareFill className={classes.icon}/>
+          {showChatHeads && (
+            <div className={classes['chat-heads-container']}>
+              {activeChatsRight.map((chat) => (
+                <Chat
+                  key={chat.chatName}
+                  {...chat}
+                  isChatHead={true}
+                  onClose={onCloseHandler}
+                  onClick={onSelectChatHandler.bind(this, chat)}
+                />
+              ))}
             </div>
+          )}
+          {activeChatsRight.length !== 0 && (
+            <ToggleChatHeadsBtn
+              showChatHeads={showChatHeads}
+              onClick={() => setShowChatHeads((c) => !c)}
+            />
           )}
         </div>
       </div>

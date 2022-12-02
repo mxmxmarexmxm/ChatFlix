@@ -123,6 +123,21 @@ h2::first-letter {
 
 .empty-chat {
   color: white;
-  margin-bottom: 33%;
   text-align: center;
+}
+
+
+
+.unread-messages-badge {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  align-items: center;
+  color: #ea3939;
+  border-radius: 50px;
+  cursor: pointer;
+  background-color: #242526;
+  border: none;
 }

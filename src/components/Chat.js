@@ -10,13 +10,14 @@ import {
 } from 'react-icons/ai';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
+import ChatHead from './ChatHead';
 const auth = firebase.auth();
 const firestore = firebase.firestore();
 
 const Chat = (props) => {
   const [showChatMessages, setShowChatMessages] = useState(true);
-  const [formValue, setFormValue] = useState('');
   const [unreadMessages, setUnreadMessages] = useState(0);
+  const [messageText, setMessageText] = useState('');
   const dummy = useRef();
   const { chatName, showMessages, logo } = props;
 
@@ -28,26 +29,31 @@ const Chat = (props) => {
   const [messages, loading] = useCollectionData(query, { idField: 'id' });
 
   useEffect(() => {
-    setUnreadMessages((c) => c + 1);
-  }, [messages?.length]);
+    if (messages) {
+      setUnreadMessages((c) => c + 1);
+    }
+  }, [messages]);
 
   const sendMessage = async (e) => {
     e.preventDefault();
 
-    const { uid, photoURL, displayName } = auth.currentUser;
-    if (formValue !== '') {
-      await messageCollection.add({
-        text: formValue,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        uid,
-        photoURL,
-        id: Math.random() * 10,
-        displayName,
-      });
+    if (auth.currentUser) {
+      const { uid, photoURL, displayName } = auth.currentUser;
+      if (messageText.trim() !== '') {
+        await messageCollection.add({
+          text: messageText,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          uid,
+          photoURL,
+          id: Math.random() * 10,
+          displayName,
+        });
+      }
+      dummy.current.scrollIntoView({ behavior: 'smooth' });
+      setMessageText('');
+    } else {
+      alert('You must be singed in to send message!');
     }
-    dummy.current.scrollIntoView({ behavior: 'smooth' });
-
-    setFormValue('');
   };
 
   const showChatHandler = () => {
@@ -84,6 +90,18 @@ const Chat = (props) => {
     }`;
   }
 
+  if (props.isChatHead) {
+    return (
+      <ChatHead
+        unreadMessages={unreadMessages}
+        readMessages={() => setUnreadMessages(0)}
+        onClick={props.onClick}
+        logo={logo}
+        onClose={props.onClose.bind(this, chatName)}
+      />
+    );
+  }
+
   return (
     <div className={chatClass}>
       <div className={classes['chat-head']} onClick={showChatHandler}>
@@ -93,8 +111,12 @@ const Chat = (props) => {
           </div>
           <h2>{chatName}</h2>
         </div>
-        {!showChatMessages && unreadMessages !== 0 && unreadMessages}
         <div className={classes[`button-wrapper`]}>
+          {!showChatMessages && unreadMessages !== 0 && (
+            <div className={classes[`unread-messages-badge`]}>
+              {unreadMessages}
+            </div>
+          )}
           <div
             className={classes['icon-btn-wrapper']}
             onClick={maximizeHandler}
@@ -123,15 +145,16 @@ const Chat = (props) => {
             ))
           ) : (
             <p className={classes['empty-chat']}>
-              There are no messages yet! Start conversation!
+              There are no messages yet! <br />
+              Start conversation!
             </p>
           )}
           <span ref={dummy}></span>
         </div>
         <form onSubmit={sendMessage}>
           <input
-            value={formValue}
-            onChange={(e) => setFormValue(e.target.value)}
+            value={messageText}
+            onChange={(e) => setMessageText(e.target.value)}
           />
         </form>
       </div>

@@ -7,7 +7,7 @@ display: flex;
 align-items: flex-end;
 position: fixed;
 bottom: 0;
-right: 0;
+right: 10px;
 max-width: 95%;
 height:0px;
 overflow:visible;
@@ -48,33 +48,19 @@ pointer-events: visible
   border-radius: 0;
 }
 
-.chat-head {
-  width: 50px;
-  height: 50px;
-  overflow: hidden;
-  margin-top: 5px;
+.chat-heads-container {
+  animation: fadeIn 200ms linear forwards;
 }
 
-.chat-head img {
-  height: 100%;
-  width:  100%;
-  object-fit: cover;
+@keyframes fadeIn {
+  from {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
-
-.icon {
-  color: #161617;
-  background-color: #ffffff55;
-  font-size: 3rem;
-}
-
-.icon-wrapper {
-  display: flex;
-  background-color:#242526;
-  border: 3px solid #242425;
-  border-radius: 15px 15px 15px;
-  overflow: hidden;
-  margin: 3px;
-}
-
 
 

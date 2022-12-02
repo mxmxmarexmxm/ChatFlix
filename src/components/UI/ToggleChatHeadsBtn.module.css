@@ -1,0 +1,14 @@
+.icon {
+  color: #161617;
+  background-color: #ffffff55;
+  font-size: 3rem;
+}
+
+.icon-wrapper {
+  display: flex;
+  background-color:#242526;
+  border: 3px solid #242425;
+  border-radius: 15px 15px 15px;
+  overflow: hidden;
+  margin: 3px;
+}
