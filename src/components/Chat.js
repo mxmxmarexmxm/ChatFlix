@@ -11,6 +11,7 @@ import {
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 import ChatHead from './ChatHead';
+import SideChatFullScreen from './SideChatFullScreen';
 const auth = firebase.auth();
 const firestore = firebase.firestore();
 
@@ -117,30 +118,13 @@ const Chat = (props) => {
 
   if (props.fullScreenSideChat) {
     return (
-      <div className={classes['active-chat-side']} onClick={props.onClick}>
-        <div className={classes['chat-and-logo-side']}>
-          <div className={classes['logo-container-side']}>
-            <img src={logo} alt='img' />
-          </div>
-          <h2>{chatName}</h2>
-        </div>
-        <div
-          className={classes['badges-container-side']}
-          onClick={(e) => e.stopPropagation()}
-        >
-          {unreadMessages !== 0 && (
-            <div className={classes[`unread-messages-badge`]}>
-              {unreadMessages}
-            </div>
-          )}
-          <div
-            className={classes['icon-btn-wrapper-side']}
-            onClick={props.onClose}
-          >
-            <AiOutlineClose className={classes['icon-side']} />
-          </div>
-        </div>
-      </div>
+      <SideChatFullScreen
+        unreadMessages={unreadMessages}
+        onClick={props.onClick}
+        onClose={props.onClose}
+        logo={logo}
+        chatName={chatName}
+      />
     );
   }
 

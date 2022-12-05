@@ -1,5 +1,4 @@
 import React from 'react';
-import { AiOutlineClose } from 'react-icons/ai';
 import Chat from './Chat';
 import classes from './FullScreen.module.css';
 
