@@ -16,24 +16,34 @@ const firestore = firebase.firestore();
 
 const Chat = (props) => {
   const [showChatMessages, setShowChatMessages] = useState(true);
-  const [unreadMessages, setUnreadMessages] = useState(0);
   const [messageText, setMessageText] = useState('');
   const dummy = useRef();
+  
   const { chatName, showMessages, logo } = props;
 
   const messageCollection = firestore.collection(
     `/chats/${props.chatName}/messages/`
   );
   const query = messageCollection.orderBy('createdAt', 'asc');
-
   const [messages, loading] = useCollectionData(query, { idField: 'id' });
-  // const ml = messages?.length;
 
-  useEffect(() => {
-    if (!showChatMessages && messages.length !== 0) {
-      setUnreadMessages((c) => c + 1);
-    }
-  }, [messages, showChatMessages]);
+  // Get unread messages count
+  const unreadMessages = messages?.filter(
+    (message) => !message.readBy.includes(auth.currentUser.uid)
+  ).length;
+
+  // Mark all previous messages as read when user click on input
+  const markAllAsRead = async () => {
+    await messageCollection.get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        doc.ref.update({
+          readBy: firebase.firestore.FieldValue.arrayUnion(
+            auth.currentUser.uid
+          ),
+        });
+      });
+    });
+  };
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -46,8 +56,9 @@ const Chat = (props) => {
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
           uid,
           photoURL,
-          id: Math.random() * 10,
+          id: new Date().toISOString() + uid,
           displayName,
+          readBy: [uid],
         });
       }
       dummy.current.scrollIntoView({ behavior: 'smooth' });
@@ -62,7 +73,6 @@ const Chat = (props) => {
       return;
     }
     setShowChatMessages((curr) => !curr);
-    setUnreadMessages(0);
     props.clearShow();
   };
 
@@ -95,7 +105,6 @@ const Chat = (props) => {
     return (
       <ChatHead
         unreadMessages={unreadMessages}
-        readMessages={() => setUnreadMessages(0)}
         onClick={props.onClick}
         logo={logo}
         onClose={props.onClose.bind(this, chatName)}
@@ -155,6 +164,7 @@ const Chat = (props) => {
         <form onSubmit={sendMessage}>
           <input
             value={messageText}
+            onClick={markAllAsRead}
             onChange={(e) => setMessageText(e.target.value)}
           />
         </form>
