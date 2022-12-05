@@ -3,16 +3,15 @@
 }
 
 .active-chats-container {
-display: flex;
-align-items: flex-end;
-position: fixed;
-bottom: 0;
-right: 10px;
-max-width: 95%;
-height:0px;
-overflow:visible;
-justify-content: right;
-pointer-events: visible 
+  display: flex;
+  align-items: flex-end;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height:0px;
+  overflow:visible;
+  justify-content: right;
+  pointer-events: visible 
 }
 
 .active-chats-bottom {

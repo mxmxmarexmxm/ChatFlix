@@ -17,8 +17,9 @@ const firestore = firebase.firestore();
 const Chat = (props) => {
   const [showChatMessages, setShowChatMessages] = useState(true);
   const [messageText, setMessageText] = useState('');
+  const [unreadMessages, setUnreadMessages] = useState(null);
   const dummy = useRef();
-  
+
   const { chatName, showMessages, logo } = props;
 
   const messageCollection = firestore.collection(
@@ -27,22 +28,34 @@ const Chat = (props) => {
   const query = messageCollection.orderBy('createdAt', 'asc');
   const [messages, loading] = useCollectionData(query, { idField: 'id' });
 
-  // Get unread messages count
-  const unreadMessages = messages?.filter(
-    (message) => !message.readBy.includes(auth.currentUser.uid)
-  ).length;
+  // Get unread messages
+  useEffect(() => {
+    const getUnredMessages = () => {
+      if (auth.currentUser === null) {
+        return;
+      }
+      const unreadMessages = messages?.filter(
+        (message) => !message.readBy.includes(auth.currentUser.uid)
+      ).length;
+
+      setUnreadMessages(unreadMessages);
+    };
+    getUnredMessages();
+  }, [messages]);
 
   // Mark all previous messages as read when user click on input
   const markAllAsRead = async () => {
-    await messageCollection.get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        doc.ref.update({
-          readBy: firebase.firestore.FieldValue.arrayUnion(
-            auth.currentUser.uid
-          ),
+    if (auth.currentUser) {
+      await messageCollection.get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          doc.ref.update({
+            readBy: firebase.firestore.FieldValue.arrayUnion(
+              auth.currentUser.uid
+            ),
+          });
         });
       });
-    });
+    }
   };
 
   const sendMessage = async (e) => {
@@ -76,6 +89,7 @@ const Chat = (props) => {
     props.clearShow();
   };
 
+  // Expand chat if selected from home screen and chat is already in active chats container
   useEffect(() => {
     if (chatName === showMessages) {
       setShowChatMessages(true);
@@ -99,6 +113,35 @@ const Chat = (props) => {
     messagesContainerClass = `${classes['messages-container']} ${
       classes[`messages-container-full`]
     }`;
+  }
+
+  if (props.fullScreenSideChat) {
+    return (
+      <div className={classes['active-chat-side']} onClick={props.onClick}>
+        <div className={classes['chat-and-logo-side']}>
+          <div className={classes['logo-container-side']}>
+            <img src={logo} alt='img' />
+          </div>
+          <h2>{chatName}</h2>
+        </div>
+        <div
+          className={classes['badges-container-side']}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {unreadMessages !== 0 && (
+            <div className={classes[`unread-messages-badge`]}>
+              {unreadMessages}
+            </div>
+          )}
+          <div
+            className={classes['icon-btn-wrapper-side']}
+            onClick={props.onClose}
+          >
+            <AiOutlineClose className={classes['icon-side']} />
+          </div>
+        </div>
+      </div>
+    );
   }
 
   if (props.isChatHead) {

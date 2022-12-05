@@ -8,27 +8,14 @@ const FullScreen = (props) => {
   return (
     <div className={classes.screen}>
       <div className={classes['active-chats-container']}>
-        {props.activeChats.map((c) => (
-          <div
-            className={classes['active-chat']}
-            key={c.chatName}
-            onClick={props.onClick.bind(this, c.chatName)}
-          >
-            <div className={classes['chat-and-logo']}>
-              <div className={classes['logo-container']}>
-                <img src={c.logo} alt='img' />
-              </div>
-              <h2>{c.chatName}</h2>
-            </div>
-            <div onClick={(e) => e.stopPropagation()}>
-              <div
-                className={classes['icon-btn-wrapper']}
-                onClick={props.onClose.bind(this, c.chatName)}
-              >
-                <AiOutlineClose className={classes.icon} />
-              </div>
-            </div>
-          </div>
+        {props.activeChats.map((chat) => (
+          <Chat
+            fullScreenSideChat={true}
+            key={chat.chatName}
+            {...chat}
+            onClick={props.onClick.bind(this, chat.chatName)}
+            onClose={props.onClose.bind(this, chat.chatName)}
+          />
         ))}
       </div>
       <div className={classes['full-screen-chat-container']}>

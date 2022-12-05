@@ -1,24 +1,61 @@
 .chat-head-mini {
   width: 50px;
   height: 50px;
-  margin-top: 5px;
+  margin: 7px 0;
   display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
-.chat-head-mini img {
+.image-wrappper {
+  height: 100%;
+  width:  100%;
+}
+
+.image-wrappper img {
   height: 100%;
   width:  100%;
   object-fit: cover;
 }
 
+.badges-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 23;
+  position: absolute;
+  width: 100%;
+  top: -5px;
+  left: 0;
+}
+
+.icon-wrapper {
+  position: absolute;
+  right: 0;
+  top:3px
+}
+
 .close-icon-mini {
-  margin-left: -15px;
-  margin-bottom: 15px;
   background-color: #161617;
-  border-bottom-left-radius: 1px;
   color: white;
 }
 
 .unreadMessages {
-  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: bold;
+  width: 15px;
+  height: 15px;
+  padding: 8px;
+  margin-left: -6px;
+  background: #ea2727;
+  border: 3px solid #000;
+  color: #000000;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
 }
