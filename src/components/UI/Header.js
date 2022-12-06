@@ -19,7 +19,9 @@ const Header = () => {
 
   return (
     <header>
-      <h1><a href='/'>ChatFlix</a></h1>
+      <h1>
+        <a href='/ChatFlix'>ChatFlix</a>
+      </h1>
       {user ? (
         <button onClick={singOut}>Sing Out</button>
       ) : (
