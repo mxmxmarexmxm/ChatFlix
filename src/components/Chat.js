@@ -139,6 +139,8 @@ const Chat = (props) => {
     );
   }
 
+  console.log(unreadMessages)
+
   return (
     <div className={chatClass}>
       <div className={classes['chat-head']} onClick={showChatHandler}>
@@ -149,7 +151,7 @@ const Chat = (props) => {
           <h2>{chatName}</h2>
         </div>
         <div className={classes[`button-wrapper`]}>
-          {!showChatMessages && unreadMessages !== 0 && (
+          {!showChatMessages && unreadMessages > 0 && (
             <div className={classes[`unread-messages-badge`]}>
               {unreadMessages}
             </div>
