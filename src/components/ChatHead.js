@@ -4,7 +4,7 @@ import classes from './ChatHead.module.css';
 
 const ChatHead = (props) => {
   const unreadMessagesClasses =
-    props.unreadMessages !== 0 ? classes.unreadMessages : classes.hidden;
+    props.unreadMessages > 0 ? classes.unreadMessages : classes.hidden;
 
   return (
     <div className={classes['chat-head-mini']} onClick={props.onClick}>
