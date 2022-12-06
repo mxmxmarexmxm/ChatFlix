@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/ChatFlix/static/css/main.f75f96bc.css",
-    "main.js": "/ChatFlix/static/js/main.55ff5c6a.js",
+    "main.js": "/ChatFlix/static/js/main.0f95076c.js",
     "index.html": "/ChatFlix/index.html",
     "main.f75f96bc.css.map": "/ChatFlix/static/css/main.f75f96bc.css.map",
-    "main.55ff5c6a.js.map": "/ChatFlix/static/js/main.55ff5c6a.js.map"
+    "main.0f95076c.js.map": "/ChatFlix/static/js/main.0f95076c.js.map"
   },
   "entrypoints": [
     "static/css/main.f75f96bc.css",
-    "static/js/main.55ff5c6a.js"
+    "static/js/main.0f95076c.js"
   ]
 }
