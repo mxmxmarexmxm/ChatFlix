@@ -7,13 +7,13 @@ const Header = () => {
   let auth = firebase.auth();
   const [user] = useAuthState(firebase.auth());
 
-  const singInWithGoogle = () => {
+  const signInWithGoogle = () => {
     auth = firebase.auth();
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
   };
 
-  const singOut = () => {
+  const signOut = () => {
     auth.signOut();
   };
 
@@ -23,9 +23,9 @@ const Header = () => {
         <a href='/ChatFlix'>ChatFlix</a>
       </h1>
       {user ? (
-        <button onClick={singOut}>Sing Out</button>
+        <button onClick={signOut}>Sign Out</button>
       ) : (
-        <button onClick={singInWithGoogle}>Sing In</button>
+        <button onClick={signInWithGoogle}>Sign In</button>
       )}
     </header>
   );

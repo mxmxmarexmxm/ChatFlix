@@ -78,7 +78,7 @@ const Chat = (props) => {
       dummy.current.scrollIntoView({ behavior: 'smooth' });
       setMessageText('');
     } else {
-      alert('You must be singed in to send message!');
+      alert('You must be signed in to send message!');
     }
   };
 
