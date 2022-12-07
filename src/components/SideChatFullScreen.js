@@ -15,7 +15,7 @@ const SideChatFullScreen = (props) => {
         className={classes['badges-container-side']}
         onClick={(e) => e.stopPropagation()}
       >
-        {props.unreadMessages !== 0 && (
+        {props.unreadMessages > 0 && (
           <div
             className={`${classes['badge-wrapper']} ${classes['unread-messages-badge']}`}
           >

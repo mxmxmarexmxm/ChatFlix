@@ -4,6 +4,7 @@
   padding: .3rem;
   align-items: center;
   gap: .5rem;
+  position: relative;
 }
 
 .sent {
@@ -11,6 +12,21 @@
 }
 
 .received {
+}
+
+
+.user-name {
+  background-color: #495252;
+  padding: .7rem;
+  border-radius: 15px;
+  display: none;
+  order: 1;
+}
+
+.image-wrapper:hover + .user-name {
+  position: fixed;
+  margin-left: -190px;
+  display: block;
 }
 
 .image-wrapper {

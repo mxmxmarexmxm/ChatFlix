@@ -139,8 +139,6 @@ const Chat = (props) => {
     );
   }
 
-  console.log(unreadMessages)
-
   return (
     <div className={chatClass}>
       <div className={classes['chat-head']} onClick={showChatHandler}>
@@ -178,7 +176,7 @@ const Chat = (props) => {
         <div className={messagesContainerClass}>
           {loading ? (
             <p className={classes['empty-chat']}>Loading...</p>
-          ) : messages.length !== 0 ? (
+          ) : messages?.length > 0 ? (
             messages.map((msg) => (
               <Message key={msg.id} message={msg} auth={auth} />
             ))

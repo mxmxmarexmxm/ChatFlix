@@ -1,13 +1,12 @@
 import firebase from 'firebase/compat/app';
 
 let config = {
-  apiKey: 'AIzaSyCGnuXdnQMlvNzacsnvuJQFlZJfcxhIb2E',
-  authDomain: 'chat-app-f9610.firebaseapp.com',
-  databaseURL: 'https://chat-app-f9610-default-rtdb.firebaseio.com',
-  projectId: 'chat-app-f9610',
-  storageBucket: 'chat-app-f9610.appspot.com',
-  messagingSenderId: '747791044216',
-  appId: '1:747791044216:web:1b3450c2d611b40e14678d',
+  apiKey: 'AIzaSyDd1OJnvYKP6Bs05qqtOzm1L_3QSxA5J9w',
+  authDomain: 'chatflix-6ebaf.firebaseapp.com',
+  projectId: 'chatflix-6ebaf',
+  storageBucket: 'chatflix-6ebaf.appspot.com',
+  messagingSenderId: '382598738818',
+  appId: '1:382598738818:web:d4aef2083787dc2514559b',
 };
 
 firebase.initializeApp(config);

@@ -15,6 +15,7 @@ function Message(props) {
           alt='user profile'
         />
       </div>
+      <div className={classes['user-name']}>{props.message.displayName}</div>
       <div className={classes['text-wrapper']}>
         <p>{text}</p>
       </div>
