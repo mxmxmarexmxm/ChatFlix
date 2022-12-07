@@ -26,7 +26,7 @@
 
 .received .image-wrapper:hover + .user-name {
   position: absolute;
-  top: 100%;
+  bottom: 100%;
   z-index: 100;
   left: 0;
   display: block;
