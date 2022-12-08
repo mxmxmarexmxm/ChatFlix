@@ -6,11 +6,16 @@ header {
   justify-content: space-between;
   align-items: center;
   border-bottom: #242526 solid 3px;
-  padding:0 2.3rem;
+  padding:0 2rem;
   position: fixed;
   top: 0;
   color: white;
   z-index: 1000;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
 }
 
 .sign-btn {
@@ -25,7 +30,7 @@ header {
   cursor: pointer;
 }
 
-header a {
-  color: white;
-  text-decoration: none;
+.sign-btn:hover,
+.sign-btn:active {
+  background-color: #495252;
 }
