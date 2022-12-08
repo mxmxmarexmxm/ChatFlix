@@ -1,11 +1,12 @@
 // eslint-disable-next-line
 import classes from './Header.module.css';
-import firebase from '../../Firebase';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import firebase from '../../Firebase/Firebase';
+import { AuthContext } from '../../Firebase/context'; 
+import { useContext } from 'react';
 
 const Header = () => {
+  const {user} = useContext(AuthContext)
   let auth = firebase.auth();
-  const [user] = useAuthState(firebase.auth());
 
   const signInWithGoogle = () => {
     auth = firebase.auth();

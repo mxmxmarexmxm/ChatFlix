@@ -1,24 +1,30 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
-import Message from './Message';
 import classes from './Chat.module.css';
-import firebase from 'firebase/compat/app';
+
+// Icons
 import {
   AiOutlineClose,
   AiOutlineFullscreen,
   AiOutlineFullscreenExit,
 } from 'react-icons/ai';
-import 'firebase/compat/firestore';
-import 'firebase/compat/auth';
+
+// Components
 import ChatHead from './ChatHead';
 import SideChatFullScreen from './SideChatFullScreen';
-const auth = firebase.auth();
+import Message from './Message';
+
+// Firebase
+import firebase from '../Firebase/Firebase';
+import { AuthContext } from '../Firebase/context';
+import 'firebase/compat/firestore';
 const firestore = firebase.firestore();
 
 const Chat = (props) => {
   const [showChatMessages, setShowChatMessages] = useState(true);
   const [messageText, setMessageText] = useState('');
   const [unreadMessages, setUnreadMessages] = useState(null);
+  const { user } = useContext(AuthContext);
   const dummy = useRef();
 
   const { chatName, showMessages, logo } = props;
@@ -32,26 +38,26 @@ const Chat = (props) => {
   // Get unread messages
   useEffect(() => {
     const getUnredMessages = () => {
-      if (auth.currentUser === null) {
+      if (user === null) {
         return;
       }
       const unreadMessages = messages?.filter(
-        (message) => !message.readBy.includes(auth.currentUser.uid)
+        (message) => !message.readBy.includes(user.uid)
       ).length;
 
       setUnreadMessages(unreadMessages);
     };
     getUnredMessages();
-  }, [messages]);
+  }, [messages, user]);
 
   // Mark all previous messages as read when user click on input
   const markAllAsRead = async () => {
-    if (auth.currentUser) {
+    if (user) {
       await messageCollection.get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           doc.ref.update({
             readBy: firebase.firestore.FieldValue.arrayUnion(
-              auth.currentUser.uid
+              user.uid
             ),
           });
         });
@@ -62,8 +68,8 @@ const Chat = (props) => {
   const sendMessage = async (e) => {
     e.preventDefault();
 
-    if (auth.currentUser) {
-      const { uid, photoURL, displayName } = auth.currentUser;
+    if (user) {
+      const { uid, photoURL, displayName } = user;
       if (messageText.trim() !== '') {
         await messageCollection.add({
           text: messageText,
@@ -178,7 +184,7 @@ const Chat = (props) => {
             <p className={classes['empty-chat']}>Loading...</p>
           ) : messages?.length > 0 ? (
             messages.map((msg) => (
-              <Message key={msg.id} message={msg} auth={auth} />
+              <Message key={msg.id} message={msg}/>
             ))
           ) : (
             <p className={classes['empty-chat']}>

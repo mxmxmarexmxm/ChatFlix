@@ -1,9 +1,13 @@
+import { useContext } from 'react';
+import { AuthContext } from '../Firebase/context';
 import classes from './Message.module.css';
 
 function Message(props) {
+  const { user } = useContext(AuthContext);
   const { text, uid, photoURL } = props.message;
+  
   const messageSenderClass =
-    uid === props.auth.currentUser?.uid ? 'sent' : 'received';
+    uid === user?.uid ? 'sent' : 'received';
 
   return (
     <div className={`${classes.message} ${classes[messageSenderClass]}`}>
