@@ -1,11 +1,14 @@
 import Layout from './components/UI/Layout';
 import Home from './components/Home';
+import { AuthProvider } from './Firebase/context';
 
 const App = () => {
   return (
-    <Layout>
-      <Home />
-    </Layout>
+    <AuthProvider>
+      <Layout>
+        <Home />
+      </Layout>
+    </AuthProvider>
   );
 };
 
