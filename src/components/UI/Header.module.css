@@ -13,7 +13,7 @@ header {
   z-index: 1000;
 }
 
-header button {
+.sign-btn {
   background-color: #212324;
   border: none;
   text-align: center;
@@ -22,9 +22,10 @@ header button {
   border-radius: 15px;
   font-size: 1rem;
   color: #ffffff;
+  cursor: pointer;
 }
 
-a {
+header a {
   color: white;
   text-decoration: none;
 }
