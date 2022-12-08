@@ -5,9 +5,8 @@ import classes from './Message.module.css';
 function Message(props) {
   const { user } = useContext(AuthContext);
   const { text, uid, photoURL } = props.message;
-  
-  const messageSenderClass =
-    uid === user?.uid ? 'sent' : 'received';
+
+  const messageSenderClass = uid === user?.uid ? 'sent' : 'received';
 
   return (
     <div className={`${classes.message} ${classes[messageSenderClass]}`}>
