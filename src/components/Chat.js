@@ -13,6 +13,9 @@ import {
 import ChatHead from './ChatHead';
 import SideChatFullScreen from './SideChatFullScreen';
 import Message from './Message';
+import useSound from 'use-sound';
+
+import notificationSound from '../assets/Sound/notification-sound.mp3';
 
 // Firebase
 import firebase from '../Firebase/Firebase';
@@ -24,15 +27,16 @@ const Chat = (props) => {
   const [showChatMessages, setShowChatMessages] = useState(true);
   const [messageText, setMessageText] = useState('');
   const [unreadMessages, setUnreadMessages] = useState(null);
+  const [notify] = useSound(notificationSound);
   const { user } = useContext(AuthContext);
   const dummy = useRef();
-
+  
   const { chatName, showMessages, logo } = props;
-
+  
   const messageCollection = firestore.collection(
     `/chats/${props.chatName}/messages/`
-  );
-  const query = messageCollection.orderBy('createdAt', 'asc');
+    );
+    const query = messageCollection.orderBy('createdAt', 'asc');
   const [messages, loading] = useCollectionData(query, { idField: 'id' });
 
   // Get unread messages
@@ -49,6 +53,13 @@ const Chat = (props) => {
     };
     getUnredMessages();
   }, [messages, user]);
+  
+
+  useEffect(() => {
+    if (unreadMessages > 0) {
+      notify();
+    }
+  }, [unreadMessages, notify]);
 
   // Mark all previous messages as read when user click on input
   const markAllAsRead = async () => {
@@ -56,9 +67,7 @@ const Chat = (props) => {
       await messageCollection.get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           doc.ref.update({
-            readBy: firebase.firestore.FieldValue.arrayUnion(
-              user.uid
-            ),
+            readBy: firebase.firestore.FieldValue.arrayUnion(user.uid),
           });
         });
       });
@@ -183,9 +192,7 @@ const Chat = (props) => {
           {loading ? (
             <p className={classes['empty-chat']}>Loading...</p>
           ) : messages?.length > 0 ? (
-            messages.map((msg) => (
-              <Message key={msg.id} message={msg}/>
-            ))
+            messages.map((msg) => <Message key={msg.id} message={msg} />)
           ) : (
             <p className={classes['empty-chat']}>
               There are no messages yet! <br />
