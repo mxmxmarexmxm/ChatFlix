@@ -27,16 +27,17 @@ const Chat = (props) => {
   const [showChatMessages, setShowChatMessages] = useState(true);
   const [messageText, setMessageText] = useState('');
   const [unreadMessages, setUnreadMessages] = useState(null);
+  const [messageToReplay, setMessageToReplay] = useState(null);
   const [notify] = useSound(notificationSound);
   const { user } = useContext(AuthContext);
   const dummy = useRef();
-  
+
   const { chatName, showMessages, logo } = props;
-  
+
   const messageCollection = firestore.collection(
     `/chats/${props.chatName}/messages/`
-    );
-    const query = messageCollection.orderBy('createdAt', 'asc');
+  );
+  const query = messageCollection.orderBy('createdAt', 'asc');
   const [messages, loading] = useCollectionData(query, { idField: 'id' });
 
   // Get unread messages
@@ -53,7 +54,6 @@ const Chat = (props) => {
     };
     getUnredMessages();
   }, [messages, user]);
-  
 
   useEffect(() => {
     if (unreadMessages > 0) {
@@ -88,6 +88,7 @@ const Chat = (props) => {
           id: new Date().toISOString() + uid,
           displayName,
           readBy: [uid],
+          replayTo: messageToReplay,
         });
       }
       dummy.current.scrollIntoView({ behavior: 'smooth' });
@@ -95,6 +96,7 @@ const Chat = (props) => {
     } else {
       alert('You must be signed in to send message!');
     }
+    setMessageToReplay(null);
   };
 
   const showChatHandler = () => {
@@ -124,11 +126,16 @@ const Chat = (props) => {
   let chatClass = classes.chat;
   let messagesContainerClass = classes['messages-container'];
 
+  const onReplayHandler = (message) => {
+    setMessageToReplay(message);
+  };
+
   if (props.isFullScreen) {
     chatClass = `${classes.chat} ${classes[`chat-full-screen`]}`;
     messagesContainerClass = `${classes['messages-container']} ${
       classes[`messages-container-full`]
     }`;
+    chatBodyClass = `${classes['chat-body-full']}`;
   }
 
   if (props.fullScreenSideChat) {
@@ -192,7 +199,9 @@ const Chat = (props) => {
           {loading ? (
             <p className={classes['empty-chat']}>Loading...</p>
           ) : messages?.length > 0 ? (
-            messages.map((msg) => <Message key={msg.id} message={msg} />)
+            messages.map((msg) => (
+              <Message key={msg.id} message={msg} onReplay={onReplayHandler} />
+            ))
           ) : (
             <p className={classes['empty-chat']}>
               There are no messages yet! <br />
@@ -201,6 +210,18 @@ const Chat = (props) => {
           )}
           <span ref={dummy}></span>
         </div>
+        {messageToReplay && (
+          <div className={classes['message-to-replay']}>
+            <div className={classes['replay-texts']}>
+              <p>Replying to {messageToReplay.displayName}</p>
+              <p className={classes['replay-text']}>{messageToReplay.text}</p>
+            </div>
+            <AiOutlineClose
+              className={classes.icon}
+              onClick={() => setMessageToReplay(null)}
+            />
+          </div>
+        )}
         <form onSubmit={sendMessage}>
           <input
             value={messageText}
