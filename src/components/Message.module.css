@@ -52,12 +52,36 @@
   height: 100%;
 }
 
+.mess-div {
+  max-width: 70%;
+}
+
+.replay-wrapper {
+  text-align: right;
+  word-break: break-word;
+  background-color: #383939;
+  color: #fff;
+  border-radius: 1rem;
+  margin-bottom: -1rem;
+  padding: .5rem;
+  padding-bottom: 1.1rem;
+}
+
+.icon {
+  cursor: pointer;
+  color: white;
+}
+
 .text-wrapper {
   text-align: right;
-  max-width: 75%;
   word-break: break-word;
   background-color: #495252;
   color: #fff;
   border-radius: 15px;
   padding: .5rem;
+}
+
+.replay-wrapper p:first-child {
+  font-size: .9rem;
+  font-style: italic;
 }
