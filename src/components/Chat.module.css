@@ -45,7 +45,6 @@
 
 .messages-container {
   background-color: #242526;
-  height: 350px;
   display: flex;
   flex-direction: column;
   padding: .5rem;
@@ -94,8 +93,16 @@ form button {
   border: none;
 }
 
+.chat-body-full {
+  height: 82vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
 .icon {
-  font-size: 1.3rem
+  font-size: 1.3rem;
+  cursor: pointer;
 }
 
 .button-wrapper{ 
@@ -105,6 +112,13 @@ form button {
 
 h2::first-letter {
   text-transform:capitalize;
+}
+
+.chat-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 440px;
 }
 
 .hide-body {
@@ -138,4 +152,24 @@ h2::first-letter {
   cursor: pointer;
   background-color: #242526;
   border: none;
+}
+
+.message-to-replay {
+  border-top: #495252 2px solid;
+  color: white;
+  display: flex;
+  padding: .6rem;
+  justify-content: space-between;
+}
+
+.replay-texts{
+  width: 90%;
+}
+
+.replay-text {
+  white-space: nowrap;
+  max-width: 90%;
+  overflow: hidden;
+  margin-top: .2rem;
+  text-overflow: ellipsis;
 }
