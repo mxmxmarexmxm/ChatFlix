@@ -12,6 +12,10 @@
 }
 
 .full-screen-chat-container {
-  width: 73vw;
+  flex: 1;
+}
+
+.chat-body {
+  flex: 1;
 }
 
