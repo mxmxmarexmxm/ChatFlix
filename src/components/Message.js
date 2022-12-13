@@ -12,6 +12,7 @@ function Message(props) {
     <div className={`${classes.message} ${classes[messageSenderClass]}`}>
       <div className={classes['image-wrapper']}>
         <img
+          onClick={props.openPrivate.bind(this, props.message)}
           className={classes.profileImg}
           src={photoURL}
           referrerPolicy='no-referrer'
