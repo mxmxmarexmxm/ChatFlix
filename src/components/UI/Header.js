@@ -21,12 +21,17 @@ const Header = () => {
   return (
     <header>
       <h1>
-        <a href='/ChatFlix'>ChatFlix</a>
+        <a href="/ChatFlix">ChatFlix</a>
       </h1>
       {user ? (
-        <button className={classes['sign-btn']} onClick={signOut}>
-          Sign Out
-        </button>
+        <div className={classes['divabtn']}>
+          <button className={classes['sign-btn']} onClick={signOut}>
+            Sign Out
+          </button>
+          <div className={classes['image-wrapper']}>
+            <img alt="profile avatar" src={user.photoURL} />
+          </div>
+        </div>
       ) : (
         <button className={classes['sign-btn']} onClick={signInWithGoogle}>
           Sign In

@@ -34,3 +34,15 @@ header a {
 .sign-btn:active {
   background-color: #495252;
 }
+
+.image-wrapper {
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.divabtn {
+  display: flex;
+  align-items: center;
+}
