@@ -7,18 +7,13 @@ const SideChatFullScreen = (props) => {
     <div className={classes['active-chat-side']} onClick={props.onClick}>
       <div className={classes['chat-and-logo-side']}>
         <div className={classes['logo-container-side']}>
-          <img src={props.logo} alt='img' />
+          <img src={props.logo} alt="img" />
         </div>
         <h2>{props.chatName}</h2>
       </div>
-      <div
-        className={classes['badges-container-side']}
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className={classes['badges-container-side']} onClick={(e) => e.stopPropagation()}>
         {props.unreadMessages > 0 && (
-          <div
-            className={`${classes['badge-wrapper']} ${classes['unread-messages-badge']}`}
-          >
+          <div className={`${classes['badge-wrapper']} ${classes['unread-messages-badge']}`}>
             {props.unreadMessages}
           </div>
         )}

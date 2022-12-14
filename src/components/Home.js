@@ -62,17 +62,11 @@ const Home = (props) => {
     }
 
     if (indexOfChatRight >= 0 && activeChatsBottom.length < 2) {
-      setActiveChatsRight(
-        activeChatsRight.filter((c) => c.chatName !== chatData.chatName)
-      );
+      setActiveChatsRight(activeChatsRight.filter((c) => c.chatName !== chatData.chatName));
       setActiveChatsBottom((c) => [chatData, ...c]);
     }
 
-    if (
-      indexOfChatRight >= 0 &&
-      indexOfChatBottom < 0 &&
-      activeChatsBottom.length > 2
-    ) {
+    if (indexOfChatRight >= 0 && indexOfChatBottom < 0 && activeChatsBottom.length > 2) {
       const elementToMove = activeBottom[2];
       setActiveChatsRight((chat) => [
         ...chat.filter((chat) => chat.chatName !== chatData.chatName),
@@ -80,9 +74,7 @@ const Home = (props) => {
       ]);
       setActiveChatsBottom([
         chatData,
-        ...activeBottom.filter(
-          (chat) => chat.chatName !== elementToMove.chatName
-        ),
+        ...activeBottom.filter((chat) => chat.chatName !== elementToMove.chatName),
       ]);
     }
     setShowMessages(chatData.chatName);
@@ -97,13 +89,9 @@ const Home = (props) => {
       isFirst ? setFullScreenChat(allChats[1]) : setFullScreenChat(allChats[0]);
     }
 
-    setActiveChatsBottom(
-      activeChatsBottom.filter((chat) => chat.chatName !== chatName)
-    );
+    setActiveChatsBottom(activeChatsBottom.filter((chat) => chat.chatName !== chatName));
 
-    setActiveChatsRight(
-      activeChatsRight.filter((chat) => chat.chatName !== chatName)
-    );
+    setActiveChatsRight(activeChatsRight.filter((chat) => chat.chatName !== chatName));
   };
 
   const clearShowHandler = () => {
@@ -122,11 +110,7 @@ const Home = (props) => {
     setFullScreenChat(fullChat);
   };
 
-  if (
-    activeChatsBottom?.length === 0 &&
-    activeChatsRight.length === 0 &&
-    fullScreenChat
-  ) {
+  if (activeChatsBottom?.length === 0 && activeChatsRight.length === 0 && fullScreenChat) {
     setFullScreenChat(null);
   }
 

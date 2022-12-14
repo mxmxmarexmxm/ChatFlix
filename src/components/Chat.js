@@ -3,11 +3,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 import classes from './Chat.module.css';
 
 // Icons
-import {
-  AiOutlineClose,
-  AiOutlineFullscreen,
-  AiOutlineFullscreenExit,
-} from 'react-icons/ai';
+import { AiOutlineClose, AiOutlineFullscreen, AiOutlineFullscreenExit } from 'react-icons/ai';
 
 // Components
 import ChatHead from './ChatHead';
@@ -33,10 +29,8 @@ const Chat = (props) => {
   const dummy = useRef();
 
   const { chatName, showMessages, logo } = props.chat;
-  
-  let messageCollection = firestore.collection(
-    `/chats/${chatName}/messages/`
-  );
+
+  let messageCollection = firestore.collection(`/chats/${chatName}/messages/`);
 
   let query = messageCollection.orderBy('createdAt', 'asc');
 
@@ -121,9 +115,7 @@ const Chat = (props) => {
     props.maximizeChat(chatName);
   };
 
-  let chatBodyClass = showChatMessages
-    ? classes['chat-body']
-    : classes['hide-body'];
+  let chatBodyClass = showChatMessages ? classes['chat-body'] : classes['hide-body'];
 
   let chatClass = classes.chat;
   let messagesContainerClass = classes['messages-container'];
@@ -168,30 +160,22 @@ const Chat = (props) => {
       <div className={classes['chat-head']} onClick={showChatHandler}>
         <div className={classes.logoAndTitle}>
           <div className={classes['chat-head-image-container']}>
-            <img src={logo} alt='avatar' />
+            <img src={logo} alt="avatar" />
           </div>
           <h2>{chatName}</h2>
         </div>
         <div className={classes[`button-wrapper`]}>
           {!showChatMessages && unreadMessages > 0 && (
-            <div className={classes[`unread-messages-badge`]}>
-              {unreadMessages}
-            </div>
+            <div className={classes[`unread-messages-badge`]}>{unreadMessages}</div>
           )}
-          <div
-            className={classes['icon-btn-wrapper']}
-            onClick={maximizeHandler}
-          >
+          <div className={classes['icon-btn-wrapper']} onClick={maximizeHandler}>
             {props.isFullScreen ? (
               <AiOutlineFullscreenExit className={classes.icon} />
             ) : (
               <AiOutlineFullscreen className={classes.icon} />
             )}
           </div>
-          <div
-            className={classes['icon-btn-wrapper']}
-            onClick={props.onClose.bind(this, chatName)}
-          >
+          <div className={classes['icon-btn-wrapper']} onClick={props.onClose.bind(this, chatName)}>
             <AiOutlineClose className={classes.icon} />
           </div>
         </div>
@@ -202,11 +186,7 @@ const Chat = (props) => {
             <p className={classes['empty-chat']}>Loading...</p>
           ) : messages?.length > 0 ? (
             messages.map((message) => (
-              <Message
-                key={message.id}
-                message={message}
-                onReplay={onReplayHandler}
-              />
+              <Message key={message.id} message={message} onReplay={onReplayHandler} />
             ))
           ) : (
             <p className={classes['empty-chat']}>
@@ -222,10 +202,7 @@ const Chat = (props) => {
               <p>Replying to {messageToReplay.displayName}</p>
               <p className={classes['replay-text']}>{messageToReplay.text}</p>
             </div>
-            <AiOutlineClose
-              className={classes.icon}
-              onClick={() => setMessageToReplay(null)}
-            />
+            <AiOutlineClose className={classes.icon} onClick={() => setMessageToReplay(null)} />
           </div>
         )}
         <form onSubmit={sendMessage}>

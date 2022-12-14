@@ -1,13 +1,10 @@
 import React from 'react';
 import { BsDashSquareFill, BsPlusSquareFill } from 'react-icons/bs';
-import classes from './ToggleChatHeadsBtn.module.css'
+import classes from './ToggleChatHeadsBtn.module.css';
 
 const ToggleChatHeadsBtn = (props) => {
   return (
-    <div
-      className={classes['icon-wrapper']}
-      onClick={props.onClick}
-    >
+    <div className={classes['icon-wrapper']} onClick={props.onClick}>
       {props.showChatHeads ? (
         <BsDashSquareFill className={classes.icon} />
       ) : (
