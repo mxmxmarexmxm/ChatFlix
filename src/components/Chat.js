@@ -33,11 +33,13 @@ const Chat = (props) => {
   const dummy = useRef();
 
   const { chatName, showMessages, logo } = props.chat;
-
-  const messageCollection = firestore.collection(
+  
+  let messageCollection = firestore.collection(
     `/chats/${chatName}/messages/`
   );
-  const query = messageCollection.orderBy('createdAt', 'asc');
+
+  let query = messageCollection.orderBy('createdAt', 'asc');
+
   const [messages, loading] = useCollectionData(query, { idField: 'id' });
 
   // Get unread messages
@@ -130,10 +132,6 @@ const Chat = (props) => {
     setMessageToReplay(message);
   };
 
-  const openPrivate = (uid) => {
-    console.log(uid);
-  };
-
   if (props.isFullScreen) {
     chatClass = `${classes.chat} ${classes[`chat-full-screen`]}`;
     messagesContainerClass = `${classes['messages-container']} ${
@@ -206,10 +204,8 @@ const Chat = (props) => {
             messages.map((message) => (
               <Message
                 key={message.id}
-                openPrivate={props.onPrivate}
                 message={message}
                 onReplay={onReplayHandler}
-                openPrivate={props.openPrivate}
               />
             ))
           ) : (

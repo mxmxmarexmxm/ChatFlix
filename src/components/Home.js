@@ -88,11 +88,6 @@ const Home = (props) => {
     setShowMessages(chatData.chatName);
   };
 
-  const openPrivate = (chat) => {
-    // console.log(uid)
-    onSelectChatHandler({chatName: chat.displayName, logo: chat.photoURL})
-  } 
-
   const onCloseHandler = (chatName) => {
     let allChats = [...activeChatsBottom, ...activeChatsRight];
     const isFirst = allChats[0].chatName === chatName;
@@ -173,7 +168,6 @@ const Home = (props) => {
                 showMessages={showMessages}
                 chat={chat}
                 key={chat.chatName}
-                openPrivate={openPrivate}
                 onClose={onCloseHandler}
               />
             ))}
