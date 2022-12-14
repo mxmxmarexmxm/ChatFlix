@@ -24,7 +24,7 @@ const Header = () => {
         <a href="/ChatFlix">ChatFlix</a>
       </h1>
       {user ? (
-        <div className={classes['divabtn']}>
+        <div className={classes['sign-out-container']}>
           <button className={classes['sign-btn']} onClick={signOut}>
             Sign Out
           </button>

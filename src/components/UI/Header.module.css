@@ -42,7 +42,7 @@ header a {
   overflow: hidden;
 }
 
-.divabtn {
+.sign-out-container {
   display: flex;
   align-items: center;
 }
