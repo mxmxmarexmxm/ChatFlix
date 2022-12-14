@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/ChatFlix/static/css/main.09a18c1a.css",
-    "main.js": "/ChatFlix/static/js/main.b5ac3b1f.js",
+    "main.css": "/ChatFlix/static/css/main.43efd7b3.css",
+    "main.js": "/ChatFlix/static/js/main.b6d75795.js",
     "static/js/845.e50eaa4e.chunk.js": "/ChatFlix/static/js/845.e50eaa4e.chunk.js",
     "static/media/notification-sound.mp3": "/ChatFlix/static/media/notification-sound.d73a48979f61f8154e1c.mp3",
     "index.html": "/ChatFlix/index.html",
-    "main.09a18c1a.css.map": "/ChatFlix/static/css/main.09a18c1a.css.map",
-    "main.b5ac3b1f.js.map": "/ChatFlix/static/js/main.b5ac3b1f.js.map",
+    "main.43efd7b3.css.map": "/ChatFlix/static/css/main.43efd7b3.css.map",
+    "main.b6d75795.js.map": "/ChatFlix/static/js/main.b6d75795.js.map",
     "845.e50eaa4e.chunk.js.map": "/ChatFlix/static/js/845.e50eaa4e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.09a18c1a.css",
-    "static/js/main.b5ac3b1f.js"
+    "static/css/main.43efd7b3.css",
+    "static/js/main.b6d75795.js"
   ]
 }
