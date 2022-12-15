@@ -20,9 +20,8 @@ const FullScreen = (props) => {
       <div className={classes['full-screen-chat-container']}>
         <Chat
           isFullScreen={true}
+          chat={fullScreenChat}
           maximizeChat={props.maximizeChat}
-          logo={fullScreenChat.logo}
-          chatName={fullScreenChat.chatName}
           key={fullScreenChat.chatName}
           onClose={props.onClose}
         />
