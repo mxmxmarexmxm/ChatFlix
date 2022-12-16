@@ -3,6 +3,7 @@ import classes from './Header.module.css';
 import firebase from '../../Firebase/Firebase';
 import { AuthContext } from '../../Firebase/context';
 import { useContext } from 'react';
+import logo from '../../assets/img/logo.png';
 
 const Header = () => {
   const { user } = useContext(AuthContext);
@@ -20,9 +21,9 @@ const Header = () => {
 
   return (
     <header>
-      <h1>
-        <a href="/ChatFlix">ChatFlix</a>
-      </h1>
+      <div>
+        <img src={logo} alt="logo" />
+      </div>
       {user ? (
         <div className={classes['sign-out-container']}>
           <button className={classes['sign-btn']} onClick={signOut}>
