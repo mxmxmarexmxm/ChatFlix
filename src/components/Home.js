@@ -13,6 +13,7 @@ const Home = (props) => {
   const [fullScreenChat, setFullScreenChat] = useState(null);
   const [showChatHeads, setShowChatHeads] = useState(false);
 
+  // Get previously opened chats from local storage.
   useEffect(() => {
     const chatsRight = localStorage.getItem('chatsRight');
     const chatsBottom = localStorage.getItem('chatsBottom');
@@ -27,6 +28,7 @@ const Home = (props) => {
     }
   }, []);
 
+  // Save chat list to local storage.
   useEffect(() => {
     const setLocalStorage = () => {
       localStorage.setItem('chatsBottom', JSON.stringify(activeChatsBottom));
@@ -35,6 +37,7 @@ const Home = (props) => {
     setLocalStorage();
   }, [activeChatsBottom, activeChatsRight]);
 
+  // Select chat handler, for each scenario.
   const onSelectChatHandler = (chatData) => {
     const indexOfChatBottom = activeChatsBottom.findIndex(
       (chat) => chat.chatName === chatData.chatName
@@ -80,6 +83,7 @@ const Home = (props) => {
     setShowMessages(chatData.chatName);
   };
 
+  // Close chat handler, for each scenario.
   const onCloseHandler = (chatName) => {
     let allChats = [...activeChatsBottom, ...activeChatsRight];
     const isFirst = allChats[0].chatName === chatName;
@@ -93,6 +97,7 @@ const Home = (props) => {
 
     setActiveChatsRight(activeChatsRight.filter((chat) => chat.chatName !== chatName));
   };
+
 
   const clearShowHandler = () => {
     setShowMessages(null);
@@ -110,6 +115,7 @@ const Home = (props) => {
     setFullScreenChat(fullChat);
   };
 
+  // Close full screen if there are no remaining chats.
   if (activeChatsBottom?.length === 0 && activeChatsRight.length === 0 && fullScreenChat) {
     setFullScreenChat(null);
   }
