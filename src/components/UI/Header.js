@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 import classes from './Header.module.css';
 import firebase from '../../Firebase/Firebase';
 import { AuthContext } from '../../Firebase/context';
@@ -22,7 +21,9 @@ const Header = () => {
   return (
     <header>
       <div>
-        <img src={logo} alt="logo" />
+        <a href="/ChatFlix">
+          <img src={logo} alt="logo" />
+        </a>
       </div>
       {user ? (
         <div className={classes['sign-out-container']}>
