@@ -28,7 +28,8 @@ const Chat = (props) => {
   const { user } = useContext(AuthContext);
   const dummy = useRef();
 
-  const { chatName, showMessages, logo } = props.chat;
+  const { chatName, logo } = props.chat;
+  const { showMessages } = props;
 
   let messageCollection = firestore.collection(`/chats/${chatName}/messages/`);
 
