@@ -5,9 +5,9 @@
 
 .container h2 {
   color: white;
-  margin: 1rem 4.5rem -.7rem 4.5rem;
+  margin: 1rem 4.5rem -.7rem 4.7rem;
   font-family: 'Asap';
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 .row  {
@@ -45,7 +45,7 @@
 }
 
 .row button {
-  font-size: 3.3rem;
+  font-size: 3rem;
   background-color: inherit;
   color: #666a6e;
   cursor: pointer;
