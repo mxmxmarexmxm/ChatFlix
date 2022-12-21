@@ -52,6 +52,7 @@ const Chat = (props) => {
     getUnredMessages();
   }, [messages, user]);
 
+  // Get notification when message arrives
   useEffect(() => {
     if (unreadMessages > 0) {
       notify();
@@ -71,6 +72,7 @@ const Chat = (props) => {
     }
   };
 
+  // Send message if user is loged, otherwise alert to sign in.
   const sendMessage = async (e) => {
     e.preventDefault();
 
@@ -111,20 +113,23 @@ const Chat = (props) => {
     }
   }, [chatName, showMessages]);
 
+  const onReplayHandler = (message) => {
+    setMessageToReplay(message);
+  };
+
   const maximizeHandler = (event) => {
     event.stopPropagation();
     props.maximizeChat(chatName);
   };
 
+
+  // Chat classes depending on chat size
   let chatBodyClass = showChatMessages ? classes['chat-body'] : classes['hide-body'];
 
   let chatClass = classes.chat;
   let messagesContainerClass = classes['messages-container'];
 
-  const onReplayHandler = (message) => {
-    setMessageToReplay(message);
-  };
-
+  // Full screen chat
   if (props.isFullScreen) {
     chatClass = `${classes.chat} ${classes[`chat-full-screen`]}`;
     messagesContainerClass = `${classes['messages-container']} ${
@@ -133,6 +138,7 @@ const Chat = (props) => {
     chatBodyClass = `${classes['chat-body-full']}`;
   }
 
+  // Side chat on full screen
   if (props.fullScreenSideChat) {
     return (
       <SideChatFullScreen
@@ -145,6 +151,7 @@ const Chat = (props) => {
     );
   }
 
+  // Chat head if chat is in right chat container
   if (props.isChatHead) {
     return (
       <ChatHead
