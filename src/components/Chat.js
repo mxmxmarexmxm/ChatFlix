@@ -113,6 +113,20 @@ const Chat = (props) => {
     }
   }, [chatName, showMessages]);
 
+  // Minimize all chats in active bottom container at Esc button
+  useEffect(() => {
+    const handleEsc = (event) => {
+      if (event.keyCode === 27) {
+        setShowChatMessages(false)
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, []);
+
   const onReplayHandler = (message) => {
     setMessageToReplay(message);
   };
@@ -122,10 +136,8 @@ const Chat = (props) => {
     props.maximizeChat(chatName);
   };
 
-
   // Chat classes depending on chat size
   let chatBodyClass = showChatMessages ? classes['chat-body'] : classes['hide-body'];
-
   let chatClass = classes.chat;
   let messagesContainerClass = classes['messages-container'];
 
