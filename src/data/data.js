@@ -139,6 +139,21 @@ export const chatsData = [
     logo: 'https://www.explore-group.com/storage/images-processed/w-1500_h-auto_m-fit_s-any__Free-code-camp-banner.jpg',
     tags: ['Learning platforms'],
   },
+  {
+    chatName: 'Udemy',
+    logo: 'https://static.businessworld.in/article/article_extra_large_image/1568720807_WAh3OT_Udemy.png',
+    tags: ['Learning platforms'],
+  },
+  {
+    chatName: 'W3 Schools',
+    logo: 'https://yt3.ggpht.com/dW6to0x5Crmeh7yi-YPLcQRqVrBtx2BSh8eoKTJbE8NbjloQ0sqlmdszIlxokJU_97-ndOt_=s900-c-k-c0x00ffffff-no-rj',
+    tags: ['Learning platforms'],
+  },
+  {
+    chatName: 'Scrimba',
+    logo: 'https://selftaughttxg.com/static/97dd4f28c4c204a5e580f04c95f42644/e8950/Scrimba-logo.png',
+    tags: ['Learning platforms'],
+  },
 ];
 
 export const rowTitles = [
