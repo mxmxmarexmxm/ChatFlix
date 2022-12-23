@@ -134,6 +134,11 @@ export const chatsData = [
     logo: 'https://vimage.fr/vimage/img/materialize-logo.png',
     tags: ['CSS frameworks', 'frameworks', 'frontend frameworks'],
   },
+  {
+    chatName: 'FreeCodeCamp',
+    logo: 'https://www.explore-group.com/storage/images-processed/w-1500_h-auto_m-fit_s-any__Free-code-camp-banner.jpg',
+    tags: ['Learning platforms'],
+  },
 ];
 
 export const rowTitles = [
@@ -146,4 +151,5 @@ export const rowTitles = [
   'frontend frameworks',
   'backend frameworks',
   'CSS frameworks',
+  'Learning platforms'
 ];
