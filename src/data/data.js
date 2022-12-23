@@ -31,7 +31,7 @@ export const chatsData = [
   },
   {
     chatName: 'NodeJS',
-    logo: 'https://res.cloudinary.com/practicaldev/image/fetch/s--e_rqeB7o--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://cdn-images-1.medium.com/max/2400/1%2AFPtQLT2Zk-baHficCz_mXQ.png',
+    logo: 'https://cdn-icons-png.flaticon.com/512/919/919825.png',
     tags: ['backend', 'frameworks', 'backend frameworks', 'JS'],
   },
   {
