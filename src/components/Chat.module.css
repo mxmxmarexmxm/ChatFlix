@@ -29,6 +29,7 @@
 .chat-head-image-container {
   height: 25px;
   width: 25px;
+  border-radius: 4px;
   overflow: hidden;
 }
 
