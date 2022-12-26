@@ -154,6 +154,26 @@ export const chatsData = [
     logo: 'https://selftaughttxg.com/static/97dd4f28c4c204a5e580f04c95f42644/e8950/Scrimba-logo.png',
     tags: ['Learning platforms'],
   },
+  {
+    chatName: 'Educative',
+    logo: 'https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_ad69fc8576913b2f4236931ed31e7cf8/educative.png',
+    tags: ['Learning platforms'],
+  },
+  {
+    chatName: 'Coursera',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Coursera-Logo_600x600.svg/2048px-Coursera-Logo_600x600.svg.png',
+    tags: ['Learning platforms'],
+  },
+  {
+    chatName: 'Udacity',
+    logo: 'https://www.roadtovr.com/wp-content/uploads/2017/10/udacity-logo.png',
+    tags: ['Learning platforms'],
+  },
+  {
+    chatName: 'Pluralsight',
+    logo: 'https://assets.stickpng.com/images/62a25269d4cb2577520fca22.png',
+    tags: ['Learning platforms'],
+  },
 ];
 
 export const rowTitles = [
