@@ -43,10 +43,6 @@
   flex-direction: row;
 }
 
-.chat-head-full {
-  border-radius: 0;
-}
-
 .chat-heads-container {
   animation: fadeIn 150ms ease-in backwards;
 }
