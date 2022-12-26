@@ -134,7 +134,14 @@ h2::first-letter {
 }
 
 .messages-container-full {
-  height: 74vh;
+  height: 71vh;
+}
+
+.chat-head-full {
+  cursor: default;
+  font-size: 1.2rem;
+  font-family: inherit;
+  padding: 2rem .5rem;
 }
 
 .empty-chat {
