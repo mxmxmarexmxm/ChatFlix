@@ -140,6 +140,7 @@ const Chat = (props) => {
   let chatBodyClass = showChatMessages ? classes['chat-body'] : classes['hide-body'];
   let chatClass = classes.chat;
   let messagesContainerClass = classes['messages-container'];
+  let chatHeadClass= classes['chat-head']
 
   // Full screen chat
   if (props.isFullScreen) {
@@ -148,6 +149,7 @@ const Chat = (props) => {
       classes[`messages-container-full`]
     }`;
     chatBodyClass = `${classes['chat-body-full']}`;
+    chatHeadClass= `${classes['chat-head']} ${classes['chat-head-full']}`
   }
 
   // Side chat on full screen
@@ -177,7 +179,7 @@ const Chat = (props) => {
 
   return (
     <div className={chatClass}>
-      <div className={classes['chat-head']} onClick={showChatHandler}>
+      <div className={chatHeadClass} onClick={showChatHandler}>
         <div className={classes.logoAndTitle}>
           <div className={classes['chat-head-image-container']}>
             <img src={logo} alt="avatar" />
