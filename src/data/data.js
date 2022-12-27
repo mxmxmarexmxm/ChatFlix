@@ -175,11 +175,35 @@ export const chatsData = [
   },
   {
     chatName: 'Pluralsight',
-    logo: 'https://assets.stickpng.com/images/62a25269d4cb2577520fca22.png',
+    logo: 'https://self-starters.com/wp-content/uploads/2021/03/Pluralsight-Review.png',
     tags: ['Learning platforms'],
   },
   // Operating systems
-
+  {
+    chatName: 'Windows',
+    logo: 'https://storage.googleapis.com/webdesignledger.pub.network/WDL/6f050e39-windows_10_logoblue.svg-copy_windows.jpg',
+    tags: ['Operating Systems'],
+  },
+  {
+    chatName: 'Ubuntu',
+    logo: 'https://static.javatpoint.com/linux/images/ubuntu-logo6.png',
+    tags: ['Operating Systems'],
+  },
+  {
+    chatName: 'Mac OS',
+    logo: 'http://fr.wikitwist.com/files/2013/04/Mac-OS-Logo-490x400.png',
+    tags: ['Operating Systems'],
+  },
+  {
+    chatName: 'Fedora',
+    logo: 'https://fedoraproject.org/w/uploads/5/57/Logo-history-revision.jpg',
+    tags: ['Operating Systems'],
+  },
+  {
+    chatName: 'Solaris',
+    logo: 'https://www.shareicon.net/data/256x256/2015/09/17/102454_solaris_512x512.png',
+    tags: ['Operating Systems'],
+  },
 ];
 
 export const rowTitles = [
