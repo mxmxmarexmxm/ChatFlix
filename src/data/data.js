@@ -186,5 +186,6 @@ export const rowTitles = [
   'frontend frameworks',
   'backend frameworks',
   'CSS frameworks',
-  'Learning platforms'
+  'Learning platforms',
+  'Operating Systems'
 ];
