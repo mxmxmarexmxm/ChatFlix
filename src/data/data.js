@@ -1,4 +1,5 @@
 export const chatsData = [
+  // Frontend
   {
     chatName: 'HTML',
     logo: 'https://cdn.pixabay.com/photo/2017/08/05/11/16/image-2582748_1280.png',
@@ -30,11 +31,6 @@ export const chatsData = [
     tags: ['frontend', 'frameworks', 'frontend frameworks', 'JS'],
   },
   {
-    chatName: 'NodeJS',
-    logo: 'https://cdn-icons-png.flaticon.com/512/919/919825.png',
-    tags: ['backend', 'frameworks', 'backend frameworks', 'JS'],
-  },
-  {
     chatName: 'AngularJS',
     logo: 'https://www.strivemindz.com/images/angularr.png',
     tags: ['frontend', 'frameworks', 'frontend frameworks', 'JS'],
@@ -50,14 +46,56 @@ export const chatsData = [
     tags: ['frontend', 'frameworks', 'frontend frameworks', 'JS'],
   },
   {
-    chatName: 'Express.js',
-    logo: 'https://assets.website-files.com/61ca3f775a79ec5f87fcf937/6202fcdee5ee8636a145a41b_1234.png',
-    tags: ['backend', 'frameworks', 'backend frameworks', 'JS'],
-  },
-  {
     chatName: 'Flutter',
     logo: 'https://ih1.redbubble.net/image.3270932181.3996/st,small,845x845-pad,1000x1000,f8f8f8.jpg',
     tags: ['frontend', 'mobile'],
+  },
+  // Frontend (CSS)
+  {
+    chatName: 'Bootstrap',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1280px-Bootstrap_logo.svg.png',
+    tags: ['frontend', 'CSS frameworks', 'frameworks', 'frontend frameworks'],
+  },
+  {
+    chatName: 'Foundation',
+    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7vNO1jVzx7DyMUVujdIW2aQB9iojVXc0PDw&usqp=CAU',
+    tags: ['frontend', 'CSS frameworks', 'frameworks', 'frontend frameworks'],
+  },
+  {
+    chatName: 'Tailwind CSS',
+    logo: 'https://www.devonblog.com/wp-content/uploads/2022/06/tailwind-thumb.jpg',
+    tags: ['frontend', 'CSS frameworks', 'frameworks', 'frontend frameworks'],
+  },
+  {
+    chatName: 'Bulma',
+    logo: 'https://how-to.sk/wp-content/uploads/2022/08/bulma-logo.png',
+    tags: ['frontend', 'CSS frameworks', 'frameworks', 'frontend frameworks'],
+  },
+  {
+    chatName: 'Milligram',
+    logo: 'https://cdn.freebiesbug.com/wp-content/uploads/2016/02/milligram-framework-580x435.jpg',
+    tags: ['frontend', 'CSS frameworks', 'frameworks', 'frontend frameworks'],
+  },
+  {
+    chatName: 'UIkit',
+    logo: 'https://camo.githubusercontent.com/58b145be0e13ad12dea993fe9d65701d2dd580365da54f12f21e47f7288dbb7b/687474703a2f2f6f6d6e69636f64652e616d2f7069632f73657276696365732f75696b69742e706e67',
+    tags: ['frontend', 'CSS frameworks', 'frameworks', 'frontend frameworks'],
+  },
+  {
+    chatName: 'Materialize CSS',
+    logo: 'https://vimage.fr/vimage/img/materialize-logo.png',
+    tags: ['frontend', 'CSS frameworks', 'frameworks', 'frontend frameworks'],
+  },
+  // Backend
+  {
+    chatName: 'NodeJS',
+    logo: 'https://cdn-icons-png.flaticon.com/512/919/919825.png',
+    tags: ['backend', 'frameworks', 'backend frameworks', 'JS'],
+  },
+  {
+    chatName: 'Express.js',
+    logo: 'https://assets.website-files.com/61ca3f775a79ec5f87fcf937/6202fcdee5ee8636a145a41b_1234.png',
+    tags: ['backend', 'frameworks', 'backend frameworks', 'JS'],
   },
   {
     chatName: 'Pyton',
@@ -99,41 +137,7 @@ export const chatsData = [
     logo: 'https://i.pinimg.com/736x/ab/8b/5e/ab8b5ea6637ebd8e5755c838d952b8c1.jpg',
     tags: ['backend', 'frameworks', 'backend frameworks', 'php'],
   },
-  {
-    chatName: 'Bootstrap',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1280px-Bootstrap_logo.svg.png',
-    tags: ['CSS frameworks', 'frameworks', 'frontend frameworks'],
-  },
-  {
-    chatName: 'Foundation',
-    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7vNO1jVzx7DyMUVujdIW2aQB9iojVXc0PDw&usqp=CAU',
-    tags: ['CSS frameworks', 'frameworks', 'frontend frameworks'],
-  },
-  {
-    chatName: 'Tailwind CSS',
-    logo: 'https://www.devonblog.com/wp-content/uploads/2022/06/tailwind-thumb.jpg',
-    tags: ['CSS frameworks', 'frameworks', 'frontend frameworks'],
-  },
-  {
-    chatName: 'Bulma',
-    logo: 'https://how-to.sk/wp-content/uploads/2022/08/bulma-logo.png',
-    tags: ['CSS frameworks', 'frameworks', 'frontend frameworks'],
-  },
-  {
-    chatName: 'Milligram',
-    logo: 'https://cdn.freebiesbug.com/wp-content/uploads/2016/02/milligram-framework-580x435.jpg',
-    tags: ['CSS frameworks', 'frameworks', 'frontend frameworks'],
-  },
-  {
-    chatName: 'UIkit',
-    logo: 'https://camo.githubusercontent.com/58b145be0e13ad12dea993fe9d65701d2dd580365da54f12f21e47f7288dbb7b/687474703a2f2f6f6d6e69636f64652e616d2f7069632f73657276696365732f75696b69742e706e67',
-    tags: ['CSS frameworks', 'frameworks', 'frontend frameworks'],
-  },
-  {
-    chatName: 'Materialize CSS',
-    logo: 'https://vimage.fr/vimage/img/materialize-logo.png',
-    tags: ['CSS frameworks', 'frameworks', 'frontend frameworks'],
-  },
+  // Learning platforms
   {
     chatName: 'FreeCodeCamp',
     logo: 'https://www.explore-group.com/storage/images-processed/w-1500_h-auto_m-fit_s-any__Free-code-camp-banner.jpg',
@@ -174,6 +178,8 @@ export const chatsData = [
     logo: 'https://assets.stickpng.com/images/62a25269d4cb2577520fca22.png',
     tags: ['Learning platforms'],
   },
+  // Operating systems
+
 ];
 
 export const rowTitles = [
