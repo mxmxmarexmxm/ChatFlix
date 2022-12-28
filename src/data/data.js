@@ -68,7 +68,7 @@ export const chatsData = [
   },
   {
     chatName: 'Bulma',
-    logo: 'https://how-to.sk/wp-content/uploads/2022/08/bulma-logo.png',
+    logo: 'https://cms-assets.tutsplus.com/uploads/users/30/posts/28091/preview_image/pre.png',
     tags: ['frontend', 'CSS frameworks', 'frameworks', 'frontend frameworks'],
   },
   {
@@ -89,7 +89,7 @@ export const chatsData = [
   // Backend
   {
     chatName: 'NodeJS',
-    logo: 'https://cdn-icons-png.flaticon.com/512/919/919825.png',
+    logo: 'https://images.ctfassets.net/aq13lwl6616q/7cS8gBoWulxkWNWEm0FspJ/c7eb42dd82e27279307f8b9fc9b136fa/nodejs_cover_photo_smaller_size.png?w=700&fm=webp',
     tags: ['backend', 'frameworks', 'backend frameworks', 'JS'],
   },
   {
