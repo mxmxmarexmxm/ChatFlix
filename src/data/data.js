@@ -204,6 +204,31 @@ export const chatsData = [
     logo: 'https://www.shareicon.net/data/256x256/2015/09/17/102454_solaris_512x512.png',
     tags: ['Operating Systems'],
   },
+  {
+    chatName: 'Free BSD',
+    logo: 'https://paultclark.com/images/freebsd-logo.jpg',
+    tags: ['Operating Systems'],
+  },
+  {
+    chatName: 'Chrome OS',
+    logo: 'https://user-images.githubusercontent.com/45159366/145649394-1efc2d67-8246-4ad8-a717-508b6087f109.png',
+    tags: ['Operating Systems'],
+  },
+  {
+    chatName: 'CentOS',
+    logo: 'http://www.agnosticdev.com/sites/default/files/2016-01/centos_0.jpg',
+    tags: ['Operating Systems'],
+  },
+  {
+    chatName: 'Debian',
+    logo: 'https://images.techhive.com/images/article/2014/10/debian-logo-100471075-orig.jpg?auto=webp&quality=85,70',
+    tags: ['Operating Systems'],
+  },
+  {
+    chatName: 'Deepin',
+    logo: 'https://cloud7.news/wp-content/uploads/2021/11/Deepin-20.3-released.jpg',
+    tags: ['Operating Systems'],
+  },
 ];
 
 export const rowTitles = [
