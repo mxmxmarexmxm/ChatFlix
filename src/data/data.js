@@ -137,6 +137,11 @@ export const chatsData = [
     logo: 'https://i.pinimg.com/736x/ab/8b/5e/ab8b5ea6637ebd8e5755c838d952b8c1.jpg',
     tags: ['backend', 'frameworks', 'backend frameworks', 'php'],
   },
+  {
+    chatName: 'GO',
+    logo: 'https://contentstatic.techgig.com/thumb/msid-82278297,width-460,resizemode-4/5-Top-advantages-of-using-Golang-programming-language.jpg?35743',
+    tags: ['backend', 'Programming languages'],
+  },
   // Learning platforms
   {
     chatName: 'FreeCodeCamp',
