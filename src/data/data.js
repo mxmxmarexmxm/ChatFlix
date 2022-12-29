@@ -13,7 +13,7 @@ export const chatsData = [
   {
     chatName: 'JavaScript',
     logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png',
-    tags: ['language', 'JS', 'frontend'],
+    tags: ['Programming languages', 'JS', 'frontend'],
   },
   {
     chatName: 'ReactJS',
@@ -100,7 +100,7 @@ export const chatsData = [
   {
     chatName: 'Pyton',
     logo: 'https://i0.wp.com/evomics.org/wp-content/uploads/2011/09/python-logo-glassy.png',
-    tags: ['backend', 'language'],
+    tags: ['backend', 'Programming languages'],
   },
   {
     chatName: 'django',
@@ -110,27 +110,27 @@ export const chatsData = [
   {
     chatName: 'Java',
     logo: 'https://logos-world.net/wp-content/uploads/2022/07/Java-Logo.png',
-    tags: ['backend', 'language'],
+    tags: ['backend', 'Programming languages'],
   },
   {
     chatName: 'C',
     logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/695px-C_Programming_Language.svg.png',
-    tags: ['backend', 'language'],
+    tags: ['backend', 'Programming languages'],
   },
   {
     chatName: 'C++',
     logo: 'https://www.educative.io/v2api/editorpage/5393602882568192/image/6038586442907648',
-    tags: ['backend', 'language'],
+    tags: ['backend', 'Programming languages'],
   },
   {
     chatName: 'C#',
     logo: 'https://www.avenga.com/wp-content/uploads/2020/11/C-Sharp.png',
-    tags: ['backend', 'language'],
+    tags: ['backend', 'Programming languages'],
   },
   {
     chatName: 'PHP',
     logo: 'https://www.php.net/images/meta-image.png',
-    tags: ['backend', 'language'],
+    tags: ['backend', 'Programming languages'],
   },
   {
     chatName: 'Laravel',
@@ -235,7 +235,7 @@ export const rowTitles = [
   'frontend',
   'backend',
   'JS',
-  'language',
+  'Programming languages',
   'markup',
   'frameworks',
   'frontend frameworks',
