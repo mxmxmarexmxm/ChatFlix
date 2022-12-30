@@ -25,6 +25,9 @@ const Header = () => {
           <img src={logo} alt="logo" />
         </a>
       </div>
+      <p className={classes['new-year']}>{`    if (year !== 2022) {
+        console.log("Happy New 2023!")
+    }`}</p>
       {user ? (
         <div className={classes['sign-out-container']}>
           <button className={classes['sign-btn']} onClick={signOut}>
