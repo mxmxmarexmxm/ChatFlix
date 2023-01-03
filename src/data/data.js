@@ -144,6 +144,11 @@ export const chatsData = [
   },
   // Learning platforms
   {
+    chatName: 'YouTube',
+    logo: 'https://s3.eu-central-1.amazonaws.com/centaur-wp/designweek/prod/content/uploads/2013/08/Youtube.jpg',
+    tags: ['Learning platforms'],
+  },
+  {
     chatName: 'FreeCodeCamp',
     logo: 'https://www.explore-group.com/storage/images-processed/w-1500_h-auto_m-fit_s-any__Free-code-camp-banner.jpg',
     tags: ['Learning platforms'],
