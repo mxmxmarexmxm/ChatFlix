@@ -13,7 +13,7 @@ export const chatsData = [
   {
     chatName: 'JavaScript',
     logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png',
-    tags: ['Programming languages', 'JS', 'frontend'],
+    tags: ['Programming languages', 'JS', 'frontend', 'Machine Learning Languages'],
   },
   {
     chatName: 'ReactJS',
@@ -100,7 +100,7 @@ export const chatsData = [
   {
     chatName: 'Pyton',
     logo: 'https://i0.wp.com/evomics.org/wp-content/uploads/2011/09/python-logo-glassy.png',
-    tags: ['backend', 'Programming languages'],
+    tags: ['backend', 'Programming languages', 'Machine Learning Languages'],
   },
   {
     chatName: 'django',
@@ -110,7 +110,7 @@ export const chatsData = [
   {
     chatName: 'Java',
     logo: 'https://logos-world.net/wp-content/uploads/2022/07/Java-Logo.png',
-    tags: ['backend', 'Programming languages'],
+    tags: ['backend', 'Programming languages', 'Machine Learning Languages'],
   },
   {
     chatName: 'C',
@@ -120,7 +120,7 @@ export const chatsData = [
   {
     chatName: 'C++',
     logo: 'https://www.educative.io/v2api/editorpage/5393602882568192/image/6038586442907648',
-    tags: ['backend', 'Programming languages'],
+    tags: ['backend', 'Programming languages', 'Machine Learning Languages'],
   },
   {
     chatName: 'C#',
@@ -140,7 +140,12 @@ export const chatsData = [
   {
     chatName: 'GO',
     logo: 'https://contentstatic.techgig.com/thumb/msid-82278297,width-460,resizemode-4/5-Top-advantages-of-using-Golang-programming-language.jpg?35743',
-    tags: ['backend', 'Programming languages'],
+    tags: ['backend', 'Programming languages', 'Machine Learning Languages'],
+  },
+  {
+    chatName: 'R',
+    logo: 'https://d3f1iyfxxz8i1e.cloudfront.net/courses/course_image/2be041a8b973.jpeg',
+    tags: ['backend', 'Programming languages', 'Machine Learning Languages'],
   },
   // Learning platforms
   {
