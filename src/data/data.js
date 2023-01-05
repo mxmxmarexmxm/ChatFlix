@@ -246,6 +246,7 @@ export const rowTitles = [
   'backend',
   'JS',
   'Programming languages',
+  'Machine Learning Languages', 
   'markup',
   'frameworks',
   'frontend frameworks',
