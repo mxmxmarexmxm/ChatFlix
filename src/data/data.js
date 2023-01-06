@@ -147,6 +147,16 @@ export const chatsData = [
     logo: 'https://d3f1iyfxxz8i1e.cloudfront.net/courses/course_image/2be041a8b973.jpeg',
     tags: ['backend', 'Programming languages', 'Machine Learning Languages'],
   },
+  {
+    chatName: 'Julia',
+    logo: 'https://miro.medium.com/max/600/1*fep4idD8f924P1D6rlL1uw.jpeg',
+    tags: ['Programming languages', 'Machine Learning Languages'],
+  },
+  {
+    chatName: 'Lisp',
+    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvxKSala6O3tmqBGDwUnCm4-BTS3mliowoUjMyArHRGDLtTmpjI3QclAnZk5eqq48Xyuo&usqp=CAU',
+    tags: ['Programming languages', 'Machine Learning Languages'],
+  },
   // Learning platforms
   {
     chatName: 'YouTube',
