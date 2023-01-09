@@ -270,6 +270,21 @@ export const chatsData = [
     logo: 'https://avatars.githubusercontent.com/u/1089146?s=280&v=4',
     tags: ['Code Editors'],
   },
+  {
+    chatName: 'Notepad ++',
+    logo: 'https://pbs.twimg.com/media/EGwO6UoWwAARoX5.png',
+    tags: ['Code Editors'],
+  },
+  {
+    chatName: 'Atom',
+    logo: 'https://avatars.githubusercontent.com/u/1089146?s=280&v=4',
+    tags: ['Code Editors'],
+  },
+  {
+    chatName: 'TextMate',
+    logo: 'https://cdn.dribbble.com/users/3568/screenshots/1779577/textmate.jpg?compress=1&resize=400x300',
+    tags: ['Code Editors'],
+  },
 ];
 
 export const rowTitles = [
