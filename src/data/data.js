@@ -285,6 +285,16 @@ export const chatsData = [
     logo: 'https://cdn.dribbble.com/users/3568/screenshots/1779577/textmate.jpg?compress=1&resize=400x300',
     tags: ['Code Editors'],
   },
+  {
+    chatName: 'Blue Fish',
+    logo: 'https://www.comparasoftware.com/wp-content/uploads/2018/09/logoBluefish.png',
+    tags: ['Code Editors'],
+  },
+  {
+    chatName: 'Vim',
+    logo: 'https://blog.vtutor.com/wp-content/uploads/2019/11/Vim-logo.jpg',
+    tags: ['Code Editors'],
+  },
 ];
 
 export const rowTitles = [
