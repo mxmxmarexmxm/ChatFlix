@@ -309,16 +309,16 @@ export const chatsData = [
 
 export const rowTitles = [
   'frontend',
-  'backend',
+  'frontend frameworks',
+  'CSS frameworks',
   'JS',
+  'backend',
+  'backend frameworks',
   'Programming languages',
   'Machine Learning Languages', 
   'markup',
   'frameworks',
-  'frontend frameworks',
-  'backend frameworks',
-  'CSS frameworks',
   'Learning platforms',
+  'Code Editors',
   'Operating Systems',
-  'Code Editors'
 ];
