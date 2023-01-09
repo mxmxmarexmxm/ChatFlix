@@ -255,6 +255,21 @@ export const chatsData = [
     tags: ['Operating Systems'],
   },
   // Code Editors
+  {
+    chatName: 'VS Code',
+    logo: 'https://cdn.icon-icons.com/icons2/3053/PNG/512/microsoft_visual_studio_code_macos_bigsur_icon_189957.png',
+    tags: ['Code Editors'],
+  },
+  {
+    chatName: 'Sublime Text',
+    logo: 'https://cdn.icon-icons.com/icons2/1381/PNG/512/sublimetext_94866.png',
+    tags: ['Code Editors'],
+  },
+  {
+    chatName: 'Atom',
+    logo: 'https://avatars.githubusercontent.com/u/1089146?s=280&v=4',
+    tags: ['Code Editors'],
+  },
 ];
 
 export const rowTitles = [
