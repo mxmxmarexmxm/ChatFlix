@@ -254,6 +254,7 @@ export const chatsData = [
     logo: 'https://cloud7.news/wp-content/uploads/2021/11/Deepin-20.3-released.jpg',
     tags: ['Operating Systems'],
   },
+  // Code Editors
 ];
 
 export const rowTitles = [
@@ -268,5 +269,6 @@ export const rowTitles = [
   'backend frameworks',
   'CSS frameworks',
   'Learning platforms',
-  'Operating Systems'
+  'Operating Systems',
+  'Code Editors'
 ];
