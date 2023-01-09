@@ -295,6 +295,16 @@ export const chatsData = [
     logo: 'https://blog.vtutor.com/wp-content/uploads/2019/11/Vim-logo.jpg',
     tags: ['Code Editors'],
   },
+  {
+    chatName: 'NetBeans',
+    logo: 'https://www.jrebel.com/sites/default/files/styles/social_preview_image/public/image/2021-09/social-blog-netbeans-updates%20%281%29.jpg?itok=VQL9XqBR',
+    tags: ['Code Editors'],
+  },
+  {
+    chatName: 'Codeshare.io',
+    logo: 'https://avatars.githubusercontent.com/u/15991786?s=200&v=4',
+    tags: ['Code Editors'],
+  },
 ];
 
 export const rowTitles = [
