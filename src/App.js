@@ -1,5 +1,5 @@
 import Layout from './components/UI/Layout';
-import Home from './components/Home';
+import Home from './views/Home';
 import { AuthProvider } from './Firebase/context';
 
 const App = () => {
