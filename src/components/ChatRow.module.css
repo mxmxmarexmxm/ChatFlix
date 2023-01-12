@@ -1,9 +1,9 @@
-.container {
+.chatRow {
   margin: 3rem auto 0;
   min-width: 90vw;
 }
 
-.container h2 {
+.chatRow h2 {
   color: white;
   margin: 1rem 4.5rem -.7rem 4.7rem;
   font-family: 'Asap';
@@ -32,7 +32,7 @@
   transform: scale(1.2);
 }
 
-.scroll {
+.chats {
   height: 250px;
   display: flex;
   flex: 1;
