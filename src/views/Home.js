@@ -1,7 +1,7 @@
 import classes from './Home.module.css';
 import { chatsData, rowTitles } from '../data/data.js';
 import { useEffect, useState } from 'react';
-import Chat from '../components/Chat';
+import Chat from '../components/Chat/Chat';
 import ChatRow from '../components/ChatRow';
 import FullScreen from './FullScreen';
 import ToggleChatHeadsBtn from '../components/UI/ToggleChatHeadsBtn';

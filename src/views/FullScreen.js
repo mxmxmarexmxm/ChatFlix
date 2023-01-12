@@ -1,5 +1,5 @@
 import React from 'react';
-import Chat from '../components/Chat';
+import Chat from '../components/Chat/Chat';
 import classes from './FullScreen.module.css';
 
 const FullScreen = (props) => {

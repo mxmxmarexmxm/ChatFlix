@@ -7,15 +7,15 @@ import { AiOutlineClose, AiOutlineFullscreen, AiOutlineFullscreenExit } from 're
 
 // Components
 import ChatHead from './ChatHead';
-import SideChatFullScreen from './SideChatFullScreen';
-import Message from './Message';
+import SideChatFullScreen from '../SideChatFullScreen';
+import Message from '../Message';
 import useSound from 'use-sound';
 
-import notificationSound from '../assets/Sound/notification-sound.mp3';
+import notificationSound from '../../assets/Sound/notification-sound.mp3'
 
 // Firebase
-import firebase from '../Firebase/Firebase';
-import { AuthContext } from '../Firebase/context';
+import firebase from '../../Firebase/Firebase';
+import { AuthContext } from '../../Firebase/context';
 import 'firebase/compat/firestore';
 const firestore = firebase.firestore();
 
