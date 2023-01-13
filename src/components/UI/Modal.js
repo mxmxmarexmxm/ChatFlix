@@ -3,7 +3,7 @@ import classes from './Modal.module.css';
 import logo from '../../assets/img/logo.png';
 
 const Modal = (props) => {
-  if (!props.show) {
+  if (!props.visible) {
     return;
   }
   
@@ -13,12 +13,12 @@ const Modal = (props) => {
         <div className={classes['logo-wrapper']}>
           <img src={logo} alt="logo" />
         </div>
-        <h2>Are you realy want to logout ? </h2>
+        <h2>{props.title}</h2>
         <div className={classes.actions}>
           <button className="toggle-button" onClick={props.onClose}>
             Close
           </button>
-          <button onClick={props.onConfirm}>Confirm</button>
+          <button onClick={props.onConfirm}>{props.confirmTitle || "Confirm"}</button>
         </div>
       </div>
     </div>
