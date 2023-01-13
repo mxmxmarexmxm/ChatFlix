@@ -1,29 +1,27 @@
 import classes from './Header.module.css';
-import firebase from '../../Firebase/Firebase';
 import { AuthContext } from '../../Firebase/context';
 import { useContext, useState } from 'react';
 import logo from '../../assets/img/logo.png';
 import Modal from './Modal';
+import { signInWithGoogle, signOut } from '../../auth/AuthServices';
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
   const { user } = useContext(AuthContext);
-  let auth = firebase.auth();
 
-  const signInWithGoogle = () => {
-    auth = firebase.auth();
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider);
-  };
-
-  const signOut = () => {
-    auth.signOut();
+  const signOutHandler = () => {
+    signOut();
     setShowModal(false);
   };
 
   return (
     <>
-      <Modal onConfirm={signOut} onClose={() => setShowModal(false)} show={showModal} />
+      <Modal
+        title="Are you realy want to logout ? "
+        onConfirm={signOutHandler}
+        onClose={() => setShowModal(false)}
+        visible={showModal}
+      />
       <header>
         <div>
           <a href="/ChatFlix">
