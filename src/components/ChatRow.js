@@ -21,11 +21,7 @@ const ChatRow = (props) => {
     <div className={classes.chatRow}>
       <h2>{props.rowTitle}</h2>
       <div className={classes.row}>
-        {haveScrool && (
-          <button onClick={() => scrollRowHandler(-200)}>
-            <FaLessThan />
-          </button>
-        )}
+        <button onClick={() => scrollRowHandler(-200)}>{haveScrool && <FaLessThan />}</button>
         <div ref={chatRowRef} className={classes.chats}>
           {chats.map((chat) => (
             <img

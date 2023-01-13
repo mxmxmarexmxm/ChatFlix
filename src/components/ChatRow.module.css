@@ -52,6 +52,7 @@
 .row button {
   font-size: 3rem;
   background-color: inherit;
+  min-width: 3rem;
   color: #666a6e;
   cursor: pointer;
   border: none;
