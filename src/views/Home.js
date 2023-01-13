@@ -5,6 +5,8 @@ import Chat from '../components/Chat/Chat';
 import ChatRow from '../components/ChatRow';
 import FullScreen from './FullScreen';
 import ToggleChatHeadsBtn from '../components/UI/ToggleChatHeadsBtn';
+import Modal from '../components/UI/Modal';
+import { signInWithGoogle, signOut } from '../auth/AuthServices';
 
 const Home = (props) => {
   const [activeChatsBottom, setActiveChatsBottom] = useState([]);
@@ -12,6 +14,7 @@ const Home = (props) => {
   const [showMessages, setShowMessages] = useState(null);
   const [fullScreenChat, setFullScreenChat] = useState(null);
   const [showChatHeads, setShowChatHeads] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   // Get previously opened chats from local storage.
   useEffect(() => {
@@ -98,7 +101,6 @@ const Home = (props) => {
     setActiveChatsRight(activeChatsRight.filter((chat) => chat.chatName !== chatName));
   };
 
-
   const clearShowHandler = () => {
     setShowMessages(null);
   };
@@ -124,67 +126,92 @@ const Home = (props) => {
     setFullScreenChat(null);
   };
 
+  const onConfirmToLogin = () => {
+    signInWithGoogle();
+    setShowLoginModal(false);
+  };
+
   if (fullScreenChat) {
     return (
-      <FullScreen
-        onClick={maximizeChatHandler}
-        maximizeChat={maximizeChatHandler2}
-        onClose={onCloseHandler}
-        fullScreenChat={fullScreenChat}
-        activeChats={[...activeChatsBottom, ...activeChatsRight]}
-      />
+      <>
+        <Modal
+          title="You need to be logged in to send message !"
+          confirmTitle="Sign in with Google"
+          onConfirm={onConfirmToLogin}
+          visible={showLoginModal}
+          onClose={() => setShowLoginModal(false)}
+        />
+        <FullScreen
+          onUnauthorizedTry={() => setShowLoginModal(true)}
+          onClick={maximizeChatHandler}
+          maximizeChat={maximizeChatHandler2}
+          onClose={onCloseHandler}
+          fullScreenChat={fullScreenChat}
+          activeChats={[...activeChatsBottom, ...activeChatsRight]}
+        />
+      </>
     );
   }
 
   return (
-    <div className={classes.container}>
-      <div className={classes.chatRows}>
-        {rowTitles.map((title) => (
-          <ChatRow
-            onSelectChat={onSelectChatHandler}
-            chats={chatsData}
-            rowTitle={title}
-            key={title}
-          />
-        ))}
-      </div>
-      <div className={classes['active-chats-container']}>
-        <div className={classes['active-chats-bottom']}>
-          {activeChatsBottom &&
-            activeChatsBottom.map((chat) => (
-              <Chat
-                maximizeChat={maximizeChatHandler}
-                clearShow={clearShowHandler}
-                showMessages={showMessages}
-                chat={chat}
-                key={chat.chatName}
-                onClose={onCloseHandler}
-              />
-            ))}
+    <>
+      <Modal
+        title="You need to be logged in to send message !"
+        confirmTitle="Sign in with Google"
+        onConfirm={onConfirmToLogin}
+        visible={showLoginModal}
+        onClose={() => setShowLoginModal(false)}
+      />
+      <div className={classes.container}>
+        <div className={classes.chatRows}>
+          {rowTitles.map((title) => (
+            <ChatRow
+              onSelectChat={onSelectChatHandler}
+              chats={chatsData}
+              rowTitle={title}
+              key={title}
+            />
+          ))}
         </div>
-        <div className={classes['active-chat-right']}>
-          {showChatHeads && (
-            <div className={classes['chat-heads-container']}>
-              {activeChatsRight.map((chat) => (
+        <div className={classes['active-chats-container']}>
+          <div className={classes['active-chats-bottom']}>
+            {activeChatsBottom &&
+              activeChatsBottom.map((chat) => (
                 <Chat
-                  key={chat.chatName}
+                  maximizeChat={maximizeChatHandler}
+                  clearShow={clearShowHandler}
+                  showMessages={showMessages}
                   chat={chat}
-                  isChatHead={true}
+                  key={chat.chatName}
+                  onUnauthorizedTry={() => setShowLoginModal(true)}
                   onClose={onCloseHandler}
-                  onClick={onSelectChatHandler.bind(this, chat)}
                 />
               ))}
-            </div>
-          )}
-          {activeChatsRight.length !== 0 && (
-            <ToggleChatHeadsBtn
-              showChatHeads={showChatHeads}
-              onClick={() => setShowChatHeads((c) => !c)}
-            />
-          )}
+          </div>
+          <div className={classes['active-chat-right']}>
+            {showChatHeads && (
+              <div className={classes['chat-heads-container']}>
+                {activeChatsRight.map((chat) => (
+                  <Chat
+                    key={chat.chatName}
+                    chat={chat}
+                    isChatHead={true}
+                    onClose={onCloseHandler}
+                    onClick={onSelectChatHandler.bind(this, chat)}
+                  />
+                ))}
+              </div>
+            )}
+            {activeChatsRight.length !== 0 && (
+              <ToggleChatHeadsBtn
+                showChatHeads={showChatHeads}
+                onClick={() => setShowChatHeads((c) => !c)}
+              />
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
