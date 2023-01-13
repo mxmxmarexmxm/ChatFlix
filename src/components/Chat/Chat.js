@@ -94,7 +94,7 @@ const Chat = (props) => {
       dummy.current.scrollIntoView({ behavior: 'smooth' });
       setMessageText('');
     } else {
-      props.onTryToSend();
+      props.onUnauthorizedTry();
     }
     setMessageToReplay(null);
   };
@@ -180,7 +180,6 @@ const Chat = (props) => {
 
   return (
     <>
-      <Modal show={true} />
       <div className={chatClass}>
         <div className={chatHeadClass} onClick={showChatHandler}>
           <div className={classes.logoAndTitle}>
