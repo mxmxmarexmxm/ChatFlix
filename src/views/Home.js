@@ -6,6 +6,7 @@ import ChatRow from '../components/ChatRow';
 import FullScreen from './FullScreen';
 import ToggleChatHeadsBtn from '../components/UI/ToggleChatHeadsBtn';
 import Modal from '../components/UI/Modal';
+import Header from '../components/UI/Header'
 import { signInWithGoogle, signOut } from '../auth/AuthServices';
 
 const Home = (props) => {
@@ -162,6 +163,7 @@ const Home = (props) => {
         visible={showLoginModal}
         onClose={() => setShowLoginModal(false)}
       />
+      <Header />
       <div className={classes.container}>
         <div className={classes.chatRows}>
           {rowTitles.map((title) => (
