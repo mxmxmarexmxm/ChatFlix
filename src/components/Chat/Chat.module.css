@@ -54,7 +54,7 @@
 }
 
 .messages-container > :first-child {
-  margin-top: auto;
+  margin-top: 2rem;
 }
 
 form {
