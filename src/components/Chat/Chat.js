@@ -29,7 +29,7 @@ const Chat = (props) => {
   const { user } = useContext(AuthContext);
   const dummy = useRef();
 
-  const { chatName, logo } = props.chat;
+  const { chatName, logo, id } = props.chat;
   const { showMessages } = props;
 
   let messageCollection = firestore.collection(`/chats/${chatName}/messages/`);
@@ -173,7 +173,7 @@ const Chat = (props) => {
         unreadMessages={unreadMessages}
         onClick={props.onClick}
         logo={logo}
-        onClose={props.onClose.bind(this, chatName)}
+        onClose={props.onClose.bind(this, id)}
       />
     );
   }
@@ -201,7 +201,7 @@ const Chat = (props) => {
             </div>
             <div
               className={classes['icon-btn-wrapper']}
-              onClick={props.onClose.bind(this, chatName)}
+              onClick={props.onClose.bind(this, id)}
             >
               <AiOutlineClose className={classes.icon} />
             </div>

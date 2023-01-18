@@ -6,7 +6,7 @@ import ChatRow from '../components/ChatRow';
 import FullScreen from './FullScreen';
 import ToggleChatHeadsBtn from '../components/UI/ToggleChatHeadsBtn';
 import Modal from '../components/UI/Modal';
-import Header from '../components/UI/Header'
+import Header from '../components/UI/Header';
 import { signInWithGoogle } from '../auth/AuthServices';
 
 const Home = (props) => {
@@ -88,18 +88,17 @@ const Home = (props) => {
   };
 
   // Close chat handler, for each scenario.
-  const onCloseHandler = (chatName) => {
+  const closeChatHandler = (id) => {
     let allChats = [...activeChatsBottom, ...activeChatsRight];
-    const isFirst = allChats[0].chatName === chatName;
-    const isFullScreen = chatName === fullScreenChat?.chatName;
+    const isFirst = allChats[0].id === id;
+    const isFullScreen = id === fullScreenChat?.id;
 
     if (isFullScreen) {
       isFirst ? setFullScreenChat(allChats[1]) : setFullScreenChat(allChats[0]);
     }
 
-    setActiveChatsBottom(activeChatsBottom.filter((chat) => chat.chatName !== chatName));
-
-    setActiveChatsRight(activeChatsRight.filter((chat) => chat.chatName !== chatName));
+    setActiveChatsBottom(activeChatsBottom.filter((chat) => chat.id !== id));
+    setActiveChatsRight(activeChatsRight.filter((chat) => chat.id !== id));
   };
 
   const clearShowHandler = () => {
@@ -141,7 +140,7 @@ const Home = (props) => {
         <FullScreen
           onUnauthorizedTry={() => setShowLoginModal(true)}
           onClick={maximizeChatHandler}
-          onClose={onCloseHandler}
+          onClose={closeChatHandler}
           fullScreenChat={fullScreenChat}
           activeChats={[...activeChatsBottom, ...activeChatsRight]}
         />
@@ -181,7 +180,7 @@ const Home = (props) => {
                   chat={chat}
                   key={chat.chatName}
                   onUnauthorizedTry={() => setShowLoginModal(true)}
-                  onClose={onCloseHandler}
+                  onClose={closeChatHandler}
                 />
               ))}
           </div>
@@ -193,7 +192,7 @@ const Home = (props) => {
                     key={chat.chatName}
                     chat={chat}
                     isChatHead={true}
-                    onClose={onCloseHandler}
+                    onClose={closeChatHandler}
                     onClick={onSelectChatHandler.bind(this, chat)}
                   />
                 ))}

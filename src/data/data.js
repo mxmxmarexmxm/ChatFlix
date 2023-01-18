@@ -314,7 +314,7 @@ export const chatsData = [
   {
     chatName: 'Sublime Text',
     id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://cdn.icon-icons.com/icons2/1381/PNG/512/sublimetext_94866.png',
+    logo: 'https://upload.wikimedia.org/wikipedia/en/d/d2/Sublime_Text_3_logo.png',
     tags: ['Code Editors'],
   },
   {

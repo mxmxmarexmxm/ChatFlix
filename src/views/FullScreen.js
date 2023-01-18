@@ -13,7 +13,7 @@ const FullScreen = (props) => {
             key={chat.chatName}
             chat={chat}
             onClick={props.onClick.bind(this, chat.chatName)}
-            onClose={props.onClose.bind(this, chat.chatName)}
+            onClose={props.onClose.bind(this, chat.id)}
           />
         ))}
       </div>
