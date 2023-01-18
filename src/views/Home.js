@@ -123,10 +123,6 @@ const Home = (props) => {
     setFullScreenChat(null);
   }
 
-  const maximizeChatHandler2 = () => {
-    setFullScreenChat(null);
-  };
-
   const onConfirmToLogin = () => {
     signInWithGoogle();
     setShowLoginModal(false);
@@ -145,7 +141,6 @@ const Home = (props) => {
         <FullScreen
           onUnauthorizedTry={() => setShowLoginModal(true)}
           onClick={maximizeChatHandler}
-          maximizeChat={maximizeChatHandler2}
           onClose={onCloseHandler}
           fullScreenChat={fullScreenChat}
           activeChats={[...activeChatsBottom, ...activeChatsRight]}
