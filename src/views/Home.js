@@ -43,13 +43,8 @@ const Home = (props) => {
 
   // Select chat handler, for each scenario.
   const onSelectChatHandler = (chatData) => {
-    const indexOfChatBottom = activeChatsBottom.findIndex(
-      (chat) => chat.chatName === chatData.chatName
-    );
-
-    const indexOfChatRight = activeChatsRight.findIndex(
-      (chat) => chat.chatName === chatData.chatName
-    );
+    const indexOfChatBottom = activeChatsBottom.findIndex((chat) => chat.id === chatData.id);
+    const indexOfChatRight = activeChatsRight.findIndex((chat) => chat.id === chatData.id);
 
     let activeBottom = [...activeChatsBottom];
 
@@ -61,10 +56,10 @@ const Home = (props) => {
 
     if (!isActive && activeBottom.length > 2) {
       const elementToMove = activeBottom[2];
-      setActiveChatsRight((c) => [...c, elementToMove]);
+      setActiveChatsRight((chat) => [...chat, elementToMove]);
       setActiveChatsBottom([
         chatData,
-        ...activeBottom.filter((c) => c.chatName !== elementToMove.chatName),
+        ...activeBottom.filter((chat) => chat.id !== elementToMove.id),
       ]);
     }
 
@@ -105,14 +100,14 @@ const Home = (props) => {
     setShowMessages(null);
   };
 
-  const maximizeChatHandler = (chatName) => {
+  const toggleFullScreenHandler = (id) => {
     if (fullScreenChat) {
       setFullScreenChat(null);
     }
 
     const fullChat =
-      activeChatsBottom.find((c) => c.chatName === chatName) ||
-      activeChatsRight.find((c) => c.chatName === chatName);
+      activeChatsBottom.find((chat) => chat.id === id) ||
+      activeChatsRight.find((chat) => chat.id === id);
 
     setFullScreenChat(fullChat);
   };
@@ -139,7 +134,8 @@ const Home = (props) => {
         />
         <FullScreen
           onUnauthorizedTry={() => setShowLoginModal(true)}
-          onClick={maximizeChatHandler}
+          onClick={toggleFullScreenHandler}
+          onFullScreenToggle={() => setFullScreenChat(null)}
           onClose={closeChatHandler}
           fullScreenChat={fullScreenChat}
           activeChats={[...activeChatsBottom, ...activeChatsRight]}
@@ -174,11 +170,11 @@ const Home = (props) => {
             {activeChatsBottom &&
               activeChatsBottom.map((chat) => (
                 <Chat
-                  maximizeChat={maximizeChatHandler}
+                  onFullScreenToggle={toggleFullScreenHandler}
                   clearShow={clearShowHandler}
                   showMessages={showMessages}
                   chat={chat}
-                  key={chat.chatName}
+                  key={chat.id}
                   onUnauthorizedTry={() => setShowLoginModal(true)}
                   onClose={closeChatHandler}
                 />
@@ -189,11 +185,11 @@ const Home = (props) => {
               <div className={classes['chat-heads-container']}>
                 {activeChatsRight.map((chat) => (
                   <Chat
-                    key={chat.chatName}
+                    key={chat.id}
                     chat={chat}
                     isChatHead={true}
                     onClose={closeChatHandler}
-                    onClick={onSelectChatHandler.bind(this, chat)}
+                    onClick={onSelectChatHandler.bind(this, chat.id)}
                   />
                 ))}
               </div>

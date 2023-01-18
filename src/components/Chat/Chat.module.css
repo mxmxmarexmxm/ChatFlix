@@ -135,6 +135,7 @@ h2::first-letter {
 
 .messages-container-full {
   height: 71vh;
+  justify-content: flex-end;
 }
 
 .chat-head-full {

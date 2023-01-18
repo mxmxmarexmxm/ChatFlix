@@ -10,7 +10,7 @@ const FullScreen = (props) => {
         {props.activeChats.map((chat) => (
           <Chat
             fullScreenSideChat={true}
-            key={chat.chatName}
+            key={chat.id}
             chat={chat}
             onClick={props.onClick.bind(this, chat.chatName)}
             onClose={props.onClose.bind(this, chat.id)}
@@ -21,7 +21,7 @@ const FullScreen = (props) => {
         <Chat
           isFullScreen={true}
           chat={fullScreenChat}
-          maximizeChat={props.maximizeChat}
+          onFullScreenToggle={props.onFullScreenToggle}
           key={fullScreenChat.chatName}
           onClose={props.onClose}
           onUnauthorizedTry={props.onUnauthorizedTry}

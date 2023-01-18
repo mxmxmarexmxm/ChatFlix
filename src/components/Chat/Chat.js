@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import classes from './Chat.module.css';
-import Modal from '../UI/Modal';
 
 // Icons
 import { AiOutlineClose, AiOutlineFullscreen, AiOutlineFullscreenExit } from 'react-icons/ai';
@@ -132,9 +131,9 @@ const Chat = (props) => {
     setMessageToReplay(message);
   };
 
-  const maximizeHandler = (event) => {
+  const toggleFullScreen = (event) => {
     event.stopPropagation();
-    props.maximizeChat(chatName);
+    props.onFullScreenToggle(id);
   };
 
   // Chat classes depending on chat size
@@ -192,7 +191,7 @@ const Chat = (props) => {
             {!showChatMessages && unreadMessages > 0 && (
               <div className={classes[`unread-messages-badge`]}>{unreadMessages}</div>
             )}
-            <div className={classes['icon-btn-wrapper']} onClick={maximizeHandler}>
+            <div className={classes['icon-btn-wrapper']} onClick={toggleFullScreen}>
               {props.isFullScreen ? (
                 <AiOutlineFullscreenExit className={classes.icon} />
               ) : (
