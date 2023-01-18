@@ -1,16 +1,25 @@
-.chatRow {
+.chat-row-container {
   margin: 3rem auto 0;
   min-width: 90vw;
 }
 
-.chatRow h2 {
+.chat-row-container h2 {
   color: white;
   margin: 1rem 4.5rem -.7rem 4.7rem;
   font-family: 'Asap';
   font-size: 1.6rem;
 }
 
-.row  {
+.chat-row-container button {
+  font-size: 3rem;
+  background-color: inherit;
+  min-width: 3rem;
+  color: #666a6e;
+  cursor: pointer;
+  border: none;
+}
+
+.row-body  {
   display: flex;
   justify-content: space-between;
 }
@@ -49,15 +58,6 @@
   height: 0; 
 }
 
-.row button {
-  font-size: 3rem;
-  background-color: inherit;
-  min-width: 3rem;
-  color: #666a6e;
-  cursor: pointer;
-  border: none;
-}
-
-.row button:hover {
+.chat-row-container button:hover {
   transform: scale(1.15);
 }

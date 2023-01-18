@@ -1,13 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import classes from './ChatRow.module.css';
 import { FaGreaterThan, FaLessThan } from 'react-icons/fa';
+import { chatsData } from '../data/data';
 
 const ChatRow = (props) => {
   const chatRowRef = useRef();
 
   let haveScrool = chatRowRef.current?.scrollLeftMax > 0;
 
-  const chats = props.chats.filter((chat) => chat.tags.includes(props.rowTitle));
+  const chats = chatsData.filter((chat) => chat.tags.includes(props.rowTitle));
 
   const scrollRowHandler = (scrollOffset) => {
     chatRowRef.current.scrollLeft += scrollOffset;
@@ -18,9 +19,9 @@ const ChatRow = (props) => {
   }, []);
 
   return (
-    <div className={classes.chatRow}>
+    <div className={classes['chat-row-container']}>
       <h2>{props.rowTitle}</h2>
-      <div className={classes.row}>
+      <div className={classes['row-body']}>
         <button onClick={() => scrollRowHandler(-200)}>{haveScrool && <FaLessThan />}</button>
         <div ref={chatRowRef} className={classes.chats}>
           {chats.map((chat) => (

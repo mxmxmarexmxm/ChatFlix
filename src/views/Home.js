@@ -155,16 +155,13 @@ const Home = (props) => {
       />
       <Header />
       <div className={classes.container}>
-        <div className={classes.chatRows}>
-          {rowTitles.map((title) => (
-            <ChatRow
-              onSelectChat={onSelectChatHandler}
-              chats={chatsData}
-              rowTitle={title}
-              key={title}
-            />
-          ))}
-        </div>
+        {rowTitles.map((title) => (
+          <ChatRow
+            onSelectChat={onSelectChatHandler}
+            rowTitle={title}
+            key={title}
+          />
+        ))}
         <div className={classes['active-chats-container']}>
           <div className={classes['active-chats-bottom']}>
             {activeChatsBottom &&
