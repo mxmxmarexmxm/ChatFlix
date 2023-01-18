@@ -20,7 +20,7 @@ const ChatRow = (props) => {
 
   return (
     <div className={classes['chat-row-container']}>
-      <h2>{props.rowTitle}</h2>
+      <h2 className={classes['row-title']}>{props.rowTitle}</h2>
       <div className={classes['row-body']}>
         <button onClick={() => scrollRowHandler(-200)}>{haveScrool && <FaLessThan />}</button>
         <div ref={chatRowRef} className={classes.chats}>

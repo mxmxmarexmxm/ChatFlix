@@ -1,35 +1,35 @@
 .chat-row-container {
-  margin: 3rem auto 0;
+  /* margin: 3rem auto 0; */
   min-width: 90vw;
+  margin-top: 1.6rem;
 }
 
-.chat-row-container h2 {
+.row-title {
   color: white;
-  margin: 1rem 4.5rem -.7rem 4.7rem;
+  margin: 0;
   font-family: 'Asap';
-  font-size: 1.6rem;
+  font-size: 1.2rem;
 }
 
 .chat-row-container button {
-  font-size: 3rem;
+  font-size: 1.8rem;
   background-color: inherit;
-  min-width: 3rem;
   color: #666a6e;
   cursor: pointer;
   border: none;
 }
 
-.row-body  {
+.row-body {
   display: flex;
   justify-content: space-between;
 }
 
 .logo {
   object-fit: cover;
-  height: 200px;
-  width: 200px;
+  height: 100px;
+  width: 100px;
   cursor: pointer;
-  margin: .5rem;
+  margin: 0.5rem;
   border-radius: 1rem;
 }
 
@@ -42,22 +42,41 @@
 }
 
 .chats {
-  height: 250px;
   display: flex;
   flex: 1;
   align-items: center;
-  padding: 1rem;
   overflow-x: scroll;
   scroll-behavior: smooth;
   scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
 
 .scroll::-webkit-scrollbar {
   width: 0;
-  height: 0; 
+  height: 0;
 }
 
 .chat-row-container button:hover {
   transform: scale(1.15);
+}
+
+@media only screen and (min-width: 756px) {
+  .logo {
+    width: 200px;
+    height: 200px;
+  }
+  .chat-row-container button {
+    font-size: 3rem;
+    min-width: 3rem;
+  }
+  .row-title {
+    margin: 1rem 4.5rem -0.7rem 4.7rem;
+    font-size: 1.6rem;
+  }
+  .chats {
+    padding: 1rem;
+  }
+  .chat-row-container {
+    margin: 3rem auto 0;
+  }
 }

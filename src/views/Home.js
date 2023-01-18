@@ -1,5 +1,5 @@
 import classes from './Home.module.css';
-import { chatsData, rowTitles } from '../data/data.js';
+import { rowTitles } from '../data/data.js';
 import { useEffect, useState } from 'react';
 import Chat from '../components/Chat/Chat';
 import ChatRow from '../components/ChatRow';
