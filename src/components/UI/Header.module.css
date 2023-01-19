@@ -1,13 +1,13 @@
 header {
-  height: 5rem;
+  position: fixed;
+  height: 4rem;
   width: 100%;
   background-color: inherit;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: #242526 solid 3px;
-  padding:0 2rem;
-  position: fixed;
+  padding: 0 0.8rem;
   top: 0;
   color: white;
   z-index: 1000;
@@ -21,8 +21,6 @@ header a {
 .sign-btn {
   background-color: #212324;
   border: none;
-  text-align: center;
-  margin: .7rem;
   padding: 1rem;
   border-radius: 15px;
   font-size: 1rem;
@@ -40,10 +38,18 @@ header a {
   height: 50px;
   width: 50px;
   border-radius: 50px;
+  margin-left: 1rem;
   overflow: hidden;
 }
 
 .sign-out-container {
   display: flex;
   align-items: center;
+}
+
+@media only screen and (min-width: 756px) {
+  header {
+    padding: 0 2rem;
+    height: 5rem;
+  }
 }

@@ -9,7 +9,7 @@ const SideChatFullScreen = (props) => {
         <div className={classes['logo-container-side']}>
           <img src={props.logo} alt="img" />
         </div>
-        <h2>{props.chatName}</h2>
+        <h2 className={classes.title}>{props.chatName}</h2>
       </div>
       <div className={classes['badges-container-side']} onClick={(e) => e.stopPropagation()}>
         {props.unreadMessages > 0 && (

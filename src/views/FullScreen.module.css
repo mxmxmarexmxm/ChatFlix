@@ -1,11 +1,10 @@
 .screen {
   display: flex;
-  max-height: 100vh;
+  height: 100vh;
 }
 
 .active-chats-container {
   border: 3px solid #242425;
-  width: 27vw;
   color: white;
   overflow: scroll;
 }
@@ -18,3 +17,8 @@
   flex: 1;
 }
 
+@media only screen and (min-width: 756px) {
+  .active-chats-container {
+    width: 27vw;
+  }
+}

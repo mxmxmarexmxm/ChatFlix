@@ -1,11 +1,15 @@
 .active-chat-side {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   border-bottom: 5px solid #242425;
   cursor: pointer;
-  padding: 1rem;
+  padding: .5rem;
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+}
+
+.title {
+  display: none;
 }
 
 .chat-and-logo-side {
@@ -28,8 +32,7 @@ img {
 }
 
 .badge-wrapper{
-  width: 2rem;
-  height: 2rem;
+  padding: .1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +44,7 @@ img {
 }
 
 .icon-side {
-  font-size: 1.3rem
+  font-size: 1rem
 }
 
 .badges-container-side {
@@ -52,4 +55,17 @@ img {
 .unread-messages-badge {
   color: #ea3939;
   font-weight: bold;
+}
+
+@media only screen and (min-width: 756px) {
+  .title {
+    display: block;
+  }
+  .active-chat-side {
+    padding: 1rem;
+    align-items: center;
+  }
+  .icon-side {
+    font-size: 1.5rem
+  }
 }

@@ -1,5 +1,5 @@
 .container {
-  padding: 5rem 2rem;
+  padding: 4rem .3rem;
 }
 
 .active-chats-container {
@@ -58,4 +58,9 @@
   }
 }
 
+@media only screen and (min-width: 756px) {
+  .container {
+    padding: 5rem 2rem;
+  }  
+}
 
