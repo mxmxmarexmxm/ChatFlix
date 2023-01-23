@@ -13,7 +13,7 @@ import useWindowDimensions from '../utils/useWindowDimensions';
 const Home = (props) => {
   const [activeChatsBottom, setActiveChatsBottom] = useState([]);
   const [activeChatsRight, setActiveChatsRight] = useState([]);
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const [showMessages, setShowMessages] = useState(null);
   const [fullScreenChat, setFullScreenChat] = useState(null);
   const [showChatHeads, setShowChatHeads] = useState(false);
