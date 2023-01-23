@@ -60,7 +60,7 @@ const Home = (props) => {
     }
 
     if (!isActive && activeBottom.length >= bottomLimit) {
-      const elementToMove = activeBottom[bottomLimit];
+      const elementToMove = activeBottom[bottomLimit - 1];
       setActiveChatsRight((chat) => [...chat, elementToMove]);
       setActiveChatsBottom([
         chatData,
@@ -73,8 +73,8 @@ const Home = (props) => {
       setActiveChatsBottom((c) => [chatData, ...c]);
     }
 
-    if (indexOfChatRight >= 0 && indexOfChatBottom < 0 && activeChatsBottom.length > bottomLimit) {
-      const elementToMove = activeBottom[bottomLimit];
+    if (indexOfChatRight >= 0 && indexOfChatBottom < 0 && activeChatsBottom.length >= bottomLimit) {
+      const elementToMove = activeBottom[bottomLimit - 1];
       setActiveChatsRight((chat) => [
         ...chat.filter((chat) => chat?.chatName !== chatData.chatName),
         elementToMove,
@@ -187,7 +187,7 @@ const Home = (props) => {
                     chat={chat}
                     isChatHead={true}
                     onClose={closeChatHandler}
-                    onClick={onSelectChatHandler.bind(this, chat?.id)}
+                    onClick={onSelectChatHandler.bind(this, chat)}
                   />
                 ))}
               </div>
