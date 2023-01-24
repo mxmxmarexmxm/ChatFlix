@@ -53,7 +53,7 @@ const Home = (props) => {
 
     const isActive = indexOfChatBottom >= 0 || indexOfChatRight >= 0;
 
-    const bottomLimit = width < '800' ? 0 : width < '1150' ? 1 : 2;
+    const bottomLimit = width < '800' ? 1 : width < '1150' ? 2 : 3;
 
     if (!isActive && activeBottom.length <= bottomLimit) {
       setActiveChatsBottom((cur) => [chatData, ...cur]);
