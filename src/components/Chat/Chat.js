@@ -172,7 +172,7 @@ const Chat = (props) => {
         unreadMessages={unreadMessages}
         onClick={props.onClick}
         logo={logo}
-        onClose={props.onClose.bind(this, id)}
+        onClose={props.onClose}
       />
     );
   }

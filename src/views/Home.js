@@ -186,7 +186,7 @@ const Home = (props) => {
                     key={chat.id}
                     chat={chat}
                     isChatHead={true}
-                    onClose={closeChatHandler}
+                    onClose={closeChatHandler.bind(this, chat.id)}
                     onClick={onSelectChatHandler.bind(this, chat)}
                   />
                 ))}
