@@ -21,7 +21,7 @@ header a {
 .sign-btn {
   background-color: #212324;
   border: none;
-  padding: 1rem;
+  padding: .6rem;
   border-radius: 15px;
   font-size: 1rem;
   color: #ffffff;
@@ -51,5 +51,8 @@ header a {
   header {
     padding: 0 2rem;
     height: 5rem;
+  }
+  .sign-btn {
+    padding: 1rem;
   }
 }
