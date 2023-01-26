@@ -8,7 +8,7 @@ import ToggleChatHeadsBtn from '../components/UI/ToggleChatHeadsBtn';
 import Modal from '../components/UI/Modal';
 import Header from '../components/UI/Header';
 import { signInWithGoogle } from '../auth/AuthServices';
-import useWindowDimensions from '../utils/useWindowDimensions';
+import useWindowDimensions from '../utils/useWindowWidth';
 
 const Home = (props) => {
   const [activeChatsBottom, setActiveChatsBottom] = useState([]);
