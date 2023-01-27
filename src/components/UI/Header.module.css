@@ -16,6 +16,7 @@ header {
 header a {
   color: white;
   text-decoration: none;
+  top: 12px;
 }
 
 .sign-btn {

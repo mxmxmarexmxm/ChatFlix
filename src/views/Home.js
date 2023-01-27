@@ -21,6 +21,7 @@ const Home = (props) => {
 
   // Get previously opened chats from local storage.
   useEffect(() => {
+    console.log(showChatHeads);
     const chatsRight = localStorage.getItem('chatsRight');
     const chatsBottom = localStorage.getItem('chatsBottom');
 
