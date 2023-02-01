@@ -198,7 +198,7 @@ const Chat = (props) => {
                 <AiOutlineFullscreen className={classes.icon} />
               )}
             </div>
-            <div className={classes['icon-btn-wrapper']} onClick={props.onClose.bind(this, id)}>
+            <div className={classes['icon-btn-wrapper']} onClick={() => props.onClose(id)}>
               <AiOutlineClose className={classes.icon} />
             </div>
           </div>

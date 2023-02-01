@@ -30,10 +30,7 @@ function Message(props) {
           <p>{text}</p>
         </div>
       </div>
-      <BsArrowReturnLeft
-        className={classes.icon}
-        onClick={props.onReplay.bind(this, props.message)}
-      />
+      <BsArrowReturnLeft className={classes.icon} onClick={() => props.onReplay(props.message)} />
     </div>
   );
 }

@@ -27,7 +27,7 @@ const ChatRow = (props) => {
           {chats.map((chat) => (
             <img
               className={classes.logo}
-              onClick={props.onSelectChat.bind(this, chat)}
+              onClick={() => props.onSelectChat(chat)}
               src={chat.logo}
               alt={chat.chatName}
               key={chat.id}

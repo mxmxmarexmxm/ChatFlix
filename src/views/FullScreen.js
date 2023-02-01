@@ -12,8 +12,8 @@ const FullScreen = (props) => {
             fullScreenSideChat={true}
             key={chat.id}
             chat={chat}
-            onClick={props.onClick.bind(this, chat.id)}
-            onClose={props.onClose.bind(this, chat.id)}
+            onClick={() => props.onClick(chat.id)}
+            onClose={() => props.onClose(chat.id)}
           />
         ))}
       </div>
