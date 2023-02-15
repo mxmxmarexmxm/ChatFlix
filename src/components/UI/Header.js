@@ -34,7 +34,7 @@ const Header = () => {
               Sign Out
             </button>
             <div className={classes['image-wrapper']}>
-              <img alt="profile avatar" src={user.photoURL} />
+              <img alt="profile avatar" src={user.photoURL} referrerPolicy="no-referrer" />
             </div>
           </div>
         ) : (
