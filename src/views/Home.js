@@ -21,7 +21,6 @@ const Home = (props) => {
 
   // Get previously opened chats from local storage.
   useEffect(() => {
-    console.log(showChatHeads);
     const chatsRight = localStorage.getItem('chatsRight');
     const chatsBottom = localStorage.getItem('chatsBottom');
 
@@ -44,7 +43,6 @@ const Home = (props) => {
     setLocalStorage();
   }, [activeChatsBottom, activeChatsRight]);
 
-  console.log(width);
   // Select chat handler, for each scenario.
   const onSelectChatHandler = (chatData) => {
     const indexOfChatBottom = activeChatsBottom.findIndex((chat) => chat?.id === chatData.id);
