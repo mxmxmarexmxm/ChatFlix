@@ -5,7 +5,14 @@ let auth = firebase.auth();
 export const signInWithGoogle = async () => {
   auth = firebase.auth();
   const provider = new firebase.auth.GoogleAuthProvider();
-  await auth.signInWithPopup(provider);
+  try {
+    const success = await auth.signInWithPopup(provider);
+    if (success) {
+      alert('You have been logged in successfully!');
+    }
+  } catch (err) {
+    alert(err.message);
+  }
 };
 
 export const signOut = async () => {
