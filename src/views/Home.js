@@ -151,7 +151,7 @@ const Home = (props) => {
   return (
     <>
       <Modal
-        title="You need to be logged in to send message !"
+        title="You need to be logged in to send a message !"
         confirmTitle="Sign in with Google"
         onConfirm={onConfirmToLogin}
         visible={showLoginModal}
