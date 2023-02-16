@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <>
       <Modal
-        title="Are you realy want to logout ? "
+        title="Are you really want to log out?"
         onConfirm={signOutHandler}
         onClose={() => setShowModal(false)}
         visible={showModal}
