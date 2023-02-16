@@ -157,7 +157,7 @@ const Chat = (props) => {
     return (
       <SideChatFullScreen
         unreadMessages={unreadMessages}
-        onClick={props.onClick}
+        onSelectChat={props.onSelectChat}
         onClose={props.onClose}
         logo={logo}
         chatName={chatName}
@@ -170,7 +170,7 @@ const Chat = (props) => {
     return (
       <ChatHead
         unreadMessages={unreadMessages}
-        onClick={props.onClick}
+        onSelectChat={props.onSelectChat}
         logo={logo}
         onClose={props.onClose}
       />

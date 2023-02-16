@@ -12,7 +12,7 @@ const FullScreen = (props) => {
             fullScreenSideChat={true}
             key={chat.id}
             chat={chat}
-            onClick={() => props.onClick(chat.id)}
+            onSelectChat={() => props.onSelectChat(chat.id)}
             onClose={() => props.onClose(chat.id)}
           />
         ))}

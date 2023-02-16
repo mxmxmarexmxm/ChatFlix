@@ -6,7 +6,7 @@ const ChatHead = (props) => {
   const unreadMessagesClasses = props.unreadMessages > 0 ? classes.unreadMessages : classes.hidden;
 
   return (
-    <div className={classes['chat-head-mini']} onClick={props.onClick}>
+    <div className={classes['chat-head-mini']} onClick={props.onSelectChat}>
       <div className={classes['badges-container']}>
         <div className={unreadMessagesClasses}>
           <span>{props.unreadMessages}</span>

@@ -138,7 +138,7 @@ const Home = (props) => {
         />
         <FullScreen
           onUnauthorizedTry={() => setShowLoginModal(true)}
-          onClick={toggleFullScreenHandler}
+          onSelectChat={toggleFullScreenHandler}
           onFullScreenToggle={() => setFullScreenChat(null)}
           onClose={closeChatHandler}
           fullScreenChat={fullScreenChat}
@@ -186,7 +186,7 @@ const Home = (props) => {
                     chat={chat}
                     isChatHead={true}
                     onClose={() => closeChatHandler(chat.id)}
-                    onClick={() => onSelectChatHandler(chat)}
+                    onSelectChat={() => onSelectChatHandler(chat)}
                   />
                 ))}
               </div>

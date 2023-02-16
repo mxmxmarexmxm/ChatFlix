@@ -4,7 +4,7 @@ import classes from './SideChatFullScreen.module.css';
 
 const SideChatFullScreen = (props) => {
   return (
-    <div className={classes['active-chat-side']} onClick={props.onClick}>
+    <div className={classes['active-chat-side']} onClick={props.onSelectChat}>
       <div className={classes['chat-and-logo-side']}>
         <div className={classes['logo-container-side']}>
           <img src={props.logo} alt="img" />
