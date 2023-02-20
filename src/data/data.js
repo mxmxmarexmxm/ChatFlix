@@ -366,6 +366,30 @@ export const chatsData = [
     tags: ['Code Editors'],
   },
   // Version Control Systems
+  {
+    chatName: 'Azure DevOps Server',
+    id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
+    logo: 'https://cdn.shopify.com/s/files/1/1694/1769/products/azure-devops-3_d9f5d2a5-0fbb-4ae6-a728-97ad7eb875dd.png?v=1558036184&width=300',
+    tags: ['Version Control Systems'],
+  },
+  {
+    chatName: 'AWS CodeCommit',
+    id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
+    logo: 'https://d1tlzifd8jdoy4.cloudfront.net/wp-content/uploads/2015/07/codecommit.png',
+    tags: ['Version Control Systems'],
+  },
+  {
+    chatName: 'Git',
+    id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
+    logo: 'https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png',
+    tags: ['Version Control Systems'],
+  },
+  {
+    chatName: 'CA Panvalet',
+    id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
+    logo: 'https://d3ml3b6vywsj0z.cloudfront.net/website/product-images/Broadcom.png',
+    tags: ['Version Control Systems'],
+  },
 ];
 
 export const rowTitles = [
