@@ -365,6 +365,7 @@ export const chatsData = [
     logo: 'https://avatars.githubusercontent.com/u/15991786?s=200&v=4',
     tags: ['Code Editors'],
   },
+  // Version Control Systems
 ];
 
 export const rowTitles = [
@@ -381,4 +382,5 @@ export const rowTitles = [
   'Learning platforms',
   'Code Editors',
   'Operating Systems',
+  'Version Control Systems'
 ];
