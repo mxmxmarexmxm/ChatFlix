@@ -9,7 +9,7 @@ const FullScreen = (props) => {
       <div className={classes['active-chats-container']}>
         {props.activeChats.map((chat) => (
           <Chat
-            fullScreenSideChat={true}
+            isFullScreenSideChat={true}
             key={chat.id}
             chat={chat}
             onSelectChat={() => props.onSelectChat(chat.id)}

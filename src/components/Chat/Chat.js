@@ -2,23 +2,16 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import classes from './Chat.module.css';
 import placeholder from '../../assets/img/placeholder.png';
-
-// Icons
 import {
   AiOutlineClose,
   AiOutlineFullscreen,
   AiOutlineFullscreenExit,
 } from 'react-icons/ai';
-
-// Components
 import ChatHead from './ChatHead';
 import SideChatFullScreen from '../SideChatFullScreen';
 import Message from '../Message';
 import useSound from 'use-sound';
-
 import notificationSound from '../../assets/Sound/notification-sound.mp3';
-
-// Firebase
 import firebase from '../../Firebase/Firebase';
 import { AuthContext } from '../../Firebase/context';
 import 'firebase/compat/firestore';
@@ -31,15 +24,25 @@ const Chat = (props) => {
   const [messageToReplay, setMessageToReplay] = useState(null);
   const [notify] = useSound(notificationSound);
   const { user } = useContext(AuthContext);
-  const dummy = useRef();
+  const scrollRef = useRef();
 
-  const { chatName, logo, id } = props.chat;
-  const { showMessages } = props;
+  const {
+    chat,
+    isChatHead,
+    isFullScreen,
+    showMessages,
+    onClose,
+    onUnauthorizedTry,
+    isFullScreenSideChat,
+    onFullScreenToggle,
+    onSelectChat,
+  } = props;
 
-  let messageCollection = firestore.collection(`/chats/${chatName}/messages/`);
+  let messageCollection = firestore.collection(
+    `/chats/${chat.chatName}/messages/`
+  );
 
   let query = messageCollection.orderBy('createdAt', 'asc');
-
   const [messages, loading] = useCollectionData(query, { idField: 'id' });
 
   // Get unread messages
@@ -95,28 +98,26 @@ const Chat = (props) => {
           replayTo: messageToReplay,
         });
       }
-      dummy.current.scrollIntoView({ behavior: 'smooth' });
+      scrollRef.current.scrollIntoView({ behavior: 'smooth' });
       setMessageText('');
     } else {
-      props.onUnauthorizedTry();
+      onUnauthorizedTry();
     }
     setMessageToReplay(null);
   };
 
-  const showChatHandler = () => {
-    if (props.isFullScreen) {
-      return;
+  const toggleChat = () => {
+    if (!isFullScreen) {
+      setShowChatMessages((curr) => !curr);
     }
-    setShowChatMessages((curr) => !curr);
-    props.clearShow();
   };
 
   // Expand chat if selected from home screen and chat is already in active chats container
   useEffect(() => {
-    if (chatName === showMessages) {
+    if (chat.chatName === showMessages) {
       setShowChatMessages(true);
     }
-  }, [chatName, showMessages]);
+  }, [chat.chatName, showMessages]);
 
   // Minimize all chats in active bottom container at Esc button
   useEffect(() => {
@@ -132,140 +133,134 @@ const Chat = (props) => {
     };
   }, []);
 
-  const onReplayHandler = (message) => {
-    setMessageToReplay(message);
-  };
-
   const toggleFullScreen = (event) => {
     event.stopPropagation();
-    props.onFullScreenToggle(id);
+    onFullScreenToggle(chat.id);
   };
 
   // Chat classes depending on chat size
   let chatBodyClass = showChatMessages
     ? classes['chat-body']
     : classes['hide-body'];
-  let chatClass = classes.chat;
-  let messagesContainerClass = classes['messages-container'];
-  let chatHeadClass = classes['chat-head'];
-
-  // Full screen chat
-  if (props.isFullScreen) {
-    chatClass = `${classes.chat} ${classes[`chat-full-screen`]}`;
-    messagesContainerClass = `${classes['messages-container']} ${
-      classes[`messages-container-full`]
-    }`;
-    chatBodyClass = `${classes['chat-body-full']}`;
-    chatHeadClass = `${classes['chat-head']} ${classes['chat-head-full']}`;
-  }
 
   // Side chat on full screen
-  if (props.fullScreenSideChat) {
+  if (isFullScreenSideChat) {
     return (
       <SideChatFullScreen
         unreadMessages={unreadMessages}
-        onSelectChat={props.onSelectChat}
-        onClose={props.onClose}
-        logo={logo}
-        chatName={chatName}
+        onSelectChat={onSelectChat}
+        onClose={onClose}
+        logo={chat.logo}
+        chatName={chat.chatName}
       />
     );
   }
 
   // Chat head if chat is in right chat container
-  if (props.isChatHead) {
+  if (isChatHead) {
     return (
       <ChatHead
         unreadMessages={unreadMessages}
-        onSelectChat={props.onSelectChat}
-        logo={logo}
-        onClose={props.onClose}
+        onSelectChat={onSelectChat}
+        logo={chat.logo}
+        onClose={onClose}
       />
     );
   }
 
   return (
-    <>
-      <div className={chatClass}>
-        <div className={chatHeadClass} onClick={showChatHandler}>
-          <div className={classes.logoAndTitle}>
-            <div className={classes['chat-head-image-container']}>
-              <img
-                src={logo}
-                alt="avatar"
-                onError={(e) => {
-                  e.target.src = placeholder;
-                }}
-              />
-            </div>
-            <h2>{chatName}</h2>
+    <div
+      className={`${classes.chat} ${
+        isFullScreen ? classes[`chat-full-screen`] : ''
+      }`}
+    >
+      <div
+        className={`${classes['chat-head']} ${
+          isFullScreen ? classes['chat-head-full'] : ''
+        }`}
+        onClick={toggleChat}
+      >
+        <div className={classes.logoAndTitle}>
+          <div className={classes['chat-head-image-container']}>
+            <img
+              src={chat.logo}
+              alt="avatar"
+              onError={(e) => {
+                e.target.src = placeholder;
+              }}
+            />
           </div>
-          <div className={classes[`button-wrapper`]}>
-            {!showChatMessages && unreadMessages > 0 && (
-              <div className={classes[`unread-messages-badge`]}>
-                {unreadMessages}
-              </div>
-            )}
-            <div
-              className={classes['icon-btn-wrapper']}
-              onClick={toggleFullScreen}
-            >
-              {props.isFullScreen ? (
-                <AiOutlineFullscreenExit className={classes.icon} />
-              ) : (
-                <AiOutlineFullscreen className={classes.icon} />
-              )}
-            </div>
-            <div
-              className={classes['icon-btn-wrapper']}
-              onClick={() => props.onClose(id)}
-            >
-              <AiOutlineClose className={classes.icon} />
-            </div>
-          </div>
+          <h2>{chat.chatName}</h2>
         </div>
-        <div className={chatBodyClass}>
-          <div className={messagesContainerClass}>
-            {loading ? (
-              <p className={classes['empty-chat']}>Loading...</p>
-            ) : messages?.length > 0 ? (
-              messages.map((message) => (
-                <Message
-                  key={message.id}
-                  message={message}
-                  onReplay={onReplayHandler}
-                />
-              ))
-            ) : (
-              <p className={classes['empty-chat']}>
-                There are no messages yet! <br />
-                Start conversation!
-              </p>
-            )}
-            <span ref={dummy}></span>
-          </div>
-          {messageToReplay && (
-            <div className={classes['message-to-replay']}>
-              <div className={classes['replay-texts']}>
-                <p>Replying to {messageToReplay.displayName}</p>
-                <p className={classes['replay-text']}>{messageToReplay.text}</p>
-              </div>
-              <AiOutlineClose
-                className={classes.icon}
-                onClick={() => setMessageToReplay(null)}
-              />
+        <div className={classes[`button-wrapper`]}>
+          {!showChatMessages && unreadMessages > 0 && (
+            <div className={classes[`unread-messages-badge`]}>
+              {unreadMessages}
             </div>
           )}
-          <form onSubmit={sendMessage}>
-            <input
-              value={messageText}
-              onClick={markAllAsRead}
-              onChange={(e) => setMessageText(e.target.value)}
-            />
-          </form>
+          <div
+            className={classes['icon-btn-wrapper']}
+            onClick={toggleFullScreen}
+          >
+            {isFullScreen ? (
+              <AiOutlineFullscreenExit className={classes.icon} />
+            ) : (
+              <AiOutlineFullscreen className={classes.icon} />
+            )}
+          </div>
+          <div
+            className={classes['icon-btn-wrapper']}
+            onClick={() => onClose(chat.id)}
+          >
+            <AiOutlineClose className={classes.icon} />
+          </div>
         </div>
       </div>
-    </>
+      <div className={isFullScreen ? classes['chat-body-full'] : chatBodyClass}>
+        <div
+          className={`${classes['messages-container']} ${
+            isFullScreen ? classes[`messages-container-full`] : ''
+          }`}
+        >
+          {loading ? (
+            <p className={classes['empty-chat']}>Loading...</p>
+          ) : messages?.length > 0 ? (
+            messages.map((message) => (
+              <Message
+                key={message.id}
+                message={message}
+                onReplay={() => setMessageToReplay(message)}
+              />
+            ))
+          ) : (
+            <p className={classes['empty-chat']}>
+              There are no messages yet! <br />
+              Start conversation!
+            </p>
+          )}
+          <span ref={scrollRef}></span>
+        </div>
+        {messageToReplay && (
+          <div className={classes['message-to-replay']}>
+            <div className={classes['replay-texts']}>
+              <p>Replying to {messageToReplay.displayName}</p>
+              <p className={classes['replay-text']}>{messageToReplay.text}</p>
+            </div>
+            <AiOutlineClose
+              className={classes.icon}
+              onClick={() => setMessageToReplay(null)}
+            />
+          </div>
+        )}
+        <form onSubmit={sendMessage}>
+          <input
+            value={messageText}
+            onClick={markAllAsRead}
+            onChange={(e) => setMessageText(e.target.value)}
+          />
+        </form>
+      </div>
+    </div>
   );
 };
 
