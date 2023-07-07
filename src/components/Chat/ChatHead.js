@@ -4,28 +4,29 @@ import classes from './ChatHead.module.css';
 import placehoder from '../../assets/img/placeholder.png';
 
 const ChatHead = (props) => {
-  const unreadMessagesClasses =
-    props.unreadMessages > 0 ? classes.unreadMessages : classes.hidden;
+  const { logo, unreadMessages, onSelectChat, onClose } = props;
 
   return (
-    <div className={classes['chat-head-mini']} onClick={props.onSelectChat}>
+    <div className={classes['chat-head-mini']} onClick={onSelectChat}>
       <div className={classes['badges-container']}>
-        <div className={unreadMessagesClasses}>
-          <span>{props.unreadMessages}</span>
-        </div>
+        {!!unreadMessages && (
+          <div className={classes['unread-messages']}>
+            <span>{unreadMessages < 99 ? unreadMessages : '99+'}</span>
+          </div>
+        )}
         <div
           className={classes['icon-wrapper']}
           onClick={(e) => e.stopPropagation()}
         >
           <AiOutlineClose
-            onClick={props.onClose}
+            onClick={onClose}
             className={classes['close-icon-mini']}
           />
         </div>
       </div>
       <div className={classes['image-wrappper']}>
         <img
-          src={props.logo}
+          src={logo}
           alt="chat head"
           onError={(e) => {
             e.target.src = placehoder;
