@@ -16,7 +16,7 @@ export const chatsData = [
     chatName: 'JavaScript',
     id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
     logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png',
-    tags: ['Programming languages', 'JS', 'frontend', 'Machine Learning Languages', 'backend'],
+    tags: ['Programming languages', 'JS', 'frontend', 'Machine Learning Languages'],
   },
   {
     chatName: 'ReactJS',
