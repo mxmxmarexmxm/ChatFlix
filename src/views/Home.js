@@ -10,7 +10,7 @@ import Header from '../components/UI/Header';
 import { signInWithGoogle } from '../auth/AuthServices';
 import useWindowDimensions from '../utils/useWindowWidth';
 
-const Home = (props) => {
+const Home = () => {
   const [activeChatsBottom, setActiveChatsBottom] = useState([]);
   const [activeChatsRight, setActiveChatsRight] = useState([]);
   const { width } = useWindowDimensions();
@@ -44,7 +44,7 @@ const Home = (props) => {
   }, [activeChatsBottom, activeChatsRight]);
 
   // Select chat handler, for each scenario.
-  const onSelectChatHandler = (chatData) => {
+  const selectChatHandler = (chatData) => {
     const indexOfChatBottom = activeChatsBottom.findIndex((chat) => chat?.id === chatData.id);
     const indexOfChatRight = activeChatsRight.findIndex((chat) => chat?.id === chatData.id);
 
@@ -98,10 +98,6 @@ const Home = (props) => {
 
     setActiveChatsBottom(activeChatsBottom.filter((chat) => chat?.id !== id));
     setActiveChatsRight(activeChatsRight.filter((chat) => chat?.id !== id));
-  };
-
-  const clearShowHandler = () => {
-    setShowMessages(null);
   };
 
   const toggleFullScreenHandler = (id) => {
@@ -160,7 +156,7 @@ const Home = (props) => {
       <Header />
       <div className={classes.container}>
         {rowTitles.map((title) => (
-          <ChatRow onSelectChat={onSelectChatHandler} rowTitle={title} key={title} />
+          <ChatRow onSelectChat={selectChatHandler} rowTitle={title} key={title} />
         ))}
         <div className={classes['active-chats-container']}>
           <div className={classes['active-chats-bottom']}>
@@ -168,7 +164,6 @@ const Home = (props) => {
               activeChatsBottom.map((chat) => (
                 <Chat
                   onFullScreenToggle={toggleFullScreenHandler}
-                  clearShow={clearShowHandler}
                   showMessages={showMessages}
                   chat={chat}
                   key={chat.id}
@@ -186,7 +181,7 @@ const Home = (props) => {
                     chat={chat}
                     isChatHead={true}
                     onClose={() => closeChatHandler(chat.id)}
-                    onSelectChat={() => onSelectChatHandler(chat)}
+                    onSelectChat={() => selectChatHandler(chat)}
                   />
                 ))}
               </div>
