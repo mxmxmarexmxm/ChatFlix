@@ -1,5 +1,5 @@
 .chat {
-  width: 350px;
+  width: 320px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -183,4 +183,8 @@ h2::first-letter {
   .chat-head-full {
     padding: 1.4rem 0.5rem;
   }
+  .chat {
+    width: 350px;
+  }
+  
 }
