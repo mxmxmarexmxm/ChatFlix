@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classes from './ChatRow.module.css';
 import { FaGreaterThan, FaLessThan } from 'react-icons/fa';
 import { chatsData } from '../data/data';
@@ -6,8 +6,7 @@ import placeholder from '../assets/img/placeholder.png';
 
 const ChatRow = (props) => {
   const chatRowRef = useRef();
-
-  let haveScrool = chatRowRef.current?.scrollLeftMax > 0;
+  const [haveScrool, setHaveScrool] = useState(false);
 
   const chats = chatsData.filter((chat) => chat.tags.includes(props.rowTitle));
 
@@ -15,8 +14,21 @@ const ChatRow = (props) => {
     chatRowRef.current.scrollLeft += scrollOffset;
   };
 
+  const checkHorizontalOverflow = () => {
+    setHaveScrool(
+      chatRowRef.current.scrollWidth > chatRowRef.current.clientWidth
+    );
+  };
+
   useEffect(() => {
     scrollRowHandler(-1000);
+    checkHorizontalOverflow();
+
+    window.addEventListener('resize', checkHorizontalOverflow);
+
+    return () => {
+      window.removeEventListener('resize', checkHorizontalOverflow);
+    };
   }, []);
 
   return (
@@ -27,7 +39,7 @@ const ChatRow = (props) => {
           {haveScrool && <FaLessThan />}
         </button>
         <div ref={chatRowRef} className={classes.chats}>
-        {chats.map((chat) => (
+          {chats.map((chat) => (
             <img
               className={classes.logo}
               onClick={() => props.onSelectChat(chat)}
@@ -37,6 +49,7 @@ const ChatRow = (props) => {
               onError={(e) => {
                 e.target.src = placeholder;
               }}
+              onLoad={checkHorizontalOverflow}
             />
           ))}
         </div>
