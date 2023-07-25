@@ -42,10 +42,11 @@
 }
 
 .image-wrapper {
-  height: 50px;
-  width: 50px;
+  width: 45px;
+  aspect-ratio: 1/1;
   border-radius: 15px;
   overflow: hidden;
+  align-self: flex-start;
 }
 
 .profileImg {
@@ -74,7 +75,7 @@
 }
 
 .text-wrapper {
-  text-align: right;
+  text-align: left;
   word-break: break-word;
   background-color: #495252;
   color: #fff;
