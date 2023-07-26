@@ -108,7 +108,7 @@ export const chatsData = [
     chatName: 'NodeJS',
     id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
     logo: 'https://images.ctfassets.net/aq13lwl6616q/7cS8gBoWulxkWNWEm0FspJ/c7eb42dd82e27279307f8b9fc9b136fa/nodejs_cover_photo_smaller_size.png?w=700&fm=webp',
-    tags: ['backend', 'frameworks', 'backend frameworks', 'JS'],
+    tags: ['backend', 'JS'],
   },
   {
     chatName: 'Express.js',
