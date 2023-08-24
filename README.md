@@ -13,6 +13,7 @@ ChatFlix is easy to customize to your needs. Here are the steps:
 1. Clone the repository
 2. Replace `/src/assets/img/logo.png` with your logo
 3. Update `data.js` with your array of objects with the following shape:
+
 ```
 {
   chatName,
@@ -21,6 +22,7 @@ ChatFlix is easy to customize to your needs. Here are the steps:
   tags,
 }
 ```
+
 4. Configure Firebase in `/src/Firebase/`
 5. Run `npm install`
 6. Run `npm start`
@@ -30,3 +32,7 @@ ChatFlix is easy to customize to your needs. Here are the steps:
 You can check out the live demo of ChatFlix [here](https://mxmxmarexmxm.github.io/ChatFlix/).
 
 Thank you for your interest in ChatFlix!
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
