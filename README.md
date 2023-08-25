@@ -33,6 +33,12 @@ You can check out the live demo of ChatFlix [here](https://mxmxmarexmxm.github.i
 
 Thank you for your interest in ChatFlix!
 
+
+## Contributing
+
+Contributions are welcome! If you have any ideas, bug fixes, or feature requests, feel free to submit a pull request.
+
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
