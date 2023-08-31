@@ -40,17 +40,19 @@ const ChatRow = (props) => {
         </button>
         <div ref={chatRowRef} className={classes.chats}>
           {chats.map((chat) => (
-            <img
-              className={classes.logo}
-              onClick={() => props.onSelectChat(chat)}
-              src={chat.logo}
-              alt={chat.chatName}
-              key={chat.id}
-              onError={(e) => {
-                e.target.src = placeholder;
-              }}
-              onLoad={checkHorizontalOverflow}
-            />
+            <div className={classes['logo-container']}>
+              <img
+                className={classes.logo}
+                onClick={() => props.onSelectChat(chat)}
+                src={chat.logo}
+                alt={chat.chatName}
+                key={chat.id}
+                onError={(e) => {
+                  e.target.src = placeholder;
+                }}
+                onLoad={checkHorizontalOverflow}
+              />
+            </div>
           ))}
         </div>
         {haveScrool && (

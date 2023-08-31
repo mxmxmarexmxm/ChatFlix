@@ -6,7 +6,7 @@
 
 .row-title {
   color: white;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
   font-family: 'Asap';
   font-size: 1.2rem;
 }
@@ -24,12 +24,20 @@
   justify-content: space-between;
 }
 
+.logo-container {
+  height: 120px;
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem;
+}
+
 .logo {
   object-fit: cover;
   height: 120px;
   width: 120px;
   cursor: pointer;
-  margin: 0.5rem;
   border-radius: 1rem;
 }
 
@@ -44,6 +52,7 @@
 .chats {
   display: flex;
   flex: 1;
+  gap: 10px;
   align-items: center;
   overflow-x: scroll;
   scroll-behavior: smooth;
@@ -61,7 +70,8 @@
 }
 
 @media only screen and (min-width: 756px) {
-  .logo {
+  .logo,
+  .logo-container {
     width: 200px;
     height: 200px;
   }
@@ -75,6 +85,7 @@
   }
   .chats {
     padding: 1rem;
+    gap: 15px;
   }
   .chat-row-container {
     margin: 3rem auto 0;
