@@ -47,6 +47,7 @@ const ChatRow = (props) => {
                 src={chat.logo}
                 alt={chat.chatName}
                 key={chat.id}
+                loading="lazy"
                 onError={(e) => {
                   e.target.src = placeholder;
                 }}
