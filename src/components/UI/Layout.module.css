@@ -1,4 +1,4 @@
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -9,15 +9,14 @@
   min-height: 100vh;
   background-color: #141414;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
 }
 
 ::-webkit-scrollbar {
   width: 11px;
   background: #aaa;
   -webkit-border-radius: 1ex;
-
 }
 
 ::-webkit-scrollbar-thumb {
