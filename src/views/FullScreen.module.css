@@ -6,7 +6,9 @@
 .active-chats-container {
   border: 3px solid #242425;
   color: white;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 .full-screen-chat-container {
