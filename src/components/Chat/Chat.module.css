@@ -190,4 +190,9 @@ h2::first-letter {
   .chat {
     width: 350px;
   }
+  .chat-full-screen {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
 }
