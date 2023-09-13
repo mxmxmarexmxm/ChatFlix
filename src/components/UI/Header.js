@@ -1,27 +1,22 @@
+// Header.js
 import classes from './Header.module.css';
+import { useModal } from '../../context/ModalContext';
+import { useContext } from 'react';
 import { AuthContext } from '../../Firebase/context';
-import { useContext, useState } from 'react';
 import logo from '../../assets/img/logo.png';
-import Modal from './Modal';
-import { signInWithGoogle, signOut } from '../../auth/AuthServices';
+import { signOut } from '../../auth/AuthServices';
 
 const Header = () => {
-  const [showModal, setShowModal] = useState(false);
+  const { openModal, closeModal } = useModal();
   const { user } = useContext(AuthContext);
 
   const signOutHandler = () => {
     signOut();
-    setShowModal(false);
+    closeModal();
   };
 
   return (
     <>
-      <Modal
-        title="Are you really want to log out?"
-        onConfirm={signOutHandler}
-        onClose={() => setShowModal(false)}
-        visible={showModal}
-      />
       <header>
         <div>
           <a href="/ChatFlix">
@@ -30,15 +25,22 @@ const Header = () => {
         </div>
         {user ? (
           <div className={classes['sign-out-container']}>
-            <button className={classes['sign-btn']} onClick={() => setShowModal(true)}>
+            <button
+              className={classes['sign-btn']}
+              onClick={() => signOutHandler()}
+            >
               Sign Out
             </button>
             <div className={classes['image-wrapper']}>
-              <img alt="profile avatar" src={user.photoURL} referrerPolicy="no-referrer" />
+              <img
+                alt="profile avatar"
+                src={user.photoURL}
+                referrerPolicy="no-referrer"
+              />
             </div>
           </div>
         ) : (
-          <button className={classes['sign-btn']} onClick={signInWithGoogle}>
+          <button className={classes['sign-btn']} onClick={openModal}>
             Sign In
           </button>
         )}
