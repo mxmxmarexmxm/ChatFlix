@@ -1,0 +1,45 @@
+.wrapper {
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 1rem;
+  color: white;
+}
+
+.wrapper span {
+  display: inline-block;
+  margin: 1rem 0 1rem 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-size: 1.5rem;
+  gap: 1rem;
+}
+
+.form input {
+  padding: 0.7rem 2rem;
+  font-size: 1.1rem;
+}
+
+.continue {
+  width: 100%;
+  padding: 0.7rem 2rem;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.submit {
+  padding: 0.7rem 2rem;
+  font-size: 1.1rem;
+}
+
+.error {
+  color: red;
+  font-size: .9rem;
+}

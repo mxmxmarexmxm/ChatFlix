@@ -1,0 +1,123 @@
+import { useState } from 'react';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
+import classes from './SignInForm.module.css';
+import { FcGoogle } from 'react-icons/fc';
+import { signInWithGoogle } from './AuthServices';
+
+const SignInForm = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    passwordConfirm: '',
+  });
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [doesntHaveAccount, setDoesntHaveAccount] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const auth = getAuth();
+    if (doesntHaveAccount) {
+      if (formData.password !== formData.passwordConfirm) {
+        setErrorMessage('Passwords do not match, please retype');
+        return;
+      }
+      createUserWithEmailAndPassword(auth, formData.email, formData.password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          // ...
+        })
+        // TODO : HANDLE ERRROR
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(error);
+
+          // ..
+        });
+    } else {
+      signInWithEmailAndPassword(auth, formData.email, formData.password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          // TODO : HANDLE ERRROR
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(error);
+        });
+    }
+    // TODO : CLOSE MODAL
+    console.log(formData);
+  };
+
+  return (
+    <div className={classes.wrapper}>
+      {/* // TODO : ADD TITLE, LOGO */}
+      <button className={classes.continue} onClick={() => signInWithGoogle()}>
+        <FcGoogle /> Continue with Google
+      </button>
+      <span>or</span>
+      <form onSubmit={handleSubmit} className={classes.form}>
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Email"
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          placeholder="Password"
+          required
+        />
+        {doesntHaveAccount && (
+          <input
+            type="password"
+            name="passwordConfirm"
+            value={formData.passwordConfirm}
+            onChange={handleChange}
+            placeholder="passwordConfirm"
+            required
+          />
+        )}
+        {<p className={classes.error}>{errorMessage}</p>}
+        <button type="submit" className={classes.submit}>
+          {doesntHaveAccount ? 'Sign up' : 'Log in'}
+        </button>
+        {/* // TODO : SWAP SPAN TEXT */}
+        <span>
+          No account?{' '}
+          <button
+            className={classes.create}
+            onClick={() => setDoesntHaveAccount(true)}
+          >
+            Create one
+          </button>
+        </span>
+      </form>
+    </div>
+  );
+};
+
+export default SignInForm;
