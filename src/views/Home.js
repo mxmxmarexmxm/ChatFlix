@@ -5,10 +5,10 @@ import Chat from '../components/Chat/Chat';
 import ChatRow from '../components/ChatRow';
 import FullScreen from './FullScreen';
 import ToggleChatHeadsBtn from '../components/UI/ToggleChatHeadsBtn';
-import Modal from '../components/UI/Modal';
 import Header from '../components/UI/Header';
-import { signInWithGoogle } from '../auth/AuthServices';
 import useWindowDimensions from '../utils/useWindowWidth';
+import Modal from '../components/UI/Modal';
+import SignInForm from '../auth/SignInForm';
 
 const Home = () => {
   const [activeChatsBottom, setActiveChatsBottom] = useState([]);
@@ -17,7 +17,6 @@ const Home = () => {
   const [showMessages, setShowMessages] = useState(null);
   const [fullScreenChat, setFullScreenChat] = useState(null);
   const [showChatHeads, setShowChatHeads] = useState(false);
-  const [showLoginModal, setShowLoginModal] = useState(false);
 
   // Get previously opened chats from local storage.
   useEffect(() => {
@@ -45,8 +44,12 @@ const Home = () => {
 
   // Select chat handler, for each scenario.
   const selectChatHandler = (chatData) => {
-    const indexOfChatBottom = activeChatsBottom.findIndex((chat) => chat?.id === chatData.id);
-    const indexOfChatRight = activeChatsRight.findIndex((chat) => chat?.id === chatData.id);
+    const indexOfChatBottom = activeChatsBottom.findIndex(
+      (chat) => chat?.id === chatData.id
+    );
+    const indexOfChatRight = activeChatsRight.findIndex(
+      (chat) => chat?.id === chatData.id
+    );
 
     let activeBottom = [...activeChatsBottom];
 
@@ -68,11 +71,17 @@ const Home = () => {
     }
 
     if (indexOfChatRight >= 0 && activeChatsBottom.length <= bottomLimit) {
-      setActiveChatsRight(activeChatsRight.filter((c) => c.chatName !== chatData.chatName));
+      setActiveChatsRight(
+        activeChatsRight.filter((c) => c.chatName !== chatData.chatName)
+      );
       setActiveChatsBottom((c) => [chatData, ...c]);
     }
 
-    if (indexOfChatRight >= 0 && indexOfChatBottom < 0 && activeChatsBottom.length >= bottomLimit) {
+    if (
+      indexOfChatRight >= 0 &&
+      indexOfChatBottom < 0 &&
+      activeChatsBottom.length >= bottomLimit
+    ) {
       const elementToMove = activeBottom[bottomLimit - 1];
       setActiveChatsRight((chat) => [
         ...chat.filter((chat) => chat?.chatName !== chatData.chatName),
@@ -80,7 +89,9 @@ const Home = () => {
       ]);
       setActiveChatsBottom([
         chatData,
-        ...activeBottom.filter((chat) => chat.chatName !== elementToMove.chatName),
+        ...activeBottom.filter(
+          (chat) => chat.chatName !== elementToMove.chatName
+        ),
       ]);
     }
     setShowMessages(chatData.chatName);
@@ -113,27 +124,19 @@ const Home = () => {
   };
 
   // Close full screen if there are no remaining chats.
-  if (activeChatsBottom?.length === 0 && activeChatsRight.length === 0 && fullScreenChat) {
+  if (
+    activeChatsBottom?.length === 0 &&
+    activeChatsRight.length === 0 &&
+    fullScreenChat
+  ) {
     setFullScreenChat(null);
   }
-
-  const onConfirmToLogin = () => {
-    signInWithGoogle();
-    setShowLoginModal(false);
-  };
 
   if (fullScreenChat) {
     return (
       <>
-        <Modal
-          title="You need to be logged in to send a message !"
-          confirmTitle="Sign in with Google"
-          onConfirm={onConfirmToLogin}
-          visible={showLoginModal}
-          onClose={() => setShowLoginModal(false)}
-        />
+        {/* TODO: HANDLE UNREGISTRATED USER */}
         <FullScreen
-          onUnauthorizedTry={() => setShowLoginModal(true)}
           onSelectChat={toggleFullScreenHandler}
           onFullScreenToggle={() => setFullScreenChat(null)}
           onClose={closeChatHandler}
@@ -146,17 +149,18 @@ const Home = () => {
 
   return (
     <>
-      <Modal
-        title="You need to be logged in to send a message !"
-        confirmTitle="Sign in with Google"
-        onConfirm={onConfirmToLogin}
-        visible={showLoginModal}
-        onClose={() => setShowLoginModal(false)}
-      />
+      {/* TODO: HANDLE UNREGISTRATED USER */}
       <Header />
+      <Modal>
+        <SignInForm />
+      </Modal>
       <div className={classes.container}>
         {rowTitles.map((title) => (
-          <ChatRow onSelectChat={selectChatHandler} rowTitle={title} key={title} />
+          <ChatRow
+            onSelectChat={selectChatHandler}
+            rowTitle={title}
+            key={title}
+          />
         ))}
         <div className={classes['active-chats-container']}>
           <div className={classes['active-chats-bottom']}>
@@ -167,7 +171,7 @@ const Home = () => {
                   showMessages={showMessages}
                   chat={chat}
                   key={chat.id}
-                  onUnauthorizedTry={() => setShowLoginModal(true)}
+                  // onUnauthorizedTry={() => setShowLoginModal(true)}
                   onClose={closeChatHandler}
                 />
               ))}
