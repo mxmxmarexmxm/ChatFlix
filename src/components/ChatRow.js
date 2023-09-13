@@ -5,10 +5,11 @@ import { chatsData } from '../data/data';
 import placeholder from '../assets/img/placeholder.png';
 
 const ChatRow = (props) => {
+  const { rowTitle, onSelectChat } = props;
   const chatRowRef = useRef();
   const [haveScrool, setHaveScrool] = useState(false);
 
-  const chats = chatsData.filter((chat) => chat.tags.includes(props.rowTitle));
+  const chats = chatsData.filter((chat) => chat.tags.includes(rowTitle));
 
   const scrollRowHandler = (scrollOffset) => {
     chatRowRef.current.scrollLeft += scrollOffset;
@@ -33,20 +34,19 @@ const ChatRow = (props) => {
 
   return (
     <div className={classes['chat-row-container']}>
-      <h2 className={classes['row-title']}>{props.rowTitle}</h2>
+      <h2 className={classes['row-title']}>{rowTitle}</h2>
       <div className={classes['row-body']}>
         <button onClick={() => scrollRowHandler(-200)}>
           {haveScrool && <FaLessThan />}
         </button>
         <div ref={chatRowRef} className={classes.chats}>
           {chats.map((chat) => (
-            <div className={classes['logo-container']}>
+            <div className={classes['logo-container']} key={chat.id}>
               <img
                 className={classes.logo}
-                onClick={() => props.onSelectChat(chat)}
+                onClick={() => onSelectChat(chat)}
                 src={chat.logo}
                 alt={chat.chatName}
-                key={chat.id}
                 loading="lazy"
                 onError={(e) => {
                   e.target.src = placeholder;
