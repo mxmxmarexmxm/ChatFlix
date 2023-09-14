@@ -7,6 +7,7 @@ import {
 import classes from './LoginForm.module.css';
 import { FcGoogle } from 'react-icons/fc';
 import { signInWithGoogle } from './AuthServices';
+import { useModal } from '../context/ModalContext';
 
 const SignInForm = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,8 @@ const SignInForm = () => {
   });
   const [errorMessage, setErrorMessage] = useState(null);
   const [haveAccount, setHaveAccount] = useState(true);
+  const { closeModal } = useModal();
+  console.log(closeModal);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,24 +38,21 @@ const SignInForm = () => {
       }
       createUserWithEmailAndPassword(auth, formData.email, formData.password)
         .then((userCredential) => {
-          // Signed in
           const user = userCredential.user;
+          closeModal();
           console.log(user);
           // ...
         })
         // TODO : HANDLE ERRROR
         .catch((error) => {
           setErrorMessage(error.message);
-
-          // ..
         });
     } else {
       signInWithEmailAndPassword(auth, formData.email, formData.password)
         .then((userCredential) => {
-          // Signed in
           const user = userCredential.user;
+          closeModal();
           console.log(user);
-          // ...
         })
         .catch((error) => {
           // const errorCode = error.code;
@@ -60,8 +60,6 @@ const SignInForm = () => {
           setErrorMessage(error.message);
         });
     }
-    // TODO : CLOSE MODAL
-    console.log(formData);
   };
 
   return (
