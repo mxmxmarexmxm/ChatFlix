@@ -1,29 +1,22 @@
-.wrapper {
+.form-wrapper {
   font-size: 1.1rem;
   text-align: center;
   padding: 1rem;
   color: white;
 }
 
-.wrapper span {
+.welcome {
+  margin: 0 2rem 2rem 2rem;
+  font-size: 2.5rem;
+  letter-spacing: 0.5rem;
+}
+
+.form-wrapper span {
   display: inline-block;
   margin: 1rem 0 1rem 0;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  color: white;
-  font-size: 1.5rem;
-  gap: 1rem;
-}
-
-.form input {
-  padding: 0.7rem 2rem;
-  font-size: 1.1rem;
-}
-
-.continue {
+.continue-btn {
   width: 100%;
   padding: 0.7rem 2rem;
   font-size: 1.1rem;
@@ -34,12 +27,36 @@
   cursor: pointer;
 }
 
-.submit {
+.form-wrapper form {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-size: 1.5rem;
+  gap: 1rem;
+}
+
+.form-wrapper input {
   padding: 0.7rem 2rem;
   font-size: 1.1rem;
 }
 
-.error {
-  color: red;
-  font-size: .9rem;
+.form-wrapper button[type='submit'] {
+  padding: 0.7rem 2rem;
+  font-size: 1.1rem;
+}
+
+.account-title {
+  font-size: 1rem;
+}
+
+.create-login-btn {
+  background-color: transparent;
+  color: rgb(235, 64, 64);
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.error-message {
+  color: rgb(235, 64, 64);
+  font-size: 0.9rem;
 }

@@ -68,13 +68,16 @@ const SignInForm = () => {
   };
 
   return (
-    <div className={classes.wrapper}>
-      {/* // TODO : ADD TITLE, LOGO */}
-      <button className={classes.continue} onClick={() => signInWithGoogle()}>
+    <div className={classes['form-wrapper']}>
+      <h2 className={classes.welcome}>WELCOME</h2>
+      <button
+        className={classes['continue-btn']}
+        onClick={() => signInWithGoogle()}
+      >
         <FcGoogle /> Continue with Google
       </button>
       <span>or</span>
-      <form onSubmit={handleSubmit} className={classes.form}>
+      <form onSubmit={handleSubmit}>
         <input
           type="email"
           name="email"
@@ -97,24 +100,37 @@ const SignInForm = () => {
             name="passwordConfirm"
             value={formData.passwordConfirm}
             onChange={handleChange}
-            placeholder="passwordConfirm"
+            placeholder="Confirm password"
             required
           />
         )}
-        {<p className={classes.error}>{errorMessage}</p>}
-        <button type="submit" className={classes.submit}>
+        {<p className={classes['error-message']}>{errorMessage}</p>}
+        <button type="submit">
           {doesntHaveAccount ? 'Sign up' : 'Log in'}
         </button>
-        {/* // TODO : SWAP SPAN TEXT */}
-        <span>
-          No account?{' '}
-          <button
-            className={classes.create}
-            onClick={() => setDoesntHaveAccount(true)}
-          >
-            Create one
-          </button>
-        </span>
+        {!doesntHaveAccount ? (
+          <span className={classes['account-title']}>
+            No account?{' '}
+            <button
+              className={classes['create-login-btn']}
+              type="button"
+              onClick={() => setDoesntHaveAccount(true)}
+            >
+              Create one
+            </button>
+          </span>
+        ) : (
+          <span className={classes['account-title']}>
+            Already have an account?{' '}
+            <button
+              className={classes['create-login-btn']}
+              type="button"
+              onClick={() => setDoesntHaveAccount(false)}
+            >
+              Login here
+            </button>
+          </span>
+        )}
       </form>
     </div>
   );
