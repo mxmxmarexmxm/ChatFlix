@@ -15,6 +15,7 @@ const Header = () => {
   const signOutHandler = () => {
     signOut();
     closeModal();
+    setOpenMenu(false);
   };
 
   // Close menu when a click occurs outside the menu
