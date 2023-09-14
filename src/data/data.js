@@ -16,7 +16,12 @@ export const chatsData = [
     chatName: 'JavaScript',
     id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
     logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png',
-    tags: ['Programming languages', 'JS', 'frontend', 'Machine Learning Languages'],
+    tags: [
+      'Programming languages',
+      'JS',
+      'frontend',
+      'Machine Learning Languages',
+    ],
   },
   {
     chatName: 'ReactJS',
@@ -39,7 +44,7 @@ export const chatsData = [
   {
     chatName: 'AngularJS',
     id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://www.strivemindz.com/images/angularr.png',
+    logo: 'https://assets.stickpng.com/images/5847ea22cef1014c0b5e4833.png',
     tags: ['frontend', 'frameworks', 'frontend frameworks', 'JS'],
   },
   {
@@ -88,7 +93,7 @@ export const chatsData = [
   {
     chatName: 'Milligram',
     id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://cdn.freebiesbug.com/wp-content/uploads/2016/02/milligram-framework-580x435.jpg',
+    logo: 'https://www.rezourze.com/rz-storage/2020/08/milligram-css-framework.jpg',
     tags: ['frontend', 'CSS frameworks', 'frameworks', 'frontend frameworks'],
   },
   {
@@ -277,7 +282,7 @@ export const chatsData = [
   {
     chatName: 'Free BSD',
     id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://paultclark.com/images/freebsd-logo.jpg',
+    logo: 'https://ih1.redbubble.net/image.783908519.2521/st,small,507x507-pad,600x600,f8f8f8.u5.jpg',
     tags: ['Operating Systems'],
   },
   {
@@ -301,7 +306,7 @@ export const chatsData = [
   {
     chatName: 'Deepin',
     id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://cloud7.news/wp-content/uploads/2021/11/Deepin-20.3-released.jpg',
+    logo: 'https://seeklogo.com/images/D/deepin-logo-D3C79B9FFE-seeklogo.com.png',
     tags: ['Operating Systems'],
   },
   // Code Editors
@@ -400,11 +405,11 @@ export const rowTitles = [
   'backend',
   'backend frameworks',
   'Programming languages',
-  'Machine Learning Languages', 
+  'Machine Learning Languages',
   'markup',
   'frameworks',
   'Learning platforms',
   'Code Editors',
   'Operating Systems',
-  'Version Control Systems'
+  'Version Control Systems',
 ];
