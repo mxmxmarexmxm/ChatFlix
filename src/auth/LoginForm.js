@@ -3,6 +3,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from 'firebase/auth';
 import classes from './LoginForm.module.css';
 import { FcGoogle } from 'react-icons/fc';
@@ -14,6 +15,7 @@ const SignInForm = () => {
     email: '',
     password: '',
     passwordConfirm: '',
+    displayName: '',
   });
   const [errorMessage, setErrorMessage] = useState(null);
   const [haveAccount, setHaveAccount] = useState(true);
@@ -39,8 +41,12 @@ const SignInForm = () => {
       createUserWithEmailAndPassword(auth, formData.email, formData.password)
         .then((userCredential) => {
           const user = userCredential.user;
-          closeModal();
-          console.log(user);
+          updateProfile(user, {
+            displayName: formData.displayName,
+          }).then(() => {
+            closeModal();
+            console.log(user);
+          });
           // ...
         })
         // TODO : HANDLE ERRROR
@@ -73,6 +79,16 @@ const SignInForm = () => {
       </button>
       <span>or</span>
       <form onSubmit={handleSubmit}>
+        {!haveAccount && (
+          <input
+            type="text"
+            name="displayName"
+            value={formData.displayName}
+            onChange={handleChange}
+            placeholder="Username"
+            required
+          />
+        )}
         <input
           type="email"
           name="email"
