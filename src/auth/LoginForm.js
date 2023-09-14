@@ -4,7 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
-import classes from './SignInForm.module.css';
+import classes from './LoginForm.module.css';
 import { FcGoogle } from 'react-icons/fc';
 import { signInWithGoogle } from './AuthServices';
 

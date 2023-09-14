@@ -8,7 +8,7 @@ import ToggleChatHeadsBtn from '../components/UI/ToggleChatHeadsBtn';
 import Header from '../components/UI/Header';
 import useWindowDimensions from '../utils/useWindowWidth';
 import Modal from '../components/UI/Modal';
-import SignInForm from '../auth/SignInForm';
+import LoginForm from '../auth/LoginForm';
 
 const Home = () => {
   const [activeChatsBottom, setActiveChatsBottom] = useState([]);
@@ -152,7 +152,7 @@ const Home = () => {
       {/* TODO: HANDLE UNREGISTRATED USER */}
       <Header />
       <Modal>
-        <SignInForm />
+        <LoginForm />
       </Modal>
       <div className={classes.container}>
         {rowTitles.map((title) => (
