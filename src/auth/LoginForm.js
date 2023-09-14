@@ -15,7 +15,7 @@ const SignInForm = () => {
     passwordConfirm: '',
   });
   const [errorMessage, setErrorMessage] = useState(null);
-  const [doesntHaveAccount, setDoesntHaveAccount] = useState(false);
+  const [haveAccount, setHaveAccount] = useState(true);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,7 +28,7 @@ const SignInForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const auth = getAuth();
-    if (doesntHaveAccount) {
+    if (!haveAccount) {
       if (formData.password !== formData.passwordConfirm) {
         setErrorMessage('Passwords do not match, please retype');
         return;
@@ -91,7 +91,7 @@ const SignInForm = () => {
           placeholder="Password"
           required
         />
-        {doesntHaveAccount && (
+        {!haveAccount && (
           <input
             type="password"
             name="passwordConfirm"
@@ -106,16 +106,14 @@ const SignInForm = () => {
             <p className={classes['error-message']}>{errorMessage}</p>
           </div>
         }
-        <button type="submit">
-          {doesntHaveAccount ? 'Sign up' : 'Log in'}
-        </button>
-        {!doesntHaveAccount ? (
+        <button type="submit">{haveAccount ? 'Log in' : 'Sign up'}</button>
+        {haveAccount ? (
           <span className={classes['account-title']}>
             No account?{' '}
             <button
               className={classes['create-login-btn']}
               type="button"
-              onClick={() => setDoesntHaveAccount(true)}
+              onClick={() => setHaveAccount(false)}
             >
               Create one
             </button>
@@ -126,7 +124,7 @@ const SignInForm = () => {
             <button
               className={classes['create-login-btn']}
               type="button"
-              onClick={() => setDoesntHaveAccount(false)}
+              onClick={() => setHaveAccount(true)}
             >
               Login here
             </button>
