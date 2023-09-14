@@ -43,7 +43,7 @@ const Header = () => {
         <div className={classes['drop-menu']} ref={menuRef}>
           <div
             className={classes['image-wrapper']}
-            onClick={() => setOpenMenu(true)}
+            onClick={() => setOpenMenu((c) => !c)}
           >
             <img
               alt="profile avatar"
@@ -58,12 +58,7 @@ const Header = () => {
               <li>Example</li>
               <li>Example</li>
               <li>
-                <button
-                  className={classes['sign-btn']}
-                  onClick={() => signOutHandler()}
-                >
-                  Sign Out
-                </button>
+                <button onClick={() => signOutHandler()}>Sign Out</button>
               </li>
             </ul>
           )}
