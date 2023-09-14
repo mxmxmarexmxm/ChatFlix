@@ -28,7 +28,6 @@ header a {
   color: #ffffff;
   cursor: pointer;
   font-family: 'Asap';
-  width: 100%;
 }
 
 .sign-btn:hover,
@@ -50,6 +49,9 @@ header a {
 
 .drop-menu ul {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
   top: 100%;
   color: white;
   background-color: #242526;
@@ -59,10 +61,26 @@ header a {
   min-width: 200px;
   border-radius: 20px;
   border: #484a4d 2px solid;
+  padding: 1rem;
 }
 
 .drop-menu li {
   padding: 1rem;
+  border: none;
+  border-radius: 15px;
+  font-size: 1rem;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: 'Asap';
+  width: 100%;
+}
+
+.drop-menu li button{
+ background-color: transparent;
+ color: inherit;
+ font-size: inherit;
+ font-family: inherit;
+ border: none;
 }
 
 @media only screen and (min-width: 756px) {
