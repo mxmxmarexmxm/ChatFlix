@@ -276,7 +276,7 @@ export const chatsData = [
   {
     chatName: 'Solaris',
     id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://www.shareicon.net/data/256x256/2015/09/17/102454_solaris_512x512.png',
+    logo: 'https://cdn.iconscout.com/icon/free/png-256/free-solaris-202411.png',
     tags: ['Operating Systems'],
   },
   {
