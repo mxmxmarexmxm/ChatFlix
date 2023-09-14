@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Firebase/context';
 import logo from '../../assets/img/logo.png';
 import { signOut } from '../../auth/AuthServices';
+import userPlaceholder from '../../assets/img/user-placeholder.png';
 
 const Header = () => {
   const { openModal, closeModal } = useModal();
@@ -34,7 +35,7 @@ const Header = () => {
             <div className={classes['image-wrapper']}>
               <img
                 alt="profile avatar"
-                src={user.photoURL}
+                src={user.photoURL || userPlaceholder}
                 referrerPolicy="no-referrer"
               />
             </div>

@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { AuthContext } from '../Firebase/context';
 import { BsArrowReturnLeft } from 'react-icons/bs';
+import userPlaceholder from '../assets/img/user-placeholder.png';
 import classes from './Message.module.css';
 
 function Message(props) {
@@ -13,7 +14,7 @@ function Message(props) {
       <div className={classes['image-wrapper']}>
         <img
           className={classes.profileImg}
-          src={photoURL}
+          src={photoURL || userPlaceholder}
           referrerPolicy="no-referrer"
           alt="user profile"
         />
@@ -30,7 +31,10 @@ function Message(props) {
           <p>{text}</p>
         </div>
       </div>
-      <BsArrowReturnLeft className={classes.icon} onClick={() => props.onReplay(props.message)} />
+      <BsArrowReturnLeft
+        className={classes.icon}
+        onClick={() => props.onReplay(props.message)}
+      />
     </div>
   );
 }
