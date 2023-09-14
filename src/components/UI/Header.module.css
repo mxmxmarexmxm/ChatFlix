@@ -22,12 +22,13 @@ header a {
 .sign-btn {
   background-color: #212324;
   border: none;
-  padding: .6rem;
+  padding: 0.6rem;
   border-radius: 15px;
   font-size: 1rem;
   color: #ffffff;
   cursor: pointer;
   font-family: 'Asap';
+  width: 100%;
 }
 
 .sign-btn:hover,
@@ -43,9 +44,25 @@ header a {
   overflow: hidden;
 }
 
-.sign-out-container {
-  display: flex;
-  align-items: center;
+.drop-menu {
+  position: relative;
+}
+
+.drop-menu ul {
+  position: absolute;
+  top: 100%;
+  color: white;
+  background-color: #242526;
+  right: 0;
+  text-decoration: none;
+  list-style: none;
+  min-width: 200px;
+  border-radius: 20px;
+  border: #484a4d 2px solid;
+}
+
+.drop-menu li {
+  padding: 1rem;
 }
 
 @media only screen and (min-width: 756px) {
