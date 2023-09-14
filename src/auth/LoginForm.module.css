@@ -59,4 +59,5 @@
 .error-message {
   color: rgb(235, 64, 64);
   font-size: 0.9rem;
+  max-width: 300px;
 }
