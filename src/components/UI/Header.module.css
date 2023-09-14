@@ -41,6 +41,7 @@ header a {
   border-radius: 50px;
   margin-left: 1rem;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .drop-menu {
@@ -75,12 +76,12 @@ header a {
   width: 100%;
 }
 
-.drop-menu li button{
- background-color: transparent;
- color: inherit;
- font-size: inherit;
- font-family: inherit;
- border: none;
+.drop-menu li button {
+  background-color: transparent;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  border: none;
 }
 
 @media only screen and (min-width: 756px) {
