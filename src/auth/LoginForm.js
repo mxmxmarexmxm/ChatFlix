@@ -42,9 +42,7 @@ const SignInForm = () => {
         })
         // TODO : HANDLE ERRROR
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(error);
+          setErrorMessage(error.message);
 
           // ..
         });
@@ -57,10 +55,9 @@ const SignInForm = () => {
           // ...
         })
         .catch((error) => {
-          // TODO : HANDLE ERRROR
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(error);
+          // const errorCode = error.code;
+          // const errorMessage = error.message;
+          setErrorMessage(error.message);
         });
     }
     // TODO : CLOSE MODAL
@@ -104,7 +101,11 @@ const SignInForm = () => {
             required
           />
         )}
-        {<p className={classes['error-message']}>{errorMessage}</p>}
+        {
+          <div className={classes.xx}>
+            <p className={classes['error-message']}>{errorMessage}</p>
+          </div>
+        }
         <button type="submit">
           {doesntHaveAccount ? 'Sign up' : 'Log in'}
         </button>
