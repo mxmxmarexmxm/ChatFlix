@@ -10,15 +10,23 @@
   width: 100px;
   aspect-ratio: 1/1;
   overflow: hidden;
+  border-radius: 50%;
+  background-color: white;
 }
 
 .profile-img-wrapper img {
   height: 100%;
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .user-card span {
   color: white;
   font-size: 2rem;
+}
+
+.img-uploader{
+  color: white;
+  display: flex;
+  flex-direction: column;
 }
