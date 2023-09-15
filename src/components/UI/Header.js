@@ -6,6 +6,7 @@ import logo from '../../assets/img/logo.png';
 import { signOut } from '../../auth/AuthServices';
 import userPlaceholder from '../../assets/img/user-placeholder.png';
 import LoginForm from '../../auth/LoginForm';
+import UserProfile from '../UserProfile';
 
 const Header = () => {
   const { openModal, closeModal } = useModal();
@@ -55,7 +56,11 @@ const Header = () => {
           </div>
           {openMenu && (
             <ul>
-              <li>Example</li>
+              <li>
+                <button onClick={() => openModal(<UserProfile />)}>
+                  Your Profile
+                </button>
+              </li>
               <li>Example</li>
               <li>Example</li>
               <li>Example</li>
