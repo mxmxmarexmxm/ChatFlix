@@ -8,6 +8,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 const UserProfile = () => {
   const { user } = useContext(AuthContext);
   const [newPhoto, setNewPhoto] = useState(null);
+  const [status, setStatus] = useState('');
   const storage = getStorage();
 
   const handleFileChange = (e) => {
@@ -29,14 +30,16 @@ const UserProfile = () => {
         storage,
         `profile-images/${user.uid}/${newPhoto.name}`
       );
+      setStatus('Please wait!');
 
       try {
         await uploadBytes(storageRef, newPhoto);
         const downloadURL = await getDownloadURL(storageRef);
         await updateProfile(user, { photoURL: downloadURL });
-        console.log('Profile picture updated.');
+        setStatus('Profile picture updated!');
       } catch (error) {
-        console.error('Error updating profile picture:', error);
+        console.log(error);
+        setStatus('Error updating profile picture');
       }
     }
   };
@@ -50,6 +53,7 @@ const UserProfile = () => {
         Change Profile Image
         <input type="file" accept="image/*" onChange={handleFileChange} />
       </div>
+      <p className={classes.status}>{status}</p>
       <span>{user.displayName}</span>
       <span>{user.email}</span>
     </div>
