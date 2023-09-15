@@ -8,17 +8,22 @@ export function useModal() {
 
 export function ModalProvider({ children }) {
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
 
-  const openModal = () => {
+  const openModal = (content) => {
+    setModalContent(content);
     setModalVisible(true);
   };
 
   const closeModal = () => {
+    setModalContent(null);
     setModalVisible(false);
   };
 
   return (
-    <ModalContext.Provider value={{ modalVisible, openModal, closeModal }}>
+    <ModalContext.Provider
+      value={{ modalVisible, openModal, closeModal, modalContent }}
+    >
       {children}
     </ModalContext.Provider>
   );

@@ -2,8 +2,8 @@ import React from 'react';
 import { useModal } from '../../context/ModalContext';
 import classes from './Modal.module.css';
 
-const Modal = (props) => {
-  const { modalVisible, closeModal } = useModal();
+const Modal = () => {
+  const { modalVisible, closeModal, modalContent } = useModal();
 
   return (
     modalVisible && (
@@ -12,7 +12,7 @@ const Modal = (props) => {
           <button onClick={closeModal} className={classes['close-button']}>
             x
           </button>
-          {props.children}
+          {modalContent}
         </div>
       </div>
     )
