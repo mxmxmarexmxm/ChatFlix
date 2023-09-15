@@ -16,6 +16,7 @@ import firebase from '../../Firebase/Firebase';
 import { AuthContext } from '../../Firebase/context';
 import 'firebase/compat/firestore';
 import { useModal } from '../../context/ModalContext';
+import LoginForm from '../../auth/LoginForm';
 const firestore = firebase.firestore();
 
 const Chat = (props) => {
@@ -102,7 +103,7 @@ const Chat = (props) => {
       scrollRef.current.scrollIntoView({ behavior: 'smooth' });
       setMessageText('');
     } else {
-      openModal();
+      openModal(<LoginForm />);
     }
     setMessageToReplay(null);
   };

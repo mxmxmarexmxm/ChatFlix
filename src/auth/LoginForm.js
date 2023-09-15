@@ -20,7 +20,6 @@ const SignInForm = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [haveAccount, setHaveAccount] = useState(true);
   const { closeModal } = useModal();
-  console.log(closeModal);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -5,6 +5,7 @@ import { AuthContext } from '../../Firebase/context';
 import logo from '../../assets/img/logo.png';
 import { signOut } from '../../auth/AuthServices';
 import userPlaceholder from '../../assets/img/user-placeholder.png';
+import LoginForm from '../../auth/LoginForm';
 
 const Header = () => {
   const { openModal, closeModal } = useModal();
@@ -65,7 +66,10 @@ const Header = () => {
           )}
         </div>
       ) : (
-        <button className={classes['sign-btn']} onClick={openModal}>
+        <button
+          className={classes['sign-btn']}
+          onClick={() => openModal(<LoginForm />)}
+        >
           Sign In
         </button>
       )}
