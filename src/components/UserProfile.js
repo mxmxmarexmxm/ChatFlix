@@ -4,6 +4,7 @@ import classes from './UserProfile.module.css';
 import userPlaceholder from '../assets/img/user-placeholder.png';
 import { updateProfile } from 'firebase/auth';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { MdFileUpload } from 'react-icons/md';
 
 const UserProfile = () => {
   const { user } = useContext(AuthContext);
@@ -46,12 +47,19 @@ const UserProfile = () => {
 
   return (
     <div className={classes['user-card']}>
-      <div className={classes['profile-img-wrapper']}>
-        <img src={user.photoURL || userPlaceholder} alt="Profile" />
-      </div>
-      <div className={classes['img-uploader']}>
-        Change Profile Image
-        <input type="file" accept="image/*" onChange={handleFileChange} />
+      <div className={classes['img-and-input-wrapper']}>
+        <div className={classes['profile-img-wrapper']}>
+          <img src={user.photoURL || userPlaceholder} alt="Profile" />
+        </div>
+        <div className={classes['img-uploader']}>
+          <MdFileUpload className={classes.iconsss} />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            placeholder="none"
+          />
+        </div>
       </div>
       <p className={classes.status}>{status}</p>
       <span>{user.displayName}</span>
