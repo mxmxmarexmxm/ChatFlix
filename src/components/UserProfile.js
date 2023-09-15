@@ -52,7 +52,7 @@ const UserProfile = () => {
           <img src={user.photoURL || userPlaceholder} alt="Profile" />
         </div>
         <div className={classes['img-uploader']}>
-          <MdFileUpload className={classes.iconsss} />
+          <MdFileUpload className={classes['upload-icon']} />
           <input
             type="file"
             accept="image/*"
