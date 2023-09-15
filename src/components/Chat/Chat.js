@@ -15,6 +15,7 @@ import notificationSound from '../../assets/Sound/notification-sound.mp3';
 import firebase from '../../Firebase/Firebase';
 import { AuthContext } from '../../Firebase/context';
 import 'firebase/compat/firestore';
+import { useModal } from '../../context/ModalContext';
 const firestore = firebase.firestore();
 
 const Chat = (props) => {
@@ -25,6 +26,7 @@ const Chat = (props) => {
   const [notify] = useSound(notificationSound);
   const { user } = useContext(AuthContext);
   const scrollRef = useRef();
+  const { openModal } = useModal();
 
   const {
     chat,
@@ -32,7 +34,6 @@ const Chat = (props) => {
     isFullScreen,
     showMessages,
     onClose,
-    onUnauthorizedTry,
     isFullScreenSideChat,
     onFullScreenToggle,
     onSelectChat,
@@ -101,7 +102,7 @@ const Chat = (props) => {
       scrollRef.current.scrollIntoView({ behavior: 'smooth' });
       setMessageText('');
     } else {
-      onUnauthorizedTry();
+      openModal();
     }
     setMessageToReplay(null);
   };

@@ -7,8 +7,6 @@ import FullScreen from './FullScreen';
 import ToggleChatHeadsBtn from '../components/UI/ToggleChatHeadsBtn';
 import Header from '../components/UI/Header';
 import useWindowDimensions from '../utils/useWindowWidth';
-import Modal from '../components/UI/Modal';
-import LoginForm from '../auth/LoginForm';
 
 const Home = () => {
   const [activeChatsBottom, setActiveChatsBottom] = useState([]);
@@ -135,7 +133,6 @@ const Home = () => {
   if (fullScreenChat) {
     return (
       <>
-        {/* TODO: HANDLE UNREGISTRATED USER */}
         <FullScreen
           onSelectChat={toggleFullScreenHandler}
           onFullScreenToggle={() => setFullScreenChat(null)}
@@ -149,11 +146,7 @@ const Home = () => {
 
   return (
     <>
-      {/* TODO: HANDLE UNREGISTRATED USER */}
       <Header />
-      <Modal>
-        <LoginForm />
-      </Modal>
       <div className={classes.container}>
         {rowTitles.map((title) => (
           <ChatRow
@@ -171,7 +164,6 @@ const Home = () => {
                   showMessages={showMessages}
                   chat={chat}
                   key={chat.id}
-                  // onUnauthorizedTry={() => setShowLoginModal(true)}
                   onClose={closeChatHandler}
                 />
               ))}

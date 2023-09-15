@@ -24,7 +24,6 @@ const FullScreen = (props) => {
           onFullScreenToggle={props.onFullScreenToggle}
           key={fullScreenChat.chatName}
           onClose={props.onClose}
-          onUnauthorizedTry={props.onUnauthorizedTry}
         />
       </div>
     </div>
