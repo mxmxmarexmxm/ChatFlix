@@ -1,9 +1,9 @@
 .message {
   display: flex;
   flex-wrap: wrap;
-  padding: .3rem;
+  padding: 0.3rem;
   align-items: center;
-  gap: .5rem;
+  gap: 0.5rem;
   position: relative;
 }
 
@@ -14,12 +14,11 @@
 .received {
 }
 
-
 .user-name {
   background-color: #161617;
-  color:#bcb9b9;
+  color: #bcb9b9;
   border: 1px solid #bcb9b9;
-  padding: .35rem .5rem;
+  padding: 0.35rem 0.5rem;
   border-radius: 15px;
   display: none;
   order: 1;
@@ -65,13 +64,18 @@
   color: #fff;
   border-radius: 1rem;
   margin-bottom: -1rem;
-  padding: .5rem;
+  padding: 0.5rem;
   padding-bottom: 1.1rem;
 }
 
 .icon {
   cursor: pointer;
-  color: white;
+  color: gray;
+  display: none;
+}
+
+.message:hover .icon {
+  display: block;
 }
 
 .text-wrapper {
@@ -80,10 +84,10 @@
   background-color: #495252;
   color: #fff;
   border-radius: 15px;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .replay-wrapper p:first-child {
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-style: italic;
 }
