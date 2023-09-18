@@ -259,6 +259,7 @@ const Chat = (props) => {
             value={messageText}
             onClick={markAllAsRead}
             onChange={(e) => setMessageText(e.target.value)}
+            autoFocus
           />
         </form>
       </div>
