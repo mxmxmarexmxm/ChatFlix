@@ -6,7 +6,7 @@ import classes from './Message.module.css';
 
 function Message(props) {
   const { user } = useContext(AuthContext);
-  const { text, uid, photoURL, replayTo } = props.message;
+  const { text, uid, photoURL, replayTo, displayName } = props.message;
   const messageSenderClass = uid === user?.uid ? 'sent' : 'received';
 
   return (
@@ -19,7 +19,7 @@ function Message(props) {
           alt="user profile"
         />
       </div>
-      <div className={classes['user-name']}>{props.message.displayName}</div>
+      <div className={classes['user-name']}>{displayName}</div>
       <div className={classes['mess-div']}>
         {replayTo && (
           <div className={classes['replay-wrapper']}>
