@@ -27,6 +27,7 @@ const Chat = (props) => {
   const [notify] = useSound(notificationSound);
   const { user } = useContext(AuthContext);
   const scrollRef = useRef();
+  const chatInput = useRef();
   const { openModal } = useModal();
 
   const {
@@ -134,6 +135,15 @@ const Chat = (props) => {
       window.removeEventListener('keydown', handleEsc);
     };
   }, []);
+
+  // Focus chat input 
+  useEffect(() => {
+    const focusInput = () => {
+      chatInput.current.focus();
+    };
+    
+    focusInput();
+  }, [messageToReplay, showChatMessages]);
 
   const toggleFullScreen = (event) => {
     event.stopPropagation();
@@ -259,7 +269,7 @@ const Chat = (props) => {
             value={messageText}
             onClick={markAllAsRead}
             onChange={(e) => setMessageText(e.target.value)}
-            autoFocus
+            ref={chatInput}
           />
         </form>
       </div>
