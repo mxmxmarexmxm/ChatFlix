@@ -19,31 +19,31 @@ const UserProfile = () => {
     }
   };
 
+  // Upload the image file to Firebase Storage
   useEffect(() => {
+    const handleUploadPhoto = async () => {
+      if (newPhoto) {
+        // Create a reference to the Firebase Storage location where you want to store the image
+        const storageRef = ref(
+          storage,
+          `profile-images/${user.uid}/${newPhoto.name}`
+        );
+        setStatus('Please wait!');
+
+        try {
+          await uploadBytes(storageRef, newPhoto);
+          const downloadURL = await getDownloadURL(storageRef);
+          await updateProfile(user, { photoURL: downloadURL });
+          setStatus('Profile picture updated!');
+        } catch (error) {
+          console.log(error);
+          setStatus('Error updating profile picture');
+        }
+      }
+    };
+    
     handleUploadPhoto();
   }, [newPhoto]);
-
-  // Upload the image file to Firebase Storage
-  const handleUploadPhoto = async () => {
-    if (newPhoto) {
-      // Create a reference to the Firebase Storage location where you want to store the image
-      const storageRef = ref(
-        storage,
-        `profile-images/${user.uid}/${newPhoto.name}`
-      );
-      setStatus('Please wait!');
-
-      try {
-        await uploadBytes(storageRef, newPhoto);
-        const downloadURL = await getDownloadURL(storageRef);
-        await updateProfile(user, { photoURL: downloadURL });
-        setStatus('Profile picture updated!');
-      } catch (error) {
-        console.log(error);
-        setStatus('Error updating profile picture');
-      }
-    }
-  };
 
   return (
     <div className={classes['user-card']}>
