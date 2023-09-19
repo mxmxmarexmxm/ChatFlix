@@ -150,6 +150,12 @@ const Chat = (props) => {
     onFullScreenToggle(chat.id);
   };
 
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [messages]);
+
   // Chat classes depending on chat size
   let chatBodyClass = showChatMessages
     ? classes['chat-body']
