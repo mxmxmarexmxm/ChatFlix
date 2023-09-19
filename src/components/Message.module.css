@@ -91,3 +91,12 @@
   font-size: 0.9rem;
   font-style: italic;
 }
+
+.replay-wrapper p:last-child {
+  font-size: 0.9rem;
+  white-space: nowrap;
+  max-width: 90%;
+  overflow: hidden;
+  margin-top: 0.2rem;
+  text-overflow: ellipsis;
+}
