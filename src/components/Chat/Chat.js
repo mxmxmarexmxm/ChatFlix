@@ -101,7 +101,7 @@ const Chat = (props) => {
           replayTo: messageToReplay,
         });
       }
-      scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight; // Scroll to the last message
       setMessageText('');
     } else {
       openModal(<LoginForm />);
@@ -233,6 +233,7 @@ const Chat = (props) => {
           className={`${classes['messages-container']} ${
             isFullScreen ? classes[`messages-container-full`] : ''
           }`}
+          ref={scrollRef}
         >
           {loading ? (
             <p className={classes['empty-chat']}>Loading...</p>
@@ -250,7 +251,6 @@ const Chat = (props) => {
               Start a conversation!
             </p>
           )}
-          <span ref={scrollRef}></span>
         </div>
         {messageToReplay && (
           <div className={classes['message-to-replay']}>
