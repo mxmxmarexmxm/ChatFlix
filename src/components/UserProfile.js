@@ -28,7 +28,7 @@ const UserProfile = () => {
           storage,
           `profile-images/${user.uid}/${newPhoto.name}`
         );
-        setStatus('Please wait!');
+        setStatus('Please wait...');
 
         try {
           await uploadBytes(storageRef, newPhoto);
