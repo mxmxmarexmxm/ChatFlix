@@ -72,6 +72,10 @@ form input {
   font-size: inherit;
 }
 
+form input:focus {
+  outline: unset;
+}
+
 form button {
   background-color: #242526;
   cursor: pointer;
