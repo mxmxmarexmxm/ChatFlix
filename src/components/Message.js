@@ -17,7 +17,7 @@ function Message(props) {
             className={classes.profileImg}
             src={photoURL || userPlaceholder}
             referrerPolicy="no-referrer"
-            alt="user profile"
+            alt={displayName}
           />
         </div>
       )}
