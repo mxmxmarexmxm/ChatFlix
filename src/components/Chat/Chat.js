@@ -136,12 +136,12 @@ const Chat = (props) => {
     };
   }, []);
 
-  // Focus chat input 
+  // Focus chat input
   useEffect(() => {
     const focusInput = () => {
-      chatInput.current.focus();
+      chatInput?.current?.focus();
     };
-    
+
     focusInput();
   }, [messageToReplay, showChatMessages]);
 
