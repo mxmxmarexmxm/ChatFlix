@@ -335,12 +335,6 @@
     tags: ['Code Editors'],
   },
   {
-    chatName: 'Atom',
-    // id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://avatars.githubusercontent.com/u/1089146?s=280&v=4',
-    tags: ['Code Editors'],
-  },
-  {
     chatName: 'TextMate',
     // id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
     logo: 'https://cdn.dribbble.com/users/3568/screenshots/1779577/textmate.jpg?compress=1&resize=400x300',
