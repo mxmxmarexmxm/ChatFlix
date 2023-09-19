@@ -50,7 +50,7 @@ const Chat = (props) => {
 
   // Get unread messages
   useEffect(() => {
-    const getUnredMessages = () => {
+    const getUnreadMessages = () => {
       if (user === null) {
         return;
       }
@@ -60,7 +60,7 @@ const Chat = (props) => {
 
       setUnreadMessages(unreadMessages);
     };
-    getUnredMessages();
+    getUnreadMessages();
   }, [messages, user]);
 
   // Get notification when message arrives
@@ -70,7 +70,7 @@ const Chat = (props) => {
     }
   }, [unreadMessages, notify]);
 
-  // Mark all previous messages as read when user click on input
+  // Mark all previous messages as read when user clicks on input
   const markAllAsRead = async () => {
     if (user) {
       await messageCollection.get().then((querySnapshot) => {
@@ -83,7 +83,7 @@ const Chat = (props) => {
     }
   };
 
-  // Send message if user is loged, otherwise alert to sign in.
+  // Send message if the user is logged in, otherwise alert to sign in.
   const sendMessage = async (e) => {
     e.preventDefault();
 
@@ -122,7 +122,7 @@ const Chat = (props) => {
     }
   }, [chat.chatName, showMessages]);
 
-  // Minimize all chats in active bottom container at Esc button
+  // Minimize all chats in the active bottom container at the Esc button
   useEffect(() => {
     const handleEsc = (event) => {
       if (event.keyCode === 27) {
@@ -168,7 +168,7 @@ const Chat = (props) => {
     );
   }
 
-  // Chat head if chat is in right chat container
+  // Chat head if chat is in the right chat container
   if (isChatHead) {
     return (
       <ChatHead
@@ -247,7 +247,7 @@ const Chat = (props) => {
           ) : (
             <p className={classes['empty-chat']}>
               There are no messages yet! <br />
-              Start conversation!
+              Start a conversation!
             </p>
           )}
           <span ref={scrollRef}></span>
