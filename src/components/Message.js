@@ -11,14 +11,16 @@ function Message(props) {
 
   return (
     <div className={`${classes.message} ${classes[messageSenderClass]}`}>
-      <div className={classes['image-wrapper']}>
-        <img
-          className={classes.profileImg}
-          src={photoURL || userPlaceholder}
-          referrerPolicy="no-referrer"
-          alt="user profile"
-        />
-      </div>
+      {messageSenderClass === 'received' && (
+        <div className={classes['image-wrapper']}>
+          <img
+            className={classes.profileImg}
+            src={photoURL || userPlaceholder}
+            referrerPolicy="no-referrer"
+            alt="user profile"
+          />
+        </div>
+      )}
       <div className={classes['user-name']}>{displayName}</div>
       <div className={classes['mess-div']}>
         {replayTo && (

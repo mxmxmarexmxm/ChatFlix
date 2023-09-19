@@ -32,13 +32,13 @@
   display: block;
 }
 
-.sent .image-wrapper:hover + .user-name {
+/* .sent .image-wrapper:hover + .user-name {
   position: absolute;
   bottom: 100%;
   z-index: 100;
   right: 0;
   display: block;
-}
+} */
 
 .image-wrapper {
   width: 45px;
