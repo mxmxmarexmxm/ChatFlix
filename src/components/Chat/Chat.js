@@ -215,7 +215,7 @@ const Chat = (props) => {
           <h2>{chat.chatName}</h2>
         </div>
         <div className={classes[`button-wrapper`]}>
-          {!showChatMessages && unreadMessages > 0 && (
+          {unreadMessages > 0 && (
             <div className={classes[`unread-messages-badge`]}>
               {unreadMessages}
             </div>
