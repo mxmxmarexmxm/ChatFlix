@@ -3,10 +3,13 @@ import { AuthContext } from '../Firebase/context';
 import { BsArrowReturnLeft } from 'react-icons/bs';
 import userPlaceholder from '../assets/img/user-placeholder.png';
 import classes from './Message.module.css';
+import { useModal } from '../context/ModalContext';
+import UserProfile from './UserProfile';
 
 function Message(props) {
   const { user } = useContext(AuthContext);
-  const { text, uid, photoURL, replayTo, displayName } = props.message;
+  const { openModal } = useModal();
+  const { text, uid, photoURL, replayTo, displayName, email } = props.message;
   const messageSenderClass = uid === user?.uid ? 'sent' : 'received';
 
   return (
@@ -15,7 +18,12 @@ function Message(props) {
       id={props.message.id}
     >
       {messageSenderClass === 'received' && (
-        <div className={classes['image-wrapper']}>
+        <div
+          className={classes['image-wrapper']}
+          onClick={() =>
+            openModal(<UserProfile user={{ displayName, photoURL, email }} />)
+          }
+        >
           <img
             className={classes.profileImg}
             src={photoURL || userPlaceholder}

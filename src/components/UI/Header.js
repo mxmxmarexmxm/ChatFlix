@@ -57,7 +57,7 @@ const Header = () => {
           {openMenu && (
             <ul>
               <li>
-                <button onClick={() => openModal(<UserProfile />)}>
+                <button onClick={() => openModal(<UserProfile user={user} />)}>
                   Your Profile
                 </button>
               </li>

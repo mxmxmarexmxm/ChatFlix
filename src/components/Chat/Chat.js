@@ -103,7 +103,7 @@ const Chat = (props) => {
     e.preventDefault();
 
     if (user) {
-      const { uid, photoURL, displayName } = user;
+      const { uid, photoURL, displayName, email } = user;
       if (messageText.trim() !== '') {
         await messageCollection.add({
           text: messageText,
@@ -114,6 +114,7 @@ const Chat = (props) => {
           displayName,
           readBy: [uid],
           replayTo: messageToReplay,
+          email,
         });
       }
       scrollToBottom();
