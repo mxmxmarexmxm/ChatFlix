@@ -6,7 +6,6 @@ import classes from './Message.module.css';
 
 function Message(props) {
   const { user } = useContext(AuthContext);
-  console.log(props.message.id);
   const { text, uid, photoURL, replayTo, displayName } = props.message;
   const messageSenderClass = uid === user?.uid ? 'sent' : 'received';
 
