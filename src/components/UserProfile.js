@@ -40,7 +40,7 @@ const UserProfile = (props) => {
         }
       }
     };
-    
+
     handleUploadPhoto();
   }, [newPhoto]);
 
@@ -50,15 +50,17 @@ const UserProfile = (props) => {
         <div className={classes['profile-img-wrapper']}>
           <img src={user.photoURL || userPlaceholder} alt="Profile" />
         </div>
-        <div className={classes['img-uploader']}>
-          <MdFileUpload className={classes['upload-icon']} />
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            placeholder="none"
-          />
-        </div>
+        {user.uid && (
+          <div className={classes['img-uploader']}>
+            <MdFileUpload className={classes['upload-icon']} />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              placeholder="none"
+            />
+          </div>
+        )}
       </div>
       <p className={classes.status}>{status}</p>
       <span>{user.displayName}</span>
