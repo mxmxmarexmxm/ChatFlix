@@ -73,6 +73,11 @@ const Chat = (props) => {
     scrollToBottom();
   }, [loading, showChatMessages]);
 
+  const scrollToReplayedMessage = (id) => {
+    const message = document.getElementById(id);
+    message.scrollIntoView({ behavior: 'smooth' });
+  };
+
   // Get notification when message arrives
   useEffect(() => {
     if (unreadMessages > 0) {
@@ -253,6 +258,9 @@ const Chat = (props) => {
                 key={message.id}
                 message={message}
                 onReplay={() => setMessageToReplay(message)}
+                scrollToReplayedMessage={() =>
+                  scrollToReplayedMessage(message.replayTo.id)
+                }
               />
             ))
           ) : (

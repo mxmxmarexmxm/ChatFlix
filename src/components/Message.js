@@ -6,11 +6,15 @@ import classes from './Message.module.css';
 
 function Message(props) {
   const { user } = useContext(AuthContext);
+  console.log(props.message.id);
   const { text, uid, photoURL, replayTo, displayName } = props.message;
   const messageSenderClass = uid === user?.uid ? 'sent' : 'received';
 
   return (
-    <div className={`${classes.message} ${classes[messageSenderClass]}`}>
+    <div
+      className={`${classes.message} ${classes[messageSenderClass]}`}
+      id={props.message.id}
+    >
       {messageSenderClass === 'received' && (
         <div className={classes['image-wrapper']}>
           <img
@@ -24,7 +28,10 @@ function Message(props) {
       <div className={classes['user-name']}>{displayName}</div>
       <div className={classes['mess-div']}>
         {replayTo && (
-          <div className={classes['replay-wrapper']}>
+          <div
+            className={classes['replay-wrapper']}
+            onClick={props.scrollToReplayedMessage}
+          >
             {<p>Replayed to: {replayTo.displayName}</p>}
             {<p>{replayTo.text}</p>}
           </div>
