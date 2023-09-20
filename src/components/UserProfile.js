@@ -1,13 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../Firebase/context';
+import React, { useEffect, useState } from 'react';
 import classes from './UserProfile.module.css';
 import userPlaceholder from '../assets/img/user-placeholder.png';
 import { updateProfile } from 'firebase/auth';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { MdFileUpload } from 'react-icons/md';
 
-const UserProfile = () => {
-  const { user } = useContext(AuthContext);
+const UserProfile = (props) => {
+  const { user } = props;
   const [newPhoto, setNewPhoto] = useState(null);
   const [status, setStatus] = useState('');
   const storage = getStorage();
