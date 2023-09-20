@@ -32,7 +32,6 @@ img {
 }
 
 .badge-wrapper {
-  padding: .3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,20 +40,22 @@ img {
   cursor: pointer;
   background-color: #242526;
   border: none;
+  height: 25px;
+  width: 25px;
 }
 
 .icon-side {
-  font-size: 1rem;
+  padding: .2rem;
+}
+
+.unread-messages-badge {
+  color: #ea3939;
+  border-radius: 50px;
 }
 
 .badges-container-side {
   display: flex;
   gap: 5px;
-}
-
-.unread-messages-badge {
-  color: #ea3939;
-  font-weight: bold;
 }
 
 @media only screen and (min-width: 756px) {
