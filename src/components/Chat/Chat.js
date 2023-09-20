@@ -63,6 +63,16 @@ const Chat = (props) => {
     getUnreadMessages();
   }, [messages, user]);
 
+  const scrollToBottom = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [loading, showChatMessages]);
+
   // Get notification when message arrives
   useEffect(() => {
     if (unreadMessages > 0) {
@@ -101,7 +111,7 @@ const Chat = (props) => {
           replayTo: messageToReplay,
         });
       }
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight; // Scroll to the last message
+      scrollToBottom();
       setMessageText('');
     } else {
       openModal(<LoginForm />);
@@ -149,12 +159,6 @@ const Chat = (props) => {
     event.stopPropagation();
     onFullScreenToggle(chat.id);
   };
-
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }
-  }, [messages]);
 
   // Chat classes depending on chat size
   let chatBodyClass = showChatMessages
