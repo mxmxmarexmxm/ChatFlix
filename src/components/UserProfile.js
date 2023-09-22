@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import classes from './UserProfile.module.css';
 import userPlaceholder from '../assets/img/user-placeholder.png';
 import { updateProfile } from 'firebase/auth';
@@ -9,6 +9,7 @@ import { AiTwotoneEdit } from 'react-icons/ai';
 const UserProfile = (props) => {
   const { user } = props;
   const [newPhoto, setNewPhoto] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null); // Store the image preview
   const [newUsername, setNewUsername] = useState(user.displayName);
   const [isEditing, setIsEditing] = useState(false);
   const [status, setStatus] = useState('');
@@ -18,38 +19,42 @@ const UserProfile = (props) => {
     const file = e.target.files[0];
     if (file) {
       setNewPhoto(file);
+      // Display image preview
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setImagePreview(e.target.result);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
   const toggleEditMode = () => {
-    setIsEditing(!isEditing); // Toggle edit mode
+    setIsEditing(!isEditing);
+    if (isEditing) {
+      setImagePreview(user.photoURL || userPlaceholder); // Clear image preview when exiting edit mode
+    }
   };
 
   // Upload the image file to Firebase Storage
-  useEffect(() => {
-    const handleUploadPhoto = async () => {
-      if (newPhoto) {
-        // Create a reference to the Firebase Storage location where you want to store the image
-        const storageRef = ref(
-          storage,
-          `profile-images/${user.uid}/${newPhoto.name}`
-        );
-        setStatus('Please wait...');
+  const uploadImage = async () => {
+    if (newPhoto) {
+      const storageRef = ref(
+        storage,
+        `profile-images/${user.uid}/${newPhoto.name}`
+      );
+      setStatus('Please wait...');
 
-        try {
-          await uploadBytes(storageRef, newPhoto);
-          const downloadURL = await getDownloadURL(storageRef);
-          await updateProfile(user, { photoURL: downloadURL });
-          setStatus('Profile picture updated!');
-        } catch (error) {
-          console.log(error);
-          setStatus('Error updating profile picture');
-        }
+      try {
+        await uploadBytes(storageRef, newPhoto);
+        const downloadURL = await getDownloadURL(storageRef);
+        await updateProfile(user, { photoURL: downloadURL });
+        setStatus('Profile picture updated!');
+      } catch (error) {
+        console.log(error);
+        setStatus('Error updating profile picture');
       }
-    };
-
-    handleUploadPhoto();
-  }, [newPhoto]);
+    }
+  };
 
   const updateUserProfile = async () => {
     if (newUsername.length < 3) {
@@ -59,7 +64,10 @@ const UserProfile = (props) => {
     try {
       await updateProfile(user, { displayName: newUsername });
       setStatus('Username updated!');
-      toggleEditMode(); // Turn off edit mode after updating
+      toggleEditMode();
+      if (isEditing) {
+        uploadImage();
+      }
     } catch (error) {
       console.error(error);
       setStatus('Error updating username');
@@ -70,9 +78,12 @@ const UserProfile = (props) => {
     <div className={classes['user-card']}>
       <div className={classes['img-and-input-wrapper']}>
         <div className={classes['profile-img-wrapper']}>
-          <img src={user.photoURL || userPlaceholder} alt="Profile" />
+          <img
+            src={imagePreview || user.photoURL || userPlaceholder}
+            alt="Profile"
+          />
         </div>
-        {user.uid && (
+        {user.uid && isEditing && (
           <div className={classes['img-uploader']}>
             <MdFileUpload className={classes['upload-icon']} />
             <input
@@ -99,7 +110,7 @@ const UserProfile = (props) => {
             'Cancel'
           ) : (
             <>
-              Update profile <AiTwotoneEdit />
+              Edit Profile <AiTwotoneEdit />
             </>
           )}
         </button>
