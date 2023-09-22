@@ -69,13 +69,15 @@
   max-width: 300px;
 }
 
-.user-card input[type=text] {
+.user-card input[type='text'] {
   background-color: transparent;
   color: white;
   font-size: 1.5rem;
+  border-radius: 1rem;
+  padding: 0.1rem 0.5rem;
 }
 
-.user-card input[type=text]:disabled {
+.user-card input[type='text']:disabled {
   display: flex;
   text-align: center;
   border: none;
