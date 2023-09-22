@@ -52,6 +52,10 @@ const UserProfile = (props) => {
   }, [newPhoto]);
 
   const updateUserProfile = async () => {
+    if (newUsername.length < 3) {
+      setStatus('Username must have at least 3 characters');
+      return;
+    }
     try {
       await updateProfile(user, { displayName: newUsername });
       setStatus('Username updated!');
