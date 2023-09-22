@@ -4,6 +4,8 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  font-size: 1.5rem;
+  color: white;
 }
 
 .profile-img-wrapper {
@@ -18,11 +20,6 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
-}
-
-.user-card span {
-  color: white;
-  font-size: 2rem;
 }
 
 .img-and-input-wrapper {
@@ -68,5 +65,34 @@
 
 .status {
   color: white;
+  font-size: 1rem;
   max-width: 300px;
+}
+
+.user-card input[type=text] {
+  background-color: transparent;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.user-card input[type=text]:disabled {
+  display: flex;
+  text-align: center;
+  border: none;
+}
+
+.buttons-wrapper {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.buttons-wrapper button {
+  padding: 0.5rem 1rem;
+  background-color: rgb(24, 23, 23);
+  font-size: 1rem;
+  border-radius: 5px;
+  border: black;
+  color: white;
+  cursor: pointer;
 }

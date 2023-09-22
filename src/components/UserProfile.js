@@ -4,10 +4,13 @@ import userPlaceholder from '../assets/img/user-placeholder.png';
 import { updateProfile } from 'firebase/auth';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { MdFileUpload } from 'react-icons/md';
+import { AiTwotoneEdit } from 'react-icons/ai';
 
 const UserProfile = (props) => {
   const { user } = props;
   const [newPhoto, setNewPhoto] = useState(null);
+  const [newUsername, setNewUsername] = useState(user.displayName);
+  const [isEditing, setIsEditing] = useState(false);
   const [status, setStatus] = useState('');
   const storage = getStorage();
 
@@ -16,6 +19,10 @@ const UserProfile = (props) => {
     if (file) {
       setNewPhoto(file);
     }
+  };
+
+  const toggleEditMode = () => {
+    setIsEditing(!isEditing); // Toggle edit mode
   };
 
   // Upload the image file to Firebase Storage
@@ -44,6 +51,17 @@ const UserProfile = (props) => {
     handleUploadPhoto();
   }, [newPhoto]);
 
+  const updateUserProfile = async () => {
+    try {
+      await updateProfile(user, { displayName: newUsername });
+      setStatus('Username updated!');
+      toggleEditMode(); // Turn off edit mode after updating
+    } catch (error) {
+      console.error(error);
+      setStatus('Error updating username');
+    }
+  };
+
   return (
     <div className={classes['user-card']}>
       <div className={classes['img-and-input-wrapper']}>
@@ -63,8 +81,26 @@ const UserProfile = (props) => {
         )}
       </div>
       <p className={classes.status}>{status}</p>
-      <span>{user.displayName}</span>
+      <input
+        type="text"
+        value={newUsername}
+        onChange={(e) => setNewUsername(e.target.value)}
+        placeholder="Enter new username"
+        disabled={!isEditing}
+      />
       <span>{user.email}</span>
+      <div className={classes['buttons-wrapper']}>
+        <button onClick={toggleEditMode}>
+          {isEditing ? (
+            'Cancel'
+          ) : (
+            <>
+              Update profile <AiTwotoneEdit />
+            </>
+          )}
+        </button>
+        {isEditing && <button onClick={updateUserProfile}>Save</button>}
+      </div>
     </div>
   );
 };
