@@ -12,7 +12,7 @@ const SideChatFullScreen = (props) => {
         <div className={classes['logo-container-side']}>
           <img
             src={logo}
-            alt="img"
+            alt={chatName}
             onError={(e) => {
               e.target.src = placeholder;
             }}
