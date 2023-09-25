@@ -83,7 +83,7 @@ const UserProfile = (props) => {
             alt="Profile"
           />
         </div>
-        {user.uid && isEditing && (
+        {isEditing && (
           <div className={classes['img-uploader']}>
             <Upload className={classes['upload-icon']} />
             <input
@@ -104,18 +104,20 @@ const UserProfile = (props) => {
         disabled={!isEditing}
       />
       <span>{user.email}</span>
-      <div className={classes['buttons-wrapper']}>
-        <button onClick={toggleEditMode}>
-          {isEditing ? (
-            'Cancel'
-          ) : (
-            <>
-              Edit Profile <Edit height="15px" />
-            </>
-          )}
-        </button>
-        {isEditing && <button onClick={updateUserProfile}>Save</button>}
-      </div>
+      {user.uid && (
+        <div className={classes['buttons-wrapper']}>
+          <button onClick={toggleEditMode}>
+            {isEditing ? (
+              'Cancel'
+            ) : (
+              <>
+                Edit Profile <Edit height="15px" />
+              </>
+            )}
+          </button>
+          {isEditing && <button onClick={updateUserProfile}>Save</button>}
+        </div>
+      )}
     </div>
   );
 };
