@@ -11,7 +11,7 @@ import firebase from '../../Firebase/Firebase';
 import { AuthContext } from '../../Firebase/context';
 import 'firebase/compat/firestore';
 import { useModal } from '../../context/ModalContext';
-import LoginForm from '../../auth/LoginForm';
+import AuthForm from '../../auth/AuthForm';
 import { Close } from '../../assets/icons/Close';
 import { FullScreen } from '../../assets/icons/FullScreen';
 import { FullScreenExit } from '../../assets/icons/FullScreenExit';
@@ -115,7 +115,7 @@ const Chat = (props) => {
       scrollToBottom();
       setMessageText('');
     } else {
-      openModal(<LoginForm />);
+      openModal(<AuthForm />);
     }
     setMessageToReplay(null);
   };

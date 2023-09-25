@@ -5,7 +5,7 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from 'firebase/auth';
-import classes from './LoginForm.module.css';
+import classes from './AuthForm.module.css';
 import { addUserToFirestore, signInWithGoogle } from './AuthServices';
 import { useModal } from '../context/ModalContext';
 import { Google } from '../assets/icons/Google';
