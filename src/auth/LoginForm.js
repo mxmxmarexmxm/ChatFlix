@@ -6,9 +6,9 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import classes from './LoginForm.module.css';
-import { FcGoogle } from 'react-icons/fc';
 import { signInWithGoogle } from './AuthServices';
 import { useModal } from '../context/ModalContext';
+import { Google } from '../assets/icons/Google';
 
 const SignInForm = () => {
   const [formData, setFormData] = useState({
@@ -74,7 +74,7 @@ const SignInForm = () => {
         className={classes['continue-btn']}
         onClick={() => signInWithGoogle()}
       >
-        <FcGoogle /> Continue with Google
+        <Google height="20px" /> Continue with Google
       </button>
       <span>or</span>
       <form onSubmit={handleSubmit}>

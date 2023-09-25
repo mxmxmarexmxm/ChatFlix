@@ -1,7 +1,7 @@
 import React from 'react';
-import { AiOutlineClose } from 'react-icons/ai';
 import classes from './SideChatFullScreen.module.css';
 import placeholder from '../assets/img/placeholder.png';
+import { Close } from '../assets/icons/Close';
 
 const SideChatFullScreen = (props) => {
   const { onSelectChat, logo, chatName, unreadMessages, onClose } = props;
@@ -32,7 +32,7 @@ const SideChatFullScreen = (props) => {
           </div>
         )}
         <div className={classes['badge-wrapper']} onClick={onClose}>
-          <AiOutlineClose className={classes['icon-side']} />
+          <Close height="20px" className={classes['icon-side']} fill="gray" />
         </div>
       </div>
     </div>

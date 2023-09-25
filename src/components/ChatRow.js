@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import classes from './ChatRow.module.css';
-import { FaGreaterThan, FaLessThan } from 'react-icons/fa';
+import { LeftArrow } from '../assets/icons/LeftArrow';
+import { RightArrow } from '../assets/icons/RightArrow';
 import { chatsData } from '../data/data';
 import placeholder from '../assets/img/placeholder.png';
 
@@ -37,7 +38,7 @@ const ChatRow = (props) => {
       <h2 className={classes['row-title']}>{rowTitle}</h2>
       <div className={classes['row-body']}>
         <button onClick={() => scrollRowHandler(-200)}>
-          {haveScrool && <FaLessThan />}
+          {haveScrool && <LeftArrow width="50px" fill="gray" />}
         </button>
         <div ref={chatRowRef} className={classes.chats}>
           {chats.map((chat) => (
@@ -58,7 +59,7 @@ const ChatRow = (props) => {
         </div>
         {haveScrool && (
           <button onClick={() => scrollRowHandler(200)}>
-            <FaGreaterThan />
+            <RightArrow width="50px" fill="gray" />
           </button>
         )}
       </div>

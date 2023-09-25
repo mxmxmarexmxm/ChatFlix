@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { AuthContext } from '../Firebase/context';
-import { BsArrowReturnLeft } from 'react-icons/bs';
 import userPlaceholder from '../assets/img/user-placeholder.png';
 import classes from './Message.module.css';
 import { useModal } from '../context/ModalContext';
 import UserProfile from './UserProfile';
+import { Replay } from '../assets/icons/Replay';
 
 function Message(props) {
   const { user } = useContext(AuthContext);
@@ -47,7 +47,12 @@ function Message(props) {
           <p>{text}</p>
         </div>
       </div>
-      <BsArrowReturnLeft className={classes.icon} onClick={props.onReplay} />
+      <Replay
+        height="15px"
+        fill="gray"
+        className={classes.icon}
+        onClick={props.onReplay}
+      />
     </div>
   );
 }

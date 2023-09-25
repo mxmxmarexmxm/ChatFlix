@@ -2,11 +2,6 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import classes from './Chat.module.css';
 import placeholder from '../../assets/img/placeholder.png';
-import {
-  AiOutlineClose,
-  AiOutlineFullscreen,
-  AiOutlineFullscreenExit,
-} from 'react-icons/ai';
 import ChatHead from './ChatHead';
 import SideChatFullScreen from '../SideChatFullScreen';
 import Message from '../Message';
@@ -17,6 +12,9 @@ import { AuthContext } from '../../Firebase/context';
 import 'firebase/compat/firestore';
 import { useModal } from '../../context/ModalContext';
 import LoginForm from '../../auth/LoginForm';
+import { Close } from '../../assets/icons/Close';
+import { FullScreen } from '../../assets/icons/FullScreen';
+import { FullScreenExit } from '../../assets/icons/FullScreenExit';
 const firestore = firebase.firestore();
 
 const Chat = (props) => {
@@ -231,16 +229,16 @@ const Chat = (props) => {
             onClick={toggleFullScreen}
           >
             {isFullScreen ? (
-              <AiOutlineFullscreenExit className={classes.icon} />
+              <FullScreenExit height="20px" className={classes.icon} />
             ) : (
-              <AiOutlineFullscreen className={classes.icon} />
+              <FullScreen height="18px" className={classes.icon} />
             )}
           </div>
           <div
             className={classes['icon-btn-wrapper']}
             onClick={() => onClose(chat.id)}
           >
-            <AiOutlineClose className={classes.icon} />
+            <Close height="18px" className={classes.icon} />
           </div>
         </div>
       </div>
@@ -277,8 +275,9 @@ const Chat = (props) => {
               <p>Replying to {messageToReplay.displayName}</p>
               <p className={classes['replay-text']}>{messageToReplay.text}</p>
             </div>
-            <AiOutlineClose
+            <Close
               className={classes.icon}
+              height="15px"
               onClick={() => setMessageToReplay(null)}
             />
           </div>

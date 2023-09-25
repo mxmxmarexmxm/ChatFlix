@@ -1,7 +1,7 @@
 import React from 'react';
-import { AiOutlineClose } from 'react-icons/ai';
 import classes from './ChatHead.module.css';
 import placehoder from '../../assets/img/placeholder.png';
+import { Close } from '../../assets/icons/Close';
 
 const ChatHead = (props) => {
   const { logo, unreadMessages, onSelectChat, onClose } = props;
@@ -18,7 +18,8 @@ const ChatHead = (props) => {
           className={classes['icon-wrapper']}
           onClick={(e) => e.stopPropagation()}
         >
-          <AiOutlineClose
+          <Close
+            height="15px"
             onClick={onClose}
             className={classes['close-icon-mini']}
           />

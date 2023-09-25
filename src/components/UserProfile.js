@@ -3,8 +3,8 @@ import classes from './UserProfile.module.css';
 import userPlaceholder from '../assets/img/user-placeholder.png';
 import { updateProfile } from 'firebase/auth';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { MdFileUpload } from 'react-icons/md';
-import { AiTwotoneEdit } from 'react-icons/ai';
+import { Edit } from '../assets/icons/Edit';
+import { Upload } from '../assets/icons/Upload';
 
 const UserProfile = (props) => {
   const { user } = props;
@@ -85,7 +85,7 @@ const UserProfile = (props) => {
         </div>
         {user.uid && isEditing && (
           <div className={classes['img-uploader']}>
-            <MdFileUpload className={classes['upload-icon']} />
+            <Upload className={classes['upload-icon']} />
             <input
               type="file"
               accept="image/*"
@@ -110,7 +110,7 @@ const UserProfile = (props) => {
             'Cancel'
           ) : (
             <>
-              Edit Profile <AiTwotoneEdit />
+              Edit Profile <Edit height="15px" />
             </>
           )}
         </button>
