@@ -15,9 +15,9 @@ export const Close = ({ ...props }) => {
           id="Vector"
           d="M21 21L12 12M12 12L3 3M12 12L21.0001 3M12 12L3 21.0001"
           stroke="gray"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
     </svg>

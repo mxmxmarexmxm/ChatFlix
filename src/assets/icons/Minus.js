@@ -12,9 +12,9 @@ export const Minus = ({ ...props }) => {
       <path
         d="M6 12L18 12"
         stroke="gray"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
