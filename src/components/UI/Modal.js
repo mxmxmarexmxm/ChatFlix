@@ -1,6 +1,7 @@
 import React from 'react';
 import { useModal } from '../../context/ModalContext';
 import classes from './Modal.module.css';
+import { Close } from '../../assets/icons/Close';
 
 const Modal = () => {
   const { modalVisible, closeModal, modalContent } = useModal();
@@ -10,7 +11,7 @@ const Modal = () => {
       <div className={classes.modal}>
         <div className={classes['modal-content']}>
           <button onClick={closeModal} className={classes['close-button']}>
-            x
+            <Close height="20px" />
           </button>
           {modalContent}
         </div>
