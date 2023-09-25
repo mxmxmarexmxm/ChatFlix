@@ -6,7 +6,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import classes from './LoginForm.module.css';
-import { signInWithGoogle } from './AuthServices';
+import { addUserToFirestore, signInWithGoogle } from './AuthServices';
 import { useModal } from '../context/ModalContext';
 import { Google } from '../assets/icons/Google';
 
@@ -43,8 +43,8 @@ const SignInForm = () => {
           updateProfile(user, {
             displayName: formData.displayName,
           }).then(() => {
+            addUserToFirestore(user); // Pass the user and display name
             closeModal();
-            console.log(user);
           });
           // ...
         })
