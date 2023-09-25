@@ -10,7 +10,7 @@ import { addUserToFirestore, signInWithGoogle } from './AuthServices';
 import { useModal } from '../context/ModalContext';
 import { Google } from '../assets/icons/Google';
 
-const SignInForm = () => {
+const AuthForm = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -148,4 +148,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default AuthForm;
