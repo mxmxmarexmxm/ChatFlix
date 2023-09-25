@@ -37,7 +37,7 @@ const ChatRow = (props) => {
     <div className={classes['chat-row-container']}>
       <h2 className={classes['row-title']}>{rowTitle}</h2>
       <div className={classes['row-body']}>
-        <button onClick={() => scrollRowHandler(-200)}>
+        <button onClick={() => scrollRowHandler(-200)} aria-label="Scroll Left">
           {haveScrool && <LeftArrow width="50px" fill="gray" />}
         </button>
         <div ref={chatRowRef} className={classes.chats}>
@@ -58,7 +58,10 @@ const ChatRow = (props) => {
           ))}
         </div>
         {haveScrool && (
-          <button onClick={() => scrollRowHandler(200)}>
+          <button
+            onClick={() => scrollRowHandler(200)}
+            aria-label="Scroll Right"
+          >
             <RightArrow width="50px" fill="gray" />
           </button>
         )}
