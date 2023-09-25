@@ -43,12 +43,11 @@ const AuthForm = () => {
           updateProfile(user, {
             displayName: formData.displayName,
           }).then(() => {
-            addUserToFirestore(user); // Pass the user and display name
+            addUserToFirestore(user);
             closeModal();
           });
           // ...
         })
-        // TODO : HANDLE ERRROR
         .catch((error) => {
           setErrorMessage(error.message);
         });
@@ -60,8 +59,6 @@ const AuthForm = () => {
           console.log(user);
         })
         .catch((error) => {
-          // const errorCode = error.code;
-          // const errorMessage = error.message;
           setErrorMessage(error.message);
         });
     }
