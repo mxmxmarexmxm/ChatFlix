@@ -1,19 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './UserProfile.module.css';
 import userPlaceholder from '../assets/img/user-placeholder.png';
 import { updateProfile } from 'firebase/auth';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { Edit } from '../assets/icons/Edit';
 import { Upload } from '../assets/icons/Upload';
+import {
+  getUserDataFromFirestore,
+  updateUserDataInFirestore,
+} from '../auth/AuthServices';
 
 const UserProfile = (props) => {
-  const { user } = props;
+  const { uid, personalProfile } = props;
+  const [user, setUser] = useState(null);
   const [newPhoto, setNewPhoto] = useState(null);
   const [imagePreview, setImagePreview] = useState(null); // Store the image preview
-  const [newUsername, setNewUsername] = useState(user.displayName);
+  const [newUsername, setNewUsername] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [status, setStatus] = useState('');
   const storage = getStorage();
+
+  useEffect(() => {
+    // Fetch user data from when the component mounts
+    const fetchUserData = async () => {
+      if (personalProfile) {
+        setUser(personalProfile);
+        setNewUsername(personalProfile.displayName);
+        return;
+      }
+      const userData = await getUserDataFromFirestore(uid);
+      if (userData) {
+        setUser(userData);
+        setNewUsername(userData.displayName);
+      }
+    };
+    fetchUserData();
+  }, [uid, personalProfile]);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -48,6 +70,7 @@ const UserProfile = (props) => {
         await uploadBytes(storageRef, newPhoto);
         const downloadURL = await getDownloadURL(storageRef);
         await updateProfile(user, { photoURL: downloadURL });
+        await updateUserDataInFirestore(user.uid, { photoURL: downloadURL });
         setStatus('Profile picture updated!');
       } catch (error) {
         console.log(error);
@@ -63,11 +86,10 @@ const UserProfile = (props) => {
     }
     try {
       await updateProfile(user, { displayName: newUsername });
+      await updateUserDataInFirestore(user.uid, { displayName: newUsername });
       setStatus('Username updated!');
       toggleEditMode();
-      if (isEditing) {
-        uploadImage();
-      }
+      uploadImage();
     } catch (error) {
       console.error(error);
       setStatus('Error updating username');
@@ -103,8 +125,8 @@ const UserProfile = (props) => {
         placeholder="Enter new username"
         disabled={!isEditing}
       />
-      <span>{user.email}</span>
-      {user.uid && (
+      <span>{user?.email}</span>
+      {personalProfile && (
         <div className={classes['buttons-wrapper']}>
           <button onClick={toggleEditMode}>
             {isEditing ? (
