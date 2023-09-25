@@ -101,18 +101,15 @@ const Chat = (props) => {
     e.preventDefault();
 
     if (user) {
-      const { uid, photoURL, displayName, email } = user;
+      const { uid } = user;
       if (messageText.trim() !== '') {
         await messageCollection.add({
           text: messageText,
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
           uid,
-          photoURL,
           id: new Date().toISOString() + uid,
-          displayName,
           readBy: [uid],
           replayTo: messageToReplay,
-          email,
         });
       }
       scrollToBottom();
