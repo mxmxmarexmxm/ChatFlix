@@ -101,7 +101,7 @@ const UserProfile = (props) => {
       <div className={classes['img-and-input-wrapper']}>
         <div className={classes['profile-img-wrapper']}>
           <img
-            src={imagePreview || user.photoURL || userPlaceholder}
+            src={imagePreview || user?.photoURL || userPlaceholder}
             alt="Profile"
           />
         </div>
