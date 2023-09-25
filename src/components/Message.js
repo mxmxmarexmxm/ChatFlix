@@ -1,38 +1,50 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Firebase/context';
 import userPlaceholder from '../assets/img/user-placeholder.png';
 import classes from './Message.module.css';
 import { useModal } from '../context/ModalContext';
 import UserProfile from './UserProfile';
 import { Replay } from '../assets/icons/Replay';
+import { getUserDataFromFirestore } from '../auth/AuthServices';
 
 function Message(props) {
+  const [sender, setSender] = useState(null);
+  const { text, uid, replayTo, id } = props.message;
   const { user } = useContext(AuthContext);
   const { openModal } = useModal();
-  const { text, uid, photoURL, replayTo, displayName, email } = props.message;
   const messageSenderClass = uid === user?.uid ? 'sent' : 'received';
+
+  // Fetch user data from Firestore
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const userData = await getUserDataFromFirestore(uid);
+      if (userData) {
+        setSender(userData);
+      }
+    };
+
+    fetchUserData();
+  }, [uid]);
 
   return (
     <div
       className={`${classes.message} ${classes[messageSenderClass]}`}
-      id={props.message.id}
+      id={id}
     >
       {messageSenderClass === 'received' && (
         <div
           className={classes['image-wrapper']}
-          onClick={() =>
-            openModal(<UserProfile user={{ displayName, photoURL, email }} />)
-          }
+          onClick={() => openModal(<UserProfile uid={uid} />)}
         >
           <img
             className={classes.profileImg}
-            src={photoURL || userPlaceholder}
+            src={sender?.photoURL || userPlaceholder}
             referrerPolicy="no-referrer"
-            alt={displayName}
+            alt={sender?.displayName}
           />
         </div>
       )}
-      <div className={classes['user-name']}>{displayName}</div>
+      <div className={classes['user-name']}>{sender?.displayName}</div>
       <div className={classes['mess-div']}>
         {replayTo && (
           <div
