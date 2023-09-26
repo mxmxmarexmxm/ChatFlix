@@ -1,15 +1,15 @@
- const chatsDataWitouthId = [
+const chatsDataWitouthId = [
   // Frontend
   {
     chatName: 'HTML',
     // id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://cdn.pixabay.com/photo/2017/08/05/11/16/image-2582748_1280.png',
+    logo: 'https://www.w3.org/html/logo/downloads/HTML5_Badge_256.png',
     tags: ['markup', 'frontend'],
   },
   {
     chatName: 'CSS',
     // id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/CSS3_logo.svg/800px-CSS3_logo.svg.png',
+    logo: 'https://cdn.iconscout.com/icon/free/png-256/free-css-alt-3628710-3029935.png?f=webp',
     tags: ['markup', 'frontend'],
   },
   {
@@ -26,7 +26,7 @@
   {
     chatName: 'ReactJS',
     // id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://res.cloudinary.com/practicaldev/image/fetch/s--3zWuwYa3--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pdib9r9rk5j1m7oala1p.png',
+    logo: 'https://cdn.iconscout.com/icon/free/png-256/free-react-4-1175110.png',
     tags: ['frontend', 'frameworks', 'frontend frameworks', 'JS'],
   },
   {
@@ -38,38 +38,38 @@
   {
     chatName: 'jQuery',
     // id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://www.nicepng.com/png/detail/274-2741860_jquery-in-easy-steps-create-dynamic-web-pages.png',
+    logo: 'https://cdn.iconscout.com/icon/free/png-256/free-jquery-8-1175153.png?f=webp',
     tags: ['frontend', 'frameworks', 'frontend frameworks', 'JS'],
   },
   {
     chatName: 'AngularJS',
     // id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://assets.stickpng.com/images/5847ea22cef1014c0b5e4833.png',
+    logo: 'https://cdn.iconscout.com/icon/free/png-256/free-angular-2038881-1720094.png',
     tags: ['frontend', 'frameworks', 'frontend frameworks', 'JS'],
   },
   {
     chatName: 'Vue.js',
     // id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://res.cloudinary.com/practicaldev/image/fetch/s--I4FWon9Y--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ll22z8mea106b4vjdjy7.jpeg',
+    logo: 'https://weblianz.com/images/tech-slide-icons/vue.webp',
     tags: ['frontend', 'frameworks', 'frontend frameworks', 'JS'],
   },
   {
     chatName: 'Next.js',
     // id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://images.ctfassets.net/23aumh6u8s0i/c04wENP3FnbevwdWzrePs/1e2739fa6d0aa5192cf89599e009da4e/nextjs',
+    logo: 'https://jlannoo.dev/skills/next.png',
     tags: ['frontend', 'frameworks', 'frontend frameworks', 'JS'],
   },
   {
     chatName: 'Flutter',
     // id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://ih1.redbubble.net/image.3270932181.3996/st,small,845x845-pad,1000x1000,f8f8f8.jpg',
+    logo: 'https://www.xampra.com/assets/logoIcon/flutter.webp',
     tags: ['frontend', 'mobile'],
   },
   // Frontend (CSS)
   {
     chatName: 'Bootstrap',
     // id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1280px-Bootstrap_logo.svg.png',
+    logo: 'https://learnkode.com/files/Bootstrap.png',
     tags: ['frontend', 'CSS frameworks', 'frameworks', 'frontend frameworks'],
   },
   {
@@ -81,7 +81,7 @@
   {
     chatName: 'Tailwind CSS',
     // id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://www.devonblog.com/wp-content/uploads/2022/06/tailwind-thumb.jpg',
+    logo: 'https://bourhaouta.gallerycdn.vsassets.io/extensions/bourhaouta/tailwindshades/0.0.5/1592520164095/Microsoft.VisualStudio.Services.Icons.Default',
     tags: ['frontend', 'CSS frameworks', 'frameworks', 'frontend frameworks'],
   },
   {
@@ -112,13 +112,13 @@
   {
     chatName: 'NodeJS',
     // id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://images.ctfassets.net/aq13lwl6616q/7cS8gBoWulxkWNWEm0FspJ/c7eb42dd82e27279307f8b9fc9b136fa/nodejs_cover_photo_smaller_size.png?w=700&fm=webp',
+    logo: 'https://static-00.iconduck.com/assets.00/nodejs-icon-256x256-gr1cgkn3.png',
     tags: ['backend', 'JS'],
   },
   {
     chatName: 'Express.js',
     // id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://assets.website-files.com/61ca3f775a79ec5f87fcf937/6202fcdee5ee8636a145a41b_1234.png',
+    logo: 'https://res.cloudinary.com/kc-cloud/images/f_auto,q_auto/v1651772163/expressjslogo/expressjslogo.webp?_i=AA',
     tags: ['backend', 'frameworks', 'backend frameworks', 'JS'],
   },
   {
@@ -136,25 +136,25 @@
   {
     chatName: 'Java',
     // id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://logos-world.net/wp-content/uploads/2022/07/Java-Logo.png',
+    logo: 'https://cdn.iconscout.com/icon/free/png-256/free-java-2038875-1720088.png?f=webp',
     tags: ['backend', 'Programming languages', 'Machine Learning Languages'],
   },
   {
     chatName: 'C',
     // id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/695px-C_Programming_Language.svg.png',
+    logo: 'https://cdn.iconscout.com/icon/free/png-256/free-c-57-1175191.png?f=webp',
     tags: ['backend', 'Programming languages'],
   },
   {
     chatName: 'C++',
     // id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://www.educative.io/v2api/editorpage/5393602882568192/image/6038586442907648',
+    logo: 'https://whatthelogo.com/storage/logos/c-270445.png',
     tags: ['backend', 'Programming languages', 'Machine Learning Languages'],
   },
   {
     chatName: 'C#',
     // id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://www.avenga.com/wp-content/uploads/2020/11/C-Sharp.png',
+    logo: 'https://cdn.iconscout.com/icon/free/png-256/free-csharp-1-1175241.png?f=webp',
     tags: ['backend', 'Programming languages'],
   },
   {
@@ -166,7 +166,7 @@
   {
     chatName: 'Laravel',
     // id: `${Math.random().toString()} ${new Date().getTime().toString()}-id`,
-    logo: 'https://i.pinimg.com/736x/ab/8b/5e/ab8b5ea6637ebd8e5755c838d952b8c1.jpg',
+    logo: 'https://cdn.iconscout.com/icon/free/png-256/free-laravel-3-1175147.png',
     tags: ['backend', 'frameworks', 'backend frameworks', 'php'],
   },
   {
