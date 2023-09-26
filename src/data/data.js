@@ -99,7 +99,7 @@ const chatsDataWitouthId = [
   // Backend
   {
     name: 'NodeJS',
-    logo: 'https://static-00.iconduck.com/assets.00/nodejs-icon-256x256-gr1cgkn3.png',
+    logo: 'https://cdn.iconscout.com/icon/free/png-256/free-node-js-1174925.png?f=webp',
     tags: ['backend', 'JS'],
   },
   {
