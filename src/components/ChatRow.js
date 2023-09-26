@@ -4,9 +4,11 @@ import { LeftArrow } from '../assets/icons/LeftArrow';
 import { RightArrow } from '../assets/icons/RightArrow';
 import { chatsData } from '../data/data';
 import placeholder from '../assets/img/placeholder.png';
+import useWindowWidth from '../utils/useWindowWidth';
 
 const ChatRow = (props) => {
   const { rowTitle, onSelectChat } = props;
+  const { width } = useWindowWidth();
   const chatRowRef = useRef();
   const [haveScrool, setHaveScrool] = useState(false);
 
@@ -37,7 +39,10 @@ const ChatRow = (props) => {
     <div className={classes['chat-row-container']}>
       <h2 className={classes['row-title']}>{rowTitle}</h2>
       <div className={classes['row-body']}>
-        <button onClick={() => scrollRowHandler(-200)} aria-label="Scroll Left">
+        <button
+          onClick={() => scrollRowHandler(width < 500 ? -200 : -900)}
+          aria-label="Scroll Left"
+        >
           {haveScrool && <LeftArrow width="50px" fill="gray" />}
         </button>
         <div ref={chatRowRef} className={classes.chats}>
@@ -63,7 +68,7 @@ const ChatRow = (props) => {
         </div>
         {haveScrool && (
           <button
-            onClick={() => scrollRowHandler(200)}
+            onClick={() => scrollRowHandler(width < 500 ? 200 : 900)}
             aria-label="Scroll Right"
           >
             <RightArrow width="50px" fill="gray" />
