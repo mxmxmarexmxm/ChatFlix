@@ -71,7 +71,7 @@ header a {
   font-size: 1rem;
   color: #ffffff;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 700;
   width: 100%;
 }
 
@@ -81,6 +81,7 @@ header a {
   font-size: inherit;
   font-family: inherit;
   border: none;
+  font-weight: inherit;
   cursor: pointer;
 }
 

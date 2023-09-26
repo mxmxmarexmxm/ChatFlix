@@ -65,9 +65,6 @@ const Header = () => {
                   Your Profile
                 </button>
               </li>
-              <li>Example</li>
-              <li>Example</li>
-              <li>Example</li>
               <li>
                 <button onClick={() => signOutHandler()}>Sign Out</button>
               </li>
