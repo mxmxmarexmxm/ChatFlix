@@ -55,10 +55,15 @@ const chatsDataWitouthId = [
     logo: 'https://www.xampra.com/assets/logoIcon/flutter.webp',
     tags: ['frontend', 'mobile'],
   },
+  {
+    name: 'Electron',
+    logo: 'https://static.macupdate.com/products/56919/l/electron-logo.png?v=1668663792',
+    tags: ['frontend', 'frameworks', 'frontend frameworks', 'JS'],
+  },
   // Frontend (CSS)
   {
     name: 'Bootstrap',
-    logo: 'https://learnkode.com/files/Bootstrap.png',
+    logo: 'https://cdn.iconscout.com/icon/free/png-256/free-bootstrap-226077.png?f=webp',
     tags: ['frontend', 'CSS frameworks', 'frameworks', 'frontend frameworks'],
   },
   {
