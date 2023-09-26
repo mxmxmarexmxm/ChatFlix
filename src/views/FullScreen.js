@@ -22,7 +22,7 @@ const FullScreen = (props) => {
           isFullScreen={true}
           chat={fullScreenChat}
           onFullScreenToggle={props.onFullScreenToggle}
-          key={fullScreenChat.chatName}
+          key={fullScreenChat.name}
           onClose={props.onClose}
         />
       </div>

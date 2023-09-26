@@ -40,7 +40,7 @@ const Chat = (props) => {
   } = props;
 
   let messageCollection = firestore.collection(
-    `/chats/${chat.chatName}/messages/`
+    `/chats/${chat.name}/messages/`
   );
 
   let query = messageCollection.orderBy('createdAt', 'asc');
@@ -128,10 +128,10 @@ const Chat = (props) => {
 
   // Expand chat if selected from home screen and chat is already in active chats container
   useEffect(() => {
-    if (chat.chatName === showMessages) {
+    if (chat.name === showMessages) {
       setShowChatMessages(true);
     }
-  }, [chat.chatName, showMessages]);
+  }, [chat.name, showMessages]);
 
   // Minimize all chats in the active bottom container at the Esc button
   useEffect(() => {
@@ -174,7 +174,7 @@ const Chat = (props) => {
         onSelectChat={onSelectChat}
         onClose={onClose}
         logo={chat.logo}
-        chatName={chat.chatName}
+        name={chat.name}
       />
     );
   }
@@ -213,7 +213,7 @@ const Chat = (props) => {
               }}
             />
           </div>
-          <h2>{chat.chatName}</h2>
+          <h2>{chat.name}</h2>
         </div>
         <div className={classes[`button-wrapper`]}>
           {unreadMessages > 0 && (

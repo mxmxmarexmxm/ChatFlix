@@ -47,7 +47,7 @@ const ChatRow = (props) => {
                 className={classes.logo}
                 onClick={() => onSelectChat(chat)}
                 src={chat.logo}
-                alt={chat.chatName}
+                alt={chat.name}
                 {...(![
                   'frontend',
                   'frontend frameworks',
