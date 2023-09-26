@@ -4,7 +4,53 @@ ChatFlix is a web application built with React, Firebase, and CSS modules, with 
 
 ## Features
 
-ChatFlix has different categories such as Frontend, Backend Frameworks, Learning Platforms, Code Editors, and Operating Systems. Each category has a set of related chats where you can discuss specific programming topics, like HTML, CSS, JavaScript, Node.js, Ruby on Rails, Udacity, Coursera, Visual Studio Code, Sublime Text, MacOS, and Linux.
+1. **Authentication Options**
+
+   - Google Authentication: Users can log in using their Gmail accounts.
+   - Email/Password Authentication: Users can create an account and log in with email and password.
+
+2. **User Profile Customization**
+
+   - Profile Picture Upload: Users can upload and customize their profile pictures.
+   - Username Editing: Users can change their display names.
+
+3. **Chat Categories**
+
+   - Frontend: Discussions about HTML, CSS, JavaScript, and related technologies.
+   - Backend Frameworks: Topics covering backend technologies like Node.js, Ruby on Rails, etc.
+   - Learning Platforms: Discussions about online learning platforms such as Udacity and Coursera.
+   - Code Editors: Conversations related to code editors like Visual Studio Code and Sublime Text.
+   - Operating Systems: Chats about different operating systems, including MacOS and Linux.
+   - Many More Categories: Explore numerous other categories tailored to specific programming and tech topics.
+
+4. **Regular Sized Chat Windows**
+
+   - Users can engage in conversations in standard-sized chat windows for a comfortable chat experience.
+
+5. **Full-Screen Chat**
+
+   - Chat windows can be expanded to full-screen for a distraction-free experience.
+
+6. **Real-Time Messaging**
+
+   - Messages are delivered instantly, providing a seamless chatting experience.
+
+7. **Sound Notifications**
+
+   - Users receive audible notifications when new messages arrive, ensuring they don't miss important updates.
+
+8. **Message Replay**
+
+   - Users can revisit past messages for reference.
+
+9. **Scroll to Replayed Message**
+
+   - Conveniently scroll to the message being replayed for context.
+
+10. **Preview Other Users' Profiles**
+    - Users can view the profiles of other ChatFlix members to learn more about them.
+
+Feel free to adjust this list further as needed for your project.
 
 ## Customization
 
@@ -16,7 +62,7 @@ ChatFlix is easy to customize to your needs. Here are the steps:
 
 ```
 {
-  chatName,
+  name,
   id,
   logo,
   tags,
@@ -33,11 +79,9 @@ You can check out the live demo of ChatFlix [here](https://mxmxmarexmxm.github.i
 
 Thank you for your interest in ChatFlix!
 
-
 ## Contributing
 
 Contributions are welcome! If you have any ideas, bug fixes, or feature requests, feel free to submit a pull request.
-
 
 ## License
 
