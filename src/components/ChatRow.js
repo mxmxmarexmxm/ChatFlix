@@ -48,7 +48,11 @@ const ChatRow = (props) => {
                 onClick={() => onSelectChat(chat)}
                 src={chat.logo}
                 alt={chat.chatName}
-                loading="lazy"
+                {...(![
+                  'frontend',
+                  'frontend frameworks',
+                  'CSS frameworks',
+                ].includes(rowTitle) && { loading: 'lazy' })}
                 onError={(e) => {
                   e.target.src = placeholder;
                 }}
