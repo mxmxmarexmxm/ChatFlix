@@ -285,6 +285,7 @@ const Chat = (props) => {
             onClick={markAllAsRead}
             onChange={(e) => setMessageText(e.target.value)}
             ref={chatInput}
+            aria-label="Chat Message Input"
           />
         </form>
       </div>
