@@ -84,8 +84,11 @@
   color: #ffffff55;
   border-radius: 50px;
   cursor: pointer;
-  background-color: #242526;
   border: none;
+}
+
+.chat-header-icon-wrapper:hover {
+  background-color: #242526;
 }
 
 .chat-body {
