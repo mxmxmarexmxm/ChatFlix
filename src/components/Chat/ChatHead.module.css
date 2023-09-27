@@ -29,7 +29,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  visibility: hidden;
 }
 
 .close-icon {
@@ -67,6 +66,11 @@
   object-fit: contain;
 }
 
-.chat-head:hover .close-icon-wrapper {
-  visibility: visible;
+@media only screen and (min-width: 756px) {
+  .chat-head .close-icon-wrapper {
+    visibility: hidden;
+  }
+  .chat-head:hover .close-icon-wrapper {
+    visibility: visible;
+  }
 }
