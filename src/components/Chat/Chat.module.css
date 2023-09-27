@@ -115,12 +115,12 @@
   text-align: center;
 }
 
-form {
+.chat form {
   display: flex;
   padding: 0.3rem;
 }
 
-form input {
+.chat form input {
   width: 100%;
   background-color: #495252;
   color: white;
@@ -130,18 +130,17 @@ form input {
   font-size: inherit;
 }
 
-form input:focus {
+.chat form input:focus {
   outline: unset;
 }
 
-form button {
-  background-color: #242526;
-  cursor: pointer;
-  color: #cdfbfa;
+.chat form button {
+  background-color: transparent;
   border: none;
-  padding: 0.5rem;
-  font-weight: bold;
-  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .message-to-replay {

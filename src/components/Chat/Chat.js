@@ -15,6 +15,7 @@ import AuthForm from '../../auth/AuthForm';
 import { Close } from '../../assets/icons/Close';
 import { FullScreen } from '../../assets/icons/FullScreen';
 import { FullScreenExit } from '../../assets/icons/FullScreenExit';
+import { Send } from '../../assets/icons/Send';
 const firestore = firebase.firestore();
 
 const Chat = ({
@@ -277,6 +278,9 @@ const Chat = ({
               ref={chatInput}
               aria-label="Chat Message Input"
             />
+            <button type="submit">
+              <Send />
+            </button>
           </form>
         </div>
       )}
