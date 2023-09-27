@@ -110,6 +110,10 @@
   overflow-y: auto;
 }
 
+.messages-container > :first-child {
+  margin-top: 1.8rem;
+}
+
 .empty-chat-message {
   color: white;
   text-align: center;
