@@ -3,11 +3,9 @@ import classes from './ChatHead.module.css';
 import placehoder from '../../assets/img/placeholder.png';
 import { Close } from '../../assets/icons/Close';
 
-const ChatHead = (props) => {
-  const { logo, unreadMessages, onSelectChat, onClose } = props;
-
+const ChatHead = ({ logo, unreadMessages, onSelectChat, onClose }) => {
   return (
-    <div className={classes['chat-head-mini']} onClick={onSelectChat}>
+    <div className={classes['chat-head']} onClick={onSelectChat}>
       <div className={classes['badges-container']}>
         {!!unreadMessages && (
           <div className={classes['unread-messages']}>
@@ -15,17 +13,13 @@ const ChatHead = (props) => {
           </div>
         )}
         <div
-          className={classes['icon-wrapper']}
+          className={classes['close-icon-wrapper']}
           onClick={(e) => e.stopPropagation()}
         >
-          <Close
-            height="15px"
-            onClick={onClose}
-            className={classes['close-icon-mini']}
-          />
+          <Close onClick={onClose} className={classes['close-icon']} />
         </div>
       </div>
-      <div className={classes['image-wrappper']}>
+      <div className={classes['logo-wrappper']}>
         <img
           src={logo}
           alt="chat head"
