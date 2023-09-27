@@ -10,6 +10,7 @@ const ChatRow = ({ rowTitle, onSelectChat }) => {
   const { width } = useWindowWidth();
   const chatRowRef = useRef();
   const [haveScrool, setHaveScrool] = useState(false);
+  const isMobile = width < 500;
 
   const chats = chatsData.filter((chat) => chat.tags.includes(rowTitle));
 
@@ -39,10 +40,12 @@ const ChatRow = ({ rowTitle, onSelectChat }) => {
       <h2 className={classes['row-title']}>{rowTitle}</h2>
       <div className={classes['row-body']}>
         <button
-          onClick={() => scrollRowHandler(width < 500 ? -200 : -900)}
+          onClick={() => scrollRowHandler(isMobile ? -200 : -900)}
           aria-label="Scroll Left"
         >
-          {haveScrool && <LeftArrow width="50px" fill="gray" />}
+          {haveScrool && (
+            <LeftArrow width={isMobile ? '25px' : '50px'} fill="gray" />
+          )}
         </button>
         <div ref={chatRowRef} className={classes.chats}>
           {chats.map((chat) => (
@@ -67,10 +70,10 @@ const ChatRow = ({ rowTitle, onSelectChat }) => {
         </div>
         {haveScrool && (
           <button
-            onClick={() => scrollRowHandler(width < 500 ? 200 : 900)}
+            onClick={() => scrollRowHandler(isMobile ? 200 : 900)}
             aria-label="Scroll Right"
           >
-            <RightArrow width="50px" fill="gray" />
+            <RightArrow width={isMobile ? '25px' : '50px'} fill="gray" />
           </button>
         )}
       </div>
