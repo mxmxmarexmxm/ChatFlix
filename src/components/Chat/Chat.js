@@ -33,7 +33,7 @@ const Chat = ({
   const [messageToReplay, setMessageToReplay] = useState(null);
   const [notify] = useSound(notificationSound);
   const { user } = useContext(AuthContext);
-  const scrollRef = useRef();
+  const messagesContainerRef = useRef();
   const chatInput = useRef();
   const { openModal } = useModal();
 
@@ -55,8 +55,9 @@ const Chat = ({
   }, [messages, user]);
 
   const scrollToBottom = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop =
+        messagesContainerRef.current.scrollHeight;
     }
   };
 
@@ -182,20 +183,20 @@ const Chat = ({
   return (
     <div
       className={`${classes.chat} ${
-        isFullScreen ? classes[`chat-full-screen`] : ''
+        isFullScreen && classes[`chat-fullscreen`]
       }`}
     >
       <div
         className={`${classes['chat-header']} ${
-          isFullScreen ? classes['chat-header-full'] : ''
+          isFullScreen && classes['chat-header-fullscreen']
         }`}
         onClick={toggleChat}
       >
-        <div className={classes.logoAndTitle}>
-          <div className={classes['chat-header-image-container']}>
+        <div className={classes['logo-title-wrapper']}>
+          <div className={classes['chat-header-image-wrapper']}>
             <img
               src={chat.logo}
-              alt="avatar"
+              alt={chat.name}
               onError={(e) => {
                 e.target.src = placeholder;
               }}
@@ -203,57 +204,55 @@ const Chat = ({
           </div>
           <h2>{chat.name}</h2>
         </div>
-        <div className={classes[`button-wrapper`]}>
+        <div className={classes[`chat-header-buttons-wrapper`]}>
           {unreadMessages > 0 && (
             <div className={classes[`unread-messages-badge`]}>
               {unreadMessages}
             </div>
           )}
           <div
-            className={classes['icon-btn-wrapper']}
+            className={classes['chat-header-icon-wrapper']}
             onClick={toggleFullScreen}
           >
             {isFullScreen ? (
-              <FullScreenExit height="20px" className={classes.icon} />
+              <FullScreenExit height="20px" />
             ) : (
-              <FullScreen height="18px" className={classes.icon} />
+              <FullScreen height="18px" />
             )}
           </div>
           <div
-            className={classes['icon-btn-wrapper']}
+            className={classes['chat-header-icon-wrapper']}
             onClick={() => onClose(chat.id)}
           >
-            <Close height="18px" className={classes.icon} />
+            <Close height="18px" />
           </div>
         </div>
       </div>
       {dispalyMessages && (
         <div
-          className={
-            isFullScreen ? classes['chat-body-full'] : classes['chat-body']
-          }
+          className={`${classes['chat-body']} ${
+            isFullScreen && classes['chat-body-fullscreen']
+          }`}
         >
           <div
-            className={`${classes['messages-container']} ${
-              isFullScreen ? classes[`messages-container-full`] : ''
-            }`}
-            ref={scrollRef}
+            className={classes['messages-container']}
+            ref={messagesContainerRef}
           >
             {loading ? (
-              <p className={classes['empty-chat']}>Loading...</p>
+              <p className={classes['empty-chat-message']}>Loading...</p>
             ) : messages?.length > 0 ? (
               messages.map((message) => (
                 <Message
                   key={message.id}
                   message={message}
-                  onReplay={() => setMessageToReplay(message)}
+                  onSetMessageToReplay={() => setMessageToReplay(message)}
                   scrollToReplayedMessage={() =>
                     scrollToReplayedMessage(message.replayTo.id)
                   }
                 />
               ))
             ) : (
-              <p className={classes['empty-chat']}>
+              <p className={classes['empty-chat-message']}>
                 There are no messages yet! <br />
                 Start a conversation!
               </p>
@@ -261,15 +260,13 @@ const Chat = ({
           </div>
           {messageToReplay && (
             <div className={classes['message-to-replay']}>
-              <div className={classes['replay-texts']}>
+              <div className={classes['replay-message-content']}>
                 <p>Replying to {messageToReplay.displayName}</p>
-                <p className={classes['replay-text']}>{messageToReplay.text}</p>
+                <p className={classes['replay-message-text']}>
+                  {messageToReplay.text}
+                </p>
               </div>
-              <Close
-                className={classes.icon}
-                height="15px"
-                onClick={() => setMessageToReplay(null)}
-              />
+              <Close height="15px" onClick={() => setMessageToReplay(null)} />
             </div>
           )}
           <form onSubmit={sendMessage}>
