@@ -10,6 +10,10 @@
   font-size: 1.2rem;
 }
 
+.row-title::first-letter{
+  text-transform: capitalize;
+}
+
 .chat-row-container button {
   font-size: 1.8rem;
   background-color: inherit;
