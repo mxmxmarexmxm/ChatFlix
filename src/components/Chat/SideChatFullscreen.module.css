@@ -43,7 +43,6 @@
   color: #ffffff55;
   border-radius: 50px;
   cursor: pointer;
-  background-color: #242526;
   border: none;
   height: 25px;
   width: 25px;
@@ -55,6 +54,7 @@
 
 .unread-messages-badge {
   color: #ea3939;
+  background-color: #242526;
   border-radius: 50px;
 }
 
@@ -68,5 +68,13 @@
   }
   .close-icon-side {
     font-size: 1.5rem;
+    background-color: transparent;
+  }
+  .badge-wrapper:has(.close-icon-side) {
+    background-color: transparent;
+  }
+  .badge-wrapper:has(.close-icon-side):hover {
+    font-size: 1.5rem;
+    background-color: #242526;
   }
 }
