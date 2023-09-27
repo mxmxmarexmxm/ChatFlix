@@ -3,7 +3,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 import classes from './Chat.module.css';
 import placeholder from '../../assets/img/placeholder.png';
 import ChatHead from './ChatHead';
-import SideChatFullScreen from '../SideChatFullScreen';
+import SideChatFullscreen from './SideChatFullscreen';
 import Message from '../Message';
 import useSound from 'use-sound';
 import notificationSound from '../../assets/Sound/notification-sound.mp3';
@@ -157,7 +157,7 @@ const Chat = ({
   // Side chat on full screen
   if (isFullScreenSideChat) {
     return (
-      <SideChatFullScreen
+      <SideChatFullscreen
         unreadMessages={unreadMessages}
         onSelectChat={onSelectChat}
         onClose={onClose}

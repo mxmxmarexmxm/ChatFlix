@@ -1,21 +1,21 @@
-.active-chat-side {
+.side-chat-fullscreen {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   border-bottom: 5px solid #242425;
   cursor: pointer;
-  padding: .5rem;
+  padding: 0.5rem;
   color: white;
 }
 
-.title {
-  display: none;
-}
-
-.chat-and-logo-side {
+.title-and-logo-side {
   display: flex;
   gap: 1rem;
   align-items: center;
+}
+
+.title-and-logo-side h2 {
+  display: none;
 }
 
 .logo-container-side {
@@ -25,10 +25,15 @@
   overflow: hidden;
 }
 
-img {
+.logo-container-side img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.badges-container-side {
+  display: flex;
+  gap: 5px;
 }
 
 .badge-wrapper {
@@ -44,8 +49,8 @@ img {
   width: 25px;
 }
 
-.icon-side {
-  padding: .2rem;
+.close-icon-side {
+  padding: 0.2rem;
 }
 
 .unread-messages-badge {
@@ -53,20 +58,15 @@ img {
   border-radius: 50px;
 }
 
-.badges-container-side {
-  display: flex;
-  gap: 5px;
-}
-
 @media only screen and (min-width: 756px) {
-  .title {
+  .side-chat-fullscreen h2 {
     display: block;
   }
-  .active-chat-side {
+  .side-chat-fullscreen {
     padding: 1rem;
     align-items: center;
   }
-  .icon-side {
+  .close-icon-side {
     font-size: 1.5rem;
   }
 }
