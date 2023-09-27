@@ -1,7 +1,7 @@
 .form-wrapper {
   font-size: 1.1rem;
   text-align: center;
-  padding: 1rem;
+  padding: 1.5rem;
   color: white;
 }
 
@@ -36,13 +36,24 @@
 }
 
 .form-wrapper input {
-  padding: 0.7rem 2rem;
   font-size: 1.1rem;
+  width: 100%;
+  background-color: #495252;
+  color: white;
+  padding: 0.7rem 2rem;
+  border-radius: 1rem;
+  border: none;
 }
 
 .form-wrapper button[type='submit'] {
   padding: 0.7rem 2rem;
   font-size: 1.1rem;
+  border-radius: 1rem;
+  background-color: #252625;
+  border: none;
+  color: white;
+  font-weight: bolder;
+  cursor: pointer;
 }
 
 .account-title {
@@ -51,9 +62,12 @@
 
 .create-login-btn {
   background-color: transparent;
+  border: none;
   color: rgb(235, 64, 64);
   font-size: 1rem;
   font-weight: normal;
+  margin-left: 5px;
+  cursor: pointer;
 }
 
 .error-message {
