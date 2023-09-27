@@ -7,7 +7,11 @@ import UserProfile from './UserProfile';
 import { Replay } from '../assets/icons/Replay';
 import { getUserDataFromFirestore } from '../auth/AuthServices';
 
-const Message = ({ message, onReplay, scrollToReplayedMessage }) => {
+const Message = ({
+  message,
+  onSetMessageToReplay,
+  scrollToReplayedMessage,
+}) => {
   const [sender, setSender] = useState(null);
   const { user } = useContext(AuthContext);
   const { openModal } = useModal();
@@ -37,7 +41,7 @@ const Message = ({ message, onReplay, scrollToReplayedMessage }) => {
           onClick={() => openModal(<UserProfile uid={uid} />)}
         >
           <img
-            className={classes.profileImg}
+            className={classes['profile-img']}
             src={sender?.photoURL || userPlaceholder}
             referrerPolicy="no-referrer"
             alt={sender?.displayName}
@@ -63,7 +67,7 @@ const Message = ({ message, onReplay, scrollToReplayedMessage }) => {
         height="15px"
         fill="gray"
         className={classes.icon}
-        onClick={onReplay}
+        onClick={onSetMessageToReplay}
       />
     </div>
   );
