@@ -205,7 +205,7 @@ const Chat = ({
           <h2>{chat.name}</h2>
         </div>
         <div className={classes[`chat-header-buttons-wrapper`]}>
-          {unreadMessages > 0 && (
+          {unreadMessages > 0 && !isFullScreen && (
             <div className={classes[`unread-messages-badge`]}>
               {unreadMessages}
             </div>
@@ -253,7 +253,7 @@ const Chat = ({
               ))
             ) : (
               <p className={classes['empty-chat-message']}>
-                There are no messages yet! <br />
+                There are no messages yet. <br />
                 Start a conversation!
               </p>
             )}
