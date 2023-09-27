@@ -45,7 +45,7 @@ const Header = () => {
       {user ? (
         <div className={classes['drop-menu']} ref={menuRef}>
           <div
-            className={classes['image-wrapper']}
+            className={classes['profile-image-wrapper']}
             onClick={() => setOpenMenu((c) => !c)}
           >
             <img

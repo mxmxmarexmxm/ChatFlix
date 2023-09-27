@@ -34,13 +34,19 @@ header a {
   background-color: #495252;
 }
 
-.image-wrapper {
+.profile-image-wrapper {
   height: 50px;
   width: 50px;
   border-radius: 50px;
   margin-left: 1rem;
   overflow: hidden;
   cursor: pointer;
+}
+
+.profile-image-wrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
 
 .drop-menu {
