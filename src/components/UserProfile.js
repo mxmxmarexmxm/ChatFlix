@@ -10,8 +10,7 @@ import {
   updateUserDataInFirestore,
 } from '../auth/AuthServices';
 
-const UserProfile = (props) => {
-  const { uid, personalProfile } = props;
+const UserProfile = ({ uid, personalProfile }) => {
   const [user, setUser] = useState(null);
   const [newPhoto, setNewPhoto] = useState(null);
   const [imagePreview, setImagePreview] = useState(null); // Store the image preview

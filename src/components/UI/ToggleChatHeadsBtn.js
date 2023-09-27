@@ -3,10 +3,10 @@ import classes from './ToggleChatHeadsBtn.module.css';
 import { Plus } from '../../assets/icons/Plus';
 import { Minus } from '../../assets/icons/Minus';
 
-const ToggleChatHeadsBtn = (props) => {
+const ToggleChatHeadsBtn = ({ onClick, showChatHeads }) => {
   return (
-    <div className={classes['icon-wrapper']} onClick={props.onClick}>
-      {props.showChatHeads ? (
+    <div className={classes['icon-wrapper']} onClick={onClick}>
+      {showChatHeads ? (
         <Minus height="50px" className={classes.icon} />
       ) : (
         <Plus height="50px" className={classes.icon} />

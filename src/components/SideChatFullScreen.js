@@ -3,9 +3,13 @@ import classes from './SideChatFullScreen.module.css';
 import placeholder from '../assets/img/placeholder.png';
 import { Close } from '../assets/icons/Close';
 
-const SideChatFullScreen = (props) => {
-  const { onSelectChat, logo, name, unreadMessages, onClose } = props;
-
+const SideChatFullScreen = ({
+  onSelectChat,
+  logo,
+  name,
+  unreadMessages,
+  onClose,
+}) => {
   return (
     <div className={classes['active-chat-side']} onClick={onSelectChat}>
       <div className={classes['chat-and-logo-side']}>

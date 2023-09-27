@@ -6,8 +6,7 @@ import { chatsData } from '../data/data';
 import placeholder from '../assets/img/placeholder.png';
 import useWindowWidth from '../utils/useWindowWidth';
 
-const ChatRow = (props) => {
-  const { rowTitle, onSelectChat } = props;
+const ChatRow = ({ rowTitle, onSelectChat }) => {
   const { width } = useWindowWidth();
   const chatRowRef = useRef();
   const [haveScrool, setHaveScrool] = useState(false);

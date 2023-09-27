@@ -2,28 +2,33 @@ import React from 'react';
 import Chat from '../components/Chat/Chat';
 import classes from './FullScreen.module.css';
 
-const FullScreen = (props) => {
-  const { fullScreenChat } = props;
+const FullScreen = ({
+  fullScreenChat,
+  onFullScreenToggle,
+  activeChats,
+  onSelectChat,
+  onClose,
+}) => {
   return (
     <div className={classes.screen}>
       <div className={classes['active-chats-container']}>
-        {props.activeChats.map((chat) => (
+        {activeChats.map((chat) => (
           <Chat
-            isFullScreenSideChat={true}
+            isFullScreenSideChat
             key={chat.id}
             chat={chat}
-            onSelectChat={() => props.onSelectChat(chat.id)}
-            onClose={() => props.onClose(chat.id)}
+            onSelectChat={() => onSelectChat(chat.id)}
+            onClose={() => onClose(chat.id)}
           />
         ))}
       </div>
       <div className={classes['full-screen-chat-container']}>
         <Chat
-          isFullScreen={true}
+          isFullScreen
           chat={fullScreenChat}
-          onFullScreenToggle={props.onFullScreenToggle}
+          onFullScreenToggle={onFullScreenToggle}
           key={fullScreenChat.name}
-          onClose={props.onClose}
+          onClose={onClose}
         />
       </div>
     </div>

@@ -7,11 +7,11 @@ import UserProfile from './UserProfile';
 import { Replay } from '../assets/icons/Replay';
 import { getUserDataFromFirestore } from '../auth/AuthServices';
 
-function Message(props) {
+const Message = ({ message, onReplay, scrollToReplayedMessage }) => {
   const [sender, setSender] = useState(null);
-  const { text, uid, replayTo, id } = props.message;
   const { user } = useContext(AuthContext);
   const { openModal } = useModal();
+  const { text, uid, replayTo, id } = message;
   const messageSenderClass = uid === user?.uid ? 'sent' : 'received';
 
   // Fetch user data from Firestore
@@ -49,7 +49,7 @@ function Message(props) {
         {replayTo && (
           <div
             className={classes['replay-wrapper']}
-            onClick={props.scrollToReplayedMessage}
+            onClick={scrollToReplayedMessage}
           >
             {<p>Replayed to: {replayTo.displayName}</p>}
             {<p>{replayTo.text}</p>}
@@ -63,10 +63,10 @@ function Message(props) {
         height="15px"
         fill="gray"
         className={classes.icon}
-        onClick={props.onReplay}
+        onClick={onReplay}
       />
     </div>
   );
-}
+};
 
 export default Message;
