@@ -1,17 +1,14 @@
-.icon {
-  /* color: #161617; */
-  /* background-color: #ffffff55; */
-  /* color: #ffffff55;  */
-  background-color: #161617;
-  font-size: 3rem;
-}
-
 .icon-wrapper {
   display: flex;
-  background-color:#242526;
+  background-color: #242526;
   border: 3px solid #242425;
-  border-radius: 15px 15px 15px;
+  border-radius: 1rem;
   overflow: hidden;
   margin: 3px;
   cursor: pointer;
+}
+
+.icon {
+  background-color: #161617;
+  padding: 0.5rem;
 }
