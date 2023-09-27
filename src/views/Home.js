@@ -70,7 +70,7 @@ const Home = () => {
 
     if (indexOfChatRight >= 0 && activeChatsBottom.length <= bottomLimit) {
       setActiveChatsRight(
-        activeChatsRight.filter((c) => c.chatName !== chatData.chatName)
+        activeChatsRight.filter((c) => c.name !== chatData.name)
       );
       setActiveChatsBottom((c) => [chatData, ...c]);
     }
@@ -82,17 +82,15 @@ const Home = () => {
     ) {
       const elementToMove = activeBottom[bottomLimit - 1];
       setActiveChatsRight((chat) => [
-        ...chat.filter((chat) => chat?.chatName !== chatData.chatName),
+        ...chat.filter((chat) => chat?.name !== chatData.name),
         elementToMove,
       ]);
       setActiveChatsBottom([
         chatData,
-        ...activeBottom.filter(
-          (chat) => chat.chatName !== elementToMove.chatName
-        ),
+        ...activeBottom.filter((chat) => chat.name !== elementToMove.name),
       ]);
     }
-    setShowMessages(chatData.chatName);
+    setShowMessages(chatData.name);
   };
 
   // Close chat handler, for each scenario.
