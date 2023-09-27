@@ -99,7 +99,7 @@
 }
 
 .chat-body-fullscreen {
-  height: 88vh;
+  flex: 1;
 }
 
 .messages-container {
