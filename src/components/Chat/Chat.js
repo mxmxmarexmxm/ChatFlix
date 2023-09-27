@@ -17,8 +17,17 @@ import { FullScreen } from '../../assets/icons/FullScreen';
 import { FullScreenExit } from '../../assets/icons/FullScreenExit';
 const firestore = firebase.firestore();
 
-const Chat = (props) => {
-  const [showChatMessages, setShowChatMessages] = useState(true);
+const Chat = ({
+  chat,
+  isChatHead,
+  isFullScreen,
+  showMessages,
+  onClose,
+  isFullScreenSideChat,
+  onFullScreenToggle,
+  onSelectChat,
+}) => {
+  const [dispalyMessages, setDisplayMessages] = useState(true);
   const [messageText, setMessageText] = useState('');
   const [unreadMessages, setUnreadMessages] = useState(null);
   const [messageToReplay, setMessageToReplay] = useState(null);
@@ -28,20 +37,7 @@ const Chat = (props) => {
   const chatInput = useRef();
   const { openModal } = useModal();
 
-  const {
-    chat,
-    isChatHead,
-    isFullScreen,
-    showMessages,
-    onClose,
-    isFullScreenSideChat,
-    onFullScreenToggle,
-    onSelectChat,
-  } = props;
-
-  let messageCollection = firestore.collection(
-    `/chats/${chat.name}/messages/`
-  );
+  let messageCollection = firestore.collection(`/chats/${chat.name}/messages/`);
 
   let query = messageCollection.orderBy('createdAt', 'asc');
   const [messages, loading] = useCollectionData(query, { idField: 'id' });
@@ -49,16 +45,13 @@ const Chat = (props) => {
   // Get unread messages
   useEffect(() => {
     const getUnreadMessages = () => {
-      if (user === null) {
-        return;
-      }
       const unreadMessages = messages?.filter(
         (message) => !message.readBy.includes(user.uid)
       ).length;
 
       setUnreadMessages(unreadMessages);
     };
-    getUnreadMessages();
+    user && getUnreadMessages();
   }, [messages, user]);
 
   const scrollToBottom = () => {
@@ -69,7 +62,7 @@ const Chat = (props) => {
 
   useEffect(() => {
     scrollToBottom();
-  }, [loading, showChatMessages]);
+  }, [loading, dispalyMessages]);
 
   const scrollToReplayedMessage = (id) => {
     const message = document.getElementById(id);
@@ -122,14 +115,14 @@ const Chat = (props) => {
 
   const toggleChat = () => {
     if (!isFullScreen) {
-      setShowChatMessages((curr) => !curr);
+      setDisplayMessages((curr) => !curr);
     }
   };
 
   // Expand chat if selected from home screen and chat is already in active chats container
   useEffect(() => {
     if (chat.name === showMessages) {
-      setShowChatMessages(true);
+      setDisplayMessages(true);
     }
   }, [chat.name, showMessages]);
 
@@ -137,7 +130,7 @@ const Chat = (props) => {
   useEffect(() => {
     const handleEsc = (event) => {
       if (event.keyCode === 27) {
-        setShowChatMessages(false);
+        setDisplayMessages(false);
       }
     };
     window.addEventListener('keydown', handleEsc);
@@ -154,17 +147,12 @@ const Chat = (props) => {
     };
 
     focusInput();
-  }, [messageToReplay, showChatMessages]);
+  }, [messageToReplay, dispalyMessages]);
 
   const toggleFullScreen = (event) => {
     event.stopPropagation();
     onFullScreenToggle(chat.id);
   };
-
-  // Chat classes depending on chat size
-  let chatBodyClass = showChatMessages
-    ? classes['chat-body']
-    : classes['hide-body'];
 
   // Side chat on full screen
   if (isFullScreenSideChat) {
@@ -239,56 +227,62 @@ const Chat = (props) => {
           </div>
         </div>
       </div>
-      <div className={isFullScreen ? classes['chat-body-full'] : chatBodyClass}>
+      {dispalyMessages && (
         <div
-          className={`${classes['messages-container']} ${
-            isFullScreen ? classes[`messages-container-full`] : ''
-          }`}
-          ref={scrollRef}
+          className={
+            isFullScreen ? classes['chat-body-full'] : classes['chat-body']
+          }
         >
-          {loading ? (
-            <p className={classes['empty-chat']}>Loading...</p>
-          ) : messages?.length > 0 ? (
-            messages.map((message) => (
-              <Message
-                key={message.id}
-                message={message}
-                onReplay={() => setMessageToReplay(message)}
-                scrollToReplayedMessage={() =>
-                  scrollToReplayedMessage(message.replayTo.id)
-                }
-              />
-            ))
-          ) : (
-            <p className={classes['empty-chat']}>
-              There are no messages yet! <br />
-              Start a conversation!
-            </p>
-          )}
-        </div>
-        {messageToReplay && (
-          <div className={classes['message-to-replay']}>
-            <div className={classes['replay-texts']}>
-              <p>Replying to {messageToReplay.displayName}</p>
-              <p className={classes['replay-text']}>{messageToReplay.text}</p>
-            </div>
-            <Close
-              className={classes.icon}
-              height="15px"
-              onClick={() => setMessageToReplay(null)}
-            />
+          <div
+            className={`${classes['messages-container']} ${
+              isFullScreen ? classes[`messages-container-full`] : ''
+            }`}
+            ref={scrollRef}
+          >
+            {loading ? (
+              <p className={classes['empty-chat']}>Loading...</p>
+            ) : messages?.length > 0 ? (
+              messages.map((message) => (
+                <Message
+                  key={message.id}
+                  message={message}
+                  onReplay={() => setMessageToReplay(message)}
+                  scrollToReplayedMessage={() =>
+                    scrollToReplayedMessage(message.replayTo.id)
+                  }
+                />
+              ))
+            ) : (
+              <p className={classes['empty-chat']}>
+                There are no messages yet! <br />
+                Start a conversation!
+              </p>
+            )}
           </div>
-        )}
-        <form onSubmit={sendMessage}>
-          <input
-            value={messageText}
-            onClick={markAllAsRead}
-            onChange={(e) => setMessageText(e.target.value)}
-            ref={chatInput}
-            aria-label="Chat Message Input"
-          />
-        </form>
-      </div>
+          {messageToReplay && (
+            <div className={classes['message-to-replay']}>
+              <div className={classes['replay-texts']}>
+                <p>Replying to {messageToReplay.displayName}</p>
+                <p className={classes['replay-text']}>{messageToReplay.text}</p>
+              </div>
+              <Close
+                className={classes.icon}
+                height="15px"
+                onClick={() => setMessageToReplay(null)}
+              />
+            </div>
+          )}
+          <form onSubmit={sendMessage}>
+            <input
+              value={messageText}
+              onClick={markAllAsRead}
+              onChange={(e) => setMessageText(e.target.value)}
+              ref={chatInput}
+              aria-label="Chat Message Input"
+            />
+          </form>
+        </div>
+      )}
     </div>
   );
 };
