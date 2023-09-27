@@ -186,13 +186,13 @@ const Chat = ({
       }`}
     >
       <div
-        className={`${classes['chat-head']} ${
-          isFullScreen ? classes['chat-head-full'] : ''
+        className={`${classes['chat-header']} ${
+          isFullScreen ? classes['chat-header-full'] : ''
         }`}
         onClick={toggleChat}
       >
         <div className={classes.logoAndTitle}>
-          <div className={classes['chat-head-image-container']}>
+          <div className={classes['chat-header-image-container']}>
             <img
               src={chat.logo}
               alt="avatar"
