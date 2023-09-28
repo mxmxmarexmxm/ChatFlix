@@ -13,8 +13,12 @@ import {
 const UserProfile = ({ uid, personalProfile }) => {
   const [user, setUser] = useState(null);
   const [newPhoto, setNewPhoto] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null); // Store the image preview
-  const [newUsername, setNewUsername] = useState('');
+  const [imagePreview, setImagePreview] = useState(null);
+  const [newValues, setNewValues] = useState({
+    displayName: '',
+    title: '',
+    aboutMe: '',
+  });
   const [isEditing, setIsEditing] = useState(false);
   const [status, setStatus] = useState('');
   const storage = getStorage();
@@ -24,13 +28,21 @@ const UserProfile = ({ uid, personalProfile }) => {
     const fetchUserData = async () => {
       if (personalProfile) {
         setUser(personalProfile);
-        setNewUsername(personalProfile.displayName);
+        setNewValues({
+          displayName: personalProfile.displayName,
+          title: personalProfile.title || '',
+          aboutMe: personalProfile.aboutMe || '',
+        });
         return;
       }
       const userData = await getUserDataFromFirestore(uid);
       if (userData) {
         setUser(userData);
-        setNewUsername(userData.displayName);
+        setNewValues({
+          displayName: userData.displayName,
+          title: userData.title || '',
+          aboutMe: userData.aboutMe || '',
+        });
       }
     };
     fetchUserData();
@@ -53,53 +65,44 @@ const UserProfile = ({ uid, personalProfile }) => {
     setIsEditing(!isEditing);
   };
 
-  // Upload the image file to Firebase Storage
-  const uploadImage = async () => {
-    if (newPhoto) {
-      const storageRef = ref(
-        storage,
-        `profile-images/${user.uid}/${newPhoto.name}`
-      );
-      setStatus('Please wait...');
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
 
-      try {
-        await uploadBytes(storageRef, newPhoto);
-        const downloadURL = await getDownloadURL(storageRef);
-        await updateProfile(user, { photoURL: downloadURL });
-        await updateUserDataInFirestore(user.uid, { photoURL: downloadURL });
-        setStatus('Profile picture updated!');
-        setTimeout(() => {
-          setStatus('');
-        }, 3000);
-      } catch (error) {
-        console.log(error);
-        setStatus('Error updating profile picture');
-      }
-    }
-  };
+    console.log(newValues);
 
-  const updateUserProfile = async () => {
-    if (newUsername.length < 3) {
-      setStatus('Username must have at least 3 characters');
-      return;
-    }
     try {
-      await updateProfile(user, { displayName: newUsername });
-      await updateUserDataInFirestore(user.uid, { displayName: newUsername });
-      setStatus('Username updated!');
-      toggleEditMode();
-      uploadImage();
-      setTimeout(() => {
-        setStatus('');
-      }, 3000);
+      setStatus('Please wait...');
+      await updateProfile(user, newValues);
+      await updateUserDataInFirestore(user.uid, newValues);
+      if (newPhoto) {
+        const storageRef = ref(
+          storage,
+          `profile-images/${user.uid}/${newPhoto.name}`
+        );
+
+        try {
+          await uploadBytes(storageRef, newPhoto);
+          const downloadURL = await getDownloadURL(storageRef);
+          await updateProfile(user, { photoURL: downloadURL });
+          await updateUserDataInFirestore(user.uid, { photoURL: downloadURL });
+        } catch (error) {
+          setStatus('Error updating profile picture');
+        }
+      }
+
+      setStatus('Profile updated successfully!');
     } catch (error) {
       console.error(error);
-      setStatus('Error updating username');
+      setStatus('Error updating profile...');
     }
+    toggleEditMode();
+    setTimeout(() => {
+      setStatus('');
+    }, 3000);
   };
 
   return (
-    <div className={classes['user-card']}>
+    <form onSubmit={handleFormSubmit} className={classes['user-card']}>
       <div className={classes['img-and-input-wrapper']}>
         <div className={classes['profile-img-wrapper']}>
           <img
@@ -121,16 +124,34 @@ const UserProfile = ({ uid, personalProfile }) => {
       </div>
       <input
         type="text"
-        value={newUsername}
-        onChange={(e) => setNewUsername(e.target.value)}
+        value={newValues.displayName}
+        onChange={(e) =>
+          setNewValues({ ...newValues, displayName: e.target.value })
+        }
         placeholder="Enter new username"
+        disabled={!isEditing}
+      />
+      <input
+        type="text"
+        value={newValues.title}
+        onChange={(e) => setNewValues({ ...newValues, title: e.target.value })}
+        placeholder="About Me"
+        disabled={!isEditing}
+      />
+      <input
+        type="text"
+        value={newValues.aboutMe}
+        onChange={(e) =>
+          setNewValues({ ...newValues, aboutMe: e.target.value })
+        }
+        placeholder="About Me"
         disabled={!isEditing}
       />
       <span>{user?.email}</span>
       <p className={classes.status}>{status}</p>
       {personalProfile && (
         <div className={classes['buttons-wrapper']}>
-          <button onClick={toggleEditMode}>
+          <button onClick={toggleEditMode} type="button">
             {isEditing ? (
               'Cancel'
             ) : (
@@ -139,10 +160,10 @@ const UserProfile = ({ uid, personalProfile }) => {
               </>
             )}
           </button>
-          {isEditing && <button onClick={updateUserProfile}>Save</button>}
+          {isEditing && <button type="submit">Save</button>}
         </div>
       )}
-    </div>
+    </form>
   );
 };
 

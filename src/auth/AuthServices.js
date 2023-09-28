@@ -8,7 +8,7 @@ export const signInWithGoogle = async () => {
     const success = await auth.signInWithPopup(provider);
     if (success) {
       const user = success.user;
-      addUserToFirestore(user); 
+      addUserToFirestore(user);
     }
   } catch (err) {
     alert(err.message);
@@ -40,6 +40,8 @@ export const addUserToFirestore = async (user) => {
         displayName: user.displayName,
         email: user.email,
         photoURL: user.photoURL,
+        aboutMe: '',
+        title: '',
       });
     } else {
       console.log('User document already exists in Firestore.');
@@ -60,6 +62,7 @@ export const getUserDataFromFirestore = async (uid) => {
 
     if (userDoc.exists) {
       const userData = userDoc.data();
+      console.log(userData);
       return userData;
     } else {
       console.log('User document not found.');
