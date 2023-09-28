@@ -51,9 +51,6 @@ const UserProfile = ({ uid, personalProfile }) => {
 
   const toggleEditMode = () => {
     setIsEditing(!isEditing);
-    if (isEditing) {
-      setImagePreview(user.photoURL || userPlaceholder); // Clear image preview when exiting edit mode
-    }
   };
 
   // Upload the image file to Firebase Storage
