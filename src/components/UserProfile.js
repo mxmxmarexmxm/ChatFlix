@@ -68,6 +68,9 @@ const UserProfile = ({ uid, personalProfile }) => {
         await updateProfile(user, { photoURL: downloadURL });
         await updateUserDataInFirestore(user.uid, { photoURL: downloadURL });
         setStatus('Profile picture updated!');
+        setTimeout(() => {
+          setStatus('');
+        }, 3000);
       } catch (error) {
         console.log(error);
         setStatus('Error updating profile picture');
@@ -86,6 +89,9 @@ const UserProfile = ({ uid, personalProfile }) => {
       setStatus('Username updated!');
       toggleEditMode();
       uploadImage();
+      setTimeout(() => {
+        setStatus('');
+      }, 3000);
     } catch (error) {
       console.error(error);
       setStatus('Error updating username');
@@ -113,7 +119,6 @@ const UserProfile = ({ uid, personalProfile }) => {
           </div>
         )}
       </div>
-      <p className={classes.status}>{status}</p>
       <input
         type="text"
         value={newUsername}
@@ -122,6 +127,7 @@ const UserProfile = ({ uid, personalProfile }) => {
         disabled={!isEditing}
       />
       <span>{user?.email}</span>
+      <p className={classes.status}>{status}</p>
       {personalProfile && (
         <div className={classes['buttons-wrapper']}>
           <button onClick={toggleEditMode}>
