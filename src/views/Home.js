@@ -90,7 +90,7 @@ const Home = () => {
         ...activeBottom.filter((chat) => chat.name !== elementToMove.name),
       ]);
     }
-    setShowMessages(chatData.name);
+    setShowMessages({ name: chatData.name });
   };
 
   // Close chat handler, for each scenario.

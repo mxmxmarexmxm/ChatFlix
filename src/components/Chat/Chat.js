@@ -123,10 +123,10 @@ const Chat = ({
 
   // Expand chat if selected from home screen and chat is already in active chats container
   useEffect(() => {
-    if (chat.name === showMessages) {
+    if (chat?.name === showMessages?.name) {
       setDisplayMessages(true);
     }
-  }, [chat.name, showMessages]);
+  }, [showMessages, chat.name]);
 
   // Minimize all chats in the active bottom container at the Esc button
   useEffect(() => {
