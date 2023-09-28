@@ -230,7 +230,6 @@ const Chat = ({
         </div>
       </div>
       <div
-        style={{ display: !dispalyMessages && 'none' }}
         className={`${classes['chat-body']} ${
           isFullScreen && classes['chat-body-fullscreen']
         } ${!dispalyMessages && classes['chat-body-hidden']}`}
