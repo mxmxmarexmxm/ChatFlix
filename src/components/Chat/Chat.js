@@ -229,61 +229,60 @@ const Chat = ({
           </div>
         </div>
       </div>
-      {dispalyMessages && (
+      <div
+        style={{ display: !dispalyMessages && 'none' }}
+        className={`${classes['chat-body']} ${
+          isFullScreen && classes['chat-body-fullscreen']
+        } ${!dispalyMessages && classes['chat-body-hidden']}`}
+      >
         <div
-          className={`${classes['chat-body']} ${
-            isFullScreen && classes['chat-body-fullscreen']
-          }`}
+          className={classes['messages-container']}
+          ref={messagesContainerRef}
         >
-          <div
-            className={classes['messages-container']}
-            ref={messagesContainerRef}
-          >
-            {loading ? (
-              <p className={classes['empty-chat-message']}>Loading...</p>
-            ) : messages?.length > 0 ? (
-              messages.map((message) => (
-                <Message
-                  key={message.id}
-                  message={message}
-                  onSetMessageToReplay={() => setMessageToReplay(message)}
-                  scrollToReplayedMessage={() =>
-                    scrollToReplayedMessage(message.replayTo.id)
-                  }
-                />
-              ))
-            ) : (
-              <p className={classes['empty-chat-message']}>
-                There are no messages yet. <br />
-                Start a conversation!
-              </p>
-            )}
-          </div>
-          {messageToReplay && (
-            <div className={classes['message-to-replay']}>
-              <div className={classes['replay-message-content']}>
-                <p>Replying to {messageToReplay.displayName}</p>
-                <p className={classes['replay-message-text']}>
-                  {messageToReplay.text}
-                </p>
-              </div>
-              <Close height="15px" onClick={() => setMessageToReplay(null)} />
-            </div>
+          {loading ? (
+            <p className={classes['empty-chat-message']}>Loading...</p>
+          ) : messages?.length > 0 ? (
+            messages.map((message) => (
+              <Message
+                key={message.id}
+                message={message}
+                onSetMessageToReplay={() => setMessageToReplay(message)}
+                scrollToReplayedMessage={() =>
+                  scrollToReplayedMessage(message.replayTo.id)
+                }
+              />
+            ))
+          ) : (
+            <p className={classes['empty-chat-message']}>
+              There are no messages yet. <br />
+              Start a conversation!
+            </p>
           )}
-          <form onSubmit={sendMessage}>
-            <input
-              value={messageText}
-              onClick={markAllAsRead}
-              onChange={(e) => setMessageText(e.target.value)}
-              ref={chatInput}
-              aria-label="Chat Message Input"
-            />
-            <button type="submit">
-              <Send />
-            </button>
-          </form>
         </div>
-      )}
+        {messageToReplay && (
+          <div className={classes['message-to-replay']}>
+            <div className={classes['replay-message-content']}>
+              <p>Replying to {messageToReplay.displayName}</p>
+              <p className={classes['replay-message-text']}>
+                {messageToReplay.text}
+              </p>
+            </div>
+            <Close height="15px" onClick={() => setMessageToReplay(null)} />
+          </div>
+        )}
+        <form onSubmit={sendMessage}>
+          <input
+            value={messageText}
+            onClick={markAllAsRead}
+            onChange={(e) => setMessageText(e.target.value)}
+            ref={chatInput}
+            aria-label="Chat Message Input"
+          />
+          <button type="submit">
+            <Send />
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

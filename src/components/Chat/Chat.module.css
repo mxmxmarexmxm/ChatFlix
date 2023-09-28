@@ -102,6 +102,10 @@
   flex: 1;
 }
 
+.chat-body-hidden {
+  display: none;
+}
+
 .messages-container {
   background-color: #242526;
   display: flex;
