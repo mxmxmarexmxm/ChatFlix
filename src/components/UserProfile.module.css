@@ -70,7 +70,7 @@
   max-width: 300px;
 }
 
-.user-card input[type='text'],
+.user-card input,
 .user-card textarea {
   background-color: transparent;
   color: white;
@@ -88,7 +88,7 @@
   resize: none;
 }
 
-.user-card input[type='text']:disabled {
+.user-card input:disabled {
   display: flex;
   text-align: center;
   border: none;
