@@ -24,28 +24,19 @@ const UserProfile = ({ uid, personalProfile }) => {
   const storage = getStorage();
 
   useEffect(() => {
-    // Fetch user data from when the component mounts
+    // Fetch user data when the component mounts
     const fetchUserData = async () => {
-      if (personalProfile) {
-        const userData = await getUserDataFromFirestore(personalProfile.uid);
-        setUser(personalProfile);
-        setNewValues({
-          displayName: userData.displayName,
-          title: userData.title || '',
-          aboutMe: userData.aboutMe || '',
-        });
-        return;
-      }
-      const userData = await getUserDataFromFirestore(uid);
-      if (userData) {
-        setUser(userData);
-        setNewValues({
-          displayName: userData.displayName,
-          title: userData.title || '',
-          aboutMe: userData.aboutMe || '',
-        });
-      }
+      const userData = await getUserDataFromFirestore(
+        personalProfile?.uid || uid
+      );
+      setNewValues({
+        displayName: userData.displayName,
+        title: userData.title,
+        aboutMe: userData.aboutMe,
+      });
+      setUser(personalProfile || userData);
     };
+
     fetchUserData();
   }, [uid, personalProfile]);
 
