@@ -6,6 +6,8 @@
   gap: 1rem;
   font-size: 1.5rem;
   color: white;
+  width: 500px;
+  max-width: 90vw;
 }
 
 .profile-img-wrapper {
@@ -78,23 +80,22 @@
   border-radius: 1rem;
   padding: 0.1rem 0.5rem;
   font-family: inherit;
+  width: 100%;
 }
 
 .user-card textarea {
   min-height: 150px;
   max-height: 40vh;
   resize: vertical;
-  width: 100%;
+  font-size: 1rem;
 }
 
+.user-card input:disabled,
 .user-card textarea:disabled {
-  resize: none;
-}
-
-.user-card input:disabled {
   display: flex;
   text-align: center;
   border: none;
+  resize: none;
 }
 
 .buttons-wrapper {

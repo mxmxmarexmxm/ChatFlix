@@ -97,6 +97,13 @@ const UserProfile = ({ uid, personalProfile }) => {
 
   return (
     <form onSubmit={handleFormSubmit} className={classes['user-card']}>
+      <input
+        type="text"
+        value={newValues.title}
+        onChange={(e) => setNewValues({ ...newValues, title: e.target.value })}
+        placeholder="Title"
+        disabled={!isEditing}
+      />
       <div className={classes['img-and-input-wrapper']}>
         <div className={classes['profile-img-wrapper']}>
           <img
@@ -125,13 +132,7 @@ const UserProfile = ({ uid, personalProfile }) => {
         placeholder="Enter new username"
         disabled={!isEditing}
       />
-      <input
-        type="text"
-        value={newValues.title}
-        onChange={(e) => setNewValues({ ...newValues, title: e.target.value })}
-        placeholder="Title"
-        disabled={!isEditing}
-      />
+
       <textarea
         type="text"
         value={newValues.aboutMe}
