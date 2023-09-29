@@ -82,6 +82,7 @@
 
 .user-card textarea {
   min-height: 150px;
+  max-height: 40vh;
   resize: vertical;
   width: 100%;
 }
