@@ -127,7 +127,7 @@ const UserProfile = ({ uid, personalProfile }) => {
         type="text"
         value={newValues.title}
         onChange={(e) => setNewValues({ ...newValues, title: e.target.value })}
-        placeholder="About Me"
+        placeholder="Title"
         disabled={!isEditing}
       />
       <input
