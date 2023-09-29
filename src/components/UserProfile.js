@@ -130,13 +130,14 @@ const UserProfile = ({ uid, personalProfile }) => {
         placeholder="Title"
         disabled={!isEditing}
       />
-      <input
+      <textarea
         type="text"
         value={newValues.aboutMe}
         onChange={(e) =>
           setNewValues({ ...newValues, aboutMe: e.target.value })
         }
         placeholder="About Me"
+        name="about-me"
         disabled={!isEditing}
       />
       <span>{user?.email}</span>
