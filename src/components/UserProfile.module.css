@@ -84,6 +84,10 @@
   resize: vertical;
 }
 
+.user-card textarea:disabled {
+  resize: none;
+}
+
 .user-card input[type='text']:disabled {
   display: flex;
   text-align: center;
