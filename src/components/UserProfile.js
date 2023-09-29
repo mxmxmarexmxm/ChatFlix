@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classes from './UserProfile.module.css';
 import userPlaceholder from '../assets/img/user-placeholder.png';
-import { updateProfile } from 'firebase/auth';
+import { updateEmail, updateProfile } from 'firebase/auth';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { Edit } from '../assets/icons/Edit';
 import { Upload } from '../assets/icons/Upload';
@@ -33,6 +33,7 @@ const UserProfile = ({ uid, personalProfile }) => {
         displayName: userData.displayName,
         title: userData.title,
         aboutMe: userData.aboutMe,
+        email: userData.email,
       });
       setUser(personalProfile || userData);
     };
@@ -60,12 +61,13 @@ const UserProfile = ({ uid, personalProfile }) => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(newValues);
-
     try {
       setStatus('Please wait...');
       await updateProfile(user, newValues);
       await updateUserDataInFirestore(user.uid, newValues);
+      if (newValues.email !== user.email) {
+        await updateEmail(user, newValues.email);
+      }
       if (newPhoto) {
         const storageRef = ref(
           storage,
@@ -140,7 +142,13 @@ const UserProfile = ({ uid, personalProfile }) => {
         name="about-me"
         disabled={!isEditing}
       />
-      <span>{user?.email}</span>
+      <input
+        type="email"
+        value={newValues.email}
+        onChange={(e) => setNewValues({ ...newValues, email: e.target.value })}
+        placeholder="email"
+        disabled={!isEditing}
+      />
       <p className={classes.status}>{status}</p>
       {personalProfile && (
         <div className={classes['buttons-wrapper']}>
