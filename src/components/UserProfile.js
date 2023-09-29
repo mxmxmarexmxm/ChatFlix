@@ -27,11 +27,12 @@ const UserProfile = ({ uid, personalProfile }) => {
     // Fetch user data from when the component mounts
     const fetchUserData = async () => {
       if (personalProfile) {
+        const userData = await getUserDataFromFirestore(personalProfile.uid);
         setUser(personalProfile);
         setNewValues({
-          displayName: personalProfile.displayName,
-          title: personalProfile.title || '',
-          aboutMe: personalProfile.aboutMe || '',
+          displayName: userData.displayName,
+          title: userData.title || '',
+          aboutMe: userData.aboutMe || '',
         });
         return;
       }
