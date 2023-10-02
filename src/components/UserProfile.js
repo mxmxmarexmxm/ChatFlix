@@ -131,6 +131,7 @@ const UserProfile = ({ uid, personalProfile }) => {
         }
         placeholder="Enter new username"
         disabled={!isEditing}
+        required
       />
 
       <textarea
@@ -149,6 +150,7 @@ const UserProfile = ({ uid, personalProfile }) => {
         onChange={(e) => setNewValues({ ...newValues, email: e.target.value })}
         placeholder="email"
         disabled={!isEditing}
+        required
       />
       <p className={classes.status}>{status}</p>
       {personalProfile && (
