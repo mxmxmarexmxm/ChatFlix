@@ -27,11 +27,11 @@ const Home = () => {
 
   // Save chat list to local storage.
   useEffect(() => {
-    const setLocalStorage = () => {
+    const saveChatsToLocalStorage = () => {
       localStorage.setItem('chatsBottom', JSON.stringify(activeChatsBottom));
       localStorage.setItem('chatsRight', JSON.stringify(activeChatsRight));
     };
-    setLocalStorage();
+    saveChatsToLocalStorage();
   }, [activeChatsBottom, activeChatsRight]);
 
   // Select chat handler, for each scenario.
