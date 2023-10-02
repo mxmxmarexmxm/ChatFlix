@@ -21,14 +21,8 @@ const Home = () => {
     const chatsRight = localStorage.getItem('chatsRight');
     const chatsBottom = localStorage.getItem('chatsBottom');
 
-    if (chatsBottom) {
-      let chatsBottomParsed = JSON.parse(chatsBottom);
-      setActiveChatsBottom(chatsBottomParsed);
-    }
-    if (chatsRight) {
-      let chatsRightParsed = JSON.parse(chatsRight);
-      setActiveChatsRight(chatsRightParsed);
-    }
+    setActiveChatsBottom(JSON.parse(chatsBottom));
+    setActiveChatsRight(JSON.parse(chatsRight));
   }, []);
 
   // Save chat list to local storage.
