@@ -59,7 +59,6 @@ export const getUserDataFromFirestore = async (uid) => {
 
     if (userDoc.exists) {
       const userData = userDoc.data();
-      console.log(userData);
       return userData;
     } else {
       console.log('User document not found.');
