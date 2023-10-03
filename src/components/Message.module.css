@@ -1,7 +1,7 @@
 .message {
   display: flex;
   flex-wrap: wrap;
-  padding: 0.3rem;
+  padding: 0.02rem;
   align-items: center;
   gap: 0.5rem;
   position: relative;
@@ -46,6 +46,7 @@
   border-radius: 15px;
   overflow: hidden;
   align-self: flex-start;
+  padding: 0.2rem;
 }
 
 .profile-img {
