@@ -14,6 +14,23 @@
 .received {
 }
 
+.same-sender .image-wrapper {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.same-sender + .message:not(.same-sender) .text-wrapper {
+  border-radius: 0.2rem 1rem 1rem 1rem;
+}
+
+.message:not(.same-sender) + .same-sender .text-wrapper {
+  border-radius: 1rem 1rem 1rem 0.2rem;
+}
+
+.same-sender .text-wrapper {
+  border-radius: 0.2rem 1rem 1rem 0.2rem;
+}
+
 .user-name {
   background-color: #161617;
   color: #bcb9b9;
