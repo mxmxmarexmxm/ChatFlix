@@ -88,6 +88,10 @@
   padding: 0.7rem;
 }
 
+.text-wrapper a {
+  color: white;
+}
+
 .replay-wrapper p:first-child {
   font-size: 0.9rem;
   font-style: italic;
