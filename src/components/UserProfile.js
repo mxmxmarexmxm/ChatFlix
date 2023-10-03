@@ -99,13 +99,18 @@ const UserProfile = ({ uid, personalProfile }) => {
     }, 3000);
   };
 
+  const handleInputChange = (e) => {
+    setNewValues({ ...newValues, [e.target.name]: e.target.value });
+  };
+
   return (
     <form onSubmit={handleFormSubmit} className={classes['user-card']}>
       <input
         type="text"
         value={newValues.title}
-        onChange={(e) => setNewValues({ ...newValues, title: e.target.value })}
+        onChange={handleInputChange}
         placeholder="Title"
+        name="title"
         disabled={!isEditing}
       />
       <div className={classes['img-and-input-wrapper']}>
@@ -123,6 +128,7 @@ const UserProfile = ({ uid, personalProfile }) => {
               accept="image/*"
               onChange={handleFileChange}
               placeholder="none"
+              name="photoURL"
             />
           </div>
         )}
@@ -130,30 +136,28 @@ const UserProfile = ({ uid, personalProfile }) => {
       <input
         type="text"
         value={newValues.displayName}
-        onChange={(e) =>
-          setNewValues({ ...newValues, displayName: e.target.value })
-        }
+        onChange={handleInputChange}
         placeholder="Enter new username"
         disabled={!isEditing}
+        name="displayName"
         required
       />
 
       <textarea
         type="text"
         value={newValues.aboutMe}
-        onChange={(e) =>
-          setNewValues({ ...newValues, aboutMe: e.target.value })
-        }
+        onChange={handleInputChange}
         placeholder="About Me"
-        name="about-me"
+        name="aboutMe"
         disabled={!isEditing}
       />
       <input
         type="email"
         value={newValues.email}
-        onChange={(e) => setNewValues({ ...newValues, email: e.target.value })}
+        onChange={handleInputChange}
         placeholder="email"
         disabled={!isEditing}
+        name="email"
         required
       />
       {isEditing ? (
@@ -161,18 +165,16 @@ const UserProfile = ({ uid, personalProfile }) => {
           <input
             type="url"
             value={newValues.linkedin}
-            onChange={(e) =>
-              setNewValues({ ...newValues, linkedin: e.target.value })
-            }
+            onChange={handleInputChange}
+            name="linkedin"
             placeholder="Linkedin"
           />
           <input
             type="url"
             value={newValues.github}
-            onChange={(e) =>
-              setNewValues({ ...newValues, github: e.target.value })
-            }
+            onChange={handleInputChange}
             placeholder="Github"
+            name="github"
           />
         </>
       ) : (
