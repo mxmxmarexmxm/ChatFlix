@@ -6,6 +6,7 @@ import { useModal } from '../context/ModalContext';
 import UserProfile from './UserProfile';
 import { Replay } from '../assets/icons/Replay';
 import { getUserDataFromFirestore } from '../auth/AuthServices';
+const urlRegex = /(https?:\/\/[^\s]+?(?=\s|$))/g;
 
 const Message = ({
   message,
@@ -17,6 +18,33 @@ const Message = ({
   const { openModal } = useModal();
   const { text, uid, replayTo, id } = message;
   const messageSenderClass = uid === user?.uid ? 'sent' : 'received';
+
+  const formatMessage = (text) => {
+    // Split the message text into segments based on URLs
+    const segments = text.split(urlRegex);
+
+    // Initialize an array to store the formatted message components
+    const formattedText = [];
+
+    // Process each segment
+    for (let i = 0; i < segments.length; i++) {
+      const segment = segments[i];
+      if (segment?.match(urlRegex)) {
+        // If the segment is a URL, create an anchor element
+        const url = segment.trim();
+        formattedText.push(
+          <a href={url} target="_blank" rel="noopener noreferrer" key={i}>
+            {url}
+          </a>
+        );
+      } else {
+        // If the segment is plain text, add it as a text node
+        formattedText.push(<span key={i}>{segment}</span>);
+      }
+    }
+
+    return formattedText;
+  };
 
   // Fetch user data from Firestore
   useEffect(() => {
@@ -59,9 +87,7 @@ const Message = ({
             {<p>{replayTo.text}</p>}
           </div>
         )}
-        <div className={classes['text-wrapper']}>
-          <p>{text}</p>
-        </div>
+        <div className={classes['text-wrapper']}>{formatMessage(text)}</div>
       </div>
       <Replay
         height="15px"
