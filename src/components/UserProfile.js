@@ -5,10 +5,12 @@ import { updateEmail, updateProfile } from 'firebase/auth';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { Edit } from '../assets/icons/Edit';
 import { Upload } from '../assets/icons/Upload';
+import { Linkedin } from '../assets/icons/Linkedin';
 import {
   getUserDataFromFirestore,
   updateUserDataInFirestore,
 } from '../auth/AuthServices';
+import GithubIcon from '../assets/icons/Github';
 
 const UserProfile = ({ uid, personalProfile }) => {
   const [user, setUser] = useState(null);
@@ -34,6 +36,8 @@ const UserProfile = ({ uid, personalProfile }) => {
         title: userData.title,
         aboutMe: userData.aboutMe,
         email: userData.email,
+        linkedin: userData.linkedin,
+        github: userData.github,
       });
       setUser(personalProfile || userData);
     };
@@ -152,6 +156,47 @@ const UserProfile = ({ uid, personalProfile }) => {
         disabled={!isEditing}
         required
       />
+      {isEditing ? (
+        <>
+          <input
+            type="url"
+            value={newValues.linkedin}
+            onChange={(e) =>
+              setNewValues({ ...newValues, linkedin: e.target.value })
+            }
+            placeholder="Linkedin"
+          />
+          <input
+            type="url"
+            value={newValues.github}
+            onChange={(e) =>
+              setNewValues({ ...newValues, github: e.target.value })
+            }
+            placeholder="Github"
+          />
+        </>
+      ) : (
+        <div className={classes['social-media-icon-wrapper']}>
+          {newValues?.linkedin && (
+            <a
+              href={newValues?.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Linkedin className={classes['social-media-icon']} />
+            </a>
+          )}
+          {newValues?.github && (
+            <a
+              href={newValues?.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GithubIcon className={classes['social-media-icon']} />
+            </a>
+          )}
+        </div>
+      )}
       <p className={classes.status}>{status}</p>
       {personalProfile && (
         <div className={classes['buttons-wrapper']}>
