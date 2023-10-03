@@ -19,6 +19,10 @@ const Message = ({
   const { text, uid, replayTo, id } = message;
   const messageSenderClass = uid === user?.uid ? 'sent' : 'received';
 
+  const nextSibling = document.getElementById(id)?.nextSibling;
+  const nextSiblingId = nextSibling?.id.split('/')[1];
+  const sameSender = nextSiblingId === uid;
+
   const formatMessage = (text) => {
     // Split the message text into segments based on URLs
     const segments = text.split(urlRegex);
@@ -60,7 +64,9 @@ const Message = ({
 
   return (
     <div
-      className={`${classes.message} ${classes[messageSenderClass]}`}
+      className={`${classes.message} ${classes[messageSenderClass]} ${
+        sameSender && classes['same-sender']
+      }`}
       id={id}
     >
       {messageSenderClass === 'received' && (
