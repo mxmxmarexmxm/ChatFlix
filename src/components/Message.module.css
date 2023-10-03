@@ -11,9 +11,6 @@
   flex-direction: row-reverse;
 }
 
-.received {
-}
-
 .message:not(.same-sender) {
   margin-bottom: .5rem;
 }
