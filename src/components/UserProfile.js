@@ -20,6 +20,9 @@ const UserProfile = ({ uid, personalProfile }) => {
     displayName: '',
     title: '',
     aboutMe: '',
+    email: '',
+    linkedin: '',
+    github: '',
   });
   const [isEditing, setIsEditing] = useState(false);
   const [status, setStatus] = useState('');
