@@ -82,6 +82,7 @@
   overflow: hidden;
   align-self: flex-start;
   padding: 0.2rem;
+  cursor: pointer;
 }
 
 .profile-img {
