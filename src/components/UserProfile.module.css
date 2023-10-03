@@ -129,3 +129,12 @@
   height: 50px;
   cursor: pointer;
 }
+
+.social-media-icon:hover:not(.social-media-icon-disabled) {
+  scale: 1.2;
+}
+
+.social-media-icon-disabled {
+  cursor: not-allowed;
+  filter: blur(2px);
+}

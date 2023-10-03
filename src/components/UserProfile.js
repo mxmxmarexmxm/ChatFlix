@@ -179,24 +179,28 @@ const UserProfile = ({ uid, personalProfile }) => {
         </>
       ) : (
         <div className={classes['social-media-icon-wrapper']}>
-          {newValues?.linkedin && (
-            <a
-              href={newValues?.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Linkedin className={classes['social-media-icon']} />
-            </a>
-          )}
-          {newValues?.github && (
-            <a
-              href={newValues?.github}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <GithubIcon className={classes['social-media-icon']} />
-            </a>
-          )}
+          <a
+            href={newValues?.linkedin || undefined}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Linkedin
+              className={`${classes['social-media-icon']} ${
+                !newValues?.linkedin && classes['social-media-icon-disabled']
+              }`}
+            />
+          </a>
+          <a
+            href={newValues?.github || undefined}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GithubIcon
+              className={`${classes['social-media-icon']} ${
+                !newValues?.github && classes['social-media-icon-disabled']
+              }`}
+            />
+          </a>
         </div>
       )}
       <p className={classes.status}>{status}</p>
