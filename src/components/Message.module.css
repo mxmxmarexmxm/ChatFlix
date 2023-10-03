@@ -19,16 +19,30 @@
   pointer-events: none;
 }
 
+/* Recieved messages if they are sent in a row. */
 .same-sender + .message:not(.same-sender) .text-wrapper {
   border-radius: 0.2rem 1rem 1rem 1rem;
+}
+
+.same-sender .text-wrapper {
+  border-radius: 0.2rem 1rem 1rem 0.2rem;
 }
 
 .message:not(.same-sender) + .same-sender .text-wrapper {
   border-radius: 1rem 1rem 1rem 0.2rem;
 }
 
-.same-sender .text-wrapper {
-  border-radius: 0.2rem 1rem 1rem 0.2rem;
+/* Sent messages if they are sent in a row. */
+.same-sender + .message:not(.same-sender).sent .text-wrapper {
+  border-radius: 1rem 0.2rem 1rem 1rem;
+}
+
+.same-sender.sent .text-wrapper {
+  border-radius: 1rem 0.2rem 0.2rem 1rem;
+}
+
+.message:not(.same-sender) + .same-sender.sent .text-wrapper {
+  border-radius: 1rem 1rem 0.2rem 1rem;
 }
 
 .user-name {
