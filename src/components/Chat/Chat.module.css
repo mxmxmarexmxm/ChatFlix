@@ -138,6 +138,16 @@
   font-size: inherit;
 }
 
+.icn {
+  z-index: 100000;
+  position: absolute;
+  bottom: 10px; /* Adjust this value as needed */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  height: 40px;
+}
+
+
 .chat form input:focus {
   outline: unset;
 }
