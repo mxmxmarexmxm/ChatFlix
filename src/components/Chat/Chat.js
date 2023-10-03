@@ -102,7 +102,7 @@ const Chat = ({
           text: messageText,
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
           uid,
-          id: new Date().toISOString() + uid,
+          id: new Date().toISOString() + '/' + uid,
           readBy: [uid],
           replayTo: messageToReplay,
         });
