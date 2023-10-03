@@ -117,3 +117,15 @@
 .buttons-wrapper button:hover {
   background-color: rgb(36, 35, 35);
 }
+
+.social-media-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social-media-icon {
+  fill: white;
+  height: 50px;
+  cursor: pointer;
+}
