@@ -83,7 +83,7 @@ const Message = ({
         </div>
       )}
       <div className={classes['user-name']}>{sender?.displayName}</div>
-      <div className={classes['mess-div']}>
+      <div className={classes['message-wrapper']}>
         {replayTo && (
           <div
             className={classes['replay-wrapper']}
