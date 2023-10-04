@@ -71,11 +71,10 @@ const Message = ({
     >
       {messageSenderClass === 'received' && (
         <div
-          className={classes['image-wrapper']}
+          className={classes['profile-image-wrapper']}
           onClick={() => openModal(<UserProfile uid={uid} />)}
         >
           <img
-            className={classes['profile-img']}
             src={sender?.photoURL || userPlaceholder}
             referrerPolicy="no-referrer"
             alt={sender?.displayName}
