@@ -1,26 +1,24 @@
-.screen {
+.fullscreen {
   display: flex;
   height: 100vh;
+  width: 100vw;
 }
 
-.active-chats-container {
+.side-chats-container {
   border: 3px solid #242425;
   color: white;
   overflow-x: hidden;
   overflow-y: auto;
   scroll-behavior: smooth;
+  width: 70px;
 }
 
-.full-screen-chat-container {
-  flex: 1;
-}
-
-.chat-body {
-  flex: 1;
+.fullscreen-chat-container {
+  width: calc(100vw - 70px);
 }
 
 @media only screen and (min-width: 756px) {
-  .active-chats-container {
+  .side-chats-container {
     width: 27vw;
   }
 }

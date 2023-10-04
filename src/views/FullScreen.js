@@ -10,8 +10,8 @@ const FullScreen = ({
   onClose,
 }) => {
   return (
-    <div className={classes.screen}>
-      <div className={classes['active-chats-container']}>
+    <div className={classes.fullscreen}>
+      <div className={classes['side-chats-container']}>
         {activeChats.map((chat) => (
           <Chat
             isFullScreenSideChat
@@ -22,7 +22,7 @@ const FullScreen = ({
           />
         ))}
       </div>
-      <div className={classes['full-screen-chat-container']}>
+      <div className={classes['fullscreen-chat-container']}>
         <Chat
           isFullScreen
           chat={fullScreenChat}
