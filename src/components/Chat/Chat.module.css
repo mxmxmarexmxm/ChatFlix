@@ -40,10 +40,15 @@
 }
 
 .chat-header-image-wrapper {
-  height: 25px;
   width: 25px;
+  aspect-ratio: 1/1;
   border-radius: 4px;
   overflow: hidden;
+}
+
+.chat-header-fullscreen .chat-header-image-wrapper {
+  width: 40px;
+  margin: 0 1rem;
 }
 
 .chat-header-image-wrapper img {
@@ -146,7 +151,6 @@
   transform: translateX(-50%); /* Center horizontally */
   height: 40px;
 }
-
 
 .chat form input:focus {
   outline: unset;
