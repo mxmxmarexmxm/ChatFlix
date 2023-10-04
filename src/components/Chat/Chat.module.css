@@ -26,7 +26,7 @@
   cursor: pointer;
 }
 
-.chat-header-fullscreen {
+.chat-fullscreen .chat-header {
   cursor: default;
   font-size: 1.2rem;
   font-family: inherit;
@@ -46,7 +46,7 @@
   overflow: hidden;
 }
 
-.chat-header-fullscreen .chat-header-image-wrapper {
+.chat-fullscreen .chat-header-image-wrapper {
   width: 40px;
   margin: 0 1rem;
 }
@@ -103,7 +103,7 @@
   height: 440px;
 }
 
-.chat-body-fullscreen {
+.chat-fullscreen .chat-body {
   flex: 1;
 }
 
@@ -189,12 +189,12 @@
   .chat {
     width: 350px;
   }
-  .chat-header-fullscreen {
-    padding: 1.4rem 0.5rem;
-  }
   .chat-fullscreen {
     width: 100%;
     height: 100%;
     border-radius: 0;
+  }
+  .chat-fullscreen .chat-header {
+    padding: 1.3rem 0.5rem;
   }
 }

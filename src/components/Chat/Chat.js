@@ -187,12 +187,7 @@ const Chat = ({
         isFullScreen && classes[`chat-fullscreen`]
       }`}
     >
-      <div
-        className={`${classes['chat-header']} ${
-          isFullScreen && classes['chat-header-fullscreen']
-        }`}
-        onClick={toggleChat}
-      >
+      <div className={classes['chat-header']} onClick={toggleChat}>
         <div className={classes['logo-title-wrapper']}>
           <div className={classes['chat-header-image-wrapper']}>
             <img
@@ -230,9 +225,9 @@ const Chat = ({
         </div>
       </div>
       <div
-        className={`${classes['chat-body']} ${
-          isFullScreen && classes['chat-body-fullscreen']
-        } ${!dispalyMessages && classes['chat-body-hidden']}`}
+        className={`${classes['chat-body']}  ${
+          !dispalyMessages && classes['chat-body-hidden']
+        }`}
       >
         <div
           className={classes['messages-container']}
