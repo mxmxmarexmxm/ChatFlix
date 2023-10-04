@@ -143,6 +143,7 @@ const UserProfile = ({ uid, personalProfile }) => {
         placeholder="Enter new username"
         disabled={!isEditing}
         name="displayName"
+        maxLength={25}
         required
       />
 
