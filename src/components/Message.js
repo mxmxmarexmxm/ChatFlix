@@ -89,8 +89,10 @@ const Message = ({
             className={classes['replay-wrapper']}
             onClick={scrollToReplayedMessage}
           >
-            {<p>Replayed to: {replayTo.displayName}</p>}
-            {<p>{replayTo.text}</p>}
+            <p>
+              {sender?.displayName} replied to: {replayTo?.displayName}
+            </p>
+            <p>{replayTo.text}</p>
           </div>
         )}
         <div className={classes['text-wrapper']}>{formatMessage(text)}</div>
