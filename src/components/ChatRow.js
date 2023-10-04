@@ -51,7 +51,6 @@ const ChatRow = ({ rowTitle, onSelectChat }) => {
           {chats.map((chat) => (
             <div className={classes['logo-container']} key={chat.id}>
               <img
-                className={classes.logo}
                 onClick={() => onSelectChat(chat)}
                 src={chat.logo}
                 alt={chat.name}

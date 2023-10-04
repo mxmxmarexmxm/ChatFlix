@@ -7,10 +7,10 @@
 .row-title {
   color: white;
   margin-left: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
-.row-title::first-letter{
+.row-title::first-letter {
   text-transform: capitalize;
 }
 
@@ -28,19 +28,19 @@
 }
 
 .logo-container {
-  height: 120px;
-  width: 120px;
+  height: 100px;
+  aspect-ratio: 1/1;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   margin: 0.5rem;
 }
 
-.logo {
+.logo-container img {
   object-fit: cover;
-  height: 120px;
-  width: 120px;
-  cursor: pointer;
+  height: 100%;
+  width: 100%;
   border-radius: 1rem;
 }
 
@@ -72,23 +72,25 @@
 }
 
 @media only screen and (min-width: 756px) {
-  .logo,
   .logo-container {
-    width: 200px;
     height: 200px;
   }
+
   .chat-row-container button {
     font-size: 3rem;
     min-width: 3rem;
   }
+
   .row-title {
     margin: 1rem 4.5rem -0.7rem 4.7rem;
     font-size: 1.6rem;
   }
+
   .chats {
     padding: 1rem;
     gap: 15px;
   }
+
   .chat-row-container {
     margin: 3rem auto 0;
   }
