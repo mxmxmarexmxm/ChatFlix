@@ -149,16 +149,15 @@ const Home = () => {
         ))}
         <div className={classes['active-chats-container']}>
           <div className={classes['active-chats-bottom']}>
-            {activeChatsBottom &&
-              activeChatsBottom.map((chat) => (
-                <Chat
-                  onFullScreenToggle={toggleFullScreenHandler}
-                  showMessages={showMessages}
-                  chat={chat}
-                  key={chat.id}
-                  onClose={closeChatHandler}
-                />
-              ))}
+            {activeChatsBottom?.map((chat) => (
+              <Chat
+                onFullScreenToggle={toggleFullScreenHandler}
+                showMessages={showMessages}
+                chat={chat}
+                key={chat.id}
+                onClose={closeChatHandler}
+              />
+            ))}
           </div>
           <div className={classes['active-chat-right']}>
             {showChatHeads && (
@@ -174,7 +173,7 @@ const Home = () => {
                 ))}
               </div>
             )}
-            {activeChatsRight.length !== 0 && (
+            {activeChatsRight?.length !== 0 && (
               <ToggleChatHeadsBtn
                 showChatHeads={showChatHeads}
                 onClick={() => setShowChatHeads((c) => !c)}
