@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   padding: 0.02rem;
-  align-items: flex-end;
+  align-items: center;
   gap: 0.5rem;
   position: relative;
 }
@@ -79,6 +79,7 @@
   overflow: hidden;
   padding: 0.2rem;
   cursor: pointer;
+  align-self: flex-end;
 }
 
 .profile-img {
