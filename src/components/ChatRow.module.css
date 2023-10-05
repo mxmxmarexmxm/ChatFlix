@@ -1,5 +1,4 @@
 .chat-row-container {
-  /* margin: 3rem auto 0; */
   min-width: 90vw;
   margin-top: 1.6rem;
 }
@@ -18,8 +17,11 @@
   font-size: 1.8rem;
   background-color: inherit;
   color: #666a6e;
-  cursor: pointer;
   border: none;
+}
+
+.chat-row-container button path {
+  cursor: pointer;
 }
 
 .row-body {
