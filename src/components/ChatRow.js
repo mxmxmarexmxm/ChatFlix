@@ -37,7 +37,7 @@ const ChatRow = ({ rowTitle, onSelectChat }) => {
 
   return (
     <div className={classes['chat-row-container']}>
-      <h2 className={classes['row-title']}>{rowTitle}</h2>
+      <h2>{rowTitle}</h2>
       <div className={classes['row-body']}>
         <button
           onClick={() => scrollRowHandler(isMobile ? -200 : -900)}
