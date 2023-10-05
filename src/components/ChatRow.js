@@ -41,11 +41,10 @@ const ChatRow = ({ rowTitle, onSelectChat }) => {
       <div className={classes['row-body']}>
         <button
           onClick={() => scrollRowHandler(isMobile ? -200 : -900)}
+          className={`${!haveScrool && classes['hide-button']}`}
           aria-label="Scroll Left"
         >
-          {haveScrool && (
-            <LeftArrow width={isMobile ? '25px' : '50px'} fill="gray" />
-          )}
+          {haveScrool && <LeftArrow />}
         </button>
         <div ref={chatRowRef} className={classes.chats}>
           {chats.map((chat) => (
@@ -69,11 +68,10 @@ const ChatRow = ({ rowTitle, onSelectChat }) => {
         </div>
         <button
           onClick={() => scrollRowHandler(isMobile ? 200 : 900)}
+          className={`${!haveScrool && classes['hide-button']}`}
           aria-label="Scroll Right"
         >
-          {haveScrool && (
-            <RightArrow width={isMobile ? '25px' : '50px'} fill="gray" />
-          )}
+          {haveScrool && <RightArrow />}
         </button>
       </div>
     </div>

@@ -14,13 +14,22 @@
 }
 
 .chat-row-container button {
-  font-size: 1.8rem;
   background-color: transparent;
-  color: #666a6e;
   border: none;
   display: flex;
   align-items: center;
   cursor: pointer;
+  width: 50px;
+}
+
+.chat-row-container button svg {
+  fill: gray;
+  height: 25px;
+  aspect-ratio: 1/1;
+}
+
+.hide-button {
+  visibility: hidden;
 }
 
 .row-body {
@@ -77,22 +86,24 @@
   }
 
   .chat-row-container h2 {
-    margin: 1rem 4.5rem -0.7rem 4.7rem;
+    margin: 1rem 4.5rem 0;
     font-size: 1.6rem;
   }
 
   .chats {
     padding: 1rem;
-    gap: 15px;
+    gap: 1rem;
   }
 
   .logo-container {
     height: 200px;
-    width: 200px;
   }
 
   .chat-row-container button {
-    font-size: 3rem;
-    min-width: 3rem;
+    width: 50px;
+  }
+
+  .chat-row-container button svg {
+    height: 50px;
   }
 }
