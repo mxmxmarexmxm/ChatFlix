@@ -26,6 +26,7 @@ const Chat = ({
   const [messageText, setMessageText] = useState('');
   const [unreadMessages, setUnreadMessages] = useState(null);
   const [messageToReplay, setMessageToReplay] = useState(null);
+  const [isAtBottom, setIsAtBottom] = useState(true);
   const [notify] = useSound(notificationSound);
   const { user } = useContext(AuthContext);
   const messagesContainerRef = useRef();
@@ -136,6 +137,25 @@ const Chat = ({
     };
   }, []);
 
+  useEffect(() => {
+    const messagesContainer = messagesContainerRef.current;
+
+    const handleScroll = () => {
+      // Calculate the scroll position, including a small buffer.
+      const scrollTop = messagesContainer.scrollTop;
+      const scrollHeight = messagesContainer.scrollHeight;
+      const clientHeight = messagesContainer.clientHeight;
+      const buffer = 20;
+      setIsAtBottom(scrollTop + clientHeight + buffer >= scrollHeight);
+    };
+
+    messagesContainer.addEventListener('scroll', handleScroll);
+
+    return () => {
+      messagesContainer.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   // Focus chat input
   useEffect(() => {
     const focusInput = () => {
@@ -195,6 +215,8 @@ const Chat = ({
       markAllAsRead={markAllAsRead}
       sendMessage={sendMessage}
       scrollToReplayedMessage={scrollToReplayedMessage}
+      isAtBottom={isAtBottom}
+      scrollToBottom={scrollToBottom}
     />
   );
 };

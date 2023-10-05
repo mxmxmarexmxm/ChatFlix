@@ -6,6 +6,7 @@ import { Close } from '../../assets/icons/Close';
 import { FullScreen } from '../../assets/icons/FullScreen';
 import { FullScreenExit } from '../../assets/icons/FullScreenExit';
 import { Send } from '../../assets/icons/Send';
+import { DownArrow } from '../../assets/icons/DownArrow';
 
 const ChatInterface = ({
   isFullScreen,
@@ -26,6 +27,8 @@ const ChatInterface = ({
   markAllAsRead,
   sendMessage,
   scrollToReplayedMessage,
+  isAtBottom,
+  scrollToBottom,
 }) => {
   return (
     <div
@@ -98,6 +101,12 @@ const ChatInterface = ({
               Start a conversation!
             </p>
           )}
+          <DownArrow
+            className={`${classes['scroll-down-icon']} ${
+              !isAtBottom && classes['display']
+            }`}
+            onClick={scrollToBottom}
+          />
         </div>
         {messageToReplay && (
           <div className={classes['message-to-replay']}>
