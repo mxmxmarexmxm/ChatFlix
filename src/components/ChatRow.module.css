@@ -3,24 +3,23 @@
   margin-top: 1.6rem;
 }
 
-.row-title {
+.chat-row-container h2 {
   color: white;
   margin-left: 0.5rem;
   font-size: 1.1rem;
 }
 
-.row-title::first-letter {
+.chat-row-container h2::first-letter {
   text-transform: capitalize;
 }
 
 .chat-row-container button {
   font-size: 1.8rem;
-  background-color: inherit;
+  background-color: transparent;
   color: #666a6e;
   border: none;
-}
-
-.chat-row-container button path {
+  display: flex;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -29,34 +28,10 @@
   justify-content: space-between;
 }
 
-.logo-container {
-  height: 100px;
-  aspect-ratio: 1/1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  margin: 0.5rem;
-}
-
-.logo-container img {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
-  border-radius: 1rem;
-}
-
-.logo:hover {
-  scale: 1.05;
-}
-
-.topic-img:hover {
-  transform: scale(1.2);
-}
-
 .chats {
   display: flex;
-  flex: 1;
+  justify-content: flex-start;
+  width: 100%;
   gap: 10px;
   align-items: center;
   overflow-x: scroll;
@@ -73,17 +48,35 @@
   transform: scale(1.15);
 }
 
+.logo-container {
+  height: 200px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 0.5rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.logo-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.logo-container:hover {
+  scale: 1.05;
+}
+
 @media only screen and (min-width: 756px) {
-  .logo-container {
-    height: 200px;
+  .chat-row-container {
+    margin: 3rem auto 0;
   }
 
-  .chat-row-container button {
-    font-size: 3rem;
-    min-width: 3rem;
-  }
-
-  .row-title {
+  .chat-row-container h2 {
     margin: 1rem 4.5rem -0.7rem 4.7rem;
     font-size: 1.6rem;
   }
@@ -93,7 +86,13 @@
     gap: 15px;
   }
 
-  .chat-row-container {
-    margin: 3rem auto 0;
+  .logo-container {
+    height: 200px;
+    width: 200px;
+  }
+
+  .chat-row-container button {
+    font-size: 3rem;
+    min-width: 3rem;
   }
 }
