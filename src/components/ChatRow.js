@@ -67,14 +67,14 @@ const ChatRow = ({ rowTitle, onSelectChat }) => {
             </div>
           ))}
         </div>
-        {haveScrool && (
-          <button
-            onClick={() => scrollRowHandler(isMobile ? 200 : 900)}
-            aria-label="Scroll Right"
-          >
+        <button
+          onClick={() => scrollRowHandler(isMobile ? 200 : 900)}
+          aria-label="Scroll Right"
+        >
+          {haveScrool && (
             <RightArrow width={isMobile ? '25px' : '50px'} fill="gray" />
-          </button>
-        )}
+          )}
+        </button>
       </div>
     </div>
   );
