@@ -138,7 +138,7 @@ const Chat = ({
   }, []);
 
   useEffect(() => {
-    const messagesContainer = messagesContainerRef.current;
+    const messagesContainer = messagesContainerRef?.current;
 
     const handleScroll = () => {
       // Calculate the scroll position, including a small buffer.
@@ -149,10 +149,10 @@ const Chat = ({
       setIsAtBottom(scrollTop + clientHeight + buffer >= scrollHeight);
     };
 
-    messagesContainer.addEventListener('scroll', handleScroll);
+    messagesContainer?.addEventListener('scroll', handleScroll);
 
     return () => {
-      messagesContainer.removeEventListener('scroll', handleScroll);
+      messagesContainer?.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
