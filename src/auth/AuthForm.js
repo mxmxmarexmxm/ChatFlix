@@ -70,6 +70,7 @@ const AuthForm = () => {
       const success = await signInWithGoogle();
       if (success) {
         const user = success.user;
+        closeModal();
         await addUserToFirestore(user);
       }
     } catch (err) {
