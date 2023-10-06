@@ -5,6 +5,7 @@
   align-items: center;
   gap: 0.5rem;
   position: relative;
+  margin-bottom: 0.05rem;
 }
 
 .sent {
