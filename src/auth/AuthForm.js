@@ -112,6 +112,7 @@ const AuthForm = () => {
           name="password"
           value={formData.password}
           onChange={handleChange}
+          autoComplete="current-password"
           placeholder="Password"
           required
         />
