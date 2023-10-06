@@ -6,12 +6,11 @@ export const signInWithGoogle = async () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   try {
     const success = await auth.signInWithPopup(provider);
-    if (success) {
-      const user = success.user;
-      addUserToFirestore(user);
-    }
+    return success;
   } catch (err) {
+    console.error('Error signing in with Google:', err);
     alert(err.message);
+    return null;
   }
 };
 
@@ -33,6 +32,7 @@ export const addUserToFirestore = async (user) => {
 
     if (!userDoc.exists) {
       // User document does not exist, create it
+      console.log('dada');
       await usersCollection.doc(user.uid).set({
         displayName: user.displayName,
         email: user.email,
@@ -41,9 +41,13 @@ export const addUserToFirestore = async (user) => {
         title: '',
       });
     } else {
+      console.log('dada');
+
       console.log('User document already exists in Firestore.');
     }
   } catch (error) {
+    console.log('dada');
+
     console.error('Error adding user to Firestore:', error);
   }
 };
@@ -75,11 +79,7 @@ export const updateUserDataInFirestore = async (uid, newData) => {
   try {
     const db = firebase.firestore();
     const usersCollection = db.collection('users');
-
-    // Update the user document by UID with the new data
     await usersCollection.doc(uid).update(newData);
-
-    console.log('User data updated in Firestore collection.');
   } catch (error) {
     console.error('Error updating user data in Firestore:', error);
   }
