@@ -1,14 +1,20 @@
 import classes from './Home.module.css';
 import { rowTitles } from '../data/data.js';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Chat from '../components/Chat/Chat';
 import ChatRow from '../components/ChatRow';
 import FullScreen from './FullScreen';
 import ToggleChatHeadsBtn from '../components/UI/ToggleChatHeadsBtn';
 import Header from '../components/UI/Header';
 import useWindowDimensions from '../utils/useWindowWidth';
+import {
+  getActiveChatsFromFirestore,
+  saveActiveChatsToFirestore,
+} from '../services/AuthServices';
+import { AuthContext } from '../Firebase/context';
 
 const Home = () => {
+  const { user } = useContext(AuthContext);
   const [activeChatsBottom, setActiveChatsBottom] = useState([]);
   const [activeChatsRight, setActiveChatsRight] = useState([]);
   const { width } = useWindowDimensions();
@@ -16,22 +22,20 @@ const Home = () => {
   const [fullScreenChat, setFullScreenChat] = useState(null);
   const [showChatHeads, setShowChatHeads] = useState(false);
 
-  // Get previously opened chats from local storage.
+  // Load active chats when the component mounts
   useEffect(() => {
-    const chatsRight = localStorage.getItem('chatsRight');
-    const chatsBottom = localStorage.getItem('chatsBottom');
+    user &&
+      getActiveChatsFromFirestore().then(
+        ({ activeChatsBottom, activeChatsRight }) => {
+          setActiveChatsBottom(activeChatsBottom);
+          setActiveChatsRight(activeChatsRight);
+        }
+      );
+  }, [user]);
 
-    setActiveChatsBottom(JSON.parse(chatsBottom));
-    setActiveChatsRight(JSON.parse(chatsRight));
-  }, []);
-
-  // Save chat list to local storage.
+  // Save chat list to firebase.
   useEffect(() => {
-    const saveChatsToLocalStorage = () => {
-      localStorage.setItem('chatsBottom', JSON.stringify(activeChatsBottom));
-      localStorage.setItem('chatsRight', JSON.stringify(activeChatsRight));
-    };
-    saveChatsToLocalStorage();
+    saveActiveChatsToFirestore(activeChatsBottom, activeChatsRight);
   }, [activeChatsBottom, activeChatsRight]);
 
   // Select chat handler, for each scenario.
@@ -44,9 +48,7 @@ const Home = () => {
     );
 
     let activeBottom = [...activeChatsBottom];
-
     const isActive = indexOfChatBottom >= 0 || indexOfChatRight >= 0;
-
     const bottomLimit = width < '800' ? 1 : width < '1150' ? 2 : 3;
 
     if (!isActive && activeBottom.length <= bottomLimit) {
