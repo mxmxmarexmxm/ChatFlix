@@ -6,7 +6,8 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import classes from './AuthForm.module.css';
-import { addUserToFirestore, signInWithGoogle } from './AuthServices';
+import { signInWithGoogle } from '../services/AuthServices';
+import { addUserToFirestore } from '../services/UserServices';
 import { useModal } from '../context/ModalContext';
 import { Google } from '../assets/icons/Google';
 
@@ -64,12 +65,24 @@ const AuthForm = () => {
     }
   };
 
+  const handleSignInAndAddUserToFirestore = async () => {
+    try {
+      const success = await signInWithGoogle();
+      if (success) {
+        const user = success.user;
+        await addUserToFirestore(user);
+      }
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
   return (
     <div className={classes['form-wrapper']}>
       <h2 className={classes.welcome}>WELCOME</h2>
       <button
         className={classes['continue-btn']}
-        onClick={() => signInWithGoogle()}
+        onClick={handleSignInAndAddUserToFirestore}
       >
         <Google height="20px" /> Continue with Google
       </button>

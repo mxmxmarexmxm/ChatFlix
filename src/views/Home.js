@@ -10,7 +10,7 @@ import useWindowDimensions from '../utils/useWindowWidth';
 import {
   getActiveChatsFromFirestore,
   saveActiveChatsToFirestore,
-} from '../services/AuthServices';
+} from '../services/UserServices';
 import { AuthContext } from '../Firebase/context';
 
 const Home = () => {

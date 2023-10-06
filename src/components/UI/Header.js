@@ -3,7 +3,7 @@ import { useModal } from '../../context/ModalContext';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../../Firebase/context';
 import logo from '../../assets/img/logo.png';
-import { signOut } from '../../auth/AuthServices';
+import { signOut } from '../../services/AuthServices';
 import userPlaceholder from '../../assets/img/user-placeholder.png';
 import AuthForm from '../../auth/AuthForm';
 import UserProfile from '../UserProfile';

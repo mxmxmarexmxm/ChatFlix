@@ -5,7 +5,7 @@ import classes from './Message.module.css';
 import { useModal } from '../context/ModalContext';
 import UserProfile from './UserProfile';
 import { Replay } from '../assets/icons/Replay';
-import { getUserDataFromFirestore } from '../auth/AuthServices';
+import { getUserDataFromFirestore } from '../services/UserServices';
 const urlRegex = /(https?:\/\/[^\s]+?(?=\s|$))/g;
 
 const Message = ({

@@ -9,7 +9,7 @@ import { Linkedin } from '../assets/icons/Linkedin';
 import {
   getUserDataFromFirestore,
   updateUserDataInFirestore,
-} from '../auth/AuthServices';
+} from '../services/UserServices';
 import GithubIcon from '../assets/icons/Github';
 
 const UserProfile = ({ uid, personalProfile }) => {
