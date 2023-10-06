@@ -84,3 +84,55 @@ export const updateUserDataInFirestore = async (uid, newData) => {
     console.error('Error updating user data in Firestore:', error);
   }
 };
+
+// Save active chats to Firestore
+export const saveActiveChatsToFirestore = async (chatsBottom, chatsRight) => {
+  const user = firebase.auth().currentUser;
+  if (!user) {
+    return;
+  }
+  const userId = user.uid;
+  const db = firebase.firestore();
+  const userRef = db.collection('users').doc(userId);
+
+  try {
+    await userRef.update({
+      activeChatsBottom: chatsBottom,
+      activeChatsRight: chatsRight,
+    });
+  } catch (error) {
+    console.error('Error updating user document:', error);
+  }
+};
+
+// Retrieve active chats from Firestore
+export const getActiveChatsFromFirestore = async () => {
+  const auth = firebase.auth();
+  const user = auth.currentUser;
+  const userId = user.uid;
+  const db = firebase.firestore();
+  const userRef = db.collection('users').doc(userId);
+
+  try {
+    const userDoc = await userRef.get();
+    if (userDoc.exists) {
+      const data = userDoc.data();
+      return {
+        activeChatsBottom: data.activeChatsBottom || [],
+        activeChatsRight: data.activeChatsRight || [],
+      };
+    } else {
+      console.error('User document does not exist');
+      return {
+        activeChatsBottom: [],
+        activeChatsRight: [],
+      };
+    }
+  } catch (error) {
+    console.error('Error getting user document:', error);
+    return {
+      activeChatsBottom: [],
+      activeChatsRight: [],
+    };
+  }
+};
