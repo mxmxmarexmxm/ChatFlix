@@ -127,7 +127,7 @@ const AuthForm = () => {
           />
         )}
         {
-          <div className={classes.xx}>
+          <div>
             <p className={classes['error-message']}>{errorMessage}</p>
           </div>
         }
