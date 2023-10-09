@@ -13,10 +13,17 @@ header {
   z-index: 10;
 }
 
-header a {
-  color: white;
-  text-decoration: none;
-  top: 12px;
+.header-logo-wrapper {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  width: auto;
+}
+
+.header-logo-wrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .sign-btn {
@@ -95,6 +102,9 @@ header a {
   header {
     padding: 0 2rem;
     height: 5rem;
+  }
+  .header-logo-wrapper img {
+    height: 4rem;
   }
   .sign-btn {
     padding: 1rem;

@@ -37,10 +37,8 @@ const Header = () => {
 
   return (
     <header>
-      <div>
-        <a href="/ChatFlix">
-          <img src={logo} alt="logo" />
-        </a>
+      <div className={classes['header-logo-wrapper']}>
+        <img src={logo} alt="chatflix-logo" />
       </div>
       {user ? (
         <div className={classes['drop-menu']} ref={menuRef}>
