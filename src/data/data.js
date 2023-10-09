@@ -8,7 +8,7 @@ const chatsDataWitouthId = [
   {
     name: 'CSS',
     logo: 'https://cdn.iconscout.com/icon/free/png-256/free-css-alt-3628710-3029935.png?f=webp',
-    tags: ['markup', 'frontend'],
+    tags: ['frontend'],
   },
   {
     name: 'JavaScript',
