@@ -196,6 +196,11 @@
   text-overflow: ellipsis;
 }
 
+.message-to-replay svg {
+  cursor: pointer;
+  height: 1rem;
+}
+
 @media only screen and (min-width: 756px) {
   .chat {
     width: 350px;

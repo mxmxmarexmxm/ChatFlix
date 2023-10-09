@@ -117,7 +117,7 @@ const ChatInterface = ({
                 {messageToReplay.text}
               </p>
             </div>
-            <Close height="15px" onClick={() => setMessageToReplay(null)} />
+            <Close onClick={() => setMessageToReplay(null)} />
           </div>
         )}
         <form onSubmit={sendMessage}>
