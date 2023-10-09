@@ -145,7 +145,7 @@ const Chat = ({
       const scrollTop = messagesContainer.scrollTop;
       const scrollHeight = messagesContainer.scrollHeight;
       const clientHeight = messagesContainer.clientHeight;
-      const buffer = 20;
+      const buffer = 50;
       setIsAtBottom(scrollTop + clientHeight + buffer >= scrollHeight);
     };
 
