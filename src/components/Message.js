@@ -12,6 +12,7 @@ const Message = ({
   message,
   onSetMessageToReplay,
   scrollToReplayedMessage,
+  fistUnreadMessage,
 }) => {
   const [sender, setSender] = useState(null);
   const { user } = useContext(AuthContext);
@@ -63,46 +64,55 @@ const Message = ({
   }, [uid]);
 
   return (
-    <div
-      className={`${classes.message} ${classes[messageSenderClass]} ${
-        sameSender && classes['same-sender']
-      }`}
-      id={id}
-    >
-      {messageSenderClass === 'received' && (
-        <div
-          className={classes['profile-image-wrapper']}
-          onClick={() => openModal(<UserProfile uid={uid} />)}
-        >
-          <img
-            src={sender?.photoURL || userPlaceholder}
-            referrerPolicy="no-referrer"
-            alt={sender?.displayName}
-          />
+    <>
+      {fistUnreadMessage && (
+        <div className={classes['first-unread-message']}>
+          <div></div>
+          Unread Messages
+          <div></div>
         </div>
       )}
-      <div className={classes['user-name']}>{sender?.displayName}</div>
-      <div className={classes['message-wrapper']}>
-        {replayTo && (
+      <div
+        className={`${classes.message} ${classes[messageSenderClass]} ${
+          sameSender && classes['same-sender']
+        }`}
+        id={id}
+      >
+        {messageSenderClass === 'received' && (
           <div
-            className={classes['replay-wrapper']}
-            onClick={scrollToReplayedMessage}
+            className={classes['profile-image-wrapper']}
+            onClick={() => openModal(<UserProfile uid={uid} />)}
           >
-            <p>
-              {sender?.displayName} replied to: {replayTo?.displayName}
-            </p>
-            <p>{replayTo.text}</p>
+            <img
+              src={sender?.photoURL || userPlaceholder}
+              referrerPolicy="no-referrer"
+              alt={sender?.displayName}
+            />
           </div>
         )}
-        <div className={classes['text-wrapper']}>{formatMessage(text)}</div>
+        <div className={classes['user-name']}>{sender?.displayName}</div>
+        <div className={classes['message-wrapper']}>
+          {replayTo && (
+            <div
+              className={classes['replay-wrapper']}
+              onClick={scrollToReplayedMessage}
+            >
+              <p>
+                {sender?.displayName} replied to: {replayTo?.displayName}
+              </p>
+              <p>{replayTo.text}</p>
+            </div>
+          )}
+          <div className={classes['text-wrapper']}>{formatMessage(text)}</div>
+        </div>
+        <Replay
+          height="15px"
+          fill="gray"
+          className={classes.icon}
+          onClick={onSetMessageToReplay}
+        />
       </div>
-      <Replay
-        height="15px"
-        fill="gray"
-        className={classes.icon}
-        onClick={onSetMessageToReplay}
-      />
-    </div>
+    </>
   );
 };
 

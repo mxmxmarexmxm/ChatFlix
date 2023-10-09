@@ -85,10 +85,11 @@ const ChatInterface = ({
           {loading ? (
             <p className={classes['empty-chat-message']}>Loading...</p>
           ) : messages?.length > 0 ? (
-            messages.map((message) => (
+            messages.map((message, index) => (
               <Message
                 key={message.id}
                 message={message}
+                fistUnreadMessage={messages?.length - unreadMessages === index}
                 onSetMessageToReplay={() => setMessageToReplay(message)}
                 scrollToReplayedMessage={() =>
                   scrollToReplayedMessage(message.replayTo.id)
