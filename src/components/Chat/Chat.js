@@ -89,6 +89,7 @@ const Chat = ({
 
   // Send message if the user is logged in, otherwise alert to sign in.
   const sendMessage = async (e) => {
+    e.preventDefault();
     if (user) {
       const { uid } = user;
       if (messageText.trim() !== '') {
@@ -102,8 +103,8 @@ const Chat = ({
           isCode: isCode,
         });
       }
-      scrollToBottom();
       setMessageText('');
+      scrollToBottom();
     } else {
       openModal(<AuthForm />);
     }
@@ -114,7 +115,7 @@ const Chat = ({
   const onEnterPress = (e) => {
     if (e.keyCode == 13 && e.shiftKey == false) {
       e.preventDefault(); // Prevent Enter from creating a new line
-      sendMessage();
+      sendMessage(e);
     }
   };
 
