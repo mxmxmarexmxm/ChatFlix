@@ -73,10 +73,10 @@
     font-size: 1.5rem;
     background-color: transparent;
   }
-  .badge-wrapper:has(.close-icon-side) {
+  .badge-wrapper {
     background-color: transparent;
   }
-  .badge-wrapper:has(.close-icon-side):hover {
+  .badge-wrapper:hover {
     font-size: 1.5rem;
     background-color: #242526;
   }
