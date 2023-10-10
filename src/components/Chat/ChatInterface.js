@@ -127,7 +127,7 @@ const ChatInterface = ({
           <button
             className={classes['is-code-btn']}
             type="button"
-            onClick={() => setIsCode((c) => !c)}
+            onClick={() => setIsCode((isCode) => !isCode)}
             title="Code Block"
           >
             <CodeVector />
