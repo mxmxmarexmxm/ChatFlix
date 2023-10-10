@@ -105,6 +105,7 @@ const Chat = ({
       }
       setMessageText('');
       scrollToBottom();
+      setIsCode(false);
     } else {
       openModal(<AuthForm />);
     }
