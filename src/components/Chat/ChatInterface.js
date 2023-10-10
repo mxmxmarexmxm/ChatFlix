@@ -31,7 +31,6 @@ const ChatInterface = ({
   isAtBottom,
   scrollToBottom,
   setIsCode,
-  isCode,
 }) => {
   return (
     <div
@@ -132,23 +131,13 @@ const ChatInterface = ({
           >
             <CodeVector />
           </button>
-          {isCode ? (
-            <textarea
-              value={messageText}
-              onClick={markAllAsRead}
-              onChange={(e) => setMessageText(e.target.value)}
-              ref={chatInput}
-              aria-label="Chat Message textarea"
-            />
-          ) : (
-            <input
-              value={messageText}
-              onClick={markAllAsRead}
-              onChange={(e) => setMessageText(e.target.value)}
-              ref={chatInput}
-              aria-label="Chat Message Input"
-            />
-          )}
+          <textarea
+            value={messageText}
+            onClick={markAllAsRead}
+            onChange={(e) => setMessageText(e.target.value)}
+            ref={chatInput}
+            aria-label="Chat Message textarea"
+          />
           <button type="submit">
             <Send />
           </button>
