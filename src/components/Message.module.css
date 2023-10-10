@@ -135,13 +135,13 @@
   white-space: pre-line;
 }
 
-.text-wrapper:has(pre) {
+.text-wrapper.code-wrapper {
   border: 2px solid #495252;
   background-color: #1e1e1e;
 }
 
 .text-wrapper pre {
-  white-space: pre-wrap ;
+  white-space: pre-wrap;
 }
 
 .text-wrapper a {

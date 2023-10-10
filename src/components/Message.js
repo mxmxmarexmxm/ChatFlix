@@ -104,7 +104,11 @@ const Message = ({
               <p>{replayTo.text}</p>
             </div>
           )}
-          <div className={classes['text-wrapper']}>
+          <div
+            className={`${classes['text-wrapper']} ${
+              isCode && classes['code-wrapper']
+            }`}
+          >
             {isCode ? <CodeSnippet code={text} /> : formatMessage(text)}
           </div>
         </div>
