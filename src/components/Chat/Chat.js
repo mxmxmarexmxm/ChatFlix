@@ -24,6 +24,7 @@ const Chat = ({
 }) => {
   const [dispalyMessages, setDisplayMessages] = useState(true);
   const [messageText, setMessageText] = useState('');
+  const [isCode, setIsCode] = useState(false);
   const [unreadMessages, setUnreadMessages] = useState(null);
   const [messageToReplay, setMessageToReplay] = useState(null);
   const [isAtBottom, setIsAtBottom] = useState(true);
@@ -100,6 +101,7 @@ const Chat = ({
           id: new Date().toISOString() + '/' + uid,
           readBy: [uid],
           replayTo: messageToReplay,
+          isCode: isCode,
         });
       }
       scrollToBottom();
@@ -217,6 +219,8 @@ const Chat = ({
       scrollToReplayedMessage={scrollToReplayedMessage}
       isAtBottom={isAtBottom}
       scrollToBottom={scrollToBottom}
+      isCode={isCode}
+      setIsCode={setIsCode}
     />
   );
 };

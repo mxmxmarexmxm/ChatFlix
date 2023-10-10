@@ -156,6 +156,7 @@
   padding: 0.3rem;
 }
 
+.chat form textarea,
 .chat form input {
   width: 100%;
   background-color: #495252;
@@ -164,8 +165,17 @@
   border-radius: 15px;
   border: none;
   font-size: inherit;
+  white-space: pre-line;
+  overflow-wrap: break-word;
 }
 
+.chat form textarea {
+  height: 7rem;
+  resize: none;
+  font-family: inherit;
+}
+
+.chat form textarea:focus,
 .chat form input:focus {
   outline: unset;
 }
@@ -177,6 +187,11 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+.chat form .is-code-btn svg {
+  fill: gray;
+  margin-right: 0.3rem;
 }
 
 .message-to-replay {

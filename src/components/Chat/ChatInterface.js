@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from './ChatInterface.module.css';
 import placeholder from '../../assets/img/placeholder.png';
 import Message from '../Message';
@@ -7,6 +7,7 @@ import { FullScreen } from '../../assets/icons/FullScreen';
 import { FullScreenExit } from '../../assets/icons/FullScreenExit';
 import { Send } from '../../assets/icons/Send';
 import { DownArrow } from '../../assets/icons/DownArrow';
+import { CodeVector } from '../../assets/icons/CodeVector';
 
 const ChatInterface = ({
   isFullScreen,
@@ -29,6 +30,8 @@ const ChatInterface = ({
   scrollToReplayedMessage,
   isAtBottom,
   scrollToBottom,
+  setIsCode,
+  isCode,
 }) => {
   return (
     <div
@@ -121,13 +124,30 @@ const ChatInterface = ({
           </div>
         )}
         <form onSubmit={sendMessage}>
-          <input
-            value={messageText}
-            onClick={markAllAsRead}
-            onChange={(e) => setMessageText(e.target.value)}
-            ref={chatInput}
-            aria-label="Chat Message Input"
-          />
+          <button
+            className={classes['is-code-btn']}
+            type="button"
+            onClick={() => setIsCode((c) => !c)}
+          >
+            <CodeVector />
+          </button>
+          {isCode ? (
+            <textarea
+              value={messageText}
+              onClick={markAllAsRead}
+              onChange={(e) => setMessageText(e.target.value)}
+              ref={chatInput}
+              aria-label="Chat Message textarea"
+            />
+          ) : (
+            <input
+              value={messageText}
+              onClick={markAllAsRead}
+              onChange={(e) => setMessageText(e.target.value)}
+              ref={chatInput}
+              aria-label="Chat Message Input"
+            />
+          )}
           <button type="submit">
             <Send />
           </button>
