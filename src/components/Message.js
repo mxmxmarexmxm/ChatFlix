@@ -6,6 +6,7 @@ import { useModal } from '../context/ModalContext';
 import UserProfile from './UserProfile';
 import { Replay } from '../assets/icons/Replay';
 import { getUserDataFromFirestore } from '../services/UserServices';
+import CodeSnippet from './UI/CodeSnippet';
 const urlRegex = /(https?:\/\/[^\s]+?(?=\s|$))/g;
 
 const Message = ({
@@ -17,7 +18,7 @@ const Message = ({
   const [sender, setSender] = useState(null);
   const { user } = useContext(AuthContext);
   const { openModal } = useModal();
-  const { text, uid, replayTo, id } = message;
+  const { text, uid, replayTo, isCode, id } = message;
   const messageSenderClass = uid === user?.uid ? 'sent' : 'received';
 
   const nextSibling = document.getElementById(id)?.nextSibling;
@@ -103,7 +104,9 @@ const Message = ({
               <p>{replayTo.text}</p>
             </div>
           )}
-          <div className={classes['text-wrapper']}>{formatMessage(text)}</div>
+          <div className={classes['text-wrapper']}>
+            {isCode ? <CodeSnippet code={text} /> : formatMessage(text)}
+          </div>
         </div>
         <Replay
           height="15px"
