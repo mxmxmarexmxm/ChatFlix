@@ -140,8 +140,8 @@
   background-color: #1e1e1e;
 }
 
-.text-wrapper:has(pre) pre {
-  white-space: pre-wrap;
+.text-wrapper pre {
+  white-space: pre-wrap ;
 }
 
 .text-wrapper a {
