@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classes from './ChatInterface.module.css';
 import placeholder from '../../assets/img/placeholder.png';
 import Message from '../Message';
