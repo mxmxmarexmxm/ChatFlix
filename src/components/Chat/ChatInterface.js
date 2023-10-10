@@ -31,6 +31,7 @@ const ChatInterface = ({
   isAtBottom,
   scrollToBottom,
   setIsCode,
+  onEnterPress,
 }) => {
   return (
     <div
@@ -137,6 +138,7 @@ const ChatInterface = ({
             onChange={(e) => setMessageText(e.target.value)}
             ref={chatInput}
             aria-label="Chat Message textarea"
+            onKeyDown={onEnterPress}
           />
           <button type="submit">
             <Send />

@@ -89,8 +89,6 @@ const Chat = ({
 
   // Send message if the user is logged in, otherwise alert to sign in.
   const sendMessage = async (e) => {
-    e.preventDefault();
-
     if (user) {
       const { uid } = user;
       if (messageText.trim() !== '') {
@@ -110,6 +108,13 @@ const Chat = ({
       openModal(<AuthForm />);
     }
     setMessageToReplay(null);
+  };
+
+  // Send message on enter press
+  const onEnterPress = (e) => {
+    if (e.keyCode == 13 && e.shiftKey == false) {
+      sendMessage();
+    }
   };
 
   const toggleChat = () => {
@@ -221,6 +226,7 @@ const Chat = ({
       scrollToBottom={scrollToBottom}
       isCode={isCode}
       setIsCode={setIsCode}
+      onEnterPress={onEnterPress}
     />
   );
 };
