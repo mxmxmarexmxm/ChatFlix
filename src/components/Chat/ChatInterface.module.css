@@ -156,8 +156,7 @@
   padding: 0.3rem;
 }
 
-.chat form textarea,
-.chat form input {
+.chat form textarea {
   width: 100%;
   background-color: #495252;
   color: white;
@@ -175,8 +174,7 @@
   font-family: inherit;
 }
 
-.chat form textarea:focus,
-.chat form input:focus {
+.chat form textarea:focus {
   outline: unset;
 }
 
