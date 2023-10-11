@@ -18,7 +18,7 @@ const Message = ({
   const [sender, setSender] = useState(null);
   const { user } = useContext(AuthContext);
   const { openModal } = useModal();
-  const { text, uid, replayTo, isCode, id } = message;
+  const { text, uid, replayTo, isCode, id, photoUrl } = message;
   const messageSenderClass = uid === user?.uid ? 'sent' : 'received';
 
   const nextSibling = document.getElementById(id)?.nextSibling;
@@ -111,6 +111,11 @@ const Message = ({
           >
             {isCode ? <CodeSnippet code={text} /> : formatMessage(text)}
           </div>
+          {photoUrl && (
+            <div className={classes['image-wrapper']}>
+              <img src={photoUrl} alt="img" />
+            </div>
+          )}
         </div>
         <Replay
           height="15px"
