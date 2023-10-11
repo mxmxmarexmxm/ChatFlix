@@ -20,9 +20,8 @@ const ChatInterface = ({
   messages,
   loading,
   messageText,
-  setMessageText,
   messagesContainerRef,
-  chatInput,
+  chatInputRef,
   messageToReplay,
   setMessageToReplay,
   markAllAsRead,
@@ -32,6 +31,7 @@ const ChatInterface = ({
   scrollToBottom,
   setIsCode,
   onEnterPress,
+  handleInputChange,
 }) => {
   return (
     <div
@@ -132,13 +132,14 @@ const ChatInterface = ({
           >
             <CodeVector />
           </button>
+
           <textarea
             value={messageText}
-            onClick={markAllAsRead}
-            onChange={(e) => setMessageText(e.target.value)}
-            ref={chatInput}
+            onChange={handleInputChange}
+            ref={chatInputRef}
             aria-label="Chat Message textarea"
             onKeyDown={onEnterPress}
+            onClick={markAllAsRead}
           />
           <button type="submit">
             <Send />

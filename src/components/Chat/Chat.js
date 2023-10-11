@@ -31,7 +31,7 @@ const Chat = ({
   const [notify] = useSound(notificationSound);
   const { user } = useContext(AuthContext);
   const messagesContainerRef = useRef();
-  const chatInput = useRef();
+  const chatInputRef = useRef();
   const { openModal } = useModal();
 
   let messageCollection = firestore.collection(`/chats/${chat.name}/messages/`);
@@ -85,6 +85,16 @@ const Chat = ({
         });
       });
     }
+  };
+
+  const handleInputChange = (e) => {
+    const chatInputRefCurr = chatInputRef.current;
+    chatInputRefCurr.style.height = 'auto';
+    chatInputRefCurr.style.height = `${
+      Math.min(4, Math.max(1, Math.floor(chatInputRefCurr.scrollHeight / 24))) *
+      24
+    }px`; // Adjusted for 16px font size with a 1.5 line-height
+    setMessageText(e.target.value);
   };
 
   // Send message if the user is logged in, otherwise alert to sign in.
@@ -169,7 +179,7 @@ const Chat = ({
   // Focus chat input
   useEffect(() => {
     const focusInput = () => {
-      chatInput?.current?.focus();
+      chatInputRef?.current?.focus();
     };
 
     focusInput();
@@ -219,7 +229,7 @@ const Chat = ({
       messageText={messageText}
       setMessageText={setMessageText}
       messagesContainerRef={messagesContainerRef}
-      chatInput={chatInput}
+      chatInputRef={chatInputRef}
       messageToReplay={messageToReplay}
       setMessageToReplay={setMessageToReplay}
       markAllAsRead={markAllAsRead}
@@ -230,6 +240,7 @@ const Chat = ({
       isCode={isCode}
       setIsCode={setIsCode}
       onEnterPress={onEnterPress}
+      handleInputChange={handleInputChange}
     />
   );
 };
