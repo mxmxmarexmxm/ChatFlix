@@ -29,6 +29,7 @@ const ChatInterface = ({
   scrollToReplayedMessage,
   isAtBottom,
   scrollToBottom,
+  isCode,
   setIsCode,
   onEnterPress,
   handleInputChange,
@@ -125,7 +126,9 @@ const ChatInterface = ({
         )}
         <form onSubmit={sendMessage}>
           <button
-            className={classes['is-code-btn']}
+            className={`${classes['is-code-btn']} ${
+              isCode && classes['active']
+            }`}
             type="button"
             onClick={() => setIsCode((isCode) => !isCode)}
             title="Code Block"

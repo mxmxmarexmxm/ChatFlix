@@ -168,7 +168,7 @@
   border-radius: 1rem;
   border: none;
   font-family: inherit;
-  height: 3rem; 
+  height: 3rem;
 }
 
 .chat form textarea:focus {
@@ -187,6 +187,12 @@
 .chat form .is-code-btn svg {
   fill: gray;
   margin-right: 0.3rem;
+  border-radius: 1rem;
+}
+
+.chat form .is-code-btn.active svg {
+  background-color: black;
+  border: 1px solid black;
 }
 
 .message-to-replay {
