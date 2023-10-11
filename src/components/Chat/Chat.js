@@ -127,6 +127,7 @@ const Chat = ({
       setMessageText('');
       scrollToBottom();
       setIsCode(false);
+      chatInputRef.current.style.height = '3rem';
     } else {
       openModal(<AuthForm />);
     }
