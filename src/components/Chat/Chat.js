@@ -276,6 +276,7 @@ const Chat = ({
       handleInputChange={handleInputChange}
       photo={photo}
       handlePhotoUpload={handlePhotoUpload}
+      setPhoto={setPhoto}
     />
   );
 };

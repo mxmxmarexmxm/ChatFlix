@@ -159,13 +159,30 @@
   margin: 0 auto;
   border: 3px solid gray;
   border-radius: 0.5rem;
-  padding: 0.3rem;
+  padding: 0.1rem;
+  position: relative;
 }
 
 .image-preview img {
   height: 100%;
   width: 100%;
   object-fit: contain;
+}
+
+.image-preview svg {
+  position: absolute;
+  height: 1rem;
+  top: 0;
+  right: 0;
+  z-index: 20;
+  cursor: pointer;
+  background-color: black;
+  border-radius: 20px;
+  padding: 0.15rem;
+}
+
+.image-preview svg:hover {
+  background-color: rgb(46, 45, 45);
 }
 
 .chat form {

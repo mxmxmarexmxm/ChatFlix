@@ -36,6 +36,7 @@ const ChatInterface = ({
   handleInputChange,
   handlePhotoUpload,
   photo,
+  setPhoto,
 }) => {
   return (
     <div
@@ -129,6 +130,7 @@ const ChatInterface = ({
         )}
         {photo && (
           <div className={classes['image-preview']}>
+            <Close onClick={() => setPhoto(null)} />
             <img src={photo} alt="Uploaded" />
           </div>
         )}
