@@ -8,6 +8,7 @@ import { FullScreenExit } from '../../assets/icons/FullScreenExit';
 import { Send } from '../../assets/icons/Send';
 import { DownArrow } from '../../assets/icons/DownArrow';
 import { CodeVector } from '../../assets/icons/CodeVector';
+import { UploadImage } from '../../assets/icons/UploadImage';
 
 const ChatInterface = ({
   isFullScreen,
@@ -33,6 +34,8 @@ const ChatInterface = ({
   setIsCode,
   onEnterPress,
   handleInputChange,
+  handlePhotoUpload,
+  photo,
 }) => {
   return (
     <div
@@ -124,17 +127,34 @@ const ChatInterface = ({
             <Close onClick={() => setMessageToReplay(null)} />
           </div>
         )}
+        {photo && (
+          <div className={classes['image-preview']}>
+            <img src={photo} alt="Uploaded" />
+          </div>
+        )}
         <form onSubmit={sendMessage}>
-          <button
-            className={`${classes['is-code-btn']} ${
-              isCode && classes['active']
-            }`}
-            type="button"
-            onClick={() => setIsCode((isCode) => !isCode)}
-            title="Code Block"
-          >
-            <CodeVector />
-          </button>
+          <div className={classes['buttons-wrapper']}>
+            <button
+              className={`${classes['is-code-btn']} ${
+                isCode && classes['active']
+              }`}
+              type="button"
+              onClick={() => setIsCode((isCode) => !isCode)}
+              title="Code Block"
+            >
+              <CodeVector />
+            </button>
+            <button type="button" className={classes['img-uploader']}>
+              <UploadImage />
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handlePhotoUpload}
+                placeholder="none"
+                name="photoUrl"
+              />
+            </button>
+          </div>
 
           <textarea
             value={messageText}

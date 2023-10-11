@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import ChatHead from './ChatHead';
 import SideChatFullscreen from './SideChatFullscreen';
 import useSound from 'use-sound';
@@ -24,6 +25,7 @@ const Chat = ({
 }) => {
   const [dispalyMessages, setDisplayMessages] = useState(true);
   const [messageText, setMessageText] = useState('');
+  const [photo, setPhoto] = useState(null);
   const [isCode, setIsCode] = useState(false);
   const [unreadMessages, setUnreadMessages] = useState(null);
   const [messageToReplay, setMessageToReplay] = useState(null);
@@ -108,6 +110,23 @@ const Chat = ({
     setMessageText(e.target.value);
   };
 
+  const handlePhotoUpload = async (e) => {
+    const file = e.target.files[0];
+    const storage = getStorage();
+    const storageRef = ref(
+      storage,
+      `chat-photos/${chat.name}/${file.name}_${new Date().getTime()}`
+    );
+
+    try {
+      await uploadBytes(storageRef, file);
+      const downloadURL = await getDownloadURL(storageRef);
+      setPhoto(downloadURL);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   // Send message if the user is logged in, otherwise alert to sign in.
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -122,6 +141,7 @@ const Chat = ({
           readBy: [uid],
           replayTo: messageToReplay,
           isCode: isCode,
+          photoUrl: photo ?? photo,
         });
       }
       setMessageText('');
@@ -253,6 +273,8 @@ const Chat = ({
       setIsCode={setIsCode}
       onEnterPress={onEnterPress}
       handleInputChange={handleInputChange}
+      photo={photo}
+      handlePhotoUpload={handlePhotoUpload}
     />
   );
 };
