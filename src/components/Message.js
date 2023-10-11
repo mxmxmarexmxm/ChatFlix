@@ -105,13 +105,15 @@ const Message = ({
               <p>{replayTo.text}</p>
             </div>
           )}
-          <div
-            className={`${classes['text-wrapper']} ${
-              isCode && classes['code-wrapper']
-            }`}
-          >
-            {isCode ? <CodeSnippet code={text} /> : formatMessage(text)}
-          </div>
+          {text && (
+            <div
+              className={`${classes['text-wrapper']} ${
+                isCode && classes['code-wrapper']
+              }`}
+            >
+              {isCode ? <CodeSnippet code={text} /> : formatMessage(text)}
+            </div>
+          )}
           {photoUrl && (
             <div className={classes['image-wrapper']}>
               <img

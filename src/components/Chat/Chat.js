@@ -134,7 +134,7 @@ const Chat = ({
     e.preventDefault();
     if (user) {
       const { uid } = user;
-      if (messageText.trim() !== '' || photo) {
+      if (messageText.trim() !== '') {
         await messageCollection.add({
           text: messageText,
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -143,6 +143,16 @@ const Chat = ({
           readBy: [uid],
           replayTo: messageToReplay,
           isCode: isCode,
+        });
+      }
+      if (photo) {
+        await messageCollection.add({
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          uid,
+          id: new Date().toISOString() + '/' + uid,
+          readBy: [uid],
+          replayTo: messageToReplay,
+          isCode: false,
           photoUrl: photo ?? photo,
         });
       }
