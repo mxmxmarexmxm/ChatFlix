@@ -103,6 +103,17 @@ const Message = ({
                 {sender?.displayName} replied to: {replayTo?.displayName}
               </p>
               <p>{replayTo.text}</p>
+              {replayTo?.photoUrl && (
+                <div className={classes['image-wrapper']}>
+                  <img
+                    src={replayTo?.photoUrl}
+                    alt="img"
+                    onClick={() =>
+                      openModal(<ImagePreview url={replayTo?.photoUrl} />)
+                    }
+                  />
+                </div>
+              )}
             </div>
           )}
           {text && (
