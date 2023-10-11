@@ -7,6 +7,7 @@ import UserProfile from './UserProfile';
 import { Replay } from '../assets/icons/Replay';
 import { getUserDataFromFirestore } from '../services/UserServices';
 import CodeSnippet from './UI/CodeSnippet';
+import ImagePreview from './UI/ImagePreview';
 const urlRegex = /(https?:\/\/[^\s]+?(?=\s|$))/g;
 
 const Message = ({
@@ -113,7 +114,11 @@ const Message = ({
           </div>
           {photoUrl && (
             <div className={classes['image-wrapper']}>
-              <img src={photoUrl} alt="img" />
+              <img
+                src={photoUrl}
+                alt="img"
+                onClick={() => openModal(<ImagePreview url={photoUrl} />)}
+              />
             </div>
           )}
         </div>

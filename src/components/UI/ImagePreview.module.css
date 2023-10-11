@@ -1,0 +1,17 @@
+.image-preview {
+  height: 85vh;
+  width: 85vw;
+  background-color: transparent;
+}
+
+.image-preview-wrapper {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.image-preview-wrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
