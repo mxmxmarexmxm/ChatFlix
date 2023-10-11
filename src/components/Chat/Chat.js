@@ -147,6 +147,7 @@ const Chat = ({
       setMessageText('');
       scrollToBottom();
       setIsCode(false);
+      setPhoto(null);
       chatInputRef.current.style.height = '3rem';
     } else {
       openModal(<AuthForm />);
