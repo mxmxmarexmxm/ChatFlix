@@ -90,10 +90,21 @@ const Chat = ({
   const handleInputChange = (e) => {
     const chatInputRefCurr = chatInputRef.current;
     chatInputRefCurr.style.height = 'auto';
+
+    // Get the computed font size
+    const computedStyle = getComputedStyle(chatInputRefCurr);
+    const fontSize = parseFloat(computedStyle.fontSize); // Extract the font size in pixels
+
     chatInputRefCurr.style.height = `${
-      Math.min(4, Math.max(1, Math.floor(chatInputRefCurr.scrollHeight / 24))) *
-      24
-    }px`; // Adjusted for 16px font size with a 1.5 line-height
+      Math.min(
+        4,
+        Math.max(
+          1,
+          Math.floor(chatInputRefCurr.scrollHeight / (fontSize * 1.5))
+        )
+      ) *
+      (fontSize * 1.5)
+    }px`;
     setMessageText(e.target.value);
   };
 
