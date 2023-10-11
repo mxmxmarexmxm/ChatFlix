@@ -151,6 +151,23 @@
   text-align: center;
 }
 
+.image-preview {
+  height: 60px;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  border: 3px solid gray;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+}
+
+.image-preview img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
 .chat form {
   display: flex;
   padding: 0.3rem;
@@ -186,8 +203,50 @@
 
 .chat form .is-code-btn svg {
   fill: gray;
-  margin-right: 0.3rem;
   border-radius: 1rem;
+}
+
+/* TODO IMAGE UPLOAD ICON STYLING !!!!!!*/
+.buttons-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  margin-right: 0.3rem;
+}
+
+.img-uploader {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  height: 2rem;
+  width: 2rem;
+  position: relative;
+  border-radius: 100%;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  border: 10rem solid gray;
+}
+
+.img-uploader input {
+  height: 100%;
+  width: 100%;
+  background-color: #242526;
+}
+
+.img-uploader svg {
+  height: 100%;
+  width: 100%;
+  padding: 3px;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: #242526;
+  pointer-events: none;
 }
 
 .chat form .is-code-btn.active svg {
