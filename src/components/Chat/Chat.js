@@ -118,6 +118,8 @@ const Chat = ({
       `chat-photos/${chat.name}/${file.name}_${new Date().getTime()}`
     );
 
+    // TODO: HANDLE LOADING AND ERROR STATE !!!!!!!! //
+
     try {
       await uploadBytes(storageRef, file);
       const downloadURL = await getDownloadURL(storageRef);
@@ -132,7 +134,7 @@ const Chat = ({
     e.preventDefault();
     if (user) {
       const { uid } = user;
-      if (messageText.trim() !== '') {
+      if (messageText.trim() !== '' || photo) {
         await messageCollection.add({
           text: messageText,
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
