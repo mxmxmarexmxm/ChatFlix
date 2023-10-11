@@ -115,7 +115,7 @@ const Chat = ({
     const storage = getStorage();
     const storageRef = ref(
       storage,
-      `chat-photos/${chat.name}/${file.name}_${new Date().getTime()}.png`
+      `chat-photos/${chat.name}/${new Date().getTime()}_${file.name}`
     );
 
     // TODO: HANDLE LOADING AND ERROR STATE !!!!!!!! //
