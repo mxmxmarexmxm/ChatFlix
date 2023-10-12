@@ -67,6 +67,7 @@ const Message = ({
 
     fetchUsersData();
   }, [uid, replayTo]);
+
   return (
     <>
       {fistUnreadMessage && (
@@ -107,7 +108,7 @@ const Message = ({
                 {replayToDisplayName === sender?.displayName &&
                 messageSenderClass === 'sent'
                   ? 'yourself'
-                  : sender?.displayName}
+                  : replayToDisplayName}
               </p>
               <p>{replayTo.text}</p>
               {replayTo?.photoUrl && (
