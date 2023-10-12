@@ -77,6 +77,7 @@ const ChatInterface = ({
           <div
             className={classes['chat-header-icon-wrapper']}
             onClick={() => onClose(chat.id)}
+            title="Close Chat"
           >
             <Close height="18px" />
           </div>
