@@ -123,7 +123,7 @@ const ChatInterface = ({
             <div className={classes['replay-message-content']}>
               <p>Replying to {replayToDisplayName}</p>
               <p className={classes['replay-message-text']}>
-                {messageToReplay.text}
+                {messageToReplay.text || 'Image'}
               </p>
             </div>
             <Close onClick={() => setMessageToReplay(null)} />
