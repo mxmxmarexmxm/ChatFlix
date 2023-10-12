@@ -37,10 +37,13 @@ const Chat = ({
   const messagesContainerRef = useRef();
   const chatInputRef = useRef();
   const { openModal } = useModal();
-  const replayToDisplayName = useUserData(messageToReplay?.uid)?.displayName;
+  const replayToUserData = useUserData(messageToReplay?.uid);
+  const replayToDisplayName =
+    user.uid === messageToReplay?.uid
+      ? 'yourself'
+      : replayToUserData?.displayName;
 
   let messageCollection = firestore.collection(`/chats/${chat.name}/messages/`);
-
   let query = messageCollection.orderBy('createdAt', 'asc');
   const [messages, loading] = useCollectionData(query, { idField: 'id' });
 
@@ -55,7 +58,6 @@ const Chat = ({
     };
     user && getUnreadMessages();
   }, [messages, user]);
-
 
   const scrollToBottom = () => {
     if (messagesContainerRef.current) {
