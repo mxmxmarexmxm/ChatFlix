@@ -9,6 +9,7 @@ export const FullScreen = ({ ...props }) => {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
+      <title>Full Screen</title>
       <rect width="48" height="48" fill="white" fillOpacity="0.01" />
       <path
         d="M6 6L16 15.8995"
