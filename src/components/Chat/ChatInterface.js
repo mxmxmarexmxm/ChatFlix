@@ -37,6 +37,7 @@ const ChatInterface = ({
   handlePhotoUpload,
   photo,
   setPhoto,
+  replayToDisplayName,
 }) => {
   return (
     <div
@@ -120,7 +121,7 @@ const ChatInterface = ({
         {messageToReplay && (
           <div className={classes['message-to-replay']}>
             <div className={classes['replay-message-content']}>
-              <p>Replying to {messageToReplay.displayName}</p>
+              <p>Replying to {replayToDisplayName}</p>
               <p className={classes['replay-message-text']}>
                 {messageToReplay.text}
               </p>
