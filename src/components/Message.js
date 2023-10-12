@@ -17,6 +17,7 @@ const Message = ({
   fistUnreadMessage,
 }) => {
   const [sender, setSender] = useState(null);
+  const [replayToDisplayName, setReplayToDisplayName] = useState(null);
   const { user } = useContext(AuthContext);
   const { openModal } = useModal();
   const { text, uid, replayTo, isCode, id, photoUrl } = message;
@@ -26,8 +27,8 @@ const Message = ({
   const nextSiblingId = nextSibling?.id.split('/')[1];
   const sameSender = nextSiblingId === uid;
 
+  // Split the message text into segments based on URLs
   const formatMessage = (text) => {
-    // Split the message text into segments based on URLs
     const segments = text.split(urlRegex);
 
     // Initialize an array to store the formatted message components
@@ -53,18 +54,19 @@ const Message = ({
     return formattedText;
   };
 
-  // Fetch user data from Firestore
+  // Fetch users data from Firestore
   useEffect(() => {
-    const fetchUserData = async () => {
-      const userData = await getUserDataFromFirestore(uid);
-      if (userData) {
-        setSender(userData);
+    const fetchUsersData = async () => {
+      const senderUserData = await getUserDataFromFirestore(uid);
+      setSender(senderUserData);
+      if (replayTo) {
+        const replayToUserData = await getUserDataFromFirestore(replayTo?.uid);
+        setReplayToDisplayName(replayToUserData?.displayName);
       }
     };
 
-    fetchUserData();
-  }, [uid]);
-
+    fetchUsersData();
+  }, [uid, replayTo]);
   return (
     <>
       {fistUnreadMessage && (
@@ -100,7 +102,7 @@ const Message = ({
               onClick={scrollToReplayedMessage}
             >
               <p>
-                {sender?.displayName} replied to: {replayTo?.displayName}
+                {sender?.displayName} replied to: {replayToDisplayName}
               </p>
               <p>{replayTo.text}</p>
               {replayTo?.photoUrl && (
