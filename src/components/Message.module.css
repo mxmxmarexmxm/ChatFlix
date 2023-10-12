@@ -178,6 +178,10 @@
   margin-left: auto;
 }
 
+.received .replay-wrapper .image-wrapper {
+  margin-left: 0;
+}
+
 .image-wrapper img {
   height: 100%;
   width: 100%;
