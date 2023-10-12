@@ -1,13 +1,13 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../Firebase/context';
 import userPlaceholder from '../assets/img/user-placeholder.png';
 import classes from './Message.module.css';
 import { useModal } from '../context/ModalContext';
 import UserProfile from './UserProfile';
 import { Replay } from '../assets/icons/Replay';
-import { getUserDataFromFirestore } from '../services/UserServices';
 import CodeSnippet from './UI/CodeSnippet';
 import ImagePreview from './UI/ImagePreview';
+import useUserData from '../hooks/useUserData';
 const urlRegex = /(https?:\/\/[^\s]+?(?=\s|$))/g;
 
 const Message = ({
@@ -16,13 +16,12 @@ const Message = ({
   scrollToReplayedMessage,
   fistUnreadMessage,
 }) => {
-  const [sender, setSender] = useState(null);
-  const [replayToDisplayName, setReplayToDisplayName] = useState(null);
   const { user } = useContext(AuthContext);
   const { openModal } = useModal();
   const { text, uid, replayTo, isCode, id, photoUrl } = message;
   const messageSenderClass = uid === user?.uid ? 'sent' : 'received';
-
+  const senderUserData = useUserData(uid);
+  const replayToUserDisplayName = useUserData(replayTo?.uid)?.displayName;
   const nextSibling = document.getElementById(id)?.nextSibling;
   const nextSiblingId = nextSibling?.id.split('/')[1];
   const sameSender = nextSiblingId === uid;
@@ -54,20 +53,6 @@ const Message = ({
     return formattedText;
   };
 
-  // Fetch users data from Firestore
-  useEffect(() => {
-    const fetchUsersData = async () => {
-      const senderUserData = await getUserDataFromFirestore(uid);
-      setSender(senderUserData);
-      if (replayTo) {
-        const replayToUserData = await getUserDataFromFirestore(replayTo?.uid);
-        setReplayToDisplayName(replayToUserData?.displayName);
-      }
-    };
-
-    fetchUsersData();
-  }, [uid, replayTo]);
-
   return (
     <>
       {fistUnreadMessage && (
@@ -89,13 +74,15 @@ const Message = ({
             onClick={() => openModal(<UserProfile uid={uid} />)}
           >
             <img
-              src={sender?.photoURL || userPlaceholder}
+              src={senderUserData?.photoURL || userPlaceholder}
               referrerPolicy="no-referrer"
-              alt={sender?.displayName}
+              alt={senderUserData?.displayName}
             />
           </div>
         )}
-        <div className={classes['user-name']}>{sender?.displayName}</div>
+        <div className={classes['user-name']}>
+          {senderUserData?.displayName}
+        </div>
         <div className={classes['message-wrapper']}>
           {replayTo && (
             <div
@@ -103,12 +90,14 @@ const Message = ({
               onClick={scrollToReplayedMessage}
             >
               <p>
-                {messageSenderClass === 'sent' ? 'You' : sender?.displayName}{' '}
+                {messageSenderClass === 'sent'
+                  ? 'You'
+                  : senderUserData?.displayName}{' '}
                 replied to{' '}
-                {replayToDisplayName === sender?.displayName &&
+                {replayToUserDisplayName === senderUserData?.displayName &&
                 messageSenderClass === 'sent'
                   ? 'yourself'
-                  : replayToDisplayName}
+                  : replayToUserDisplayName}
               </p>
               <p>{replayTo.text}</p>
               {replayTo?.photoUrl && (

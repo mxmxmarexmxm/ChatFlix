@@ -12,6 +12,7 @@ import { useModal } from '../../context/ModalContext';
 import AuthForm from '../../auth/AuthForm';
 import ChatInterface from './ChatInterface';
 import { getUserDataFromFirestore } from '../../services/UserServices';
+import useUserData from '../../hooks/useUserData';
 const firestore = firebase.firestore();
 
 const Chat = ({
@@ -30,13 +31,13 @@ const Chat = ({
   const [isCode, setIsCode] = useState(false);
   const [unreadMessages, setUnreadMessages] = useState(null);
   const [messageToReplay, setMessageToReplay] = useState(null);
-  const [replayToDisplayName, setReplayToDisplayName] = useState(null);
   const [isAtBottom, setIsAtBottom] = useState(true);
   const [notify] = useSound(notificationSound);
   const { user } = useContext(AuthContext);
   const messagesContainerRef = useRef();
   const chatInputRef = useRef();
   const { openModal } = useModal();
+  const replayToDisplayName = useUserData(messageToReplay?.uid)?.displayName;
 
   let messageCollection = firestore.collection(`/chats/${chat.name}/messages/`);
 
@@ -55,19 +56,6 @@ const Chat = ({
     user && getUnreadMessages();
   }, [messages, user]);
 
-  // Fetch users data from Firestore
-  useEffect(() => {
-    const fetchUsersData = async () => {
-      if (messageToReplay) {
-        const replayToUserData = await getUserDataFromFirestore(
-          messageToReplay?.uid
-        );
-        setReplayToDisplayName(replayToUserData?.displayName);
-      }
-    };
-
-    fetchUsersData();
-  }, [messageToReplay]);
 
   const scrollToBottom = () => {
     if (messagesContainerRef.current) {
