@@ -102,7 +102,12 @@ const Message = ({
               onClick={scrollToReplayedMessage}
             >
               <p>
-                {sender?.displayName} replied to: {replayToDisplayName}
+                {messageSenderClass === 'sent' ? 'You' : sender?.displayName}{' '}
+                replied to{' '}
+                {replayToDisplayName === sender?.displayName &&
+                messageSenderClass === 'sent'
+                  ? 'yourself'
+                  : sender?.displayName}
               </p>
               <p>{replayTo.text}</p>
               {replayTo?.photoUrl && (
