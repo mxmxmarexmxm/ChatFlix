@@ -11,7 +11,6 @@ import 'firebase/compat/firestore';
 import { useModal } from '../../context/ModalContext';
 import AuthForm from '../../auth/AuthForm';
 import ChatInterface from './ChatInterface';
-import { getUserDataFromFirestore } from '../../services/UserServices';
 import useUserData from '../../hooks/useUserData';
 const firestore = firebase.firestore();
 
