@@ -39,7 +39,7 @@ const Chat = ({
   const { openModal } = useModal();
   const replayToUserData = useUserData(messageToReplay?.uid);
   const replayToDisplayName =
-    user.uid === messageToReplay?.uid
+    user?.uid === messageToReplay?.uid
       ? 'yourself'
       : replayToUserData?.displayName;
 
