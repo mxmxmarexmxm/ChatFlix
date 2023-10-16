@@ -232,3 +232,6 @@
   visibility: visible;
 }
 
+.message .reactions-menu+.actions-menu {
+  visibility: visible;
+}
