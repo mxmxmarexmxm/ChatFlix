@@ -198,6 +198,12 @@
   color: white;
   position: absolute;
   bottom: -1.1rem;
+  right: 0;
+}
+
+.received .reactions-wrapper {
+  right: auto;
+  left: 50px;
 }
 
 .actions-and-reactions-wrapper {
