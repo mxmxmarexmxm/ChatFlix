@@ -238,3 +238,7 @@
 .message .reactions-menu + .actions-menu {
   visibility: visible;
 }
+
+.selected-icon path{
+  fill: red;
+}
