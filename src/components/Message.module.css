@@ -170,6 +170,12 @@
   overflow: hidden;
   cursor: pointer;
   margin: 0.5rem 0;
+  margin-left: auto;
+}
+
+.received .image-wrapper {
+  margin-left: 0;
+  margin-right: auto;
 }
 
 .replay-wrapper .image-wrapper {
