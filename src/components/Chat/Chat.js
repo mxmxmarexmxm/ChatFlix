@@ -140,12 +140,13 @@ const Chat = ({
     e.preventDefault();
     if (user) {
       const { uid } = user;
+      const id = new Date().toISOString() + '*' + uid;
       if (messageText.trim() !== '') {
-        await messageCollection.add({
+        await messageCollection.doc(id).set({
           text: messageText,
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
           uid,
-          id: new Date().toISOString() + '/' + uid,
+          id: id,
           readBy: [uid],
           replayTo: messageToReplay,
           isCode: isCode,
