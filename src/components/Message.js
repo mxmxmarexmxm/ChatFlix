@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../Firebase/context';
 import userPlaceholder from '../assets/img/user-placeholder.png';
 import classes from './Message.module.css';
@@ -23,6 +23,7 @@ const Message = ({
   chatName,
 }) => {
   const [openReactionsMenu, setOpenReactionsMenu] = useState(false);
+  const reactionMenuRef = useRef();
   const { user } = useContext(AuthContext);
   const { openModal } = useModal();
   const { text, uid, replayTo, isCode, id, photoUrl, reactions } = message;
@@ -122,6 +123,22 @@ const Message = ({
     dislike: <Dislike height="12px" fill="white" />,
   };
 
+  // Close the reactions menu when clicking outside of it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        reactionMenuRef?.current &&
+        !reactionMenuRef?.current.contains(event.target)
+      ) {
+        setOpenReactionsMenu(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [reactionMenuRef]);
+
   return (
     <>
       {fistUnreadMessage && (
@@ -219,7 +236,7 @@ const Message = ({
         </div>
         <div className={classes['actions-and-reactions-wrapper']}>
           {openReactionsMenu && (
-            <div className={classes['reactions-menu']}>
+            <div ref={reactionMenuRef} className={classes['reactions-menu']}>
               <Like
                 height="20px"
                 onClick={() => handleMessageReaction('like')}
