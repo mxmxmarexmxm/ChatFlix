@@ -228,10 +228,7 @@
   visibility: hidden;
 }
 
-.message:hover .actions-menu {
-  visibility: visible;
-}
-
-.message .reactions-menu+.actions-menu {
+.message:hover .actions-menu,
+.message .reactions-menu + .actions-menu {
   visibility: visible;
 }
