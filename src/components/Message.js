@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../Firebase/context';
 import userPlaceholder from '../assets/img/user-placeholder.png';
 import classes from './Message.module.css';
@@ -8,17 +8,24 @@ import { Replay } from '../assets/icons/Replay';
 import CodeSnippet from './UI/CodeSnippet';
 import ImagePreview from './UI/ImagePreview';
 import useUserData from '../hooks/useUserData';
+import { Like } from '../assets/icons/Like';
+import { Dislike } from '../assets/icons/Dislike';
+import firebase from '../Firebase/Firebase';
+import { Reaction } from '../assets/icons/Reaction';
 const urlRegex = /(https?:\/\/[^\s]+?(?=\s|$))/g;
+const firestore = firebase.firestore();
 
 const Message = ({
   message,
   onSetMessageToReplay,
   scrollToReplayedMessage,
   fistUnreadMessage,
+  chatName,
 }) => {
+  const [openReactionsMenu, setOpenReactionsMenu] = useState(false);
   const { user } = useContext(AuthContext);
   const { openModal } = useModal();
-  const { text, uid, replayTo, isCode, id, photoUrl } = message;
+  const { text, uid, replayTo, isCode, id, photoUrl, reactions } = message;
   const messageSenderClass = uid === user?.uid ? 'sent' : 'received';
   const senderUserData = useUserData(uid);
   const replayToUserDisplayName = useUserData(replayTo?.uid)?.displayName;
@@ -51,6 +58,67 @@ const Message = ({
     }
 
     return formattedText;
+  };
+
+  const handleMessageReaction = async (emoji) => {
+    const messageRef = firestore
+      .collection(`/chats/${chatName}/messages`)
+      .doc(id);
+
+    try {
+      const messageDoc = await messageRef.get();
+
+      if (messageDoc.exists) {
+        const messageData = messageDoc.data();
+
+        // Initialize the reactions object if it doesn't exist
+        if (!messageData.reactions) {
+          messageData.reactions = {
+            like: [],
+            dislike: [],
+            love: [],
+            laugh: [],
+            sad: [],
+            angry: [],
+            wow: [],
+          };
+        }
+
+        // Check if the user has already reacted
+        const userReactions = Object.keys(messageData.reactions).filter(
+          (reaction) => messageData.reactions[reaction].includes(user.uid)
+        );
+
+        if (messageData.reactions[emoji] && userReactions.includes(emoji)) {
+          // User has already reacted with this emoji, remove the reaction
+          const userIndex = messageData.reactions[emoji].indexOf(user.uid);
+          messageData.reactions[emoji].splice(userIndex, 1);
+        } else {
+          // User hasn't reacted with this emoji, add the reaction and remove from other reactions
+          messageData.reactions[emoji].push(user.uid);
+          userReactions.forEach((reaction) => {
+            if (reaction !== emoji) {
+              const userIndex = messageData.reactions[reaction].indexOf(
+                user.uid
+              );
+              messageData.reactions[reaction].splice(userIndex, 1);
+            }
+          });
+        }
+
+        // Update the document with the new reactions object
+        await messageRef.update({ reactions: messageData.reactions });
+      } else {
+        console.error('Message document does not exist.');
+      }
+    } catch (error) {
+      console.error('Error updating reactions:', error);
+    }
+  };
+
+  const reactionsIconsArray = {
+    like: <Like height="14px" fill="white" />,
+    dislike: <Dislike height="12px" fill="white" />,
   };
 
   return (
@@ -131,13 +199,51 @@ const Message = ({
               />
             </div>
           )}
+
+          {reactions && (
+            <div className={`${classes['reactions-wrapper']}`}>
+              {Object.entries(reactions).map(([reaction, users]) => {
+                if (users.length === 0) {
+                  return;
+                }
+                return (
+                  <div key={reaction}>
+                    {users.length}
+                    {reactionsIconsArray[reaction]}
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
-        <Replay
-          height="15px"
-          fill="gray"
-          className={classes.icon}
-          onClick={onSetMessageToReplay}
-        />
+        <div className={classes['actions-and-reactions-wrapper']}>
+          {openReactionsMenu && (
+            <div className={classes['reactions-menu']}>
+              <Like
+                height="20px"
+                onClick={() => handleMessageReaction('like')}
+              />
+              <Dislike
+                height="17px"
+                onClick={() => handleMessageReaction('dislike')}
+              />
+            </div>
+          )}
+          <div className={classes['actions-menu']}>
+            <Replay
+              height="15px"
+              fill="gray"
+              className={classes.icon}
+              onClick={onSetMessageToReplay}
+            />
+            <Reaction
+              height="20px"
+              fill="gray"
+              className={`${classes.icon}`}
+              onClick={() => setOpenReactionsMenu((c) => !c)}
+            />
+          </div>
+        </div>
       </div>
     </>
   );
