@@ -139,6 +139,21 @@ const Message = ({
     };
   }, [reactionMenuRef]);
 
+  const [userReaction, setUserReaction] = useState(null);
+
+  // Determine the user's reaction based on the message's reactions and the user's ID
+  useEffect(() => {
+    const userReaction = reactions
+      ? Object.keys(reactions).find((reaction) =>
+          reactions[reaction].includes(user.uid)
+        )
+      : null;
+
+    if (userReaction) {
+      setUserReaction(userReaction);
+    }
+  }, [reactions, user.uid]);
+
   return (
     <>
       {fistUnreadMessage && (
@@ -235,11 +250,15 @@ const Message = ({
             <div ref={reactionMenuRef} className={classes['reactions-menu']}>
               <Like
                 height="20px"
+                className={userReaction === 'like' && classes['selected-icon']}
                 onClick={() => handleMessageReaction('like')}
               />
               <Dislike
                 height="17px"
                 onClick={() => handleMessageReaction('dislike')}
+                className={
+                  userReaction === 'dislike' && classes['selected-icon']
+                }
               />
             </div>
           )}
