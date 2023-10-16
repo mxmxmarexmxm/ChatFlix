@@ -220,17 +220,13 @@ const Message = ({
 
           {reactions && (
             <div className={`${classes['reactions-wrapper']}`}>
-              {Object.entries(reactions).map(([reaction, users]) => {
-                if (users.length === 0) {
-                  return;
-                }
-                return (
+              {Object.entries(reactions)
+                .filter(([, users]) => users.length > 0)
+                .map(([reaction, users]) => (
                   <div key={reaction}>
-                    {users.length}
-                    {reactionsIconsArray[reaction]}
+                    {users.length} {reactionsIconsArray[reaction]}
                   </div>
-                );
-              })}
+                ))}
             </div>
           )}
         </div>
