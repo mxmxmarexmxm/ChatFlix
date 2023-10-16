@@ -114,6 +114,7 @@ const Message = ({
     } catch (error) {
       console.error('Error updating reactions:', error);
     }
+    setOpenReactionsMenu(false);
   };
 
   const reactionsIconsArray = {
