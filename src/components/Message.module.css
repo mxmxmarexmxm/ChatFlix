@@ -116,15 +116,6 @@
   cursor: pointer;
 }
 
-.icon {
-  cursor: pointer;
-  display: none;
-}
-
-.message:hover .icon {
-  display: block;
-}
-
 .text-wrapper {
   text-align: left;
   word-break: break-word;
@@ -193,3 +184,51 @@
   width: 100%;
   object-fit: cover;
 }
+
+.reactions-wrapper {
+  margin-left: auto;
+  border: 2px solid gray;
+  display: flex;
+  justify-content: flex-end;
+  width: fit-content;
+  background-color: #4d4b4b;
+  padding: 0.1rem;
+  border-radius: 0.5rem;
+  gap: 5px;
+  color: white;
+  position: absolute;
+  bottom: -1.1rem;
+}
+
+.actions-and-reactions-wrapper {
+  position: relative;
+}
+
+.reactions-menu {
+  position: absolute;
+  bottom: 120%;
+  right: 0;
+  display: flex;
+  gap: 5px;
+  background-color: #4d4b4b;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.reactions-menu svg {
+  cursor: pointer;
+  fill: white;
+}
+
+.actions-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.message:hover .actions-menu {
+  visibility: visible;
+}
+
