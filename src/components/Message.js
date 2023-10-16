@@ -15,6 +15,11 @@ import { Reaction } from '../assets/icons/Reaction';
 const urlRegex = /(https?:\/\/[^\s]+?(?=\s|$))/g;
 const firestore = firebase.firestore();
 
+const reactionsIconsArray = {
+  like: <Like height="14px" fill="white" />,
+  dislike: <Dislike height="12px" fill="white" />,
+};
+
 const Message = ({
   message,
   onSetMessageToReplay,
@@ -116,11 +121,6 @@ const Message = ({
       console.error('Error updating reactions:', error);
     }
     setOpenReactionsMenu(false);
-  };
-
-  const reactionsIconsArray = {
-    like: <Like height="14px" fill="white" />,
-    dislike: <Dislike height="12px" fill="white" />,
   };
 
   // Close the reactions menu when clicking outside of it
