@@ -129,6 +129,7 @@ const Chat = ({
       await uploadBytes(storageRef, file);
       const downloadURL = await getDownloadURL(storageRef);
       setPhoto(downloadURL);
+      e.target.value = null;
     } catch (err) {
       console.log(err);
     }
