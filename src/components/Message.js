@@ -23,7 +23,7 @@ const Message = ({
   const senderUserData = useUserData(uid);
   const replayToUserDisplayName = useUserData(replayTo?.uid)?.displayName;
   const nextSibling = document.getElementById(id)?.nextSibling;
-  const nextSiblingId = nextSibling?.id.split('/')[1];
+  const nextSiblingId = nextSibling?.id.split('*')[1];
   const sameSender = nextSiblingId === uid;
 
   // Split the message text into segments based on URLs
