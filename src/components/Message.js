@@ -249,14 +249,16 @@ const Message = ({
             <div ref={reactionMenuRef} className={classes['reactions-menu']}>
               <Like
                 height="20px"
-                className={userReaction === 'like' && classes['selected-icon']}
+                className={
+                  userReaction === 'like' ? classes['selected-icon'] : ''
+                }
                 onClick={() => handleMessageReaction('like')}
               />
               <Dislike
                 height="17px"
                 onClick={() => handleMessageReaction('dislike')}
                 className={
-                  userReaction === 'dislike' && classes['selected-icon']
+                  userReaction === 'dislike' ? classes['selected-icon'] : ''
                 }
               />
             </div>
