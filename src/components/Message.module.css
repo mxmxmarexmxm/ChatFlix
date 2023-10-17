@@ -1,3 +1,5 @@
+@value chat-fullscreen from './Chat/ChatInterface.module.css';
+
 .message {
   display: flex;
   flex-wrap: wrap;
@@ -239,6 +241,12 @@
   visibility: visible;
 }
 
-.selected-icon path{
+.selected-icon path {
   fill: red;
+}
+
+@media only screen and (min-width: 756px) {
+  .chat-fullscreen .message-wrapper {
+    max-width: 47%;
+  }
 }
