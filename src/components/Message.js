@@ -149,9 +149,7 @@ const Message = ({
         )
       : null;
 
-    if (userReaction) {
-      setUserReaction(userReaction);
-    }
+    setUserReaction(userReaction);
   }, [reactions, user.uid]);
 
   return (
