@@ -38,6 +38,9 @@ const Message = ({
   const nextSibling = document.getElementById(id)?.nextSibling;
   const nextSiblingId = nextSibling?.id.split('*')[1];
   const sameSender = nextSiblingId === uid;
+  const haveReactions =
+    reactions &&
+    Object.entries(reactions).some(([, users]) => users?.length > 0);
 
   // Split the message text into segments based on URLs
   const formatMessage = (text) => {
@@ -164,7 +167,7 @@ const Message = ({
       <div
         className={`${classes.message} ${classes[messageSenderClass]} ${
           sameSender && classes['same-sender']
-        }`}
+        } ${haveReactions && classes['have-reactions']}`}
         id={id}
       >
         {messageSenderClass === 'received' && (

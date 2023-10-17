@@ -61,6 +61,10 @@
   border-radius: 1rem 1rem 0.2rem 1rem;
 }
 
+.message.have-reactions {
+  margin-bottom: 2rem;
+}
+
 .user-name {
   background-color: #161617;
   color: #bcb9b9;
