@@ -1,4 +1,4 @@
-import firebase from '../Firebase/Firebase';
+import firebase from '../../Firebase/Firebase';
 const firestore = firebase.firestore();
 const urlRegex = /(https?:\/\/[^\s]+?(?=\s|$))/g;
 

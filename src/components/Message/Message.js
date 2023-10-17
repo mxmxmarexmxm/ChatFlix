@@ -1,16 +1,16 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import { AuthContext } from '../Firebase/context';
+import { AuthContext } from '../../Firebase/context';
 import userPlaceholder from '../assets/img/user-placeholder.png';
 import classes from './Message.module.css';
-import { useModal } from '../context/ModalContext';
-import UserProfile from './UserProfile';
-import { Replay } from '../assets/icons/Replay';
-import CodeSnippet from './UI/CodeSnippet';
-import ImagePreview from './UI/ImagePreview';
-import useUserData from '../hooks/useUserData';
-import { Like } from '../assets/icons/Like';
-import { Dislike } from '../assets/icons/Dislike';
-import { Reaction } from '../assets/icons/Reaction';
+import { useModal } from '../../context/ModalContext';
+import UserProfile from '../UserProfile';
+import { Replay } from '../../assets/icons/Replay';
+import CodeSnippet from '../UI/CodeSnippet';
+import ImagePreview from '../UI/ImagePreview';
+import useUserData from '../../hooks/useUserData';
+import { Like } from '../../assets/icons/Like';
+import { Dislike } from '../../assets/icons/Dislike';
+import { Reaction } from '../../assets/icons/Reaction';
 import { handleMessageReaction, formatMessage } from './MessageUtils';
 
 const reactionsIconsArray = {
