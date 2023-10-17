@@ -1,4 +1,4 @@
-@value chat-fullscreen from './Chat/ChatInterface.module.css';
+@value chat-fullscreen from '../Chat/ChatInterface.module.css';
 
 .message {
   display: flex;

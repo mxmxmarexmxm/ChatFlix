@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../../Firebase/context';
-import userPlaceholder from '../assets/img/user-placeholder.png';
+import userPlaceholder from '../../assets/img/user-placeholder.png';
 import classes from './Message.module.css';
 import { useModal } from '../../context/ModalContext';
 import UserProfile from '../UserProfile';
