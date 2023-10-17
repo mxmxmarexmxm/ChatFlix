@@ -219,8 +219,9 @@
 
 .reactions-menu {
   position: absolute;
-  bottom: 120%;
+  bottom: 0;
   right: 0;
+  transform: translate(50%, -80%);
   display: flex;
   gap: 5px;
   background-color: #4d4b4b;
