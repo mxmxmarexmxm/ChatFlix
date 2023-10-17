@@ -1,30 +1,18 @@
 export const Dislike = ({ ...props }) => {
   return (
-    // <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-    // <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
     <svg
-      // width="800px"
-      // height="800px"
       viewBox="0 -0.5 21 21"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
-      // xmlns:xlink="http://www.w3.org/1999/xlink"
     >
       <title>Dislike</title>
       <desc>Created with Sketch.</desc>
       <defs></defs>
-      <g
-        id="Page-1"
-        stroke="none"
-        strokeWidth="1"
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Page-1" stroke="none" strokeWidth="1" fillRule="evenodd">
         <g
           id="Dribbble-Light-Preview"
           transform="translate(-179.000000, -760.000000)"
-          fill="white"
         >
           <g id="icons" transform="translate(56.000000, 160.000000)">
             <path

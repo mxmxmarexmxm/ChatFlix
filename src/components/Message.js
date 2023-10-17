@@ -16,8 +16,8 @@ const urlRegex = /(https?:\/\/[^\s]+?(?=\s|$))/g;
 const firestore = firebase.firestore();
 
 const reactionsIconsArray = {
-  like: <Like height="14px" fill="white" />,
-  dislike: <Dislike height="12px" fill="white" />,
+  like: <Like height="14px" />,
+  dislike: <Dislike height="12px" />,
 };
 
 const Message = ({

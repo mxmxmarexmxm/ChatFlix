@@ -205,6 +205,7 @@
   position: absolute;
   bottom: -1.1rem;
   right: 0;
+  fill: white;
 }
 
 .received .reactions-wrapper {
