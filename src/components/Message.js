@@ -231,17 +231,18 @@ const Message = ({
             </div>
           )}
 
-          {reactions && (
-            <div className={`${classes['reactions-wrapper']}`}>
-              {Object.entries(reactions)
-                .filter(([, users]) => users.length > 0)
-                .map(([reaction, users]) => (
-                  <div key={reaction}>
-                    {users.length} {reactionsIconsArray[reaction]}
-                  </div>
-                ))}
-            </div>
-          )}
+          {reactions &&
+            Object.entries(reactions).some(([, users]) => users.length > 0) && (
+              <div className={`${classes['reactions-wrapper']}`}>
+                {Object.entries(reactions)
+                  .filter(([, users]) => users.length > 0)
+                  .map(([reaction, users]) => (
+                    <div key={reaction}>
+                      {users.length} {reactionsIconsArray[reaction]}
+                    </div>
+                  ))}
+              </div>
+            )}
         </div>
         <div className={classes['actions-and-reactions-wrapper']}>
           {openReactionsMenu && (
