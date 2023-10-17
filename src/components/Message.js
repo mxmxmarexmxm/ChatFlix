@@ -142,7 +142,7 @@ const Message = ({
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [actionsReactionsMenuRef]);
-  console.log(openReactionsMenu);
+
   // Determine the user's reaction based on the message's reactions and the user's ID
   useEffect(() => {
     const userReaction =
