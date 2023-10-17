@@ -11,7 +11,7 @@ export const Dislike = ({ ...props }) => {
       {...props}
       // xmlns:xlink="http://www.w3.org/1999/xlink"
     >
-      <title>dislike [#1387]</title>
+      <title>Dislike</title>
       <desc>Created with Sketch.</desc>
       <defs></defs>
       <g
