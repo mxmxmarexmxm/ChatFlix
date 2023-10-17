@@ -28,6 +28,7 @@ const Message = ({
   chatName,
 }) => {
   const [openReactionsMenu, setOpenReactionsMenu] = useState(false);
+  const [userReaction, setUserReaction] = useState(null);
   const reactionMenuRef = useRef();
   const { user } = useContext(AuthContext);
   const { openModal } = useModal();
@@ -142,8 +143,6 @@ const Message = ({
     };
   }, [reactionMenuRef]);
 
-  const [userReaction, setUserReaction] = useState(null);
-
   // Determine the user's reaction based on the message's reactions and the user's ID
   useEffect(() => {
     const userReaction = reactions
@@ -234,18 +233,17 @@ const Message = ({
             </div>
           )}
 
-          {reactions &&
-            Object.entries(reactions).some(([, users]) => users.length > 0) && (
-              <div className={`${classes['reactions-wrapper']}`}>
-                {Object.entries(reactions)
-                  .filter(([, users]) => users.length > 0)
-                  .map(([reaction, users]) => (
-                    <div key={reaction}>
-                      {users.length} {reactionsIconsArray[reaction]}
-                    </div>
-                  ))}
-              </div>
-            )}
+          {reactions && haveReactions && (
+            <div className={`${classes['reactions-wrapper']}`}>
+              {Object.entries(reactions)
+                .filter(([, users]) => users.length > 0)
+                .map(([reaction, users]) => (
+                  <div key={reaction}>
+                    {users.length} {reactionsIconsArray[reaction]}
+                  </div>
+                ))}
+            </div>
+          )}
         </div>
         <div className={classes['actions-and-reactions-wrapper']}>
           {openReactionsMenu && (
