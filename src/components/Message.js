@@ -29,7 +29,7 @@ const Message = ({
 }) => {
   const [openReactionsMenu, setOpenReactionsMenu] = useState(false);
   const [userReaction, setUserReaction] = useState(null);
-  const reactionMenuRef = useRef();
+  const actionsReactionsMenuRef = useRef();
   const { user } = useContext(AuthContext);
   const { openModal } = useModal();
   const { text, uid, replayTo, isCode, id, photoUrl, reactions } = message;
@@ -131,8 +131,8 @@ const Message = ({
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        reactionMenuRef?.current &&
-        !reactionMenuRef?.current.contains(event.target)
+        actionsReactionsMenuRef?.current &&
+        !actionsReactionsMenuRef?.current.contains(event.target)
       ) {
         setOpenReactionsMenu(false);
       }
@@ -141,8 +141,8 @@ const Message = ({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [reactionMenuRef]);
-
+  }, [actionsReactionsMenuRef]);
+  console.log(openReactionsMenu);
   // Determine the user's reaction based on the message's reactions and the user's ID
   useEffect(() => {
     const userReaction =
@@ -246,9 +246,12 @@ const Message = ({
             </div>
           )}
         </div>
-        <div className={classes['actions-and-reactions-wrapper']}>
+        <div
+          ref={actionsReactionsMenuRef}
+          className={classes['actions-and-reactions-wrapper']}
+        >
           {openReactionsMenu && (
-            <div ref={reactionMenuRef} className={classes['reactions-menu']}>
+            <div className={classes['reactions-menu']}>
               <Like
                 height="20px"
                 className={
