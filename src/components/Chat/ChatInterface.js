@@ -99,6 +99,7 @@ const ChatInterface = ({
               <Message
                 key={message.id}
                 message={message}
+                chatName={chat.name}
                 fistUnreadMessage={messages?.length - unreadMessages === index}
                 onSetMessageToReplay={() => setMessageToReplay(message)}
                 scrollToReplayedMessage={() =>
