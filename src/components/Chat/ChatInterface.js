@@ -132,17 +132,20 @@ const ChatInterface = ({
             <Close onClick={() => setMessageToReplay(null)} />
           </div>
         )}
-        {(imgUploadLoading || photos) &&
-          photos?.map((photo, index) => (
-            <div key={index} className={classes['image-preview']}>
-              <Close onClick={() => setPhotos(null)} />
-              {imgUploadLoading ? (
-                <div className={classes['loader']}></div>
-              ) : (
-                <img src={photo} alt="Uploaded" />
-              )}
-            </div>
-          ))}
+        {(imgUploadLoading || photos) && (
+          <div className={classes['images-preview-wrapper']}>
+            {photos?.map((photo, index) => (
+              <div key={index} className={classes['image-preview']}>
+                <Close onClick={() => setPhotos(null)} />
+                {imgUploadLoading ? (
+                  <div className={classes['loader']}></div>
+                ) : (
+                  <img src={photo} alt="Uploaded" />
+                )}
+              </div>
+            ))}
+          </div>
+        )}
         <form onSubmit={sendMessage}>
           <div className={classes['buttons-wrapper']}>
             <button
