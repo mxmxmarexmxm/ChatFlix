@@ -8,6 +8,7 @@
   color: white;
   width: 500px;
   max-width: 90vw;
+  position: relative;
 }
 
 .profile-img-wrapper {
@@ -92,6 +93,13 @@
   max-height: 40vh;
   resize: vertical;
   font-size: 1rem;
+}
+
+.loader-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .user-card input:disabled,

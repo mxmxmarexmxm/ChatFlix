@@ -11,6 +11,7 @@ import {
   updateUserDataInFirestore,
 } from '../services/UserServices';
 import GithubIcon from '../assets/icons/Github';
+import Loader from './UI/Loader';
 
 const UserProfile = ({ uid, personalProfile }) => {
   const [user, setUser] = useState(null);
@@ -69,7 +70,7 @@ const UserProfile = ({ uid, personalProfile }) => {
     e.preventDefault();
 
     try {
-      setStatus('Please wait...');
+      setStatus('loading');
       await updateProfile(user, newValues);
       await updateUserDataInFirestore(user.uid, newValues);
       if (newValues.email !== user.email) {
@@ -207,7 +208,13 @@ const UserProfile = ({ uid, personalProfile }) => {
           </a>
         </div>
       )}
-      <p className={classes.status}>{status}</p>
+      {status === 'loading' ? (
+        <div className={classes['loader-wrapper']}>
+          <Loader />
+        </div>
+      ) : (
+        <p className={classes.status}>{status}</p>
+      )}
       {personalProfile && (
         <div className={classes['buttons-wrapper']}>
           <button onClick={toggleEditMode} type="button">
