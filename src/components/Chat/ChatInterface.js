@@ -38,6 +38,7 @@ const ChatInterface = ({
   photo,
   setPhoto,
   replayToDisplayName,
+  imgUploadLoading,
 }) => {
   return (
     <div
@@ -131,10 +132,14 @@ const ChatInterface = ({
             <Close onClick={() => setMessageToReplay(null)} />
           </div>
         )}
-        {photo && (
+        {(imgUploadLoading || photo) && (
           <div className={classes['image-preview']}>
             <Close onClick={() => setPhoto(null)} />
-            <img src={photo} alt="Uploaded" />
+            {imgUploadLoading ? (
+              <div className={classes['loader']}></div>
+            ) : (
+              <img src={photo} alt="Uploaded" />
+            )}
           </div>
         )}
         <form onSubmit={sendMessage}>
@@ -157,6 +162,7 @@ const ChatInterface = ({
                 onChange={handlePhotoUpload}
                 placeholder="none"
                 name="photoUrl"
+                title="Send a picture"
               />
             </button>
           </div>

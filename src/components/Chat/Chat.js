@@ -25,6 +25,7 @@ const Chat = ({
   onSelectChat,
 }) => {
   const [dispalyMessages, setDisplayMessages] = useState(true);
+  const [imgUploadLoading, setImgUploadLoading] = useState(false);
   const [messageText, setMessageText] = useState('');
   const [photo, setPhoto] = useState(null);
   const [isCode, setIsCode] = useState(false);
@@ -123,13 +124,15 @@ const Chat = ({
       `chat-photos/${chat.name}/${new Date().getTime()}_${file.name}`
     );
 
-    // TODO: HANDLE LOADING AND ERROR STATE !!!!!!!! //
+    // TODO: HANDLE ERROR STATE ! //
 
     try {
+      setImgUploadLoading(true);
       await uploadBytes(storageRef, file);
       const downloadURL = await getDownloadURL(storageRef);
       setPhoto(downloadURL);
       e.target.value = null;
+      setImgUploadLoading(false);
     } catch (err) {
       console.log(err);
     }
@@ -156,7 +159,7 @@ const Chat = ({
         await messageCollection.add({
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
           uid,
-          id: 'photo' + id,
+          id: 'photo-' + id,
           readBy: [uid],
           replayTo: messageToReplay,
           isCode: false,
@@ -297,6 +300,7 @@ const Chat = ({
       handlePhotoUpload={handlePhotoUpload}
       setPhoto={setPhoto}
       replayToDisplayName={replayToDisplayName}
+      imgUploadLoading={imgUploadLoading}
     />
   );
 };
