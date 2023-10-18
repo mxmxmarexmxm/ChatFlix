@@ -156,7 +156,7 @@ const Chat = ({
         await messageCollection.add({
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
           uid,
-          id: new Date().toISOString() + '/' + uid,
+          id: 'photo' + id,
           readBy: [uid],
           replayTo: messageToReplay,
           isCode: false,
