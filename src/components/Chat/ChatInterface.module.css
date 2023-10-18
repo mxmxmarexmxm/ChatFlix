@@ -244,6 +244,7 @@
   overflow: hidden;
   justify-content: center;
   align-items: center;
+  border: 10rem solid gray;
 }
 
 .img-uploader input {
@@ -252,7 +253,6 @@
   background-color: #242526;
   cursor: pointer;
   opacity: 0;
-  font-size: 0;
 }
 
 .img-uploader svg {
@@ -296,25 +296,6 @@
 .message-to-replay svg {
   cursor: pointer;
   height: 1rem;
-}
-
-.loader {
-  border: 0.3rem solid #f3f3f3;
-  border-top: 0.3rem solid #3498db;
-  border-radius: 50%;
-  width: 2.5rem;
-  margin: .5rem;
-  aspect-ratio: 1/1;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 @media only screen and (min-width: 756px) {
