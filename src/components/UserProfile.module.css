@@ -55,7 +55,7 @@
 .upload-icon {
   height: 100%;
   width: 100%;
-  padding: 3px;
+  padding: 4px;
   object-fit: contain;
   color: black;
   position: absolute;
@@ -76,11 +76,13 @@
 .user-card textarea {
   background-color: transparent;
   color: white;
-  font-size: 1.5rem;
-  border-radius: 1rem;
-  padding: 0.1rem 0.5rem;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.5rem;
   font-family: inherit;
   width: 100%;
+  outline: none;
+  border: 1.5px solid gray;
 }
 
 .user-card textarea {
