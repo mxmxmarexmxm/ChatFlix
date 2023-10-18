@@ -201,8 +201,10 @@ const Chat = ({
   // Minimize all chats in the active bottom container at the Esc button
   useEffect(() => {
     const handleEsc = (event) => {
-      if (event.keyCode === 27) {
+      if (event.keyCode === 27 && !isFullScreen) {
         setDisplayMessages(false);
+      } else {
+        onFullScreenToggle(chat.id);
       }
     };
     window.addEventListener('keydown', handleEsc);
