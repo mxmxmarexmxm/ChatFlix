@@ -27,7 +27,7 @@ const Chat = ({
   const [dispalyMessages, setDisplayMessages] = useState(true);
   const [imgUploadLoading, setImgUploadLoading] = useState(false);
   const [messageText, setMessageText] = useState('');
-  const [photo, setPhoto] = useState(null);
+  const [photos, setPhotos] = useState([]);
   const [isCode, setIsCode] = useState(false);
   const [unreadMessages, setUnreadMessages] = useState(null);
   const [messageToReplay, setMessageToReplay] = useState(null);
@@ -117,24 +117,29 @@ const Chat = ({
   };
 
   const handlePhotoUpload = async (e) => {
-    const file = e.target.files[0];
+    const files = e.target.files;
     const storage = getStorage();
-    const storageRef = ref(
-      storage,
-      `chat-photos/${chat.name}/${new Date().getTime()}_${file.name}`
+    const storageRefs = Array.from(files).map((file) =>
+      ref(
+        storage,
+        `chat-photos/${chat.name}/${new Date().getTime()}_${file.name}`
+      )
     );
-
-    // TODO: HANDLE ERROR STATE ! //
 
     try {
       setImgUploadLoading(true);
-      await uploadBytes(storageRef, file);
-      const downloadURL = await getDownloadURL(storageRef);
-      setPhoto(downloadURL);
+      for (let i = 0; i < files.length; i++) {
+        await uploadBytes(storageRefs[i], files[i]);
+        const downloadURL = await getDownloadURL(storageRefs[i]);
+        setPhotos((photos) => [...photos, downloadURL]);
+      }
+
+      // Clear the input field after successful upload
       e.target.value = null;
       setImgUploadLoading(false);
     } catch (err) {
       console.log(err);
+      setImgUploadLoading(false);
     }
   };
 
@@ -155,21 +160,23 @@ const Chat = ({
           isCode: isCode,
         });
       }
-      if (photo) {
-        await messageCollection.add({
-          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-          uid,
-          id: 'photo-' + id,
-          readBy: [uid],
-          replayTo: messageToReplay,
-          isCode: false,
-          photoUrl: photo ?? photo,
-        });
+      if (photos) {
+        for (let i = 0; i < photos.length; i++) {
+          await messageCollection.add({
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            uid,
+            id: 'photo-' + i + id,
+            readBy: [uid],
+            replayTo: messageToReplay,
+            isCode: false,
+            photoUrl: photos[i],
+          });
+        }
       }
       setMessageText('');
       scrollToBottom();
       setIsCode(false);
-      setPhoto(null);
+      setPhotos([]);
       chatInputRef.current.style.height = '3rem';
     } else {
       openModal(<AuthForm />);
@@ -298,9 +305,9 @@ const Chat = ({
       setIsCode={setIsCode}
       onEnterPress={onEnterPress}
       handleInputChange={handleInputChange}
-      photo={photo}
+      photos={photos}
       handlePhotoUpload={handlePhotoUpload}
-      setPhoto={setPhoto}
+      setPhotos={setPhotos}
       replayToDisplayName={replayToDisplayName}
       imgUploadLoading={imgUploadLoading}
     />

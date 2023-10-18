@@ -35,8 +35,8 @@ const ChatInterface = ({
   onEnterPress,
   handleInputChange,
   handlePhotoUpload,
-  photo,
-  setPhoto,
+  photos,
+  setPhotos,
   replayToDisplayName,
   imgUploadLoading,
 }) => {
@@ -132,16 +132,17 @@ const ChatInterface = ({
             <Close onClick={() => setMessageToReplay(null)} />
           </div>
         )}
-        {(imgUploadLoading || photo) && (
-          <div className={classes['image-preview']}>
-            <Close onClick={() => setPhoto(null)} />
-            {imgUploadLoading ? (
-              <div className={classes['loader']}></div>
-            ) : (
-              <img src={photo} alt="Uploaded" />
-            )}
-          </div>
-        )}
+        {(imgUploadLoading || photos) &&
+          photos?.map((photo, index) => (
+            <div key={index} className={classes['image-preview']}>
+              <Close onClick={() => setPhotos(null)} />
+              {imgUploadLoading ? (
+                <div className={classes['loader']}></div>
+              ) : (
+                <img src={photo} alt="Uploaded" />
+              )}
+            </div>
+          ))}
         <form onSubmit={sendMessage}>
           <div className={classes['buttons-wrapper']}>
             <button
@@ -163,6 +164,7 @@ const ChatInterface = ({
                 placeholder="none"
                 name="photoUrl"
                 title="Send a picture"
+                multiple
               />
             </button>
           </div>
