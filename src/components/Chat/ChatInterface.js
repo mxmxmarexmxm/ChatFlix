@@ -40,6 +40,7 @@ const ChatInterface = ({
   replayToDisplayName,
   imgUploadLoading,
 }) => {
+  console.log(photos);
   return (
     <div
       className={`${classes.chat} ${
@@ -136,7 +137,13 @@ const ChatInterface = ({
           <div className={classes['images-preview-wrapper']}>
             {photos?.map((photo, index) => (
               <div key={index} className={classes['image-preview']}>
-                <Close onClick={() => setPhotos(null)} />
+                <Close
+                  onClick={() =>
+                    setPhotos((photos) => {
+                      return photos.filter((_, i) => i !== index);
+                    })
+                  }
+                />
                 {imgUploadLoading ? (
                   <div className={classes['loader']}></div>
                 ) : (
