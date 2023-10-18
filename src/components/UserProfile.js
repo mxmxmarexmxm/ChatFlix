@@ -124,8 +124,8 @@ const UserProfile = ({ uid, personalProfile }) => {
           />
         </div>
         {isEditing && (
-          <div className={classes['img-uploader']}>
-            <Upload className={classes['upload-icon']} />
+          <button className={classes['img-uploader']}>
+            <Upload />
             <input
               type="file"
               accept="image/*"
@@ -133,7 +133,7 @@ const UserProfile = ({ uid, personalProfile }) => {
               placeholder="none"
               name="photoURL"
             />
-          </div>
+          </button>
         )}
       </div>
       <input
