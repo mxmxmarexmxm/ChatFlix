@@ -67,7 +67,7 @@ const Message = ({
         : null;
 
     setUserReaction(userReaction);
-  }, [reactions, user.uid]);
+  }, [reactions, user.uid, haveReactions]);
 
   return (
     <>
