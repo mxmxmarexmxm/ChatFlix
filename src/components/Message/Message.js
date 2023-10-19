@@ -171,53 +171,25 @@ const Message = ({
         >
           {openReactionsMenu && (
             <div className={classes['reactions-menu']}>
-              <Like
-                height="20px"
-                width="20px"
-                className={
-                  userReaction === 'like' ? classes['selected-icon'] : ''
-                }
-                onClick={() =>
-                  handleMessageReaction(
-                    'like',
-                    chatName,
-                    id,
-                    setOpenReactionsMenu,
-                    user
-                  )
-                }
-              />
-              <Dislike
-                height="20px"
-                width="20px"
-                onClick={() =>
-                  handleMessageReaction(
-                    'dislike',
-                    chatName,
-                    id,
-                    setOpenReactionsMenu,
-                    user
-                  )
-                }
-                className={
-                  userReaction === 'dislike' ? classes['selected-icon'] : ''
-                }
-              />
-              <Laugh
-                height="20px"
-                onClick={() =>
-                  handleMessageReaction(
-                    'laugh',
-                    chatName,
-                    id,
-                    setOpenReactionsMenu,
-                    user
-                  )
-                }
-                className={
-                  userReaction === 'laugh' ? classes['selected-icon'] : ''
-                }
-              />
+              {Object.keys(reactionsIconsArray).map((reaction) => (
+                <div
+                  key={reaction}
+                  className={
+                    userReaction === reaction ? classes['selected-icon'] : ''
+                  }
+                  onClick={() =>
+                    handleMessageReaction(
+                      reaction,
+                      chatName,
+                      id,
+                      setOpenReactionsMenu,
+                      user
+                    )
+                  }
+                >
+                  {reactionsIconsArray[reaction]}
+                </div>
+              ))}
             </div>
           )}
           <div className={classes['actions-menu']}>

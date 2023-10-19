@@ -235,6 +235,8 @@
 }
 
 .reactions-menu svg {
+  height: 1.3rem;
+  width: 1.3rem;
   cursor: pointer;
   fill: black;
 }
