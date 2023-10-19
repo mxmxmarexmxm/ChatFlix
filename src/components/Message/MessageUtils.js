@@ -89,3 +89,11 @@ export const formatMessage = (text) => {
 
   return formattedText;
 };
+
+export const isSameSender = (id, uid) => {
+  const nextSibling = document.getElementById(id)?.nextSibling;
+  const nextSiblingId = nextSibling?.id.split('*')[1];
+  const sameSender = nextSiblingId === uid;
+
+  return sameSender;
+};

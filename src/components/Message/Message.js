@@ -11,7 +11,11 @@ import useUserData from '../../hooks/useUserData';
 import { Like } from '../../assets/icons/Like';
 import { Dislike } from '../../assets/icons/Dislike';
 import { Reaction } from '../../assets/icons/Reaction';
-import { handleMessageReaction, formatMessage } from './MessageUtils';
+import {
+  handleMessageReaction,
+  formatMessage,
+  isSameSender,
+} from './MessageUtils';
 
 const reactionsIconsArray = {
   like: <Like height="14px" />,
@@ -34,9 +38,8 @@ const Message = ({
   const messageSenderClass = uid === user?.uid ? 'sent' : 'received';
   const senderUserData = useUserData(uid);
   const replayToUserDisplayName = useUserData(replayTo?.uid)?.displayName;
-  const nextSibling = document.getElementById(id)?.nextSibling;
-  const nextSiblingId = nextSibling?.id.split('*')[1];
-  const sameSender = nextSiblingId === uid;
+  const sameSender = isSameSender(id, uid);
+
   const haveReactions =
     reactions &&
     Object.entries(reactions).some(([, users]) => users?.length > 0);
