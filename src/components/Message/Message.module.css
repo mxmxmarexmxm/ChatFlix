@@ -254,8 +254,13 @@
   visibility: visible;
 }
 
-.selected-icon path {
-  fill: red;
+.selected-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #232425;
+  padding: 0.2rem;
+  border-radius: 50%;
 }
 
 @media only screen and (min-width: 756px) {
