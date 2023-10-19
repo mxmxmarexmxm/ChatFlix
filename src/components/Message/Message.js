@@ -18,11 +18,10 @@ import {
   isSameSender,
 } from './MessageUtils';
 
-// Todo: map and style
 const reactionsIconsArray = {
-  like: <Like height="14px" width="14px" />,
-  dislike: <Dislike height="14px" width="14px" />,
-  laugh: <Laugh height="14px" width="14px" />,
+  like: <Like />,
+  dislike: <Dislike />,
+  laugh: <Laugh />,
 };
 
 const Message = ({
