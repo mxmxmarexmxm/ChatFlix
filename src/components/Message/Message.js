@@ -11,6 +11,7 @@ import useUserData from '../../hooks/useUserData';
 import { Like } from '../../assets/icons/Like';
 import { Dislike } from '../../assets/icons/Dislike';
 import { Reaction } from '../../assets/icons/Reaction';
+import { Laugh } from '../../assets/icons/Laugh';
 import {
   handleMessageReaction,
   formatMessage,
@@ -20,6 +21,7 @@ import {
 const reactionsIconsArray = {
   like: <Like height="14px" />,
   dislike: <Dislike height="12px" />,
+  laugh: <Laugh height="16px" />,
 };
 
 const Message = ({
@@ -171,6 +173,7 @@ const Message = ({
             <div className={classes['reactions-menu']}>
               <Like
                 height="20px"
+                width="20px"
                 className={
                   userReaction === 'like' ? classes['selected-icon'] : ''
                 }
@@ -185,7 +188,8 @@ const Message = ({
                 }
               />
               <Dislike
-                height="17px"
+                height="20px"
+                width="20px"
                 onClick={() =>
                   handleMessageReaction(
                     'dislike',
@@ -197,6 +201,21 @@ const Message = ({
                 }
                 className={
                   userReaction === 'dislike' ? classes['selected-icon'] : ''
+                }
+              />
+              <Laugh
+                height="20px"
+                onClick={() =>
+                  handleMessageReaction(
+                    'laugh',
+                    chatName,
+                    id,
+                    setOpenReactionsMenu,
+                    user
+                  )
+                }
+                className={
+                  userReaction === 'laugh' ? classes['selected-icon'] : ''
                 }
               />
             </div>
