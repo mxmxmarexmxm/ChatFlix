@@ -205,7 +205,7 @@
   position: absolute;
   bottom: -1.1rem;
   right: 0;
-  fill: white;
+  fill: black;
 }
 
 .received .reactions-wrapper {
@@ -231,7 +231,7 @@
 
 .reactions-menu svg {
   cursor: pointer;
-  fill: white;
+  fill: black;
 }
 
 .actions-menu {
