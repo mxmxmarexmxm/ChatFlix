@@ -12,6 +12,7 @@ import { Like } from '../../assets/icons/Like';
 import { Dislike } from '../../assets/icons/Dislike';
 import { Reaction } from '../../assets/icons/Reaction';
 import { Laugh } from '../../assets/icons/Laugh';
+import { Angry } from '../../assets/icons/Angry';
 import {
   handleMessageReaction,
   formatMessage,
@@ -22,6 +23,7 @@ const reactionsIconsArray = {
   like: <Like />,
   dislike: <Dislike />,
   laugh: <Laugh />,
+  angry: <Angry />,
 };
 
 const Message = ({
