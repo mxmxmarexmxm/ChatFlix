@@ -18,12 +18,14 @@ import {
   formatMessage,
   isSameSender,
 } from './MessageUtils';
+import { Love } from '../../assets/icons/Love';
 
 const reactionsIconsArray = {
   like: <Like />,
   dislike: <Dislike />,
   laugh: <Laugh />,
   angry: <Angry />,
+  love: <Love />,
 };
 
 const Message = ({
