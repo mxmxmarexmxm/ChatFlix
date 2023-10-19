@@ -1,17 +1,11 @@
 export const Edit = ({ ...props }) => {
   return (
-    // <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-    // <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
     <svg
-      // width="800px"
-      // height="800px"
       viewBox="0 -0.5 21 21"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
-      // xmlns:xlink="http://www.w3.org/1999/xlink"
       {...props}
     >
-      <title>edit [#1482]</title>
       <desc>Created with Sketch.</desc>
       <defs></defs>
       <g
