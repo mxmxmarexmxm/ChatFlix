@@ -226,7 +226,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  transform: translate(50%, -80%);
+  transform: translate(0%, -50%);
   display: flex;
   gap: 5px;
   background-color: #4d4b4b;
@@ -237,7 +237,7 @@
 
 .received .reactions-menu {
   right: auto;
-  transform: translate(-50%, -80%);
+  transform: translate(-70%, -50%);
 }
 
 .reactions-menu svg {
