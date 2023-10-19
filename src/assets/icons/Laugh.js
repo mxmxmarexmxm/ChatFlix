@@ -7,6 +7,7 @@ export const Laugh = ({ ...props }) => {
       viewBox="0 0 512.001 512.001"
       {...props}
     >
+      <title>Laugh</title>
       <circle
         style={{ fill: '#F7B239' }}
         cx="256.005"

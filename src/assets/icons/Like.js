@@ -9,6 +9,7 @@ export const Like = ({ ...props }) => {
       viewBox="0 0 232.665 232.665"
       {...props}
     >
+      <title>Like</title>
       <g>
         <path
           style={{ fill: '#FFD4C4' }}

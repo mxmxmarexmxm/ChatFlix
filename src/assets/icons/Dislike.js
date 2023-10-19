@@ -7,6 +7,7 @@ export const Dislike = ({ ...props }) => {
       viewBox="0 0 232.666 232.666"
       {...props}
     >
+      <title>Dislike</title>
       <g>
         <polygon
           style={{ fill: '#FFD4C4' }}
