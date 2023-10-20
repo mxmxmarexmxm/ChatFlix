@@ -15,7 +15,6 @@ import useUnreadMessages from '../../hooks/useUnreadMessages';
 
 const Chat = ({
   chat,
-  isChatHead,
   isFullScreen,
   showMessages,
   onClose,
@@ -243,18 +242,6 @@ const Chat = ({
         onClose={onClose}
         logo={chat.logo}
         name={chat.name}
-      />
-    );
-  }
-
-  // Chat head if chat is in the right chat container
-  if (isChatHead) {
-    return (
-      <ChatHead
-        unreadMessages={unreadMessages}
-        onSelectChat={onSelectChat}
-        logo={chat.logo}
-        onClose={onClose}
       />
     );
   }
