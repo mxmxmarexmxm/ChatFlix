@@ -195,7 +195,8 @@
   margin-left: auto;
   border: 2px solid gray;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
   width: fit-content;
   background-color: #4d4b4b;
   padding: 0.1rem;
@@ -205,6 +206,13 @@
   position: absolute;
   bottom: -1.1rem;
   right: 0;
+}
+
+.reactions-wrapper div {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  align-items: center;
 }
 
 .reactions-wrapper svg {
@@ -228,12 +236,15 @@
   right: 0;
   transform: translate(0%, -50%);
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   background-color: #4d4b4b;
   padding: 0.5rem;
   border-radius: 1rem;
   border-bottom-right-radius: 0;
   border: 2px solid #353636;
+  z-index: 10000 !important;
 }
 
 .received .reactions-menu {
