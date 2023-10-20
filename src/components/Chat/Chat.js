@@ -18,7 +18,6 @@ const Chat = ({
   isFullScreen,
   showMessages,
   onClose,
-  isFullScreenSideChat,
   onFullScreenToggle,
   onSelectChat,
 }) => {
@@ -232,19 +231,6 @@ const Chat = ({
     event.stopPropagation();
     onFullScreenToggle(chat.id);
   };
-
-  // Side chat on full screen
-  if (isFullScreenSideChat) {
-    return (
-      <SideChatFullscreen
-        unreadMessages={unreadMessages}
-        onSelectChat={onSelectChat}
-        onClose={onClose}
-        logo={chat.logo}
-        name={chat.name}
-      />
-    );
-  }
 
   return (
     <ChatInterface
