@@ -209,9 +209,7 @@ const UserProfile = ({ uid, personalProfile }) => {
         </div>
       )}
       {status === 'loading' ? (
-        <div className={classes['loader-wrapper']}>
-          <Loader />
-        </div>
+        <Loader />
       ) : (
         <p className={classes.status}>{status}</p>
       )}

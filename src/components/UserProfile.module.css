@@ -95,13 +95,6 @@
   font-size: 1rem;
 }
 
-.loader-wrapper {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .user-card input:disabled,
 .user-card textarea:disabled {
   display: flex;
