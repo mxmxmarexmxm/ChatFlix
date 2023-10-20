@@ -50,8 +50,8 @@ export const Love = ({ ...props }) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(9.38479 8.34769) rotate(-29.408) scale(14.3064 11.3486)"
         >
-          <stop offset="0.2479" stop-color="#FF0000" />
-          <stop offset="0.8639" stop-color="#C20000" />
+          <stop offset="0.2479" stopColor="#FF0000" />
+          <stop offset="0.8639" stopColor="#C20000" />
         </radialGradient>
         <radialGradient
           id="paint1_radial"
@@ -61,8 +61,8 @@ export const Love = ({ ...props }) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(9.7385 7.47018) rotate(-29.408) scale(12.3173 9.77078)"
         >
-          <stop offset="0.2479" stop-color="#FF0000" />
-          <stop offset="1" stop-color="#C20000" />
+          <stop offset="0.2479" stopColor="#FF0000" />
+          <stop offset="1" stopColor="#C20000" />
         </radialGradient>
         <radialGradient
           id="paint2_radial"
@@ -72,8 +72,8 @@ export const Love = ({ ...props }) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(9.38479 8.34769) rotate(-29.408) scale(14.3064 11.3486)"
         >
-          <stop stop-color="white" stop-opacity="0.25" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" stopOpacity="0.25" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </radialGradient>
         <radialGradient
           id="paint3_radial"
@@ -83,8 +83,8 @@ export const Love = ({ ...props }) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(14.5277 13.2044) rotate(-26.296) scale(10.4431 5.16038)"
         >
-          <stop stop-color="#BD2719" stop-opacity="0.25" />
-          <stop offset="1" stop-color="#BD2719" stop-opacity="0" />
+          <stop stopColor="#BD2719" stopOpacity="0.25" />
+          <stop offset="1" stopColor="#BD2719" stopOpacity="0" />
         </radialGradient>
         <radialGradient
           id="paint4_radial"
@@ -94,8 +94,8 @@ export const Love = ({ ...props }) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(7.34746 7.19453) rotate(-21.6908) scale(3.71252 2.30616)"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </radialGradient>
         <radialGradient
           id="paint5_radial"
@@ -105,8 +105,8 @@ export const Love = ({ ...props }) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(14.6004 6.84619) rotate(-40.7634) scale(3.07376 1.9095)"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </radialGradient>
         <linearGradient
           id="paint6_linear"
@@ -116,8 +116,8 @@ export const Love = ({ ...props }) => {
           y2="2.96408"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#860805" />
-          <stop offset="1" stop-color="#BD2719" stop-opacity="0" />
+          <stop stopColor="#860805" />
+          <stop offset="1" stopColor="#BD2719" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>
