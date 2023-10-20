@@ -1,6 +1,7 @@
 import React from 'react';
 import Chat from '../components/Chat/Chat';
 import classes from './FullScreen.module.css';
+import SideChatFullscreen from '../components/Chat/SideChatFullscreen';
 
 const FullScreen = ({
   fullScreenChat,
@@ -13,8 +14,7 @@ const FullScreen = ({
     <div className={classes.fullscreen}>
       <div className={classes['side-chats-container']}>
         {activeChats.map((chat) => (
-          <Chat
-            isFullScreenSideChat
+          <SideChatFullscreen
             key={chat.id}
             chat={chat}
             onSelectChat={() => onSelectChat(chat.id)}

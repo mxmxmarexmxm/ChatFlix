@@ -2,27 +2,23 @@ import React from 'react';
 import classes from './SideChatFullscreen.module.css';
 import placeholder from '../../assets/img/placeholder.png';
 import { Close } from '../../assets/icons/Close';
+import useUnreadMessages from '../../hooks/useUnreadMessages';
 
-const SideChatFullscreen = ({
-  onSelectChat,
-  logo,
-  name,
-  unreadMessages,
-  onClose,
-}) => {
+const SideChatFullscreen = ({ onSelectChat, chat, onClose }) => {
+  const { unreadMessages } = useUnreadMessages(chat.name);
   return (
     <div className={classes['side-chat-fullscreen']} onClick={onSelectChat}>
       <div className={classes['title-and-logo-side']}>
         <div className={classes['logo-container-side']}>
           <img
-            src={logo}
-            alt={name}
+            src={chat.logo}
+            alt={chat.name}
             onError={(e) => {
               e.target.src = placeholder;
             }}
           />
         </div>
-        <h2>{name}</h2>
+        <h2>{chat.name}</h2>
       </div>
       <div
         className={classes['badges-container-side']}
@@ -36,7 +32,11 @@ const SideChatFullscreen = ({
           </div>
         )}
         <div className={classes['badge-wrapper']} onClick={onClose}>
-          <Close height="20px" className={classes['close-icon-side']} fill="gray" />
+          <Close
+            height="20px"
+            className={classes['close-icon-side']}
+            fill="gray"
+          />
         </div>
       </div>
     </div>
