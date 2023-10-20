@@ -4,7 +4,7 @@ import { LeftArrow } from '../assets/icons/LeftArrow';
 import { RightArrow } from '../assets/icons/RightArrow';
 import { chatsData } from '../data/data';
 import placeholder from '../assets/img/placeholder.png';
-import useWindowWidth from '../utils/useWindowWidth';
+import useWindowWidth from '../hooks/useWindowWidth';
 
 const ChatRow = ({ rowTitle, onSelectChat }) => {
   const { width } = useWindowWidth();

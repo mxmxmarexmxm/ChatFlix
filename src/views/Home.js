@@ -6,7 +6,7 @@ import ChatRow from '../components/ChatRow';
 import FullScreen from './FullScreen';
 import ToggleChatHeadsBtn from '../components/UI/ToggleChatHeadsBtn';
 import Header from '../components/UI/Header';
-import useWindowDimensions from '../utils/useWindowWidth';
+import useWindowDimensions from '../hooks/useWindowWidth';
 import {
   getActiveChatsFromFirestore,
   saveActiveChatsToFirestore,
