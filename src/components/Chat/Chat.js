@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import ChatHead from './ChatHead';
 import SideChatFullscreen from './SideChatFullscreen';
@@ -13,7 +12,6 @@ import AuthForm from '../../auth/AuthForm';
 import ChatInterface from './ChatInterface';
 import useUserData from '../../hooks/useUserData';
 import useUnreadMessages from '../../hooks/useUnreadMessages';
-const firestore = firebase.firestore();
 
 const Chat = ({
   chat,
@@ -43,10 +41,14 @@ const Chat = ({
       ? 'yourself'
       : replayToUserData?.displayName;
 
-  let messageCollection = firestore.collection(`/chats/${chat.name}/messages/`);
-  let query = messageCollection.orderBy('createdAt', 'asc');
-  const [messages, loading] = useCollectionData(query, { idField: 'id' });
-  const unreadMessages = useUnreadMessages(messages, user);
+  const {
+    messages,
+    loading,
+    unreadMessages,
+    messageCollection,
+    markAllAsRead,
+  } = useUnreadMessages(chat.name);
+
   const scrollToBottom = () => {
     if (messagesContainerRef.current) {
       messagesContainerRef.current.scrollTop =
@@ -69,19 +71,6 @@ const Chat = ({
       notify();
     }
   }, [unreadMessages, notify]);
-
-  // Mark all previous messages as read when user clicks on input
-  const markAllAsRead = async () => {
-    if (user) {
-      await messageCollection.get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          doc.ref.update({
-            readBy: firebase.firestore.FieldValue.arrayUnion(user.uid),
-          });
-        });
-      });
-    }
-  };
 
   const handleInputChange = (e) => {
     const chatInputRefCurr = chatInputRef.current;

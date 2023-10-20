@@ -1,8 +1,18 @@
-// useUnreadMessages.js
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../Firebase/context';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import firebase from '../Firebase/Firebase';
+import 'firebase/compat/firestore';
+const firestore = firebase.firestore();
 
-function useUnreadMessages(messages, user) {
+function useUnreadMessages(chatName) {
   const [unreadMessages, setUnreadMessages] = useState(null);
+  const { user } = useContext(AuthContext);
+  const messageCollection = firestore.collection(
+    `/chats/${chatName}/messages/`
+  );
+  const query = messageCollection.orderBy('createdAt', 'asc');
+  const [messages, loading] = useCollectionData(query, { idField: 'id' });
 
   useEffect(() => {
     const getUnreadMessages = () => {
@@ -14,7 +24,30 @@ function useUnreadMessages(messages, user) {
     user && getUnreadMessages();
   }, [messages, user]);
 
-  return unreadMessages;
+  // Mark all previous messages as read when user clicks on input
+  const markAllAsRead = async () => {
+    if (user) {
+      console.log('User:', user);
+
+      const querySnapshot = await messageCollection.get();
+      console.log('Query Snapshot:', querySnapshot.docs);
+
+      querySnapshot.forEach((doc) => {
+        console.log('Updating document:', doc.id);
+        doc.ref.update({
+          readBy: firebase.firestore.FieldValue.arrayUnion(user.uid),
+        });
+      });
+    }
+  };
+
+  return {
+    messages,
+    loading,
+    unreadMessages,
+    messageCollection,
+    markAllAsRead,
+  };
 }
 
 export default useUnreadMessages;
