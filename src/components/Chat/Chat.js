@@ -19,7 +19,6 @@ const Chat = ({
   showMessages,
   onClose,
   onFullScreenToggle,
-  onSelectChat,
 }) => {
   const [dispalyMessages, setDisplayMessages] = useState(true);
   const [imgUploadLoading, setImgUploadLoading] = useState(false);
