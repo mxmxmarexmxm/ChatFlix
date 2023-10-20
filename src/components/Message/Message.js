@@ -1,32 +1,20 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import { AuthContext } from '../../Firebase/context';
-import userPlaceholder from '../../assets/img/user-placeholder.png';
 import classes from './Message.module.css';
+import { AuthContext } from '../../Firebase/context';
 import { useModal } from '../../context/ModalContext';
 import UserProfile from '../UserProfile';
-import { Replay } from '../../assets/icons/Replay';
 import CodeSnippet from '../UI/CodeSnippet';
 import ImagePreview from '../UI/ImagePreview';
 import useUserData from '../../hooks/useUserData';
-import { Like } from '../../assets/icons/Like';
-import { Dislike } from '../../assets/icons/Dislike';
-import { Reaction } from '../../assets/icons/Reaction';
-import { Laugh } from '../../assets/icons/Laugh';
-import { Angry } from '../../assets/icons/Angry';
 import {
   handleMessageReaction,
   formatMessage,
   isSameSender,
 } from './MessageUtils';
-import { Love } from '../../assets/icons/Love';
-
-const reactionsIconsArray = {
-  like: <Like />,
-  dislike: <Dislike />,
-  laugh: <Laugh />,
-  angry: <Angry />,
-  love: <Love />,
-};
+import userPlaceholder from '../../assets/img/user-placeholder.png';
+import { Replay } from '../../assets/icons/Replay';
+import { Reaction } from '../../assets/icons/Reaction';
+import { reactionsIconsArray } from './MessageUtils';
 
 const Message = ({
   message,

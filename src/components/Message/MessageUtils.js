@@ -1,6 +1,19 @@
 import firebase from '../../Firebase/Firebase';
+import { Love } from '../../assets/icons/Love';
+import { Like } from '../../assets/icons/Like';
+import { Dislike } from '../../assets/icons/Dislike';
+import { Laugh } from '../../assets/icons/Laugh';
+import { Angry } from '../../assets/icons/Angry';
 const firestore = firebase.firestore();
 const urlRegex = /(https?:\/\/[^\s]+?(?=\s|$))/g;
+
+export const reactionsIconsArray = {
+  like: <Like />,
+  dislike: <Dislike />,
+  laugh: <Laugh />,
+  angry: <Angry />,
+  love: <Love />,
+};
 
 export const handleMessageReaction = async (
   emoji,
