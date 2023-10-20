@@ -9,6 +9,7 @@ import { Send } from '../../assets/icons/Send';
 import { DownArrow } from '../../assets/icons/DownArrow';
 import { CodeVector } from '../../assets/icons/CodeVector';
 import { UploadImage } from '../../assets/icons/UploadImage';
+import Loader from '../UI/Loader';
 
 const ChatInterface = ({
   isFullScreen,
@@ -94,7 +95,7 @@ const ChatInterface = ({
           ref={messagesContainerRef}
         >
           {loading ? (
-            <p className={classes['empty-chat-message']}>Loading...</p>
+            <Loader />
           ) : messages?.length > 0 ? (
             messages.map((message, index) => (
               <Message
