@@ -12,6 +12,7 @@ import {
   saveActiveChatsToFirestore,
 } from '../services/UserServices';
 import { AuthContext } from '../Firebase/context';
+import ChatHead from '../components/Chat/ChatHead';
 
 const Home = () => {
   const { user } = useContext(AuthContext);
@@ -165,10 +166,9 @@ const Home = () => {
             {showChatHeads && (
               <div className={classes['chat-heads-container']}>
                 {activeChatsRight.map((chat) => (
-                  <Chat
+                  <ChatHead
                     key={chat.id}
                     chat={chat}
-                    isChatHead={true}
                     onClose={() => closeChatHandler(chat.id)}
                     onSelectChat={() => selectChatHandler(chat)}
                   />

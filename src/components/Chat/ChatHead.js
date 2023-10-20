@@ -2,8 +2,10 @@ import React from 'react';
 import classes from './ChatHead.module.css';
 import placehoder from '../../assets/img/placeholder.png';
 import { Close } from '../../assets/icons/Close';
+import useUnreadMessages from '../../hooks/useUnreadMessages';
 
-const ChatHead = ({ logo, unreadMessages, onSelectChat, onClose }) => {
+const ChatHead = ({ chat, onSelectChat, onClose }) => {
+  const { unreadMessages } = useUnreadMessages(chat.name);
   return (
     <div className={classes['chat-head']} onClick={onSelectChat}>
       <div className={classes['badges-container']}>
@@ -21,7 +23,7 @@ const ChatHead = ({ logo, unreadMessages, onSelectChat, onClose }) => {
       </div>
       <div className={classes['logo-wrappper']}>
         <img
-          src={logo}
+          src={chat.logo}
           alt="chat head"
           onError={(e) => {
             e.target.src = placehoder;
