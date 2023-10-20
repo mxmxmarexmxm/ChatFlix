@@ -12,6 +12,7 @@ import { useModal } from '../../context/ModalContext';
 import AuthForm from '../../auth/AuthForm';
 import ChatInterface from './ChatInterface';
 import useUserData from '../../hooks/useUserData';
+import useUnreadMessages from '../../hooks/useUnreadMessages';
 const firestore = firebase.firestore();
 
 const Chat = ({
@@ -29,7 +30,6 @@ const Chat = ({
   const [messageText, setMessageText] = useState('');
   const [photos, setPhotos] = useState([]);
   const [isCode, setIsCode] = useState(false);
-  const [unreadMessages, setUnreadMessages] = useState(null);
   const [messageToReplay, setMessageToReplay] = useState(null);
   const [isAtBottom, setIsAtBottom] = useState(true);
   const [notify] = useSound(notificationSound);
@@ -46,19 +46,7 @@ const Chat = ({
   let messageCollection = firestore.collection(`/chats/${chat.name}/messages/`);
   let query = messageCollection.orderBy('createdAt', 'asc');
   const [messages, loading] = useCollectionData(query, { idField: 'id' });
-
-  // Get unread messages
-  useEffect(() => {
-    const getUnreadMessages = () => {
-      const unreadMessages = messages?.filter(
-        (message) => !message.readBy.includes(user.uid)
-      ).length;
-
-      setUnreadMessages(unreadMessages);
-    };
-    user && getUnreadMessages();
-  }, [messages, user]);
-
+  const unreadMessages = useUnreadMessages(messages, user);
   const scrollToBottom = () => {
     if (messagesContainerRef.current) {
       messagesContainerRef.current.scrollTop =
