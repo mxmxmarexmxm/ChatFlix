@@ -162,10 +162,11 @@ const Chat = ({
       }
       if (photos) {
         for (let i = 0; i < photos.length; i++) {
-          await messageCollection.add({
+          let photoId = 'photo-' + i + id;
+          await messageCollection.doc(photoId).set({
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
             uid,
-            id: 'photo-' + i + id,
+            id: photoId,
             readBy: [uid],
             replayTo: messageToReplay,
             isCode: false,
