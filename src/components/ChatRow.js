@@ -46,26 +46,29 @@ const ChatRow = ({ rowTitle, onSelectChat }) => {
         >
           {haveScrool && <LeftArrow />}
         </button>
-        <div ref={chatRowRef} className={classes.chats}>
-          {chats.map((chat) => (
-            <div className={classes['logo-container']} key={chat.id}>
-              <img
-                onClick={() => onSelectChat(chat)}
-                src={chat.logo}
-                alt={chat.name}
-                {...(![
-                  'frontend',
-                  'frontend frameworks',
-                  'CSS frameworks',
-                ].includes(rowTitle) && { loading: 'lazy' })}
-                onError={(e) => {
-                  e.target.src = placeholder;
-                }}
-                onLoad={checkHorizontalOverflow}
-              />
-            </div>
-          ))}
+        <div className={classes['chats-outer-wrapper']}>
+          <div ref={chatRowRef} className={classes['chats-inner-wrapper']}>
+            {chats.map((chat) => (
+              <div className={classes['logo-container']} key={chat.id}>
+                <img
+                  onClick={() => onSelectChat(chat)}
+                  src={chat.logo}
+                  alt={chat.name}
+                  {...(![
+                    'frontend',
+                    'frontend frameworks',
+                    'CSS frameworks',
+                  ].includes(rowTitle) && { loading: 'lazy' })}
+                  onError={(e) => {
+                    e.target.src = placeholder;
+                  }}
+                  onLoad={checkHorizontalOverflow}
+                />
+              </div>
+            ))}
+          </div>
         </div>
+
         <button
           onClick={() => scrollRowHandler(isMobile ? 200 : 900)}
           className={`${!haveScrool && classes['hide-button']}`}
