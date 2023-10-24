@@ -265,6 +265,7 @@
   gap: 0.5rem;
   cursor: pointer;
   visibility: hidden;
+  fill: gray;
 }
 
 .message:hover .actions-menu,

@@ -187,13 +187,11 @@ const Message = ({
           <div className={classes['actions-menu']}>
             <Replay
               height="15px"
-              fill="gray"
               className={classes.icon}
               onClick={onSetMessageToReplay}
             />
             <Reaction
               height="20px"
-              fill="gray"
               className={`${classes.icon}`}
               onClick={() => setOpenReactionsMenu((c) => !c)}
             />
