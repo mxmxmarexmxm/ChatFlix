@@ -13,6 +13,8 @@ ChatFlix is a web application built with React, Firebase, and CSS modules, with 
 
    - Profile Picture Upload: Users can upload and customize their profile pictures.
    - Username Editing: Users can change their display names.
+   - About Me Section: Users can provide additional information about themselves.
+   - LinkedIn and GitHub Links: Users can add links to their LinkedIn and GitHub profiles.
 
 3. **Chat Categories**
 
@@ -48,7 +50,24 @@ ChatFlix is a web application built with React, Firebase, and CSS modules, with 
    - Conveniently scroll to the message being replayed for context.
 
 10. **Preview Other Users' Profiles**
+
     - Users can view the profiles of other ChatFlix members to learn more about them.
+
+11. **Scroll to Bottom of Chat**
+
+    - Easily navigate to the latest messages by scrolling to the bottom of the chat.
+
+12. **Message Reactions**
+
+    React to messages with various emojis and expressions to engage in conversations.
+
+13. **Sending Code Blocks**
+
+    - Share code snippets with syntax highlighting, and preview in a VS Dark theme.
+
+14. **Image Sending in Chat**
+
+    - Send and receive images within chat messages for better communication.
 
 Feel free to adjust this list further as needed for your project.
 
