@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import ChatHead from './ChatHead';
-import SideChatFullscreen from './SideChatFullscreen';
 import useSound from 'use-sound';
 import notificationSound from '../../assets/Sound/notification-sound.mp3';
 import firebase from '../../Firebase/Firebase';
