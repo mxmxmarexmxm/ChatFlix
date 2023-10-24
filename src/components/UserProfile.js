@@ -63,7 +63,8 @@ const UserProfile = ({ uid, personalProfile }) => {
   };
 
   const toggleEditMode = () => {
-    setIsEditing(!isEditing);
+    setImagePreview(null);
+    setIsEditing((isEditing) => !isEditing);
   };
 
   const handleFormSubmit = async (e) => {
