@@ -27,13 +27,8 @@ function useUnreadMessages(chatName) {
   // Mark all previous messages as read when user clicks on input
   const markAllAsRead = async () => {
     if (user) {
-      console.log('User:', user);
-
       const querySnapshot = await messageCollection.get();
-      console.log('Query Snapshot:', querySnapshot.docs);
-
       querySnapshot.forEach((doc) => {
-        console.log('Updating document:', doc.id);
         doc.ref.update({
           readBy: firebase.firestore.FieldValue.arrayUnion(user.uid),
         });
