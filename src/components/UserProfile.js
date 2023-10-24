@@ -125,7 +125,7 @@ const UserProfile = ({ uid, personalProfile }) => {
           />
         </div>
         {isEditing && (
-          <button className={classes['img-uploader']}>
+          <button type="button" className={classes['img-uploader']}>
             <Upload />
             <input
               type="file"
