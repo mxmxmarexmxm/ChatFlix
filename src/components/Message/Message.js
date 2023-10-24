@@ -193,7 +193,7 @@ const Message = ({
             <Reaction
               height="20px"
               className={`${classes.icon}`}
-              onClick={() => setOpenReactionsMenu((c) => !c)}
+              onClick={() => setOpenReactionsMenu((isOpened) => !isOpened)}
             />
           </div>
         </div>
