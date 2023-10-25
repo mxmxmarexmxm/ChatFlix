@@ -27,7 +27,6 @@ const FullScreen = ({
           isFullScreen
           chat={fullScreenChat}
           onFullScreenToggle={onFullScreenToggle}
-          key={fullScreenChat.name}
           closeChat={closeChat}
         />
       </div>
