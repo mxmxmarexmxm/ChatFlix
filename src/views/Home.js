@@ -53,7 +53,7 @@ const Home = () => {
     const bottomLimit = width < '800' ? 1 : width < '1150' ? 2 : 3;
 
     if (!isActive && activeBottom.length <= bottomLimit) {
-      setActiveChatsBottom((cur) => [chatData, ...cur]);
+      setActiveChatsBottom((chats) => [chatData, ...chats]);
     }
 
     if (!isActive && activeBottom.length >= bottomLimit) {
@@ -67,9 +67,9 @@ const Home = () => {
 
     if (indexOfChatRight >= 0 && activeChatsBottom.length <= bottomLimit) {
       setActiveChatsRight(
-        activeChatsRight.filter((c) => c.name !== chatData.name)
+        activeChatsRight.filter((chats) => chats.id !== chatData.id)
       );
-      setActiveChatsBottom((c) => [chatData, ...c]);
+      setActiveChatsBottom((chats) => [chatData, ...chats]);
     }
 
     if (
@@ -79,12 +79,12 @@ const Home = () => {
     ) {
       const elementToMove = activeBottom[bottomLimit - 1];
       setActiveChatsRight((chat) => [
-        ...chat.filter((chat) => chat?.name !== chatData.name),
+        ...chat.filter((chat) => chat?.id !== chatData.id),
         elementToMove,
       ]);
       setActiveChatsBottom([
         chatData,
-        ...activeBottom.filter((chat) => chat.name !== elementToMove.name),
+        ...activeBottom.filter((chat) => chat.id !== elementToMove.id),
       ]);
     }
     setShowMessages({ name: chatData.name });
