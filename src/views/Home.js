@@ -140,9 +140,9 @@ const Home = () => {
   }
 
   return (
-    <>
+    <div className={classes['home-screen']}>
       <Header />
-      <div className={classes.container}>
+      <div className={classes['chat-rows-container']}>
         {rowTitles.map((title) => (
           <ChatRow
             onSelectChat={selectChatHandler}
@@ -150,41 +150,42 @@ const Home = () => {
             key={title}
           />
         ))}
-        <div className={classes['active-chats-container']}>
-          <div className={classes['active-chats-bottom']}>
-            {activeChatsBottom?.map((chat) => (
-              <Chat
-                onFullScreenToggle={toggleFullScreenHandler}
-                showMessages={showMessages}
-                chat={chat}
-                key={chat.id}
-                closeChat={closeChatHandler}
-              />
-            ))}
-          </div>
-          <div className={classes['active-chat-right']}>
-            {showChatHeads && (
-              <div className={classes['chat-heads-container']}>
-                {activeChatsRight.map((chat) => (
-                  <ChatHead
-                    key={chat.id}
-                    chat={chat}
-                    closeChat={() => closeChatHandler(chat.id)}
-                    onSelectChat={() => selectChatHandler(chat)}
-                  />
-                ))}
-              </div>
-            )}
-            {activeChatsRight?.length !== 0 && (
-              <ToggleChatHeadsBtn
-                showChatHeads={showChatHeads}
-                onClick={() => setShowChatHeads((c) => !c)}
-              />
-            )}
-          </div>
+      </div>
+
+      <div className={classes['active-chats-container']}>
+        <div className={classes['active-chats-bottom']}>
+          {activeChatsBottom?.map((chat) => (
+            <Chat
+              onFullScreenToggle={toggleFullScreenHandler}
+              showMessages={showMessages}
+              chat={chat}
+              key={chat.id}
+              closeChat={closeChatHandler}
+            />
+          ))}
+        </div>
+        <div className={classes['active-chat-right']}>
+          {showChatHeads && (
+            <div className={classes['chat-heads-container']}>
+              {activeChatsRight.map((chat) => (
+                <ChatHead
+                  key={chat.id}
+                  chat={chat}
+                  closeChat={() => closeChatHandler(chat.id)}
+                  onSelectChat={() => selectChatHandler(chat)}
+                />
+              ))}
+            </div>
+          )}
+          {activeChatsRight?.length !== 0 && (
+            <ToggleChatHeadsBtn
+              showChatHeads={showChatHeads}
+              onClick={() => setShowChatHeads((c) => !c)}
+            />
+          )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
