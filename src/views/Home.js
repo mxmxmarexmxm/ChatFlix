@@ -131,7 +131,7 @@ const Home = () => {
         <FullScreen
           onSelectChat={toggleFullScreenHandler}
           onFullScreenToggle={() => setFullScreenChat(null)}
-          onClose={closeChatHandler}
+          closeChat={closeChatHandler}
           fullScreenChat={fullScreenChat}
           activeChats={[...activeChatsBottom, ...activeChatsRight]}
         />
@@ -158,7 +158,7 @@ const Home = () => {
                 showMessages={showMessages}
                 chat={chat}
                 key={chat.id}
-                onClose={closeChatHandler}
+                closeChat={closeChatHandler}
               />
             ))}
           </div>
@@ -169,7 +169,7 @@ const Home = () => {
                   <ChatHead
                     key={chat.id}
                     chat={chat}
-                    onClose={() => closeChatHandler(chat.id)}
+                    closeChat={() => closeChatHandler(chat.id)}
                     onSelectChat={() => selectChatHandler(chat)}
                   />
                 ))}
