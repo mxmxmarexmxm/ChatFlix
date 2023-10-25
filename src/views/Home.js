@@ -39,6 +39,13 @@ const Home = () => {
     saveActiveChatsToFirestore(activeChatsBottom, activeChatsRight);
   }, [activeChatsBottom, activeChatsRight]);
 
+  // Close full screen if there are no remaining chats.
+  useEffect(() => {
+    if (activeChatsBottom?.length === 0 && activeChatsRight.length === 0) {
+      setFullScreenChat(null);
+    }
+  }, [activeChatsBottom, activeChatsRight]);
+
   // Select chat handler, for each scenario.
   const selectChatHandler = (chatData) => {
     const indexOfChatBottom = activeChatsBottom.findIndex(
@@ -115,15 +122,6 @@ const Home = () => {
 
     setFullScreenChat(fullChat);
   };
-
-  // Close full screen if there are no remaining chats.
-  if (
-    activeChatsBottom?.length === 0 &&
-    activeChatsRight.length === 0 &&
-    fullScreenChat
-  ) {
-    setFullScreenChat(null);
-  }
 
   if (fullScreenChat) {
     return (
