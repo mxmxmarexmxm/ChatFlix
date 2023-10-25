@@ -8,7 +8,7 @@ const FullScreen = ({
   onFullScreenToggle,
   activeChats,
   onSelectChat,
-  onClose,
+  closeChat,
 }) => {
   return (
     <div className={classes.fullscreen}>
@@ -18,7 +18,7 @@ const FullScreen = ({
             key={chat.id}
             chat={chat}
             onSelectChat={() => onSelectChat(chat.id)}
-            onClose={() => onClose(chat.id)}
+            closeChat={() => closeChat(chat.id)}
           />
         ))}
       </div>
@@ -28,7 +28,7 @@ const FullScreen = ({
           chat={fullScreenChat}
           onFullScreenToggle={onFullScreenToggle}
           key={fullScreenChat.name}
-          onClose={onClose}
+          closeChat={closeChat}
         />
       </div>
     </div>

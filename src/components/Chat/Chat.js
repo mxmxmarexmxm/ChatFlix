@@ -15,7 +15,7 @@ const Chat = ({
   chat,
   isFullScreen,
   showMessages,
-  onClose,
+  closeChat,
   onFullScreenToggle,
 }) => {
   const [dispalyMessages, setDisplayMessages] = useState(true);
@@ -236,7 +236,7 @@ const Chat = ({
       toggleChat={toggleChat}
       unreadMessages={unreadMessages}
       toggleFullScreen={toggleFullScreen}
-      onClose={onClose}
+      closeChat={closeChat}
       dispalyMessages={dispalyMessages}
       messages={messages}
       loading={loading}

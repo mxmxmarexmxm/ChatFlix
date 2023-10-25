@@ -4,7 +4,7 @@ import placehoder from '../../assets/img/placeholder.png';
 import { Close } from '../../assets/icons/Close';
 import useUnreadMessages from '../../hooks/useUnreadMessages';
 
-const ChatHead = ({ chat, onSelectChat, onClose }) => {
+const ChatHead = ({ chat, onSelectChat, closeChat }) => {
   const { unreadMessages } = useUnreadMessages(chat.name);
   return (
     <div className={classes['chat-head']} onClick={onSelectChat}>
@@ -18,7 +18,7 @@ const ChatHead = ({ chat, onSelectChat, onClose }) => {
           className={classes['close-icon-wrapper']}
           onClick={(e) => e.stopPropagation()}
         >
-          <Close onClick={onClose} className={classes['close-icon']} />
+          <Close onClick={closeChat} className={classes['close-icon']} />
         </div>
       </div>
       <div className={classes['logo-wrappper']}>

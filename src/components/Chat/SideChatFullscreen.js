@@ -4,7 +4,7 @@ import placeholder from '../../assets/img/placeholder.png';
 import { Close } from '../../assets/icons/Close';
 import useUnreadMessages from '../../hooks/useUnreadMessages';
 
-const SideChatFullscreen = ({ onSelectChat, chat, onClose }) => {
+const SideChatFullscreen = ({ onSelectChat, chat, closeChat }) => {
   const { unreadMessages } = useUnreadMessages(chat.name);
   return (
     <div className={classes['side-chat-fullscreen']} onClick={onSelectChat}>
@@ -31,7 +31,7 @@ const SideChatFullscreen = ({ onSelectChat, chat, onClose }) => {
             {unreadMessages < 99 ? unreadMessages : '99+'}
           </div>
         )}
-        <div className={classes['badge-wrapper']} onClick={onClose}>
+        <div className={classes['badge-wrapper']} onClick={closeChat}>
           <Close
             height="20px"
             className={classes['close-icon-side']}
