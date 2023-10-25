@@ -36,20 +36,6 @@
   border-radius: 15%;
 }
 
-.active-chats-full {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  position: fixed;
-  top: 100px;
-  left: 0;
-}
-
-.container-full {
-  display: flex;
-  flex-direction: row;
-}
-
 .chat-heads-container {
   animation: fadeIn 150ms ease-in backwards;
 }
