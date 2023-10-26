@@ -29,8 +29,8 @@ export const resetPassword = async (email) => {
       return 'Password reset email sent!';
     })
     .catch((error) => {
-      const errorCode = error.code;
+      // const errorCode = error.code;
       const errorMessage = error.message;
-      return errorCode + errorMessage;
+      return errorMessage;
     });
 };
