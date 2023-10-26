@@ -57,14 +57,14 @@ const Message = ({
   // Determine the user's reaction based on the message's reactions and the user's ID
   useEffect(() => {
     const userReaction =
-      reactions && haveReactions
+      user && reactions && haveReactions
         ? Object.keys(reactions).find((reaction) =>
             reactions[reaction]?.includes(user.uid)
           )
         : null;
 
     setUserReaction(userReaction);
-  }, [reactions, user.uid, haveReactions]);
+  }, [reactions, user?.uid, haveReactions]);
 
   return (
     <>
