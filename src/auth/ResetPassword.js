@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import classes from './AuthForm.module.css';
+import classes from './ResetPasswordForm.module.css';
 import { resetPassword } from '../services/AuthServices';
 
 // TODO: improve UI and UX firebase template ...
@@ -14,10 +14,11 @@ const ResetPasswordForm = ({ setForgotPassword }) => {
   };
 
   return (
-    <div className={classes['form-wrapper']}>
-      <p>
-        Forgot your password? No worries. Enter your registered email address
-        below, and we'll send you a link to reset your password.
+    <div className={classes['reset-password-form']}>
+      <h1>Forgot your password?</h1>
+      <p className={classes['text']}>
+        No worries. Enter your registered email address below, and we'll send
+        you a link to reset your password.
       </p>
       <form onSubmit={handleSubmit}>
         <input
@@ -31,7 +32,12 @@ const ResetPasswordForm = ({ setForgotPassword }) => {
         {resetPasswordMessage}
         <button type="submit">Send</button>
       </form>
-      <button onClick={() => setForgotPassword(false)}> Go back </button>
+      <button
+        className={classes['back-btn']}
+        onClick={() => setForgotPassword(false)}
+      >
+        Go back
+      </button>
     </div>
   );
 };
