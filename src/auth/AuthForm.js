@@ -10,6 +10,7 @@ import { resetPassword, signInWithGoogle } from '../services/AuthServices';
 import { addUserToFirestore } from '../services/UserServices';
 import { useModal } from '../context/ModalContext';
 import { Google } from '../assets/icons/Google';
+import ResetPasswordForm from './ResetPassword';
 
 const AuthForm = () => {
   const [formData, setFormData] = useState({
@@ -79,36 +80,8 @@ const AuthForm = () => {
     }
   };
 
-  // TODO: Make separate component, improve UI and UX, handle go back, firebase template ...
-  const [resetPasswordMessage, setResetPasswordMessage] = useState('');
-
   if (forgotPassword) {
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      const resetMessage = await resetPassword(formData.email);
-      setResetPasswordMessage(resetMessage);
-    };
-
-    return (
-      <div className={classes['form-wrapper']}>
-        <p>
-          Forgot your password? No worries. Enter your registered email address
-          below, and we'll send you a link to reset your password.
-        </p>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Email"
-            required
-          />
-          {resetPasswordMessage}
-          <button type="submit">Send</button>
-        </form>
-      </div>
-    );
+    return <ResetPasswordForm />;
   }
 
   return (
