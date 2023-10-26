@@ -81,7 +81,7 @@ const AuthForm = () => {
   };
 
   if (forgotPassword) {
-    return <ResetPasswordForm />;
+    return <ResetPasswordForm setForgotPassword={setForgotPassword} />;
   }
 
   return (

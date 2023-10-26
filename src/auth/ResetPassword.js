@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import classes from './AuthForm.module.css';
 import { resetPassword } from '../services/AuthServices';
 
-// TODO: improve UI and UX, handle go back, firebase template ...
-const ResetPasswordForm = () => {
+// TODO: improve UI and UX firebase template ...
+const ResetPasswordForm = ({ setForgotPassword }) => {
   const [resetPasswordMessage, setResetPasswordMessage] = useState('');
   const [email, setEmail] = useState('');
 
@@ -31,6 +31,7 @@ const ResetPasswordForm = () => {
         {resetPasswordMessage}
         <button type="submit">Send</button>
       </form>
+      <button onClick={() => setForgotPassword(false)}> Go back </button>
     </div>
   );
 };
