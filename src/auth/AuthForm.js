@@ -6,7 +6,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import classes from './AuthForm.module.css';
-import { signInWithGoogle } from '../services/AuthServices';
+import { resetPassword, signInWithGoogle } from '../services/AuthServices';
 import { addUserToFirestore } from '../services/UserServices';
 import { useModal } from '../context/ModalContext';
 import { Google } from '../assets/icons/Google';
@@ -20,6 +20,7 @@ const AuthForm = () => {
   });
   const [errorMessage, setErrorMessage] = useState(null);
   const [haveAccount, setHaveAccount] = useState(true);
+  const [forgotPassword, setForgotPassword] = useState(false);
   const { closeModal } = useModal();
 
   const handleChange = (e) => {
@@ -78,6 +79,38 @@ const AuthForm = () => {
     }
   };
 
+  // TODO: Make separate component, improve UI and UX, handle go back, firebase template ...
+  const [resetPasswordMessage, setResetPasswordMessage] = useState('');
+
+  if (forgotPassword) {
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      const resetMessage = await resetPassword(formData.email);
+      setResetPasswordMessage(resetMessage);
+    };
+
+    return (
+      <div className={classes['form-wrapper']}>
+        <p>
+          Forgot your password? No worries. Enter your registered email address
+          below, and we'll send you a link to reset your password.
+        </p>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Email"
+            required
+          />
+          {resetPasswordMessage}
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    );
+  }
+
   return (
     <div className={classes['form-wrapper']}>
       <h2 className={classes.welcome}>WELCOME</h2>
@@ -133,16 +166,28 @@ const AuthForm = () => {
         }
         <button type="submit">{haveAccount ? 'Log in' : 'Sign up'}</button>
         {haveAccount ? (
-          <span className={classes['account-title']}>
-            No account?{' '}
-            <button
-              className={classes['create-login-btn']}
-              type="button"
-              onClick={() => setHaveAccount(false)}
-            >
-              Create one
-            </button>
-          </span>
+          <>
+            <span className={classes['account-title']}>
+              No account?{' '}
+              <button
+                className={classes['create-login-btn']}
+                type="button"
+                onClick={() => setHaveAccount(false)}
+              >
+                Create one
+              </button>
+            </span>
+            {/* TODO: Improve UI */}
+            <span className={classes['account-title']}>
+              <button
+                className={classes['create-login-btn']}
+                type="button"
+                onClick={() => setForgotPassword(true)}
+              >
+                Forgot Password ?
+              </button>
+            </span>
+          </>
         ) : (
           <span className={classes['account-title']}>
             Already have an account?{' '}

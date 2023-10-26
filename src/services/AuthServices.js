@@ -1,4 +1,5 @@
 import firebase from '../Firebase/Firebase';
+import { sendPasswordResetEmail } from 'firebase/auth';
 let auth = firebase.auth();
 
 export const signInWithGoogle = async () => {
@@ -20,4 +21,16 @@ export const signOut = async () => {
   } catch (err) {
     alert(err.message);
   }
+};
+
+export const resetPassword = async (email) => {
+  return sendPasswordResetEmail(auth, email)
+    .then(() => {
+      return 'Password reset email sent!';
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      return errorCode + errorMessage;
+    });
 };
