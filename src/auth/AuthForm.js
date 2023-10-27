@@ -10,7 +10,7 @@ import { signInWithGoogle } from '../services/AuthServices';
 import { addUserToFirestore } from '../services/UserServices';
 import { useModal } from '../context/ModalContext';
 import { Google } from '../assets/icons/Google';
-import ResetPasswordForm from './ResetPassword';
+import ResetPasswordForm from './ResetPasswordForm';
 
 const AuthForm = () => {
   const [formData, setFormData] = useState({
