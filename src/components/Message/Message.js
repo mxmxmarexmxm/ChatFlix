@@ -15,6 +15,7 @@ import userPlaceholder from '../../assets/img/user-placeholder.png';
 import { Replay } from '../../assets/icons/Replay';
 import { Reaction } from '../../assets/icons/Reaction';
 import { reactionsIconsArray } from './MessageUtils';
+import ReactionsPreview from '../UI/ReactionsPreview';
 
 const Message = ({
   message,
@@ -150,7 +151,12 @@ const Message = ({
               {Object.entries(reactions)
                 .filter(([, users]) => users.length > 0)
                 .map(([reaction, users]) => (
-                  <div key={reaction}>
+                  <div
+                    key={reaction}
+                    onClick={()=>openModal(
+                      <ReactionsPreview reactions={reactions} />
+                    )}
+                  >
                     {users.length} {reactionsIconsArray[reaction]}
                   </div>
                 ))}
