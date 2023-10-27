@@ -1,0 +1,16 @@
+.reactions-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.reaction-counter {
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.reaction-counter svg {
+  height: 35px;
+}
