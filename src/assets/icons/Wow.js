@@ -1,35 +1,40 @@
-export const Wow = ({ ...props }) => {
+export const Wow = (props) => {
   return (
-    // <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
     <svg
-      // width="800px"
-      // height="800px"
-      viewBox="0 0 24 24"
-      fill="none"
+      viewBox="0 0 1500 1500"
       xmlns="http://www.w3.org/2000/svg"
+      fill="#000000"
       {...props}
     >
-      <circle cx="12" cy="12" r="9.5" stroke="#222222" stroke-linecap="round" />
-      <circle
-        cx="9"
-        cy="9"
-        r="1"
-        fill="#222222"
-        stroke="#222222"
-        strokeLinecap="round"
-      />
-      <circle
-        cx="15"
-        cy="9"
-        r="1"
-        fill="#222222"
-        stroke="#222222"
-        strokeLinecap="round"
-      />
-      <path
-        d="M15 15.5C15 16.8807 13.6569 18 12 18C10.3431 18 9 16.8807 9 15.5C9 14.1193 10.3431 13 12 13C13.6569 13 15 14.1193 15 15.5Z"
-        fill="#222222"
-      />
+      <g>
+        <circle cx="750" cy="750" r="750" fill="#ffda6b" />
+        <ellipse cx="748.3" cy="1046.3" rx="220.6" ry="297.2" fill="#262c38" />
+        <ellipse
+          transform="rotate(-81.396 402.197 564.888)"
+          cx="402.2"
+          cy="564.9"
+          rx="155.6"
+          ry="109.2"
+          fill="#262c38"
+        />
+        <ellipse
+          transform="rotate(-8.604 1093.463 564.999)"
+          cx="1093.2"
+          cy="564.9"
+          rx="109.2"
+          ry="155.6"
+          fill="#262c38"
+        />
+        <path
+          d="M320.9 223s69.7-96.7 174-28.6M1177.5 223s-69.7-96.7-174-28.6"
+          fill="none"
+          stroke="#262c38"
+          strokeWidth="60"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeMiterlimit="10"
+        />
+      </g>
     </svg>
   );
 };
