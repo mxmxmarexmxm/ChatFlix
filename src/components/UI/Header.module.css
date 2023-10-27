@@ -11,6 +11,7 @@ header {
   top: 0;
   color: white;
   z-index: 10;
+  background-color: #141414;
 }
 
 .header-logo-wrapper {
