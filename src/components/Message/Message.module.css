@@ -206,6 +206,7 @@
   position: absolute;
   bottom: -1.1rem;
   right: 0;
+  cursor: pointer;
 }
 
 .reactions-wrapper div {
