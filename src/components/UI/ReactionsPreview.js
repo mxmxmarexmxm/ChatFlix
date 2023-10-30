@@ -37,12 +37,11 @@ const ReactionsPreview = ({ reactions }) => {
       <div className={classes['total-users']}>Total Users: {totalUsers}</div>
       <div className={classes['reactions-wrapper']}>
         {userReactions.map(({ displayName, reaction, uid }, index) => (
-          <div
-            key={index}
-            className={classes['reaction-wrapper']}
-            onClick={() => openModal(<UserProfile uid={uid} />)}
-          >
-            <span>{displayName}</span> {reactionsIconsArray[reaction]}
+          <div key={index} className={classes['reaction-wrapper']}>
+            <span onClick={() => openModal(<UserProfile uid={uid} />)}>
+              {displayName}
+            </span>
+            {reactionsIconsArray[reaction]}
           </div>
         ))}
       </div>
