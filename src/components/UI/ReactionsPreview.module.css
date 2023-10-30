@@ -1,17 +1,30 @@
-.reactions-container {
+.reactions-preview {
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.total-users {
+  display: flex;
+}
+
+.reactions-wrapper {
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
 }
 
-.reaction-counter {
-  font-size: 2rem;
-  color: white;
-  font-weight: bold;
+.reaction-wrapper {
   display: flex;
   align-items: center;
   gap: 0.2rem;
+  justify-content: space-between;
 }
-.reaction-counter svg {
-  height: 35px;
-  width: 35px;
+
+.reaction-wrapper svg {
+  height: 30px;
+  width: 30px;
 }
