@@ -5,6 +5,7 @@ import { useModal } from '../../context/ModalContext';
 import { getUserDataFromFirestore } from '../../services/UserServices';
 import UserProfile from '../UserProfile';
 import Loader from './Loader';
+import userPlaceholder from '../../assets/img/user-placeholder.png';
 
 const ReactionsPreview = ({ reactions }) => {
   const [userReactions, setUserReactions] = useState([]);
@@ -54,7 +55,7 @@ const ReactionsPreview = ({ reactions }) => {
                 onClick={() => openModal(<UserProfile uid={uid} />)}
               >
                 <div className={classes['profile-image-wrapper']}>
-                  <img src={photoURL} />
+                  <img src={photoURL || userPlaceholder} />
                 </div>
                 <span>{displayName}</span>
               </div>
