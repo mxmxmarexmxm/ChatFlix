@@ -4,14 +4,17 @@ import classes from './ReactionsPreview.module.css';
 import { useModal } from '../../context/ModalContext';
 import { getUserDataFromFirestore } from '../../services/UserServices';
 import UserProfile from '../UserProfile';
+import Loader from './Loader';
 
 const ReactionsPreview = ({ reactions }) => {
   const [userReactions, setUserReactions] = useState([]);
   const [totalUsers, setTotalUsers] = useState(0);
+  const [loading, setLoading] = useState(false);
   const { openModal } = useModal();
 
   useEffect(() => {
     const fetchUserReactions = async () => {
+      setLoading(true);
       let userReactionsData = [];
       for (const reaction in reactions) {
         for (const user of reactions[reaction]) {
@@ -29,10 +32,15 @@ const ReactionsPreview = ({ reactions }) => {
       }
       setUserReactions(userReactionsData);
       setTotalUsers(userReactionsData.length);
+      setLoading(false);
     };
 
     fetchUserReactions();
   }, [reactions]);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className={classes['reactions-preview']}>
