@@ -17,10 +17,12 @@ const ReactionsPreview = ({ reactions }) => {
         for (const user of reactions[reaction]) {
           const userData = await getUserDataFromFirestore(user);
           if (userData) {
+            console.log(userData);
             userReactionsData.push({
               displayName: userData.displayName,
               reaction,
               uid: user,
+              photoURL: userData.photoURL,
             });
           }
         }
@@ -36,14 +38,21 @@ const ReactionsPreview = ({ reactions }) => {
     <div className={classes['reactions-preview']}>
       <div className={classes['total-users']}>Total Users: {totalUsers}</div>
       <div className={classes['reactions-wrapper']}>
-        {userReactions.map(({ displayName, reaction, uid }, index) => (
-          <div key={index} className={classes['reaction-wrapper']}>
-            <span onClick={() => openModal(<UserProfile uid={uid} />)}>
-              {displayName}
-            </span>
-            {reactionsIconsArray[reaction]}
-          </div>
-        ))}
+        {userReactions.map(
+          ({ displayName, reaction, photoURL, uid }, index) => (
+            <div key={index} className={classes['reaction-wrapper']}>
+              <div className={classes['name-photo-wrapper']}>
+                <div className={classes['profile-image-wrapper']}>
+                  <img src={photoURL} />
+                </div>
+                <span onClick={() => openModal(<UserProfile uid={uid} />)}>
+                  {displayName}
+                </span>
+              </div>
+              {reactionsIconsArray[reaction]}
+            </div>
+          )
+        )}
       </div>
     </div>
   );
