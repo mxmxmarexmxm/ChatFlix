@@ -24,6 +24,13 @@
   justify-content: space-between;
 }
 
+.name-photo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
 .reaction-wrapper span {
   cursor: pointer;
 }
@@ -31,4 +38,19 @@
 .reaction-wrapper svg {
   height: 30px;
   width: 30px;
+}
+
+.profile-image-wrapper {
+  height: 40px;
+  aspect-ratio: 1/1;
+  border-radius: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.profile-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
