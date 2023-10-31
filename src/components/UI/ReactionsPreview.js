@@ -54,13 +54,13 @@ const ReactionsPreview = ({ reactions }) => {
         >
           All: {userReactions?.length}
         </div>
-        {nonEmptyReactions.map((reaction) => (
+        {nonEmptyReactions.map(([reaction, users]) => (
           <div
             className={classes['reactions-filter']}
-            onClick={() => setReactionFilter(reaction[0])}
+            onClick={() => setReactionFilter(reaction)}
           >
-            {reaction[1].length}
-            {reactionsIconsArray[reaction[0]]}
+            {users.length}
+            {reactionsIconsArray[reaction]}
           </div>
         ))}
       </div>
