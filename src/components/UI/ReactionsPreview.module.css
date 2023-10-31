@@ -54,3 +54,20 @@
   height: 100%;
   object-fit: cover;
 }
+
+.reactions-filter-menu {
+  display: flex;
+  gap: 20px;
+}
+
+.reactions-filter {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+} 
+
+.reactions-filter svg {
+  height: 20px;
+  width: 20px;
+}
