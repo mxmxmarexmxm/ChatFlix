@@ -8,7 +8,7 @@ import Loader from './Loader';
 import userPlaceholder from '../../assets/img/user-placeholder.png';
 
 const ReactionsPreview = ({ reactions }) => {
-  const [userReactions, setUserReactions] = useState([]);
+  const [usersReactions, setUserReactions] = useState([]);
   const [reactionFilter, setReactionFilter] = useState(null);
   const [loading, setLoading] = useState(false);
   const { openModal } = useModal();
@@ -49,7 +49,7 @@ const ReactionsPreview = ({ reactions }) => {
           className={classes['reactions-filter']}
           onClick={() => setReactionFilter(null)}
         >
-          All: {userReactions?.length}
+          All: {usersReactions?.length}
         </div>
         {reactions.map(([reaction, users]) => (
           <div
@@ -63,7 +63,7 @@ const ReactionsPreview = ({ reactions }) => {
         ))}
       </div>
       <div className={classes['reactions-wrapper']}>
-        {userReactions
+        {usersReactions
           .filter((reaction) =>
             reactionFilter ? reaction.reaction === reactionFilter : reaction
           )
