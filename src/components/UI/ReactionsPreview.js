@@ -38,7 +38,7 @@ const ReactionsPreview = ({ reactions }) => {
   }, [reactions]);
 
   const nonEmptyReactions = Object.entries(reactions).filter(
-    (reaction) => reaction[1].length !== 0
+    ([, users]) => users.length > 0
   );
 
   if (loading) {
