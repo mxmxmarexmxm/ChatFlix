@@ -10,7 +10,6 @@ import userPlaceholder from '../../assets/img/user-placeholder.png';
 const ReactionsPreview = ({ reactions }) => {
   const [userReactions, setUserReactions] = useState([]);
   const [reactionFilter, setReactionFilter] = useState(null);
-  const [totalUsers, setTotalUsers] = useState(0);
   const [loading, setLoading] = useState(false);
   const { openModal } = useModal();
 
@@ -32,7 +31,6 @@ const ReactionsPreview = ({ reactions }) => {
         }
       }
       setUserReactions(userReactionsData);
-      setTotalUsers(userReactionsData.length);
       setLoading(false);
     };
 
@@ -54,7 +52,7 @@ const ReactionsPreview = ({ reactions }) => {
           className={classes['reactions-filter']}
           onClick={() => setReactionFilter(null)}
         >
-          All: {totalUsers}
+          All: {userReactions?.length}
         </div>
         {nonEmptyReactions.map((reaction) => (
           <div
