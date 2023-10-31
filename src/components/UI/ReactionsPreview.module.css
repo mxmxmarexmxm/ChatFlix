@@ -8,10 +8,6 @@
   min-width: 350px;
 }
 
-.total-users {
-  display: flex;
-}
-
 .reactions-wrapper {
   display: flex;
   flex-direction: column;

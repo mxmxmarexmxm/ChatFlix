@@ -22,7 +22,6 @@ const ReactionsPreview = ({ reactions }) => {
         for (const user of reactions[reaction]) {
           const userData = await getUserDataFromFirestore(user);
           if (userData) {
-            console.log(userData);
             userReactionsData.push({
               displayName: userData.displayName,
               reaction,
@@ -52,7 +51,7 @@ const ReactionsPreview = ({ reactions }) => {
     <div className={classes['reactions-preview']}>
       <div className={classes['reactions-filter-menu']}>
         <div
-          className={classes['total-users']}
+          className={classes['reactions-filter']}
           onClick={() => setReactionFilter(null)}
         >
           All: {totalUsers}
