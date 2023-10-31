@@ -16,6 +16,7 @@ import { Replay } from '../../assets/icons/Replay';
 import { Reaction } from '../../assets/icons/Reaction';
 import { reactionsIconsArray } from './MessageUtils';
 import ReactionsPreview from '../UI/ReactionsPreview';
+import useClickOutside from '../../hooks/useClickOutside';
 
 const Message = ({
   message,
@@ -41,21 +42,10 @@ const Message = ({
 
   const haveReactions = filteredReactions?.length > 0;
 
-  // Close the reactions menu when clicking outside of it
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        actionsReactionsMenuRef?.current &&
-        !actionsReactionsMenuRef?.current.contains(event.target)
-      ) {
-        setOpenReactionsMenu(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [actionsReactionsMenuRef]);
+  // Close the reactions menu when a click occurs outside of it
+  useClickOutside(actionsReactionsMenuRef, () => {
+    setOpenReactionsMenu(false);
+  });
 
   // Determine the user's reaction based on the message's reactions and the user's ID
   useEffect(() => {

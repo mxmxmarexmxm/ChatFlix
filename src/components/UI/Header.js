@@ -7,6 +7,7 @@ import { signOut } from '../../services/AuthServices';
 import userPlaceholder from '../../assets/img/user-placeholder.png';
 import AuthForm from '../../auth/AuthForm';
 import UserProfile from '../UserProfile';
+import useClickOutside from '../../hooks/useClickOutside';
 
 const Header = () => {
   const { openModal, closeModal } = useModal();
@@ -20,20 +21,10 @@ const Header = () => {
     setOpenMenu(false);
   };
 
-  // Close menu when a click occurs outside the menu
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setOpenMenu(false);
-      }
-    };
-
-    document.addEventListener('click', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, []);
+  // Close the menu when a click occurs outside it
+  useClickOutside(menuRef, () => {
+    setOpenMenu(false);
+  });
 
   return (
     <header>
