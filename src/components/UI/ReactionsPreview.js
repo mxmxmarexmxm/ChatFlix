@@ -55,6 +55,7 @@ const ReactionsPreview = ({ reactions }) => {
           <div
             className={classes['reactions-filter']}
             onClick={() => setReactionFilter(reaction)}
+            key={reaction}
           >
             {users.length}
             {reactionsIconsArray[reaction]}
@@ -66,8 +67,8 @@ const ReactionsPreview = ({ reactions }) => {
           .filter((reaction) =>
             reactionFilter ? reaction.reaction === reactionFilter : reaction
           )
-          .map(({ displayName, reaction, photoURL, uid }, index) => (
-            <div key={index} className={classes['reaction-wrapper']}>
+          .map(({ displayName, reaction, photoURL, uid }) => (
+            <div key={uid} className={classes['reaction-wrapper']}>
               <div
                 className={classes['name-photo-wrapper']}
                 onClick={() => openModal(<UserProfile uid={uid} />)}
