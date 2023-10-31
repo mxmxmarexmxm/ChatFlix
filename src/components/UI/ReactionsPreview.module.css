@@ -23,10 +23,6 @@
   justify-content: space-between;
 }
 
-.reaction-wrapper:hover {
-  background-color: #242424;
-}
-
 .name-photo-wrapper {
   display: flex;
   align-items: center;
@@ -60,17 +56,26 @@
 
 .reactions-filter-menu {
   display: flex;
-  gap: 20px;
+  gap: 0.5rem;
 }
 
 .reactions-filter {
   display: flex;
   align-items: center;
   gap: 3px;
+  padding: 0.5rem;
+  border-radius: 20%;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-} 
+}
 
 .reactions-filter svg {
   height: 20px;
   width: 20px;
+}
+
+.reaction-wrapper:hover,
+.reactions-filter:hover {
+  background-color: #242424;
 }
