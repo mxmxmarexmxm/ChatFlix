@@ -5,6 +5,7 @@
   color: white;
   font-size: 1rem;
   font-weight: bold;
+  min-width: 350px;
 }
 
 .total-users {
