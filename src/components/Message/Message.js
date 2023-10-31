@@ -35,13 +35,11 @@ const Message = ({
   const replayToUserDisplayName = useUserData(replayTo?.uid)?.displayName;
   const sameSender = isSameSender(id, uid);
 
-  const haveReactions =
-    reactions &&
-    Object.entries(reactions).some(([, users]) => users?.length > 0);
-
   const filteredReactions =
     reactions &&
     Object.entries(reactions).filter(([, users]) => users.length > 0);
+
+  const haveReactions = filteredReactions?.length > 0;
 
   // Close the reactions menu when clicking outside of it
   useEffect(() => {
@@ -62,14 +60,14 @@ const Message = ({
   // Determine the user's reaction based on the message's reactions and the user's ID
   useEffect(() => {
     const userReaction =
-      user && reactions && haveReactions
+      user && reactions
         ? Object.keys(reactions).find((reaction) =>
             reactions[reaction]?.includes(user.uid)
           )
         : null;
 
     setUserReaction(userReaction);
-  }, [reactions, user, haveReactions]);
+  }, [reactions, user]);
 
   return (
     <>
@@ -150,7 +148,7 @@ const Message = ({
             </div>
           )}
 
-          {reactions && haveReactions && (
+          {haveReactions && (
             <div className={`${classes['reactions-wrapper']}`}>
               {Object.entries(reactions)
                 .filter(([, users]) => users.length > 0)
