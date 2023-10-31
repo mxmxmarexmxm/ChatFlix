@@ -17,6 +17,7 @@ import { Reaction } from '../../assets/icons/Reaction';
 import { reactionsIconsArray } from './MessageUtils';
 import ReactionsPreview from '../UI/ReactionsPreview';
 import useClickOutside from '../../hooks/useClickOutside';
+import AuthForm from '../../auth/AuthForm';
 
 const Message = ({
   message,
@@ -169,15 +170,19 @@ const Message = ({
                   className={
                     userReaction === reaction ? classes['selected-icon'] : ''
                   }
-                  onClick={() =>
+                  onClick={() => {
+                    if (!user) {
+                      openModal(<AuthForm />);
+                      return;
+                    }
                     handleMessageReaction(
                       reaction,
                       chatName,
                       id,
                       setOpenReactionsMenu,
                       user
-                    )
-                  }
+                    );
+                  }}
                 >
                   {reactionsIconsArray[reaction]}
                 </div>
