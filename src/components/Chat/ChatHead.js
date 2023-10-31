@@ -24,7 +24,7 @@ const ChatHead = ({ chat, onSelectChat, closeChat }) => {
       <div className={classes['logo-wrappper']}>
         <img
           src={chat.logo}
-          alt="chat head"
+          alt={chat.name}
           onError={(e) => {
             e.target.src = placehoder;
           }}
