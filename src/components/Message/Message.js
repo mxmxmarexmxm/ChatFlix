@@ -39,6 +39,10 @@ const Message = ({
     reactions &&
     Object.entries(reactions).some(([, users]) => users?.length > 0);
 
+  const filteredReactions =
+    reactions &&
+    Object.entries(reactions).filter(([, users]) => users.length > 0);
+
   // Close the reactions menu when clicking outside of it
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -153,9 +157,11 @@ const Message = ({
                 .map(([reaction, users]) => (
                   <div
                     key={reaction}
-                    onClick={()=>openModal(
-                      <ReactionsPreview reactions={reactions} />
-                    )}
+                    onClick={() =>
+                      openModal(
+                        <ReactionsPreview reactions={filteredReactions} />
+                      )
+                    }
                   >
                     {users.length} {reactionsIconsArray[reaction]}
                   </div>

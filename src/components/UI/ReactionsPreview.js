@@ -17,8 +17,8 @@ const ReactionsPreview = ({ reactions }) => {
     const fetchUserReactions = async () => {
       setLoading(true);
       let userReactionsData = [];
-      for (const reaction in reactions) {
-        for (const user of reactions[reaction]) {
+      for (const [reaction, users] of reactions) {
+        for (const user of users) {
           const userData = await getUserDataFromFirestore(user);
           if (userData) {
             userReactionsData.push({
@@ -30,16 +30,13 @@ const ReactionsPreview = ({ reactions }) => {
           }
         }
       }
+
       setUserReactions(userReactionsData);
       setLoading(false);
     };
 
     fetchUserReactions();
   }, [reactions]);
-
-  const nonEmptyReactions = Object.entries(reactions).filter(
-    ([, users]) => users.length > 0
-  );
 
   if (loading) {
     return <Loader />;
@@ -54,7 +51,7 @@ const ReactionsPreview = ({ reactions }) => {
         >
           All: {userReactions?.length}
         </div>
-        {nonEmptyReactions.map(([reaction, users]) => (
+        {reactions.map(([reaction, users]) => (
           <div
             className={classes['reactions-filter']}
             onClick={() => setReactionFilter(reaction)}
