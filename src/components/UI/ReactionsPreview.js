@@ -74,7 +74,7 @@ const ReactionsPreview = ({ reactions }) => {
                 onClick={() => openModal(<UserProfile uid={uid} />)}
               >
                 <div className={classes['profile-image-wrapper']}>
-                  <img src={photoURL || userPlaceholder} />
+                  <img src={photoURL || userPlaceholder} alt={displayName} />
                 </div>
                 <span>{displayName}</span>
               </div>
