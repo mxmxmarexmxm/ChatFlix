@@ -7,8 +7,8 @@ export const Hamburger = ({ ...props }) => {
       viewBox="0 0 40.00 40.00"
       enableBackground="new 0 0 40 40"
       fill="#000000"
-      stroke="#000000"
-      strokeWidth="0.48"
+      stroke="gray"
+      strokeWidth="1.5"
       {...props}
     >
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>

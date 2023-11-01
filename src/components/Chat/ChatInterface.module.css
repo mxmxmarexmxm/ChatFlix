@@ -19,11 +19,11 @@
 .chat-header {
   padding: 0.7rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   overflow: hidden;
   background-color: #161617;
   color: white;
+  gap: 0.5rem;
   cursor: pointer;
 }
 
@@ -34,10 +34,26 @@
   padding: 0.9rem;
 }
 
+.hamburger-btn {
+  z-index: 1;
+  display: flex;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger-btn svg {
+  height: 25px;
+  width: 25px;
+  fill: gray;
+  background-color: transparent;
+}
+
 .logo-title-wrapper {
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
   align-items: center;
+  font-size: 0.9rem;
 }
 
 .chat-header-image-wrapper {
@@ -49,7 +65,6 @@
 
 .chat-fullscreen .chat-header-image-wrapper {
   width: 40px;
-  margin: 0 1rem;
 }
 
 .chat-header-image-wrapper img {
@@ -65,6 +80,7 @@
 .chat-header-buttons-wrapper {
   display: flex;
   gap: 0.5rem;
+  margin-left: auto;
 }
 
 .unread-messages-badge {
@@ -166,7 +182,7 @@
   border-radius: 0.5rem;
   padding: 0.1rem;
   position: relative;
-  background-color:#242526;
+  background-color: #242526;
 }
 
 .image-preview img {
@@ -308,7 +324,7 @@
   border-top: 0.3rem solid #3498db;
   border-radius: 50%;
   width: 2.5rem;
-  margin: .7rem;
+  margin: 0.7rem;
   aspect-ratio: 1/1;
   animation: spin 1s linear infinite;
 }
@@ -333,5 +349,13 @@
   }
   .chat-fullscreen .chat-header {
     padding: 1.3rem 0.5rem;
+  }
+  .logo-title-wrapper {
+    font-size: 1.1rem;
+  }
+
+  .hamburger-btn svg {
+    height: 40px;
+    width: 40px;
   }
 }

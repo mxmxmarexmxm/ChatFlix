@@ -8,6 +8,7 @@ import { FullScreenExit } from '../../assets/icons/FullScreenExit';
 import { Send } from '../../assets/icons/Send';
 import { DownArrow } from '../../assets/icons/DownArrow';
 import { CodeVector } from '../../assets/icons/CodeVector';
+import { Hamburger } from '../../assets/icons/Hamburger';
 import { UploadImage } from '../../assets/icons/UploadImage';
 import Loader from '../UI/Loader';
 
@@ -40,6 +41,7 @@ const ChatInterface = ({
   setPhotos,
   replayToDisplayName,
   imgUploadLoading,
+  setShowSideChats,
 }) => {
   return (
     <div
@@ -48,6 +50,12 @@ const ChatInterface = ({
       }`}
     >
       <div className={classes['chat-header']} onClick={toggleChat}>
+        <button
+          className={classes['hamburger-btn']}
+          onClick={() => setShowSideChats((show) => !show)}
+        >
+          <Hamburger />
+        </button>
         <div className={classes['logo-title-wrapper']}>
           <div className={classes['chat-header-image-wrapper']}>
             <img

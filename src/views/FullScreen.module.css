@@ -14,7 +14,14 @@
 }
 
 .fullscreen-chat-container {
+  display: flex;
+  flex: 1;
   width: calc(100vw - 70px);
+  position: relative;
+}
+
+.hidden {
+  display: none;
 }
 
 @media only screen and (min-width: 756px) {

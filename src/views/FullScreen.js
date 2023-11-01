@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Chat from '../components/Chat/Chat';
 import classes from './FullScreen.module.css';
 import SideChatFullscreen from '../components/Chat/SideChatFullscreen';
+import { Hamburger } from '../assets/icons/Hamburger';
 
 const FullScreen = ({
   fullScreenChat,
@@ -10,9 +11,15 @@ const FullScreen = ({
   onSelectChat,
   closeChat,
 }) => {
+  const [showSideChats, setShowSideChats] = useState(true);
+
   return (
     <div className={classes.fullscreen}>
-      <div className={classes['side-chats-container']}>
+      <div
+        className={`${classes['side-chats-container']}  ${
+          !showSideChats && classes['hidden']
+        }`}
+      >
         {activeChats.map((chat) => (
           <SideChatFullscreen
             key={chat.id}
@@ -22,12 +29,14 @@ const FullScreen = ({
           />
         ))}
       </div>
+
       <div className={classes['fullscreen-chat-container']}>
         <Chat
           isFullScreen
           chat={fullScreenChat}
           onFullScreenToggle={onFullScreenToggle}
           closeChat={closeChat}
+          setShowSideChats={setShowSideChats}
         />
       </div>
     </div>
