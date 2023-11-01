@@ -283,8 +283,27 @@
   align-items: center;
   justify-content: center;
   background-color: #232425;
-  padding: 0.2rem;
+  padding: 0.25rem;
   border-radius: 50%;
+}
+
+.chat-fullscreen .actions-and-reactions-wrapper {
+  position: relative;
+}
+
+.chat-fullscreen .reactions-menu {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-bottom-right-radius: 0;
+  transform: translate(0%, -50%);
+}
+
+.chat-fullscreen .received .reactions-menu {
+  right: auto;
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 0;
+  transform: translate(0%, -50%);
 }
 
 @media only screen and (min-width: 756px) {
