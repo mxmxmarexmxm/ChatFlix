@@ -50,12 +50,15 @@ const ChatInterface = ({
       }`}
     >
       <div className={classes['chat-header']} onClick={toggleChat}>
-        <button
-          className={classes['hamburger-btn']}
-          onClick={() => setShowSideChats((show) => !show)}
-        >
-          <Hamburger />
-        </button>
+        {isFullScreen && (
+          <button
+            className={classes['hamburger-btn']}
+            onClick={() => setShowSideChats((show) => !show)}
+          >
+            <Hamburger />
+          </button>
+        )}
+
         <div className={classes['logo-title-wrapper']}>
           <div className={classes['chat-header-image-wrapper']}>
             <img
