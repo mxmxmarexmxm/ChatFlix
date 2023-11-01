@@ -287,27 +287,27 @@
   border-radius: 50%;
 }
 
-.chat-fullscreen .actions-and-reactions-wrapper {
-  position: relative;
-}
-
-.chat-fullscreen .reactions-menu {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  border-bottom-right-radius: 0;
-  transform: translate(0%, -50%);
-}
-
-.chat-fullscreen .received .reactions-menu {
-  right: auto;
-  border-bottom-right-radius: 1rem;
-  border-bottom-left-radius: 0;
-  transform: translate(0%, -50%);
-}
-
 @media only screen and (min-width: 756px) {
   .chat-fullscreen .message-wrapper {
     max-width: 47%;
+  }
+
+  .chat-fullscreen .actions-and-reactions-wrapper {
+    position: relative;
+  }
+
+  .chat-fullscreen .reactions-menu {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-bottom-right-radius: 0;
+    transform: translate(0%, -50%);
+  }
+
+  .chat-fullscreen .received .reactions-menu {
+    right: auto;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 0;
+    transform: translate(0%, -50%);
   }
 }
