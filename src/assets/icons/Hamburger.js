@@ -11,6 +11,7 @@ export const Hamburger = ({ ...props }) => {
       strokeWidth="1.5"
       {...props}
     >
+      <title>Toggle Chat Sidebar</title>
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g
         id="SVGRepo_tracerCarrier"
