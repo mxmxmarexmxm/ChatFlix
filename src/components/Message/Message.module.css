@@ -265,6 +265,14 @@
   fill: gray;
 }
 
+.actions-menu .selected-item {
+  transform: scale(1.3);
+}
+
+.actions-menu .selected-item path {
+  stroke: white;
+}
+
 .message:hover .actions-menu,
 .message .reactions-menu + .actions-menu {
   visibility: visible;
