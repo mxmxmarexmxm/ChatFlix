@@ -17,6 +17,7 @@ const Chat = ({
   showMessages,
   closeChat,
   onFullScreenToggle,
+  setShowSideChats
 }) => {
   const [dispalyMessages, setDisplayMessages] = useState(true);
   const [imgUploadLoading, setImgUploadLoading] = useState(false);
@@ -260,6 +261,7 @@ const Chat = ({
       setPhotos={setPhotos}
       replayToDisplayName={replayToDisplayName}
       imgUploadLoading={imgUploadLoading}
+      setShowSideChats={setShowSideChats}
     />
   );
 };
