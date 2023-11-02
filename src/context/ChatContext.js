@@ -90,6 +90,7 @@ export const ChatProvider = ({ children }) => {
     // If there is already a chat in full-screen, close it.
     if (fullScreenChat) {
       setFullScreenChat(null);
+      return;
     }
 
     const fullChat =
@@ -127,12 +128,12 @@ export const ChatProvider = ({ children }) => {
       value={{
         activeChatsBottom,
         activeChatsRight,
+        fullScreenChat,
+        showMessages,
         selectChatHandler,
         closeChatHandler,
         toggleFullScreenHandler,
-        fullScreenChat,
         setFullScreenChat,
-        showMessages,
       }}
     >
       {children}
