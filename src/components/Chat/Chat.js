@@ -131,18 +131,16 @@ const Chat = ({ chat, isFullScreen, setShowSideChats }) => {
         });
       }
       if (photos) {
-        for (let i = 0; i < photos.length; i++) {
-          let photoId = 'photo-' + i + id;
-          await messageCollection.doc(photoId).set({
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            uid,
-            id: photoId,
-            readBy: [uid],
-            replayTo: messageToReplay,
-            isCode: false,
-            photoUrl: photos[i],
-          });
-        }
+        let photoId = 'photos-' + id;
+        await messageCollection.doc(photoId).set({
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          uid,
+          id: photoId,
+          readBy: [uid],
+          replayTo: messageToReplay,
+          isCode: false,
+          photos: photos,
+        });
       }
       setMessageText('');
       scrollToBottom();

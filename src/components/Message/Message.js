@@ -31,7 +31,7 @@ const Message = ({
   const actionsReactionsMenuRef = useRef();
   const { user } = useContext(AuthContext);
   const { openModal } = useModal();
-  const { text, uid, replayTo, isCode, id, photoUrl, reactions } = message;
+  const { text, uid, replayTo, isCode, id, photos, reactions } = message;
   const messageSenderClass = uid === user?.uid ? 'sent' : 'received';
   const senderUserData = useUserData(uid);
   const replayToUserDisplayName = useUserData(replayTo?.uid)?.displayName;
@@ -108,7 +108,7 @@ const Message = ({
               </p>
               <p>{replayTo.text}</p>
               {replayTo?.photoUrl && (
-                <div className={classes['image-wrapper']}>
+                <div className={classes['image-preview']}>
                   <img
                     src={replayTo?.photoUrl}
                     alt="img"
@@ -129,13 +129,17 @@ const Message = ({
               {isCode ? <CodeSnippet code={text} /> : formatMessage(text)}
             </div>
           )}
-          {photoUrl && (
-            <div className={classes['image-wrapper']}>
-              <img
-                src={photoUrl}
-                alt="img"
-                onClick={() => openModal(<ImagePreview url={photoUrl} />)}
-              />
+          {photos && (
+            <div className={classes['images-preview-container']}>
+              {photos.map((photo) => (
+                <div className={classes['image-preview']}>
+                  <img
+                    src={photo}
+                    alt="img"
+                    onClick={() => openModal(<ImagePreview url={photo} />)}
+                  />
+                </div>
+              ))}
             </div>
           )}
 
