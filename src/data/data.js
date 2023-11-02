@@ -205,7 +205,7 @@ const chatsDataWitouthId = [
   },
   {
     name: 'Udacity',
-    logo: 'https://www.roadtovr.com/wp-content/uploads/2017/10/udacity-logo.png',
+    logo: 'https://cdn-1.webcatalog.io/catalog/udacity/udacity-icon-filled-256.webp?v=1675597497899',
     tags: ['Learning platforms'],
   },
   {
