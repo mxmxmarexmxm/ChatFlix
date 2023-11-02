@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Chat from '../components/Chat/Chat';
 import classes from './FullScreen.module.css';
 import SideChatFullscreen from '../components/Chat/SideChatFullscreen';
-import { Hamburger } from '../assets/icons/Hamburger';
 
 const FullScreen = ({
   fullScreenChat,
