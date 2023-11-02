@@ -3,6 +3,7 @@
   text-align: center;
   padding: 1.5rem;
   color: white;
+  font-family: initial;
 }
 
 .welcome {
@@ -57,7 +58,7 @@
 }
 
 .account-title {
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .create-forgot-btn {

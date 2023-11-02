@@ -9,6 +9,7 @@
   width: 500px;
   max-width: 90vw;
   position: relative;
+  font-family: initial;
 }
 
 .profile-img-wrapper {
@@ -82,7 +83,6 @@
   font-size: 1.2rem;
   border-radius: 0.5rem;
   padding: 0.2rem 0.5rem;
-  font-family: inherit;
   width: 100%;
   outline: none;
   border: 1.5px solid gray;

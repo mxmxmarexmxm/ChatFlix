@@ -30,7 +30,6 @@
 .chat-fullscreen .chat-header {
   cursor: default;
   font-size: 1.2rem;
-  font-family: inherit;
   padding: 0.5rem;
 }
 
@@ -223,7 +222,6 @@
   padding: 0.7rem;
   border-radius: 1rem;
   border: none;
-  font-family: inherit;
   height: 3rem;
 }
 

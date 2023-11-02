@@ -2,7 +2,6 @@ header {
   position: fixed;
   height: 4rem;
   width: 100%;
-  background-color: inherit;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -93,7 +92,6 @@ header {
   background-color: transparent;
   color: inherit;
   font-size: inherit;
-  font-family: inherit;
   border: none;
   font-weight: inherit;
   cursor: pointer;
