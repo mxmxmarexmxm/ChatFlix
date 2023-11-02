@@ -22,7 +22,6 @@ const Home = () => {
     showMessages,
   } = useChatContext();
 
-
   if (fullScreenChat) {
     return (
       <>
@@ -75,10 +74,10 @@ const Home = () => {
               ))}
             </div>
           )}
-          {activeChatsRight?.length !== 0 && (
+          {activeChatsRight?.length > 0 && (
             <ToggleChatHeadsBtn
               showChatHeads={showChatHeads}
-              onClick={() => setShowChatHeads((c) => !c)}
+              onClick={() => setShowChatHeads((show) => !show)}
             />
           )}
         </div>
