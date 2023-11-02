@@ -18,7 +18,7 @@ const ChatInterface = ({
   toggleChat,
   unreadMessages,
   toggleFullScreen,
-  closeChat,
+  closeChatHandler,
   dispalyMessages,
   messages,
   loading,
@@ -89,7 +89,7 @@ const ChatInterface = ({
           </div>
           <div
             className={classes['chat-header-icon-wrapper']}
-            onClick={() => closeChat(chat.id)}
+            onClick={() => closeChatHandler(chat.id)}
             title="Close Chat"
           >
             <Close height="18px" />

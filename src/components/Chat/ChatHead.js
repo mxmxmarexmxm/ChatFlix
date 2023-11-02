@@ -3,11 +3,16 @@ import classes from './ChatHead.module.css';
 import placehoder from '../../assets/img/placeholder.png';
 import { Close } from '../../assets/icons/Close';
 import useUnreadMessages from '../../hooks/useUnreadMessages';
+import { useChatContext } from '../../context/ChatContext';
 
-const ChatHead = ({ chat, onSelectChat, closeChat }) => {
+const ChatHead = ({ chat }) => {
   const { unreadMessages } = useUnreadMessages(chat.name);
+  const { selectChatHandler, closeChatHandler } = useChatContext();
   return (
-    <div className={classes['chat-head']} onClick={onSelectChat}>
+    <div
+      className={classes['chat-head']}
+      onClick={() => selectChatHandler(chat)}
+    >
       <div className={classes['badges-container']}>
         {!!unreadMessages && (
           <div className={classes['unread-messages']}>
@@ -18,7 +23,10 @@ const ChatHead = ({ chat, onSelectChat, closeChat }) => {
           className={classes['close-icon-wrapper']}
           onClick={(e) => e.stopPropagation()}
         >
-          <Close onClick={closeChat} className={classes['close-icon']} />
+          <Close
+            onClick={() => closeChatHandler(chat.id)}
+            className={classes['close-icon']}
+          />
         </div>
       </div>
       <div className={classes['logo-wrappper']}>

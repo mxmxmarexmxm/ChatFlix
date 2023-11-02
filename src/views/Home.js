@@ -15,25 +15,11 @@ const Home = () => {
     activeChatsBottom,
     activeChatsRight,
     selectChatHandler,
-    closeChatHandler,
-    toggleFullScreenHandler,
     fullScreenChat,
-    setFullScreenChat,
-    showMessages,
   } = useChatContext();
 
   if (fullScreenChat) {
-    return (
-      <>
-        <FullScreen
-          onSelectChat={toggleFullScreenHandler}
-          onFullScreenToggle={() => setFullScreenChat(null)}
-          closeChat={closeChatHandler}
-          fullScreenChat={fullScreenChat}
-          activeChats={[...activeChatsBottom, ...activeChatsRight]}
-        />
-      </>
-    );
+    return <FullScreen />;
   }
 
   return (
@@ -52,25 +38,14 @@ const Home = () => {
       <div className={classes['active-chats-container']}>
         <div className={classes['active-chats-bottom']}>
           {activeChatsBottom?.map((chat) => (
-            <Chat
-              onFullScreenToggle={() => toggleFullScreenHandler(chat.id)}
-              showMessages={showMessages}
-              chat={chat}
-              key={chat.id}
-              closeChat={closeChatHandler}
-            />
+            <Chat chat={chat} key={chat.id} />
           ))}
         </div>
         <div className={classes['active-chat-right']}>
           {showChatHeads && (
             <div className={classes['chat-heads-container']}>
               {activeChatsRight.map((chat) => (
-                <ChatHead
-                  key={chat.id}
-                  chat={chat}
-                  closeChat={() => closeChatHandler(chat.id)}
-                  onSelectChat={() => selectChatHandler(chat)}
-                />
+                <ChatHead key={chat.id} chat={chat} />
               ))}
             </div>
           )}

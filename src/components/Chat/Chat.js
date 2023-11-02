@@ -10,14 +10,12 @@ import AuthForm from '../../auth/AuthForm';
 import ChatInterface from './ChatInterface';
 import useUserData from '../../hooks/useUserData';
 import useUnreadMessages from '../../hooks/useUnreadMessages';
+import { useChatContext } from '../../context/ChatContext';
 
 const Chat = ({
   chat,
   isFullScreen,
-  showMessages,
-  closeChat,
-  onFullScreenToggle,
-  setShowSideChats
+  setShowSideChats,
 }) => {
   const [dispalyMessages, setDisplayMessages] = useState(true);
   const [imgUploadLoading, setImgUploadLoading] = useState(false);
@@ -44,6 +42,9 @@ const Chat = ({
     messageCollection,
     markAllAsRead,
   } = useUnreadMessages(chat.name);
+
+  const { showMessages, toggleFullScreenHandler, closeChatHandler } =
+    useChatContext();
 
   const scrollToBottom = () => {
     if (messagesContainerRef.current) {
@@ -184,7 +185,7 @@ const Chat = ({
     const handleEsc = (event) => {
       if (event.keyCode === 27) {
         if (isFullScreen) {
-          onFullScreenToggle(chat.id);
+          toggleFullScreenHandler(chat.id);
         } else {
           setDisplayMessages(false);
         }
@@ -227,7 +228,7 @@ const Chat = ({
 
   const toggleFullScreen = (event) => {
     event.stopPropagation();
-    onFullScreenToggle(chat.id);
+    toggleFullScreenHandler(chat.id);
   };
 
   return (
@@ -237,7 +238,7 @@ const Chat = ({
       toggleChat={toggleChat}
       unreadMessages={unreadMessages}
       toggleFullScreen={toggleFullScreen}
-      closeChat={closeChat}
+      closeChatHandler={closeChatHandler}
       dispalyMessages={dispalyMessages}
       messages={messages}
       loading={loading}

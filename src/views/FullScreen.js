@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Chat from '../components/Chat/Chat';
 import classes from './FullScreen.module.css';
 import SideChatFullscreen from '../components/Chat/SideChatFullscreen';
+import { useChatContext } from '../context/ChatContext';
 
-const FullScreen = ({
-  fullScreenChat,
-  onFullScreenToggle,
-  activeChats,
-  onSelectChat,
-  closeChat,
-}) => {
+const FullScreen = () => {
   const [showSideChats, setShowSideChats] = useState(true);
+  const { activeChatsBottom, activeChatsRight, fullScreenChat } =
+    useChatContext();
 
   return (
     <div className={classes.fullscreen}>
@@ -19,13 +16,8 @@ const FullScreen = ({
           !showSideChats && classes['hidden']
         }`}
       >
-        {activeChats.map((chat) => (
-          <SideChatFullscreen
-            key={chat.id}
-            chat={chat}
-            onSelectChat={() => onSelectChat(chat.id)}
-            closeChat={() => closeChat(chat.id)}
-          />
+        {[...activeChatsBottom, ...activeChatsRight].map((chat) => (
+          <SideChatFullscreen key={chat.id} chat={chat} />
         ))}
       </div>
 
@@ -33,8 +25,6 @@ const FullScreen = ({
         <Chat
           isFullScreen
           chat={fullScreenChat}
-          onFullScreenToggle={onFullScreenToggle}
-          closeChat={closeChat}
           setShowSideChats={setShowSideChats}
         />
       </div>
