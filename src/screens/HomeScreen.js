@@ -1,26 +1,17 @@
-import classes from './Home.module.css';
+import classes from './HomeScreen.module.css';
 import { rowTitles } from '../data/data.js';
 import { useState } from 'react';
-import Chat from '../components/Chat/Chat';
-import ChatRow from '../components/ChatRow';
-import FullScreen from './FullScreen';
-import ToggleChatHeadsBtn from '../components/UI/ToggleChatHeadsBtn';
-import Header from '../components/UI/Header';
-import ChatHead from '../components/Chat/ChatHead';
+import Chat from '../components/Chat/Chat.js';
+import ChatRow from '../components/ChatRow.js';
+import ToggleChatHeadsBtn from '../components/UI/ToggleChatHeadsBtn.js';
+import Header from '../components/UI/Header.js';
+import ChatHead from '../components/Chat/ChatHead.js';
 import { useChatContext } from '../context/ChatContext.js';
 
-const Home = () => {
+const HomeScreen = () => {
   const [showChatHeads, setShowChatHeads] = useState(false);
-  const {
-    activeChatsBottom,
-    activeChatsRight,
-    selectChatHandler,
-    fullScreenChat,
-  } = useChatContext();
-
-  if (fullScreenChat) {
-    return <FullScreen />;
-  }
+  const { activeChatsBottom, activeChatsRight, selectChatHandler } =
+    useChatContext();
 
   return (
     <div className={classes['home-screen']}>
@@ -61,4 +52,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomeScreen;

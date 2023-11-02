@@ -1,5 +1,4 @@
-import Layout from './components/UI/Layout';
-import Home from './views/Home';
+import Layout from './components/Layout/Layout';
 import { AuthProvider } from './Firebase/context';
 import { ModalProvider } from './context/ModalContext';
 import { ChatProvider } from './context/ChatContext';
@@ -10,10 +9,8 @@ const App = () => {
     <AuthProvider>
       <ChatProvider>
         <ModalProvider>
-          <Layout>
-            <Modal />
-            <Home />
-          </Layout>
+          <Modal />
+          <Layout />
         </ModalProvider>
       </ChatProvider>
     </AuthProvider>
