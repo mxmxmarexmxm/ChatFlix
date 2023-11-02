@@ -79,6 +79,18 @@ const AuthForm = () => {
       alert(err.message);
     }
   };
+  // const signFb = async () => {
+  //   try {
+  //     const success = await signInWithFacebook();
+  //     if (success) {
+  //       const user = success.user;
+  //       closeModal();
+  //       await addUserToFirestore(user);
+  //     }
+  //   } catch (err) {
+  //     alert(err.message);
+  //   }
+  // };
 
   if (forgotPassword) {
     return <ResetPasswordForm setForgotPassword={setForgotPassword} />;
@@ -93,6 +105,9 @@ const AuthForm = () => {
       >
         <Google height="20px" /> Continue with Google
       </button>
+      {/* <button className={classes['continue-btn']} onClick={signFb}>
+        <Google height="20px" /> Continue with FACEBOOK
+      </button> */}
       <span>or</span>
       <form onSubmit={handleSubmit}>
         {!haveAccount && (

@@ -12,11 +12,7 @@ import useUserData from '../../hooks/useUserData';
 import useUnreadMessages from '../../hooks/useUnreadMessages';
 import { useChatContext } from '../../context/ChatContext';
 
-const Chat = ({
-  chat,
-  isFullScreen,
-  setShowSideChats,
-}) => {
+const Chat = ({ chat, isFullScreen, setShowSideChats }) => {
   const [dispalyMessages, setDisplayMessages] = useState(true);
   const [imgUploadLoading, setImgUploadLoading] = useState(false);
   const [messageText, setMessageText] = useState('');

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import Chat from '../components/Chat/Chat';
 import classes from './FullScreen.module.css';
 import SideChatFullscreen from '../components/Chat/SideChatFullscreen';

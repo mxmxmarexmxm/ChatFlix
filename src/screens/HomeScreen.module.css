@@ -28,7 +28,7 @@
   overflow: visible;
 }
 
-.active-chat-right {
+.active-chats-right {
   display: flex;
   flex-direction: column;
   align-items: center;
