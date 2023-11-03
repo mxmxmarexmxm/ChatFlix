@@ -5,7 +5,7 @@ import firebase from '../Firebase/Firebase';
 import 'firebase/compat/firestore';
 const firestore = firebase.firestore();
 
-function useUnreadMessages(chatName) {
+function useChatMessages(chatName) {
   const [unreadMessages, setUnreadMessages] = useState(null);
   const { user } = useContext(AuthContext);
   const messageCollection = firestore.collection(
@@ -45,4 +45,4 @@ function useUnreadMessages(chatName) {
   };
 }
 
-export default useUnreadMessages;
+export default useChatMessages;

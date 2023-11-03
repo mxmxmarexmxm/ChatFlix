@@ -2,12 +2,12 @@ import React from 'react';
 import classes from './SideChatFullscreen.module.css';
 import placeholder from '../../assets/img/placeholder.png';
 import { Close } from '../../assets/icons/Close';
-import useUnreadMessages from '../../hooks/useUnreadMessages';
+import useChatMessages from '../../hooks/useChatMessages';
 import { useChatContext } from '../../context/ChatContext';
 
 const SideChatFullscreen = ({ chat }) => {
   const { setFullScreenChat, closeChatHandler } = useChatContext();
-  const { unreadMessages } = useUnreadMessages(chat.name);
+  const { unreadMessages } = useChatMessages(chat.name);
 
   return (
     <div

@@ -9,7 +9,7 @@ import { useModal } from '../../context/ModalContext';
 import AuthForm from '../../auth/AuthForm';
 import ChatInterface from './ChatInterface';
 import useUserData from '../../hooks/useUserData';
-import useUnreadMessages from '../../hooks/useUnreadMessages';
+import useChatMessages from '../../hooks/useChatMessages';
 import { useChatContext } from '../../context/ChatContext';
 
 const Chat = ({ chat, isFullScreen, setShowSideChats }) => {
@@ -37,7 +37,7 @@ const Chat = ({ chat, isFullScreen, setShowSideChats }) => {
     unreadMessages,
     messageCollection,
     markAllAsRead,
-  } = useUnreadMessages(chat.name);
+  } = useChatMessages(chat.name);
 
   const { showMessages, toggleFullScreenHandler, closeChatHandler } =
     useChatContext();

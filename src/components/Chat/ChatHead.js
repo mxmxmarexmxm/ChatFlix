@@ -2,11 +2,11 @@ import React from 'react';
 import classes from './ChatHead.module.css';
 import placehoder from '../../assets/img/placeholder.png';
 import { Close } from '../../assets/icons/Close';
-import useUnreadMessages from '../../hooks/useUnreadMessages';
+import useChatMessages from '../../hooks/useChatMessages';
 import { useChatContext } from '../../context/ChatContext';
 
 const ChatHead = ({ chat }) => {
-  const { unreadMessages } = useUnreadMessages(chat.name);
+  const { unreadMessages } = useChatMessages(chat.name);
   const { selectChatHandler, closeChatHandler } = useChatContext();
   return (
     <div
