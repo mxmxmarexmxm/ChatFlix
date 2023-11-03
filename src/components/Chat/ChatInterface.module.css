@@ -168,18 +168,22 @@
 
 .uploaded-images-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start; 
   gap: 5px;
   background-color: #242526;
-  z-index: 5;
+  overflow-x: auto; 
+  border: 4px solid gray;
+  padding: .5rem;
+  margin: .5rem;
+  border-radius: 1rem;
 }
 
 .uploaded-image {
   min-height: 60px;
   width: 60px;
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
-  border: 3px solid gray;
   border-radius: 0.5rem;
   padding: 0.1rem;
   position: relative;
@@ -192,7 +196,7 @@
   object-fit: contain;
 }
 
-.image-preview svg {
+.uploaded-image svg {
   position: absolute;
   height: 1rem;
   top: 0;
