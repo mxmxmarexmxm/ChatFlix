@@ -166,13 +166,15 @@
   text-align: center;
 }
 
-.images-preview-wrapper {
+.uploaded-images-wrapper {
   display: flex;
   justify-content: center;
   gap: 5px;
+  background-color: #242526;
+  z-index: 5;
 }
 
-.image-preview {
+.uploaded-image {
   min-height: 60px;
   width: 60px;
   display: flex;
@@ -184,7 +186,7 @@
   background-color: #242526;
 }
 
-.image-preview img {
+.uploaded-image img {
   height: 100%;
   width: 100%;
   object-fit: contain;

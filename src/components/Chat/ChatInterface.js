@@ -145,9 +145,9 @@ const ChatInterface = ({
           </div>
         )}
         {(imgUploadLoading || photos) && (
-          <div className={classes['images-preview-wrapper']}>
+          <div className={classes['uploaded-images-wrapper']}>
             {photos?.map((photo, index) => (
-              <div key={index} className={classes['image-preview']}>
+              <div key={index} className={classes['uploaded-image']}>
                 <Close
                   onClick={() =>
                     setPhotos((photos) => {
