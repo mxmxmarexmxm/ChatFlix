@@ -131,8 +131,8 @@ const Message = ({
           )}
           {photos && (
             <div className={classes['images-preview-container']}>
-              {photos.map((photo) => (
-                <div className={classes['image-preview']}>
+              {photos.map((photo, index) => (
+                <div key={index} className={classes['image-preview']}>
                   <img
                     src={photo}
                     alt="img"
