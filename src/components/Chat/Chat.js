@@ -130,7 +130,7 @@ const Chat = ({ chat, isFullScreen, setShowSideChats }) => {
           isCode: isCode,
         });
       }
-      if (photos) {
+      if (photos.length > 0) {
         let photoId = 'photos-' + id;
         await messageCollection.doc(photoId).set({
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
