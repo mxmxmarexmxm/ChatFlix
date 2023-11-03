@@ -144,7 +144,7 @@ const ChatInterface = ({
             <Close onClick={() => setMessageToReplay(null)} />
           </div>
         )}
-        {(imgUploadLoading || photos) && (
+        {(imgUploadLoading || photos.length > 0) && (
           <div className={classes['uploaded-images-wrapper']}>
             {photos?.map((photo, index) => (
               <div key={index} className={classes['uploaded-image']}>
