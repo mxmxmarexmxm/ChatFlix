@@ -158,7 +158,7 @@ const AuthForm = () => {
             <span className={classes['account-title']}>
               No account?{' '}
               <button
-                className={classes['create-forgot-btn']}
+                className={classes['flat-button']}
                 type="button"
                 onClick={() => setHaveAccount(false)}
               >
@@ -166,7 +166,7 @@ const AuthForm = () => {
               </button>
             </span>
             <button
-              className={classes['create-forgot-btn']}
+              className={classes['flat-button']}
               type="button"
               onClick={() => setForgotPassword(true)}
             >
@@ -177,7 +177,7 @@ const AuthForm = () => {
           <span className={classes['account-title']}>
             Already have an account?{' '}
             <button
-              className={classes['create-forgot-btn']}
+              className={classes['flat-button']}
               type="button"
               onClick={() => setHaveAccount(true)}
             >
