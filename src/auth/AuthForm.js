@@ -177,7 +177,7 @@ const AuthForm = () => {
           <span className={classes['account-title']}>
             Already have an account?{' '}
             <button
-              className={classes['create-login-btn']}
+              className={classes['create-forgot-btn']}
               type="button"
               onClick={() => setHaveAccount(true)}
             >
