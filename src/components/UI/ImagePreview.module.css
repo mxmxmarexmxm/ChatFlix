@@ -79,3 +79,7 @@
   border: 0;
   fill: gray;
 }
+
+.controls button:disabled {
+  visibility: hidden;
+}
