@@ -141,7 +141,9 @@ const Message = ({
                   <img
                     src={photo}
                     alt="img"
-                    onClick={() => openModal(<ImagePreview url={photo} />)}
+                    onClick={() =>
+                      openModal(<ImagePreview url={photo} gallery={photos} />)
+                    }
                   />
                 </div>
               ))}

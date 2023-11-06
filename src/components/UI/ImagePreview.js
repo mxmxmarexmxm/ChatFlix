@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classes from './ImagePreview.module.css';
 
-const ImagePreview = ({ url, photos }) => {
+const ImagePreview = ({ url, gallery }) => {
   const [currentUrl, setCurrentUrl] = useState(url);
 
   return (
@@ -10,7 +10,7 @@ const ImagePreview = ({ url, photos }) => {
         <img src={currentUrl} alt="photo-preview" />
       </div>
       <div className={classes.gallery}>
-        {photos?.map((photo, index) => (
+        {gallery?.map((photo, index) => (
           <div onClick={() => setCurrentUrl(photo)} key={index}>
             <img src={photo} alt="photo" />
           </div>
