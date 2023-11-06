@@ -8,7 +8,7 @@ const ImagePreview = ({ url, gallery }) => {
     <div className={classes['image-preview']}>
       <div className={classes['image-preview-wrapper']}>
         <img
-          src={currentUrlIndex ? gallery[currentUrlIndex] : url}
+          src={currentUrlIndex !== null ? gallery[currentUrlIndex] : url}
           alt="Previewed Image"
         />
       </div>
