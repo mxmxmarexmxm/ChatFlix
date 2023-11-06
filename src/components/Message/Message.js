@@ -132,7 +132,12 @@ const Message = ({
           {photos && (
             <div className={classes['images-preview-container']}>
               {photos.map((photo, index) => (
-                <div key={index} className={classes['image-preview']}>
+                <div
+                  key={index}
+                  className={`${classes['image-preview']} ${
+                    photos.length === 1 ? classes['one-image-preview'] : ''
+                  } `}
+                >
                   <img
                     src={photo}
                     alt="img"
@@ -142,7 +147,6 @@ const Message = ({
               ))}
             </div>
           )}
-
           {haveReactions && (
             <div className={`${classes['reactions-wrapper']}`}>
               {Object.entries(reactions)
