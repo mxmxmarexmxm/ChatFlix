@@ -67,10 +67,14 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  top: 43%;
+  top: 41%;
   left: 0;
 }
 
 .controls button {
   cursor: pointer;
+  width: 3rem;
+  background-color: transparent;
+  border: 0;
+  fill: gray;
 }

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import classes from './ImagePreview.module.css';
+import { RightArrow } from '../../assets/icons/RightArrow';
+import { LeftArrow } from '../../assets/icons/LeftArrow';
 
 const ImagePreview = ({ url, gallery }) => {
   const [currentUrlIndex, setCurrentUrlIndex] = useState(null);
@@ -28,13 +30,13 @@ const ImagePreview = ({ url, gallery }) => {
           onClick={() => setCurrentUrlIndex((index) => index - 1)}
           disabled={currentUrlIndex === 0}
         >
-          Previous
+          <LeftArrow />
         </button>
         <button
           onClick={() => setCurrentUrlIndex((index) => index + 1)}
           disabled={currentUrlIndex === gallery?.length - 1}
         >
-          Next
+          <RightArrow />
         </button>
       </div>
     </div>
