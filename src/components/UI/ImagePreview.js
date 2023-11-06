@@ -16,7 +16,13 @@ const ImagePreview = ({ url, gallery }) => {
       </div>
       <div className={classes.gallery}>
         {gallery?.map((photoUrl, index) => (
-          <div onClick={() => setCurrentUrlIndex(index)} key={index}>
+          <div
+            onClick={() => setCurrentUrlIndex(index)}
+            key={index}
+            className={
+              index === currentUrlIndex ? classes['previewed-image'] : ''
+            }
+          >
             <img
               src={photoUrl}
               alt={`Thumbnail ${index}`}

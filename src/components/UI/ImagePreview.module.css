@@ -57,7 +57,8 @@
   object-fit: cover;
 }
 
-.gallery img:hover {
+.gallery img:hover,
+.previewed-image {
   background-color: gray;
   opacity: 0.7;
 }
