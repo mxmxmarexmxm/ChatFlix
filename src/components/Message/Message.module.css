@@ -194,6 +194,11 @@
   aspect-ratio: 1/1;
 }
 
+.image-preview:hover {
+  background-color: gray;
+  opacity: .4;
+}
+
 .one-image-preview {
   max-width: 500px;
   aspect-ratio: auto;
