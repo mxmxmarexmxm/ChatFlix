@@ -11,7 +11,7 @@ const ImagePreview = ({ url, gallery }) => {
       <div className={classes['image-preview-wrapper']}>
         <img
           src={currentUrlIndex !== null ? gallery[currentUrlIndex] : url}
-          alt="Previewed Image"
+          alt="Previewed"
         />
       </div>
       <div className={classes.gallery}>
@@ -34,13 +34,15 @@ const ImagePreview = ({ url, gallery }) => {
       <div className={classes.controls}>
         <button
           onClick={() => setCurrentUrlIndex((index) => index - 1)}
-          disabled={currentUrlIndex === 0}
+          disabled={currentUrlIndex === 0 || gallery?.length === 1}
         >
           <LeftArrow />
         </button>
         <button
           onClick={() => setCurrentUrlIndex((index) => index + 1)}
-          disabled={currentUrlIndex === gallery?.length - 1}
+          disabled={
+            currentUrlIndex === gallery?.length - 1 || gallery?.length === 1
+          }
         >
           <RightArrow />
         </button>
