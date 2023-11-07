@@ -142,7 +142,7 @@ const Message = ({
                     src={photo}
                     alt="img"
                     onClick={() =>
-                      openModal(<ImagePreview url={photo} gallery={photos} />)
+                      openModal(<ImagePreview index={index} gallery={photos} />)
                     }
                   />
                 </div>
