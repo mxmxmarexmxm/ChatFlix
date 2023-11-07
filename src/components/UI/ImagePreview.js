@@ -4,7 +4,7 @@ import { RightArrow } from '../../assets/icons/RightArrow';
 import { LeftArrow } from '../../assets/icons/LeftArrow';
 
 const ImagePreview = ({ index, gallery }) => {
-  const [currentUrlIndex, setCurrentUrlIndex] = useState(index);
+  const [currentUrlIndex, setCurrentUrlIndex] = useState(index || 0);
 
   // Check if the currently displayed image is the first or last in the gallery
   const isFirstImage = currentUrlIndex === 0 || gallery?.length === 1;
