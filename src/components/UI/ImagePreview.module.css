@@ -83,3 +83,10 @@
 .controls button:disabled {
   visibility: hidden;
 }
+
+@media only screen and (min-width: 756px) {
+  .image-preview {
+    width: calc(100vw - 130px);
+    height: calc(100vh - 110px);
+  }
+}
