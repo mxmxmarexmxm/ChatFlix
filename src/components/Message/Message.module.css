@@ -210,6 +210,13 @@
   object-fit: cover;
 }
 
+.one-image-preview img {
+  max-height: inherit;
+  max-width: inherit;
+  object-fit: contain;
+  aspect-ratio: auto;
+}
+
 .reactions-wrapper {
   margin-left: auto;
   border: 2px solid gray;
