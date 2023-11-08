@@ -53,6 +53,9 @@
   gap: 1rem;
   align-items: center;
   font-size: 0.9rem;
+  flex: 1;
+  overflow: hidden;
+  min-width: 0; 
 }
 
 .chat-header-image-wrapper {
@@ -74,6 +77,8 @@
 
 .logo-title-wrapper h2 {
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .chat-header-buttons-wrapper {
