@@ -52,10 +52,9 @@
   display: flex;
   gap: 1rem;
   align-items: center;
-  font-size: 0.9rem;
   flex: 1;
   overflow: hidden;
-  min-width: 0; 
+  min-width: 0;
 }
 
 .chat-header-image-wrapper {
@@ -79,6 +78,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 1.1rem;
 }
 
 .chat-header-buttons-wrapper {
@@ -362,8 +362,8 @@
   .chat-fullscreen .chat-header {
     padding: 1.3rem 0.5rem;
   }
-  .logo-title-wrapper {
-    font-size: 1.1rem;
+  .logo-title-wrapper h2 {
+    font-size: 1.3rem;
   }
 
   .hamburger-btn svg {
