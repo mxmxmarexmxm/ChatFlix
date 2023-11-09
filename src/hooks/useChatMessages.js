@@ -34,7 +34,7 @@ function useChatMessages(chatName) {
 
   // Mark all previous messages as read when user clicks on input
   const markAllAsRead = async () => {
-    if (user) {
+    if (user && unreadMessages) {
       const querySnapshot = await messageCollection.get();
       querySnapshot.forEach((doc) => {
         doc.ref.update({
