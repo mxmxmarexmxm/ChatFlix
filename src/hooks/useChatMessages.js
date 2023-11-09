@@ -16,11 +16,19 @@ function useChatMessages(chatName) {
 
   useEffect(() => {
     const getUnreadMessages = () => {
-      const unreadMessages = messages?.filter(
-        (message) => !message.readBy.includes(user.uid)
-      ).length;
-      setUnreadMessages(unreadMessages);
+      let unreadMessagesCount = 0;
+
+      // Start from the end of messages
+      for (let i = messages?.length - 1; i >= 0; i--) {
+        const message = messages[i];
+        if (message.readBy.includes(user.uid)) {
+          break;
+        }
+        unreadMessagesCount++;
+      }
+      setUnreadMessages(unreadMessagesCount);
     };
+
     user && getUnreadMessages();
   }, [messages, user]);
 
