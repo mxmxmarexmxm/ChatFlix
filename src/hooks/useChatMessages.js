@@ -35,12 +35,20 @@ function useChatMessages(chatName) {
   // Mark all previous messages as read when user clicks on input
   const markAllAsRead = async () => {
     if (user && unreadMessages) {
-      const querySnapshot = await messageCollection.get();
-      querySnapshot.forEach((doc) => {
-        doc.ref.update({
-          readBy: firebase.firestore.FieldValue.arrayUnion(user.uid),
+      try {
+        const querySnapshot = await messageCollection
+          .orderBy('createdAt', 'desc')
+          .limit(unreadMessages)
+          .get();
+
+        querySnapshot.forEach(async (doc) => {
+          await doc.ref.update({
+            readBy: firebase.firestore.FieldValue.arrayUnion(user.uid),
+          });
         });
-      });
+      } catch (error) {
+        console.error('Error marking messages as read:', error);
+      }
     }
   };
 
