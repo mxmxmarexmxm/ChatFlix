@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { getStorage, ref, uploadBytes } from 'firebase/storage';
 import useSound from 'use-sound';
 import notificationSound from '../../assets/Sound/notification-sound.mp3';
 import firebase from '../../Firebase/Firebase';
@@ -99,9 +99,13 @@ const Chat = ({ chat, isFullScreen, setShowSideChats }) => {
     try {
       setImgUploadLoading(true);
       for (let i = 0; i < files.length; i++) {
+        const reader = new FileReader();
+        reader.onload = async () => {
+          // Display the image instantly
+          setPhotos((prevPhotos) => [...prevPhotos, reader.result]);
+        };
+        reader.readAsDataURL(files[i]); // Read the image file as a data URL
         await uploadBytes(storageRefs[i], files[i]);
-        const downloadURL = await getDownloadURL(storageRefs[i]);
-        setPhotos((photos) => [...photos, downloadURL]);
       }
 
       // Clear the input field after successful upload
