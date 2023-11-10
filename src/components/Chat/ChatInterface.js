@@ -155,13 +155,10 @@ const ChatInterface = ({
                     })
                   }
                 />
-                {!!imgUploadLoading[index] ? (
-                  <div className={classes['loader']}></div>
-                ) : (
-                  <img src={photo} alt="Uploaded" />
-                )}
+                <img src={photo} alt="Uploaded" />
               </div>
             ))}
+            {imgUploadLoading && <div className={classes['loader']}></div>}
           </div>
         )}
         <form onSubmit={sendMessage}>
