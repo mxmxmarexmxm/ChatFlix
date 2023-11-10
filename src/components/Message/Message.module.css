@@ -108,6 +108,7 @@
 
 .message-wrapper {
   max-width: 65%;
+  position: relative;
 }
 
 .replay-wrapper {
@@ -218,7 +219,6 @@
 }
 
 .reactions-wrapper {
-  margin-left: auto;
   border: 2px solid gray;
   display: flex;
   justify-content: center;
@@ -246,11 +246,6 @@
   height: 0.9rem;
   width: 0.9rem;
   fill: black;
-}
-
-.received .reactions-wrapper {
-  right: auto;
-  left: 50px;
 }
 
 .reactions-menu {
