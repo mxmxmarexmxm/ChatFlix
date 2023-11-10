@@ -188,11 +188,12 @@
 
 .uploaded-image {
   width: 45px;
-  height: auto;
+  aspect-ratio: 1/1;
   flex-shrink: 0;
   display: flex;
   justify-content: center;
   border-radius: 0.5rem;
+  overflow: hidden;
   padding: 0.1rem;
   position: relative;
   background-color: #242526;
@@ -201,7 +202,7 @@
 .uploaded-image img {
   height: 100%;
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .uploaded-image svg {
@@ -216,7 +217,8 @@
   padding: 0.15rem;
 }
 
-.image-preview svg:hover {
+.image-preview svg:hover,
+.uploaded-image:hover {
   background-color: rgb(46, 45, 45);
 }
 
@@ -361,9 +363,14 @@
   }
   .chat-fullscreen .chat-header {
     padding: 1.3rem 0.5rem;
+    font-size: 1.5rem;
   }
+
   .logo-title-wrapper h2 {
     font-size: 1.3rem;
+  }
+  .chat-fullscreen .chat-header h2 {
+    font-size: 1.6rem;
   }
 
   .hamburger-btn svg {
