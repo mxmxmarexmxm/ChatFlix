@@ -205,12 +205,6 @@
   aspect-ratio: auto;
 }
 
-.image-preview img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
 .one-image-preview img {
   max-height: inherit;
   max-width: inherit;

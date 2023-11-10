@@ -103,12 +103,6 @@
   background: linear-gradient(90deg, transparent, #141414);
 }
 
-.logo-container img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
 .logo-container:hover {
   scale: 1.05;
 }

@@ -20,12 +20,6 @@ header {
   width: auto;
 }
 
-.header-logo-wrapper img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
 .sign-btn {
   background-color: #212324;
   border: none;
@@ -48,12 +42,6 @@ header {
   margin-left: 1rem;
   overflow: hidden;
   cursor: pointer;
-}
-
-.profile-image-wrapper img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
 }
 
 .drop-menu {

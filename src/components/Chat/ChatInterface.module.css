@@ -199,12 +199,6 @@
   background-color: #242526;
 }
 
-.uploaded-image img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
 .uploaded-image svg {
   position: absolute;
   height: 1rem;
