@@ -19,6 +19,8 @@
 }
 
 .image-preview-wrapper img {
+  width: auto;
+  height: auto;
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
@@ -48,12 +50,6 @@
   border-radius: 0.5rem;
   overflow: hidden;
   cursor: pointer;
-}
-
-.gallery img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
 }
 
 .gallery img:hover,
