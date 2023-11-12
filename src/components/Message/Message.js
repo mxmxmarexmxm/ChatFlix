@@ -153,18 +153,21 @@ const Message = ({
             <div className={`${classes['reactions-wrapper']}`}>
               {Object.entries(reactions)
                 .filter(([, users]) => users.length > 0)
-                .map(([reaction, users]) => (
-                  <div
-                    key={reaction}
-                    onClick={() =>
-                      openModal(
-                        <ReactionsPreview reactions={filteredReactions} />
-                      )
-                    }
-                  >
-                    {users.length} {reactionsIconsArray[reaction]}
-                  </div>
-                ))}
+                .map(([reaction, users]) => {
+                  return (
+                    <div
+                      key={reaction}
+                      onClick={() =>
+                        openModal(
+                          <ReactionsPreview reactions={filteredReactions} />,
+                          'Reactions Preview'
+                        )
+                      }
+                    >
+                      {users.length} {reactionsIconsArray[reaction]}
+                    </div>
+                  );
+                })}
             </div>
           )}
         </div>
