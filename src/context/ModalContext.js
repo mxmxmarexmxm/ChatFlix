@@ -9,10 +9,12 @@ export function useModal() {
 export function ModalProvider({ children }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalContent, setModalContent] = useState(null);
+  const [modalTitle, setTitle] = useState(null);
 
-  const openModal = (content) => {
+  const openModal = (content, modalTitle) => {
     setModalContent(content);
     setModalVisible(true);
+    setTitle(modalTitle);
   };
 
   const closeModal = () => {
@@ -22,7 +24,7 @@ export function ModalProvider({ children }) {
 
   return (
     <ModalContext.Provider
-      value={{ modalVisible, openModal, closeModal, modalContent }}
+      value={{ modalVisible, openModal, closeModal, modalContent, modalTitle }}
     >
       {children}
     </ModalContext.Provider>
