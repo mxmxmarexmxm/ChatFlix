@@ -5,14 +5,18 @@ import { RightArrow } from '../assets/icons/RightArrow';
 import { chatsData } from '../data/data';
 import placeholder from '../assets/img/placeholder.png';
 import useWindowWidth from '../hooks/useWindowWidth';
+import { useChatContext } from '../context/ChatContext';
 
 const ChatRow = ({ rowTitle, onSelectChat }) => {
+  const { favoriteChats } = useChatContext();
   const { width } = useWindowWidth();
   const chatRowRef = useRef();
   const [haveScrool, setHaveScrool] = useState(false);
   const isMobile = width < 500;
 
-  const chats = chatsData.filter((chat) => chat.tags.includes(rowTitle));
+  const chats = [...chatsData, ...favoriteChats].filter((chat) =>
+    chat.tags.includes(rowTitle)
+  );
 
   const scrollRowHandler = (scrollOffset) => {
     chatRowRef.current.scrollLeft += scrollOffset;

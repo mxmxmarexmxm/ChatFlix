@@ -39,8 +39,12 @@ const Chat = ({ chat, isFullScreen, setShowSideChats }) => {
     markAllAsRead,
   } = useChatMessages(chat.name);
 
-  const { showMessages, toggleFullScreenHandler, closeChatHandler } =
-    useChatContext();
+  const {
+    showMessages,
+    toggleFullScreenHandler,
+    closeChatHandler,
+    toggleFavoriteChat,
+  } = useChatContext();
 
   const scrollToBottom = () => {
     if (messagesContainerRef.current) {
@@ -261,6 +265,7 @@ const Chat = ({ chat, isFullScreen, setShowSideChats }) => {
       replayToDisplayName={replayToDisplayName}
       imgUploadLoading={imgUploadLoading}
       setShowSideChats={setShowSideChats}
+      toggleFavoriteChat={toggleFavoriteChat}
     />
   );
 };

@@ -58,8 +58,12 @@ export const updateUserDataInFirestore = async (uid, newData) => {
   }
 };
 
-// Save active chats to Firestore
-export const saveActiveChatsToFirestore = async (chatsBottom, chatsRight) => {
+// Update active and favorite chats in Firestore
+export const updateUserChatsInFirestore = async (
+  chatsBottom,
+  chatsRight,
+  favoriteChats
+) => {
   const user = firebase.auth().currentUser;
   if (!user) {
     return;
@@ -72,14 +76,15 @@ export const saveActiveChatsToFirestore = async (chatsBottom, chatsRight) => {
     await userRef.update({
       activeChatsBottom: chatsBottom,
       activeChatsRight: chatsRight,
+      favoriteChats: favoriteChats,
     });
   } catch (error) {
     console.error('Error updating user document:', error);
   }
 };
 
-// Retrieve active chats from Firestore
-export const getActiveChatsFromFirestore = async () => {
+// Retrieve active and favorite chats from Firestore
+export const getUserChatsFromFirestore = async () => {
   const auth = firebase.auth();
   const user = auth.currentUser;
   const userId = user.uid;
@@ -93,12 +98,14 @@ export const getActiveChatsFromFirestore = async () => {
       return {
         activeChatsBottom: data.activeChatsBottom || [],
         activeChatsRight: data.activeChatsRight || [],
+        favoriteChats: data.favoriteChats || [],
       };
     } else {
       console.error('User document does not exist');
       return {
         activeChatsBottom: [],
         activeChatsRight: [],
+        favoriteChats: [],
       };
     }
   } catch (error) {
@@ -106,6 +113,7 @@ export const getActiveChatsFromFirestore = async () => {
     return {
       activeChatsBottom: [],
       activeChatsRight: [],
+      favoriteChats: [],
     };
   }
 };

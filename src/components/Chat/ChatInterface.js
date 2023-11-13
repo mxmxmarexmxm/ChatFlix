@@ -11,6 +11,7 @@ import { CodeVector } from '../../assets/icons/CodeVector';
 import { Hamburger } from '../../assets/icons/Hamburger';
 import { UploadImage } from '../../assets/icons/UploadImage';
 import Loader from '../UI/Loader';
+import { Love } from '../../assets/icons/Love';
 
 const ChatInterface = ({
   isFullScreen,
@@ -42,6 +43,7 @@ const ChatInterface = ({
   replayToDisplayName,
   imgUploadLoading,
   setShowSideChats,
+  toggleFavoriteChat,
 }) => {
   return (
     <div
@@ -77,6 +79,13 @@ const ChatInterface = ({
               {unreadMessages}
             </div>
           )}
+          <div
+            className={classes['chat-header-icon-wrapper']}
+            title="Favorite Chat"
+            onClick={(event) => toggleFavoriteChat(event, chat)}
+          >
+            <Love height="18px" />
+          </div>
           <div
             className={classes['chat-header-icon-wrapper']}
             onClick={toggleFullScreen}

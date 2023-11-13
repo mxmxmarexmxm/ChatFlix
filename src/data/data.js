@@ -340,6 +340,7 @@ export const chatsData = chatsDataWitouthId.map((chat) => ({
 }));
 
 export const rowTitles = [
+  'favorites',
   'frontend',
   'frontend frameworks',
   'CSS frameworks',

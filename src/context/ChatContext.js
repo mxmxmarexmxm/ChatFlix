@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import {
-  getActiveChatsFromFirestore,
-  saveActiveChatsToFirestore,
+  getUserChatsFromFirestore,
+  updateUserChatsInFirestore,
 } from '../services/UserServices';
 import { AuthContext } from '../Firebase/context';
 import useWindowWidth from '../hooks/useWindowWidth';
@@ -15,6 +15,7 @@ export const useChatContext = () => {
 export const ChatProvider = ({ children }) => {
   const [activeChatsBottom, setActiveChatsBottom] = useState([]);
   const [activeChatsRight, setActiveChatsRight] = useState([]);
+  const [favoriteChats, setFavoriteChats] = useState([]);
   const [fullScreenChat, setFullScreenChat] = useState(null);
   const [showMessages, setShowMessages] = useState(null);
   const { user } = useContext(AuthContext);
@@ -100,10 +101,34 @@ export const ChatProvider = ({ children }) => {
     setFullScreenChat(fullChat);
   };
 
+  // Toggles the favorite status of a chat
+  const toggleFavoriteChat = (event, chat) => {
+    event.stopPropagation();
+    if (favoriteChats.some((favChat) => favChat.id === chat.id)) {
+      // If chat is already in favorites, remove it
+      const updatedFavoriteChats = favoriteChats.filter(
+        (favChat) => favChat.id !== chat.id
+      );
+      setFavoriteChats(updatedFavoriteChats);
+    } else {
+      // If chat is not in favorites, add it
+      const updatedFavoriteChats = [
+        ...favoriteChats,
+        // Set tag to 'favorites'
+        { ...chat, tags: ['favorites'] },
+      ];
+      setFavoriteChats(updatedFavoriteChats);
+    }
+  };
+
   // Save chat list to Firebase when activeChats change.
   useEffect(() => {
-    saveActiveChatsToFirestore(activeChatsBottom, activeChatsRight);
-  }, [activeChatsBottom, activeChatsRight]);
+    updateUserChatsInFirestore(
+      activeChatsBottom,
+      activeChatsRight,
+      favoriteChats
+    );
+  }, [activeChatsBottom, activeChatsRight, favoriteChats]);
 
   // Close full screen if there are no remaining chats.
   useEffect(() => {
@@ -115,10 +140,11 @@ export const ChatProvider = ({ children }) => {
   // Load active chats when the component mounts and when the user changes.
   useEffect(() => {
     user &&
-      getActiveChatsFromFirestore().then(
-        ({ activeChatsBottom, activeChatsRight }) => {
+      getUserChatsFromFirestore().then(
+        ({ activeChatsBottom, activeChatsRight, favoriteChats }) => {
           setActiveChatsBottom(activeChatsBottom);
           setActiveChatsRight(activeChatsRight);
+          setFavoriteChats(favoriteChats);
         }
       );
   }, [user]);
@@ -128,8 +154,10 @@ export const ChatProvider = ({ children }) => {
       value={{
         activeChatsBottom,
         activeChatsRight,
+        favoriteChats,
         fullScreenChat,
         showMessages,
+        toggleFavoriteChat,
         selectChatHandler,
         closeChatHandler,
         toggleFullScreenHandler,
