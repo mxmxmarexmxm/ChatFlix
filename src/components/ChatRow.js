@@ -17,7 +17,7 @@ const ChatRow = ({ rowTitle, onSelectChat }) => {
   const chats = [...chatsData, ...favoriteChats].filter((chat) =>
     chat.tags.includes(rowTitle)
   );
-  
+
   const isNotEmpty = chats?.length !== 0;
 
   const scrollRowHandler = (scrollOffset) => {
@@ -64,6 +64,7 @@ const ChatRow = ({ rowTitle, onSelectChat }) => {
                       src={chat.logo}
                       alt={chat.name}
                       {...(![
+                        'favorites',
                         'frontend',
                         'frontend frameworks',
                         'CSS frameworks',
