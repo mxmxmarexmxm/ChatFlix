@@ -6,9 +6,11 @@ import { chatsData } from '../data/data';
 import placeholder from '../assets/img/placeholder.png';
 import useWindowWidth from '../hooks/useWindowWidth';
 import { useChatContext } from '../context/ChatContext';
+import useChatMessages from '../hooks/useChatMessages';
 
-const ChatRow = ({ rowTitle, onSelectChat }) => {
-  const { favoriteChats } = useChatContext();
+const ChatRow = ({ rowTitle }) => {
+  const { favoriteChats, selectChatHandler } = useChatContext();
+
   const { width } = useWindowWidth();
   const chatRowRef = useRef();
   const [haveScrool, setHaveScrool] = useState(false);
@@ -60,7 +62,7 @@ const ChatRow = ({ rowTitle, onSelectChat }) => {
                 {chats.map((chat) => (
                   <div className={classes['logo-container']} key={chat.id}>
                     <img
-                      onClick={() => onSelectChat(chat)}
+                      onClick={() => selectChatHandler(chat)}
                       src={chat.logo}
                       alt={chat.name}
                       {...(![
