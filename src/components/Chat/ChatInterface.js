@@ -12,6 +12,7 @@ import { Hamburger } from '../../assets/icons/Hamburger';
 import { UploadImage } from '../../assets/icons/UploadImage';
 import Loader from '../UI/Loader';
 import { Love } from '../../assets/icons/Love';
+import { Favorite } from '../../assets/icons/Favorite';
 
 const ChatInterface = ({
   isFullScreen,
@@ -84,7 +85,7 @@ const ChatInterface = ({
             title="Favorite Chat"
             onClick={(event) => toggleFavoriteChat(event, chat)}
           >
-            <Love height="18px" />
+            <Favorite height="18px" />
           </div>
           <div
             className={classes['chat-header-icon-wrapper']}
