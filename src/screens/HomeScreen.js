@@ -10,19 +10,14 @@ import { useChatContext } from '../context/ChatContext.js';
 
 const HomeScreen = () => {
   const [showChatHeads, setShowChatHeads] = useState(false);
-  const { activeChatsBottom, activeChatsRight, selectChatHandler } =
-    useChatContext();
+  const { activeChatsBottom, activeChatsRight } = useChatContext();
 
   return (
     <div className={classes['home-screen']}>
       <Header />
       <div className={classes['chat-rows-container']}>
         {rowTitles.map((title) => (
-          <ChatRow
-            onSelectChat={selectChatHandler}
-            rowTitle={title}
-            key={title}
-          />
+          <ChatRow rowTitle={title} key={title} />
         ))}
       </div>
 
