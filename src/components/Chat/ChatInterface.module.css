@@ -113,6 +113,10 @@
   border: none;
 }
 
+.chat-header-icon-wrapper.isFavoriteChat svg {
+  fill: gray;
+}
+
 .chat-header-icon-wrapper:hover {
   background-color: #242526;
 }

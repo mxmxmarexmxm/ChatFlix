@@ -44,7 +44,12 @@ const Chat = ({ chat, isFullScreen, setShowSideChats }) => {
     toggleFullScreenHandler,
     closeChatHandler,
     toggleFavoriteChat,
+    favoriteChats,
   } = useChatContext();
+
+  const isFavoriteChat = favoriteChats.some(
+    (favChat) => favChat.id === chat.id
+  );
 
   const scrollToBottom = () => {
     if (messagesContainerRef.current) {
@@ -266,6 +271,7 @@ const Chat = ({ chat, isFullScreen, setShowSideChats }) => {
       imgUploadLoading={imgUploadLoading}
       setShowSideChats={setShowSideChats}
       toggleFavoriteChat={toggleFavoriteChat}
+      isFavoriteChat={isFavoriteChat}
     />
   );
 };
