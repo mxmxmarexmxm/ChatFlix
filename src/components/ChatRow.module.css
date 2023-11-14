@@ -80,6 +80,7 @@
   border-radius: 1rem;
   overflow: hidden;
   flex-shrink: 0;
+  position: relative;
 }
 
 .chats-outer-wrapper::after,
@@ -95,7 +96,7 @@
 
 .chats-outer-wrapper::before {
   left: 0;
-  background: linear-gradient(90deg, #141414, transparent );
+  background: linear-gradient(90deg, #141414, transparent);
 }
 
 .chats-outer-wrapper::after {

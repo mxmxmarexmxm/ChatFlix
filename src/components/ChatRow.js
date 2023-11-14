@@ -6,7 +6,7 @@ import { chatsData } from '../data/data';
 import placeholder from '../assets/img/placeholder.png';
 import useWindowWidth from '../hooks/useWindowWidth';
 import { useChatContext } from '../context/ChatContext';
-import useChatMessages from '../hooks/useChatMessages';
+import UnreadFavChatBadge from './UnreadFavChatBadge';
 
 const ChatRow = ({ rowTitle }) => {
   const { favoriteChats, selectChatHandler } = useChatContext();
@@ -61,6 +61,9 @@ const ChatRow = ({ rowTitle }) => {
               <div ref={chatRowRef} className={classes['chats-inner-wrapper']}>
                 {chats.map((chat) => (
                   <div className={classes['logo-container']} key={chat.id}>
+                    {rowTitle === 'favorites' && (
+                      <UnreadFavChatBadge chat={chat} />
+                    )}
                     <img
                       onClick={() => selectChatHandler(chat)}
                       src={chat.logo}
