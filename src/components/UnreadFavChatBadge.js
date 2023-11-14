@@ -6,9 +6,13 @@ const UnreadFavChatBadge = ({ chat }) => {
   const { unreadMessages } = useChatMessages(chat.name);
 
   return (
-    <div className={classes['unread-fav-chat-badge']}>
-      <span>{unreadMessages}</span>
-    </div>
+    <>
+      {unreadMessages > 0 && (
+        <div className={classes['unread-fav-chat-badge']}>
+          <span>{unreadMessages}</span>
+        </div>
+      )}
+    </>
   );
 };
 
