@@ -302,8 +302,9 @@
 }
 
 .chat form .is-code-btn.active svg {
-  background-color: black;
-  border: 1px solid black;
+  background-color: gray;
+  fill: #242526;
+  scale: 1.1;
 }
 
 .message-to-replay {
