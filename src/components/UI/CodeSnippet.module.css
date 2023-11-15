@@ -1,20 +1,41 @@
+@value modal from './Modal.module.css';
+
 .code-snippet {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  overflow-y: auto;
 }
 
-.copy-btn {
+.buttons-wrapper {
+  margin-left: auto;
+  display: flex;
+  gap: 5px;
+}
+
+.buttons-wrapper button {
   cursor: pointer;
   background-color: transparent;
   border: none;
-  height: 1.5rem;
-  width: 1.5rem;
-  margin-left: auto;
+  height: 1.3rem;
+  width: 1.3rem;
   opacity: 0.6;
 }
 
-.successful-copy,
-.copy-btn:hover {
+.successful-copy-btn,
+.buttons-wrapper button:hover {
   opacity: 1;
+}
+
+.modal .code-snippet {
+  padding: 1rem;
+}
+
+.modal pre {
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.modal .buttons-wrapper:first-child .expand-btn {
+  display: none;
 }
