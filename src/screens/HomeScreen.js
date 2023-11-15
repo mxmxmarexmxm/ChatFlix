@@ -1,5 +1,5 @@
 import classes from './HomeScreen.module.css';
-import { rowTitles } from '../data/data.js';
+import { chatsData, rowTitles } from '../data/data.js';
 import { useState } from 'react';
 import Chat from '../components/Chat/Chat.js';
 import ChatRow from '../components/ChatRow.js';
@@ -11,13 +11,22 @@ import { useChatContext } from '../context/ChatContext.js';
 const HomeScreen = () => {
   const [showChatHeads, setShowChatHeads] = useState(false);
   const { activeChatsBottom, activeChatsRight } = useChatContext();
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const filteredChatsData = chatsData.filter((chat) =>
+    chat.name.toLocaleLowerCase().startsWith(searchTerm.toLocaleLowerCase())
+  );
 
   return (
     <div className={classes['home-screen']}>
-      <Header />
+      <Header handleSearch={handleSearch} />
       <div className={classes['chat-rows-container']}>
         {rowTitles.map((title) => (
-          <ChatRow rowTitle={title} key={title} />
+          <ChatRow rowTitle={title} key={title} filteredChatsData={filteredChatsData} />
         ))}
       </div>
 

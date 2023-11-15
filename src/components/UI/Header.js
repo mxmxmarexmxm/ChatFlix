@@ -9,7 +9,7 @@ import AuthForm from '../../auth/AuthForm';
 import UserProfile from '../UserProfile';
 import useClickOutside from '../../hooks/useClickOutside';
 
-const Header = () => {
+const Header = ({ handleSearch }) => {
   const { openModal, closeModal } = useModal();
   const [openMenu, setOpenMenu] = useState(false);
   const { user } = useContext(AuthContext);
@@ -30,6 +30,9 @@ const Header = () => {
     <header>
       <div className={classes['header-logo-wrapper']}>
         <img src={logo} alt="chatflix-logo" />
+      </div>
+      <div>
+        <input type="text" onChange={handleSearch} placeholder="Search..." />
       </div>
       {user ? (
         <div className={classes['drop-menu']} ref={menuRef}>

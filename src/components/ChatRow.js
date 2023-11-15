@@ -2,13 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import classes from './ChatRow.module.css';
 import { LeftArrow } from '../assets/icons/LeftArrow';
 import { RightArrow } from '../assets/icons/RightArrow';
-import { chatsData } from '../data/data';
 import placeholder from '../assets/img/placeholder.png';
 import useWindowWidth from '../hooks/useWindowWidth';
 import { useChatContext } from '../context/ChatContext';
 import UnreadFavChatBadge from './UnreadFavChatBadge';
 
-const ChatRow = ({ rowTitle }) => {
+const ChatRow = ({ rowTitle, filteredChatsData }) => {
   const { favoriteChats, selectChatHandler } = useChatContext();
 
   const { width } = useWindowWidth();
@@ -16,7 +15,7 @@ const ChatRow = ({ rowTitle }) => {
   const [haveScrool, setHaveScrool] = useState(false);
   const isMobile = width < 500;
 
-  const chats = [...chatsData, ...favoriteChats].filter((chat) =>
+  const chats = [...filteredChatsData, ...favoriteChats].filter((chat) =>
     chat.tags.includes(rowTitle)
   );
 
@@ -42,6 +41,7 @@ const ChatRow = ({ rowTitle }) => {
     return () => {
       window.removeEventListener('resize', checkHorizontalOverflow);
     };
+    // eslint-disable-next-line
   }, []);
 
   return (
