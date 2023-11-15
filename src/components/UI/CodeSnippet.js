@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Highlight, themes } from 'prism-react-renderer';
 import { Copy } from '../../assets/icons/Copy';
+import { Expand } from '../../assets/icons/Expand';
 import classes from './CodeSnippet.module.css';
 import { CopySuccess } from '../../assets/icons/CopySuccess';
+import { useModal } from '../../context/ModalContext';
 
 const CodeSnippet = ({ code, language }) => {
   const [successfulCopy, setSuccessfulCopy] = useState(false);
+  const { openModal } = useModal();
 
   useEffect(() => {
     if (successfulCopy) {
@@ -20,14 +23,20 @@ const CodeSnippet = ({ code, language }) => {
 
   return (
     <div className={classes['code-snippet']}>
-      <button
-        className={`${classes['copy-btn']} ${
-          successfulCopy ? classes['successful-copy'] : ''
-        }`}
-        onClick={handleClipboardCopy}
-      >
-        {successfulCopy ? <CopySuccess /> : <Copy />}
-      </button>
+      <div className={classes['buttons-wrapper']}>
+        <button
+          className={classes['expand-btn']}
+          onClick={() => openModal(<CodeSnippet code={code} />)}
+        >
+          <Expand />
+        </button>
+        <button
+          className={` ${successfulCopy ? classes['successful-copy-btn'] : ''}`}
+          onClick={handleClipboardCopy}
+        >
+          {successfulCopy ? <CopySuccess /> : <Copy />}
+        </button>
+      </div>
       <Highlight
         theme={themes.vsDark}
         code={code}
