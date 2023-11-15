@@ -26,7 +26,7 @@ const CodeSnippet = ({ code, language }) => {
       <div className={classes['buttons-wrapper']}>
         <button
           className={classes['expand-btn']}
-          onClick={() => openModal(<CodeSnippet code={code} />)}
+          onClick={() => openModal(<CodeSnippet code={code} />, 'Code Preview')}
         >
           <Expand />
         </button>
