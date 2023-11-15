@@ -31,9 +31,7 @@ const Header = ({ handleSearch }) => {
       <div className={classes['header-logo-wrapper']}>
         <img src={logo} alt="chatflix-logo" />
       </div>
-      <div>
-        <input type="text" onChange={handleSearch} placeholder="Search..." />
-      </div>
+      <input type="text" onChange={handleSearch} placeholder="Search..." />
       {user ? (
         <div className={classes['drop-menu']} ref={menuRef}>
           <div

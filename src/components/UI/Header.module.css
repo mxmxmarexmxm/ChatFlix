@@ -1,6 +1,6 @@
 header {
   position: fixed;
-  height: 4rem;
+  height: auto;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -13,10 +13,23 @@ header {
   background-color: #141414;
 }
 
+header input {
+  display: flex;
+  height: 1.5rem;
+  outline: none;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  padding: 1rem;
+  background-color: #242526;
+  margin-right: auto;
+  margin-left: 2rem;
+}
+
 .header-logo-wrapper {
   display: flex;
   align-items: center;
-  height: 3rem;
+  height: 2rem;
   width: auto;
 }
 
@@ -87,11 +100,11 @@ header {
 
 @media only screen and (min-width: 756px) {
   header {
-    padding: 0 2rem;
-    height: 5rem;
+    padding: 1rem;
+    height: auto;
   }
   .header-logo-wrapper img {
-    height: 4rem;
+    height: 3.5rem;
   }
   .sign-btn {
     padding: 1rem;
