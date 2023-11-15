@@ -138,6 +138,19 @@
   background-color: #1e1e1e;
 }
 
+.copy-btn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  height: 20px;
+  width: 20px;
+  opacity: 0.6;
+}
+
+.copy-btn:hover {
+  opacity: 1;
+}
+
 .text-wrapper pre {
   white-space: pre-wrap;
 }

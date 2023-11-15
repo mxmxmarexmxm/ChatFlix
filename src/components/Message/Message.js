@@ -15,6 +15,7 @@ import userPlaceholder from '../../assets/img/user-placeholder.png';
 import { Replay } from '../../assets/icons/Replay';
 import { Reaction } from '../../assets/icons/Reaction';
 import { reactionsIconsArray } from './MessageUtils';
+import { Copy } from '../../assets/icons/Copy';
 import ReactionsPreview from '../UI/ReactionsPreview';
 import useClickOutside from '../../hooks/useClickOutside';
 import AuthForm from '../../auth/AuthForm';
@@ -126,7 +127,16 @@ const Message = ({
                 isCode && classes['code-wrapper']
               }`}
             >
-              {isCode ? <CodeSnippet code={text} /> : formatMessage(text)}
+              {isCode ? (
+                <div>
+                  <button className={classes['copy-btn']} onClick={() => navigator.clipboard.writeText(text)}>
+                    <Copy />
+                  </button>
+                  <CodeSnippet code={text} />
+                </div>
+              ) : (
+                formatMessage(text)
+              )}
             </div>
           )}
           {photos && (
