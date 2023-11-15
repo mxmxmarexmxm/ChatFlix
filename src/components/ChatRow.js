@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import classes from './ChatRow.module.css';
 import { LeftArrow } from '../assets/icons/LeftArrow';
 import { RightArrow } from '../assets/icons/RightArrow';
@@ -25,12 +25,12 @@ const ChatRow = ({ rowTitle, filteredChatsData }) => {
     chatRowRef.current.scrollLeft += scrollOffset;
   };
 
-  const checkHorizontalOverflow = () => {
+  const checkHorizontalOverflow = useCallback(() => {
     isNotEmpty &&
       setHaveScrool(
         chatRowRef.current.scrollWidth > chatRowRef.current.clientWidth
       );
-  };
+  }, [isNotEmpty]);
 
   useEffect(() => {
     isNotEmpty && scrollRowHandler(-1000);
@@ -41,8 +41,7 @@ const ChatRow = ({ rowTitle, filteredChatsData }) => {
     return () => {
       window.removeEventListener('resize', checkHorizontalOverflow);
     };
-    // eslint-disable-next-line
-  }, []);
+  }, [isNotEmpty, checkHorizontalOverflow]);
 
   return (
     <>
