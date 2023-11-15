@@ -127,16 +127,7 @@ const Message = ({
                 isCode && classes['code-wrapper']
               }`}
             >
-              {isCode ? (
-                <div>
-                  <button className={classes['copy-btn']} onClick={() => navigator.clipboard.writeText(text)}>
-                    <Copy />
-                  </button>
-                  <CodeSnippet code={text} />
-                </div>
-              ) : (
-                formatMessage(text)
-              )}
+              {isCode ? <CodeSnippet code={text} /> : formatMessage(text)}
             </div>
           )}
           {photos && (

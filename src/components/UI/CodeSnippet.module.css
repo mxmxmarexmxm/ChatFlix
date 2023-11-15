@@ -1,0 +1,18 @@
+.code-snippet {
+  display: flex;
+  flex-direction: column;
+}
+
+.copy-btn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  height: 23px;
+  width: 23px;
+  opacity: 0.6;
+  margin-left: auto;
+}
+
+.copy-btn:hover {
+  opacity: 1;
+}
