@@ -4,7 +4,7 @@
 }
 
 .chat-rows-container {
-  padding: 4rem 0.3rem;
+  padding: 2rem 0.3rem;
 }
 
 .active-chats-container {
@@ -53,6 +53,6 @@
 
 @media only screen and (min-width: 756px) {
   .chat-rows-container {
-    padding: 5rem 2rem;
+    padding: 3rem 1rem;
   }
 }
