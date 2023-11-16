@@ -8,14 +8,14 @@ import { useChatContext } from '../context/ChatContext';
 import UnreadFavChatBadge from './UnreadFavChatBadge';
 
 const ChatRow = ({ rowTitle, filteredChatsData }) => {
-  const { favoriteChats, selectChatHandler } = useChatContext();
+  const { selectChatHandler } = useChatContext();
 
   const { width } = useWindowWidth();
   const chatRowRef = useRef();
   const [haveScrool, setHaveScrool] = useState(false);
   const isMobile = width < 500;
 
-  const chats = [...filteredChatsData, ...favoriteChats].filter((chat) =>
+  const chats = [...filteredChatsData].filter((chat) =>
     chat.tags.includes(rowTitle)
   );
 
@@ -41,7 +41,7 @@ const ChatRow = ({ rowTitle, filteredChatsData }) => {
     return () => {
       window.removeEventListener('resize', checkHorizontalOverflow);
     };
-  }, [isNotEmpty, checkHorizontalOverflow]);
+  }, [isNotEmpty, checkHorizontalOverflow, chats]);
 
   return (
     <>

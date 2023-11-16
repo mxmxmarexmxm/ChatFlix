@@ -10,14 +10,15 @@ import { useChatContext } from '../context/ChatContext.js';
 
 const HomeScreen = () => {
   const [showChatHeads, setShowChatHeads] = useState(false);
-  const { activeChatsBottom, activeChatsRight } = useChatContext();
+  const { activeChatsBottom, activeChatsRight, favoriteChats } =
+    useChatContext();
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  const filteredChatsData = chatsData.filter((chat) =>
+  const filteredChatsData = [...chatsData, ...favoriteChats].filter((chat) =>
     chat.name.toLocaleLowerCase().startsWith(searchTerm.toLocaleLowerCase())
   );
 
@@ -26,7 +27,11 @@ const HomeScreen = () => {
       <Header handleSearch={handleSearch} />
       <div className={classes['chat-rows-container']}>
         {rowTitles.map((title) => (
-          <ChatRow rowTitle={title} key={title} filteredChatsData={filteredChatsData} />
+          <ChatRow
+            rowTitle={title}
+            key={title}
+            filteredChatsData={filteredChatsData}
+          />
         ))}
       </div>
 
