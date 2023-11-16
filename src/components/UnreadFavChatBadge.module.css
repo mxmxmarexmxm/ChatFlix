@@ -3,14 +3,33 @@
   position: absolute;
   right: 0;
   top: 0;
-  background-color: gray;
   border-radius: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 30px;
-  width: 30px;
+  width: 2rem;
+  height: 2rem;
   font-weight: bold;
-  border: 2px solid white;
+  border: 2px solid #1e1e1e;
+  color: #ea3939;
+  background-color: #242526;
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
 }
