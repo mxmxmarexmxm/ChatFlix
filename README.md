@@ -4,78 +4,92 @@ ChatFlix is a web application built with React, Firebase, and CSS modules, with 
 
 ## Features
 
-1. **Authentication Options**
+1.  **Authentication Options**
 
-   - Google Authentication: Users can log in using their Gmail accounts.
-   - Email/Password Authentication: Users can create an account and log in with email and password.
+    - Google Authentication: Users can log in using their Gmail accounts.
+    - Email/Password Authentication: Users can create an account and log in with email and password.
 
-2. **Update Email Address**
+2.  **Update Email Address**
 
-   - Users can update their email addresses for their accounts.
+    - Users can update their email addresses for their accounts.
 
-3. **Password Reset**
+3.  **Password Reset**
 
-   - Users can reset their password if they forget it. An email with a reset link will be sent to their registered email address.
+    - Users can reset their password if they forget it. An email with a reset link will be sent to their registered email address.
 
-4. **User Profile Customization**
+4.  **User Profile Customization**
 
-   - Profile Picture Upload: Users can upload and customize their profile pictures.
-   - Username Editing: Users can change their display names.
-   - About Me Section: Users can provide additional information about themselves.
-   - LinkedIn and GitHub Links: Users can add links to their LinkedIn and GitHub profiles.
+    - Profile Picture Upload: Users can upload and customize their profile pictures.
+    - Username Editing: Users can change their display names.
+    - About Me Section: Users can provide additional information about themselves.
+    - LinkedIn and GitHub Links: Users can add links to their LinkedIn and GitHub profiles.
 
-5. **Chat Categories**
+5.  **Chat Categories**
 
-   - Frontend: Discussions about HTML, CSS, JavaScript, and related technologies.
-   - Backend Frameworks: Topics covering backend technologies like Node.js, Ruby on Rails, etc.
-   - Learning Platforms: Discussions about online learning platforms such as Udacity and Coursera.
-   - Code Editors: Conversations related to code editors like Visual Studio Code and Sublime Text.
-   - Operating Systems: Chats about different operating systems, including MacOS and Linux.
-   - Many More Categories: Explore numerous other categories tailored to specific programming and tech topics.
+    - Frontend: Discussions about HTML, CSS, JavaScript, and related technologies.
+    - Backend Frameworks: Topics covering backend technologies like Node.js, Ruby on Rails, etc.
+    - Learning Platforms: Discussions about online learning platforms such as Udacity and Coursera.
+    - Code Editors: Conversations related to code editors like Visual Studio Code and Sublime Text.
+    - Operating Systems: Chats about different operating systems, including MacOS and Linux.
+    - Many More Categories: Explore numerous other categories tailored to specific programming and tech topics.
 
-6. **Regular Sized Chat Windows**
+6.  **Favorite Chats**
 
-   - Users can engage in conversations in standard-sized chat windows for a comfortable chat experience.
+    - Users can add/remove chats to favorites.
+    - Favorite chats with unread messages are prioritized at the top of the page, enhancing accessibility and user experience.
 
-7. **Full-Screen Chat**
+7.  **Regular Sized Chat Windows**
 
-   - Chat windows can be expanded to full-screen for a distraction-free experience.
+    - Users can engage in conversations in standard-sized chat windows for a comfortable chat experience.
 
-8. **Real-Time Messaging**
+8.  **Full-Screen Chat**
 
-   - Messages are delivered instantly, providing a seamless chatting experience.
+    - Chat windows can be expanded to full-screen for a distraction-free experience.
+    - 100% full-screen: Clicking the hamburger menu hides/preview other active chats on the left side, providing 100% full-screen chat.
 
-9. **Sound Notifications**
+9.  **Real-Time Messaging**
 
-   - Users receive audible notifications when new messages arrive, ensuring they don't miss important updates.
+    - Messages are delivered instantly, providing a seamless chatting experience.
 
-10. **Message Replay**
+10. **Sound Notifications**
+
+    - Users receive audible notifications when new messages arrive, ensuring they don't miss important updates.
+
+11. **Message Replay**
 
     - Users can revisit past messages for reference.
 
-11. **Scroll to Replayed Message**
+12. **Scroll to Replayed Message**
 
     - Conveniently scroll to the message being replayed for context.
 
-12. **Preview Other Users' Profiles**
+13. **Preview Other Users' Profiles**
 
     - Users can view the profiles of other ChatFlix members to learn more about them.
 
-13. **Scroll to Bottom of Chat**
+14. **Scroll to Bottom of Chat**
 
     - Easily navigate to the latest messages by scrolling to the bottom of the chat.
 
-14. **Message Reactions**
+15. **Message Reactions**
 
     React to messages with various emojis and expressions to engage in conversations.
 
-15. **Sending Code Blocks**
+16. **Sending Code Blocks**
 
     - Share code snippets with syntax highlighting, and preview in a VS Dark theme.
+    - Users can expand code snippets to full-screen for a more detailed view.
+    - Users can easily copy code
 
-16. **Image Sending in Chat**
+17. **Image Sending in Chat**
 
-    - Send and receive images within chat messages for better communication.
+        - Send and receive images within chat messages for better communication.
+        - Multiple Images: Users can send multiple images at once.
+
+18. **Image Preview and Carousel**
+
+    - Users can view images in full size and navigate through multiple images sent in a single message using a carousel.
+    - Keyboard arrows provide easy navigation for a smoother image-browsing experience.
 
 ## Customization
 
