@@ -39,6 +39,9 @@
 }
 
 .unread-messages {
+  border: 2px solid #1e1e1e;
+  color: #ea3939;
+  background-color: #242526;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,9 +52,6 @@
   height: 1rem;
   padding: 0.6rem;
   margin-left: -6px;
-  background: #ea2727;
-  border: 3px solid black;
-  color: black;
   text-align: center;
 }
 
