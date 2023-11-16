@@ -41,7 +41,7 @@ const ChatRow = ({ rowTitle, filteredChatsData }) => {
     return () => {
       window.removeEventListener('resize', checkHorizontalOverflow);
     };
-  }, [isNotEmpty, checkHorizontalOverflow, chats]);
+  }, [isNotEmpty, checkHorizontalOverflow, chats.length]);
 
   return (
     <>
