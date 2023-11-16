@@ -75,20 +75,22 @@ const Message = ({
         } ${haveReactions && classes['have-reactions']}`}
         id={id}
       >
-        {messageSenderClass === 'received' && (
-          <div
-            className={classes['profile-image-wrapper']}
-            onClick={() => openModal(<UserProfile uid={uid} />)}
-          >
-            <img
-              src={senderUserData?.photoURL || userPlaceholder}
-              referrerPolicy="no-referrer"
-              alt={senderUserData?.displayName}
-            />
+        <div className={classes['user-informations']}>
+          {messageSenderClass === 'received' && (
+            <div
+              className={classes['profile-image-wrapper']}
+              onClick={() => openModal(<UserProfile uid={uid} />)}
+            >
+              <img
+                src={senderUserData?.photoURL || userPlaceholder}
+                referrerPolicy="no-referrer"
+                alt={senderUserData?.displayName}
+              />
+            </div>
+          )}
+          <div className={classes['user-name']}>
+            {senderUserData?.displayName}
           </div>
-        )}
-        <div className={classes['user-name']}>
-          {senderUserData?.displayName}
         </div>
         <div className={classes['message-wrapper']}>
           {replayTo && (
