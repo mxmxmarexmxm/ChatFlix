@@ -5,7 +5,7 @@ import { RightArrow } from '../assets/icons/RightArrow';
 import placeholder from '../assets/img/placeholder.png';
 import useWindowWidth from '../hooks/useWindowWidth';
 import { useChatContext } from '../context/ChatContext';
-import UnreadFavChatBadge from './UnreadFavChatBadge';
+import UnreadFavChatBadge from './UI/UnreadFavChatBadge';
 
 const ChatRow = ({ rowTitle, filteredChatsData }) => {
   const { selectChatHandler } = useChatContext();

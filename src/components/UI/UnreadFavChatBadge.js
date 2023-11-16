@@ -1,5 +1,5 @@
 import React from 'react';
-import useChatMessages from '../hooks/useChatMessages';
+import useChatMessages from '../../hooks/useChatMessages';
 import classes from './UnreadFavChatBadge.module.css';
 
 const UnreadFavChatBadge = ({ chat }) => {
