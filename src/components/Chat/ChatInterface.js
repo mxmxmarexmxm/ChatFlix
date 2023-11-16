@@ -46,7 +46,6 @@ const ChatInterface = ({
   toggleFavoriteChat,
   isFavoriteChat,
 }) => {
-  console.log(isFavoriteChat)
   return (
     <div
       className={`${classes.chat} ${
@@ -139,79 +138,80 @@ const ChatInterface = ({
               Start a conversation!
             </p>
           )}
+        </div>
+        <div className={classes['chat-footer']}>
+          {(imgUploadLoading || photos.length > 0) && (
+            <div className={classes['uploaded-images-wrapper']}>
+              {photos?.map((photo, index) => (
+                <div key={index} className={classes['uploaded-image']}>
+                  <Close
+                    onClick={() =>
+                      setPhotos((photos) => {
+                        return photos.filter((_, i) => i !== index);
+                      })
+                    }
+                  />
+                  <img src={photo} alt="Uploaded" />
+                </div>
+              ))}
+              {imgUploadLoading && <div className={classes['loader']}></div>}
+            </div>
+          )}
+          {messageToReplay && (
+            <div className={classes['message-to-replay']}>
+              <div className={classes['replay-message-content']}>
+                <p>Replying to {replayToDisplayName}</p>
+                <p className={classes['replay-message-text']}>
+                  {messageToReplay.text || 'Image'}
+                </p>
+              </div>
+              <Close onClick={() => setMessageToReplay(null)} />
+            </div>
+          )}
           <DownArrow
             className={`${classes['scroll-down-icon']} ${
               !isAtBottom && classes['display']
             }`}
             onClick={scrollToBottom}
           />
-        </div>
-        {messageToReplay && (
-          <div className={classes['message-to-replay']}>
-            <div className={classes['replay-message-content']}>
-              <p>Replying to {replayToDisplayName}</p>
-              <p className={classes['replay-message-text']}>
-                {messageToReplay.text || 'Image'}
-              </p>
-            </div>
-            <Close onClick={() => setMessageToReplay(null)} />
-          </div>
-        )}
-        {(imgUploadLoading || photos.length > 0) && (
-          <div className={classes['uploaded-images-wrapper']}>
-            {photos?.map((photo, index) => (
-              <div key={index} className={classes['uploaded-image']}>
-                <Close
-                  onClick={() =>
-                    setPhotos((photos) => {
-                      return photos.filter((_, i) => i !== index);
-                    })
-                  }
+          <form onSubmit={sendMessage}>
+            <div className={classes['buttons-wrapper']}>
+              <button
+                className={`${classes['is-code-btn']} ${
+                  isCode && classes['active']
+                }`}
+                type="button"
+                onClick={() => setIsCode((isCode) => !isCode)}
+                title="Code Block"
+              >
+                <CodeVector />
+              </button>
+              <button type="button" className={classes['img-uploader']}>
+                <UploadImage />
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handlePhotoUpload}
+                  placeholder="none"
+                  name="photoUrl"
+                  title="Send a picture"
+                  multiple
                 />
-                <img src={photo} alt="Uploaded" />
-              </div>
-            ))}
-            {imgUploadLoading && <div className={classes['loader']}></div>}
-          </div>
-        )}
-        <form onSubmit={sendMessage}>
-          <div className={classes['buttons-wrapper']}>
-            <button
-              className={`${classes['is-code-btn']} ${
-                isCode && classes['active']
-              }`}
-              type="button"
-              onClick={() => setIsCode((isCode) => !isCode)}
-              title="Code Block"
-            >
-              <CodeVector />
+              </button>
+            </div>
+            <textarea
+              value={messageText}
+              onChange={handleInputChange}
+              ref={chatInputRef}
+              aria-label="Chat Message textarea"
+              onKeyDown={onEnterPress}
+              onClick={markAllAsRead}
+            />
+            <button type="submit">
+              <Send />
             </button>
-            <button type="button" className={classes['img-uploader']}>
-              <UploadImage />
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handlePhotoUpload}
-                placeholder="none"
-                name="photoUrl"
-                title="Send a picture"
-                multiple
-              />
-            </button>
-          </div>
-
-          <textarea
-            value={messageText}
-            onChange={handleInputChange}
-            ref={chatInputRef}
-            aria-label="Chat Message textarea"
-            onKeyDown={onEnterPress}
-            onClick={markAllAsRead}
-          />
-          <button type="submit">
-            <Send />
-          </button>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

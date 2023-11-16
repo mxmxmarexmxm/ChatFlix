@@ -148,22 +148,23 @@
   margin-top: 4rem;
 }
 
+.chat-footer {
+  position: relative;
+}
+
 .scroll-down-icon {
   height: 45px;
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -150%);
-  background-color: gray;
-  fill: black;
+  transform: translate(-50%, -115%);
+  background-color: #161617;
+  border: 1px solid white;
+  fill: white;
   border-radius: 50px;
   padding: 0.3rem;
   cursor: pointer;
   display: none;
-}
-
-.chat-body:has(.message-to-replay) .scroll-down-icon {
-  transform: translate(-50%, -300%);
 }
 
 .scroll-down-icon.display {
