@@ -8,8 +8,9 @@ import userPlaceholder from '../../assets/img/user-placeholder.png';
 import AuthForm from '../../auth/AuthForm';
 import UserProfile from '../UserProfile';
 import useClickOutside from '../../hooks/useClickOutside';
+import { Close } from '../../assets/icons/Close';
 
-const Header = ({ handleSearch }) => {
+const Header = ({ handleSearch, searchTerm }) => {
   const { openModal, closeModal } = useModal();
   const [openMenu, setOpenMenu] = useState(false);
   const { user } = useContext(AuthContext);
@@ -31,7 +32,15 @@ const Header = ({ handleSearch }) => {
       <div className={classes['header-logo-wrapper']}>
         <img src={logo} alt="chatflix-logo" />
       </div>
-      <input type="text" onChange={handleSearch} placeholder="Search..." />
+      <div className={classes['input-wrapper']}>
+        <Close onClick={() => handleSearch('')} />
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => handleSearch(e.target.value)}
+          placeholder="Search..."
+        />
+      </div>
       {user ? (
         <div className={classes['drop-menu']} ref={menuRef}>
           <div

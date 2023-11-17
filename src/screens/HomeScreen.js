@@ -7,16 +7,13 @@ import ToggleChatHeadsBtn from '../components/UI/ToggleChatHeadsBtn.js';
 import Header from '../components/UI/Header.js';
 import ChatHead from '../components/Chat/ChatHead.js';
 import { useChatContext } from '../context/ChatContext.js';
+import useSearch from '../hooks/useSearch.js';
 
 const HomeScreen = () => {
+  const { searchTerm, handleSearch } = useSearch();
   const [showChatHeads, setShowChatHeads] = useState(false);
   const { activeChatsBottom, activeChatsRight, favoriteChats } =
     useChatContext();
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
-  };
 
   const filteredChatsData = [...chatsData, ...favoriteChats].filter((chat) =>
     chat.name.toLocaleLowerCase().startsWith(searchTerm.toLocaleLowerCase())
@@ -24,7 +21,7 @@ const HomeScreen = () => {
 
   return (
     <div className={classes['home-screen']}>
-      <Header handleSearch={handleSearch} />
+      <Header handleSearch={handleSearch} searchTerm={searchTerm} />
       <div className={classes['chat-rows-container']}>
         {rowTitles.map((title) => (
           <ChatRow

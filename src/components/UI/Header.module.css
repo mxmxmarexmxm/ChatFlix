@@ -25,6 +25,19 @@ header input {
   max-width: 33%;
 }
 
+.input-wrapper {
+  position: relative;
+  margin-right: auto;
+}
+
+.input-wrapper svg {
+  position: absolute;
+  top: 30%;
+  right: 5%;
+  height: 1rem;
+  cursor: pointer;
+}
+
 .header-logo-wrapper {
   display: flex;
   align-items: center;
@@ -118,6 +131,7 @@ header input {
     margin-right: auto;
     margin-left: 2rem;
     font-size: 1.1rem;
+    max-width: none;
   }
 
   .profile-image-wrapper {
