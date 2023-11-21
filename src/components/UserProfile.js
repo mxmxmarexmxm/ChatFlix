@@ -224,7 +224,7 @@ const UserProfile = ({ uid, personalProfile }) => {
       <div>
         {newValues?.technologies?.map((tech) => (
           <div style={{ height: 20, display: 'flex', objectFit: 'contain' }}>
-            <img style={{ height: 30 }} src={tech.logo} />
+            <img style={{ height: 30 }} src={tech.logo} alt={tech.name} />
           </div>
         ))}
       </div>
