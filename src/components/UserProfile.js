@@ -147,7 +147,7 @@ const UserProfile = ({ uid, personalProfile }) => {
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search for tech..."
+              placeholder="Search for technologies..."
             />
           </div>
           <div>
