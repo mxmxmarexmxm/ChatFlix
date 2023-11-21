@@ -1,6 +1,11 @@
 export const Close = ({ ...props }) => {
   return (
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      height="20"
+      {...props}
+    >
       <title>Close</title>
       <g id="Menu / Close_LG">
         <path
