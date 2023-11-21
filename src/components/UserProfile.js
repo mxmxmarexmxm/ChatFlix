@@ -134,6 +134,7 @@ const UserProfile = ({ uid, personalProfile }) => {
         technologies: [...values.technologies, chat],
       }));
     }
+    setSearchTerm('');
   };
 
   return (
