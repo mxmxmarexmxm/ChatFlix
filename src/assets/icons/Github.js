@@ -6,8 +6,7 @@ const GithubIcon = ({ ...props }) => {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <title>github [#142]</title>
-      <desc>Created with Sketch.</desc>
+      <title>GitHub</title>
       <defs></defs>
       <g id="Page-1" stroke="none" strokeWidth="1" fillRule="evenodd">
         <g
