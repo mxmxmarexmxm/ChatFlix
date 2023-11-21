@@ -153,7 +153,7 @@ const UserProfile = ({ uid, personalProfile }) => {
           <div>
             {filteredChatsData &&
               filteredChatsData?.map((chat) => (
-                <div onClick={() => handleSelectChat(chat)}>
+                <div onClick={() => handleSelectChat(chat)} key={chat.id}>
                   <img
                     src={chat.logo}
                     style={{ height: 30, width: 30 }}
@@ -224,7 +224,10 @@ const UserProfile = ({ uid, personalProfile }) => {
       {/* TODO: REMOVE INLINE STYLING, ADD REMOVE FEAT  */}
       <div>
         {newValues?.technologies?.map((tech) => (
-          <div style={{ height: 20, display: 'flex', objectFit: 'contain' }}>
+          <div
+            key={tech.id}
+            style={{ height: 20, display: 'flex', objectFit: 'contain' }}
+          >
             <img style={{ height: 30 }} src={tech.logo} alt={tech.name} />
           </div>
         ))}
