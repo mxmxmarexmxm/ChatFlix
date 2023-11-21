@@ -12,6 +12,7 @@ import {
 } from '../services/UserServices';
 import GithubIcon from '../assets/icons/Github';
 import Loader from './UI/Loader';
+import { chatsData } from '../data/data.js';
 
 const UserProfile = ({ uid, personalProfile }) => {
   const [user, setUser] = useState(null);
@@ -24,6 +25,7 @@ const UserProfile = ({ uid, personalProfile }) => {
     email: '',
     linkedin: '',
     github: '',
+    technologies: [],
   });
   const [isEditing, setIsEditing] = useState(false);
   const [status, setStatus] = useState('');
@@ -42,6 +44,7 @@ const UserProfile = ({ uid, personalProfile }) => {
         email: userData.email,
         linkedin: userData.linkedin,
         github: userData.github,
+        technologies: userData.technologies,
       });
       setUser(personalProfile || userData);
     };
@@ -108,8 +111,59 @@ const UserProfile = ({ uid, personalProfile }) => {
     setNewValues({ ...newValues, [e.target.name]: e.target.value });
   };
 
+  /* TODO: IMPROVE  SEARCH !!! */
+  const [filteredChatsData, setFilteredChatsData] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    if (searchTerm) {
+      const filteredChatsData = chatsData.filter((chat) =>
+        chat.name.toLocaleLowerCase().startsWith(searchTerm.toLocaleLowerCase())
+      );
+      setFilteredChatsData(filteredChatsData);
+    } else {
+      setFilteredChatsData(null);
+    }
+  }, [searchTerm]);
+
+  const handleSelectChat = (chat) => {
+    // TODO: IMPROVE !!!
+    if (!newValues.technologies.includes(chat)) {
+      setNewValues((values) => ({
+        ...values,
+        technologies: [...values.technologies, chat],
+      }));
+    }
+  };
+
   return (
     <form onSubmit={handleFormSubmit} className={classes['user-card']}>
+      {/* TODO: REMOVE INLINE STYLING, IMPROVE   */}
+      {isEditing && (
+        <div>
+          <div className={classes['input-wrapper']}>
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search for tech..."
+            />
+          </div>
+          <div>
+            {filteredChatsData &&
+              filteredChatsData?.map((chat) => (
+                <div onClick={() => handleSelectChat(chat)}>
+                  <img
+                    src={chat.logo}
+                    style={{ height: 30, width: 30 }}
+                    alt={chat.name}
+                  />
+                  <span style={{ color: 'white' }}>{chat.name}</span>
+                </div>
+              ))}
+          </div>
+        </div>
+      )}
       <input
         type="text"
         value={newValues.title}
@@ -166,6 +220,14 @@ const UserProfile = ({ uid, personalProfile }) => {
         name="email"
         required
       />
+      {/* TODO: REMOVE INLINE STYLING, ADD REMOVE FEAT  */}
+      <div>
+        {newValues?.technologies?.map((tech) => (
+          <div style={{ height: 20, display: 'flex', objectFit: 'contain' }}>
+            <img style={{ height: 30 }} src={tech.logo} />
+          </div>
+        ))}
+      </div>
       {isEditing ? (
         <>
           <input
