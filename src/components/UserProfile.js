@@ -139,32 +139,6 @@ const UserProfile = ({ uid, personalProfile }) => {
 
   return (
     <form onSubmit={handleFormSubmit} className={classes['user-card']}>
-      {/* TODO: REMOVE INLINE STYLING, IMPROVE   */}
-      {isEditing && (
-        <div>
-          <div className={classes['input-wrapper']}>
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search for technologies..."
-            />
-          </div>
-          <div>
-            {filteredChatsData &&
-              filteredChatsData?.map((chat) => (
-                <div onClick={() => handleSelectChat(chat)} key={chat.id}>
-                  <img
-                    src={chat.logo}
-                    style={{ height: 30, width: 30 }}
-                    alt={chat.name}
-                  />
-                  <span style={{ color: 'white' }}>{chat.name}</span>
-                </div>
-              ))}
-          </div>
-        </div>
-      )}
       <input
         type="text"
         value={newValues.title}
@@ -173,6 +147,42 @@ const UserProfile = ({ uid, personalProfile }) => {
         name="title"
         disabled={!isEditing}
       />
+      {/* ADD REMOVE FEAT  */}
+      {newValues?.technologies.length > 0 && (
+        <div className={classes['technologies-container']}>
+          {newValues.technologies.map((tech) => (
+            <div key={tech.id}>
+              <img src={tech.logo} alt={tech.name} />
+            </div>
+          ))}
+        </div>
+      )}
+      {/* TODO:  IMPROVE   */}
+      {isEditing && (
+        <div className={classes['technologies-search']}>
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search for technologies..."
+          />
+          <div className={classes['search-results']}>
+            {filteredChatsData &&
+              filteredChatsData.map((chat) => (
+                <div
+                  className={classes['search-result']}
+                  onClick={() => handleSelectChat(chat)}
+                  key={chat.id}
+                >
+                  <div className={classes['search-result-img-wrapper']}>
+                    <img src={chat.logo} alt={chat.name} />
+                  </div>
+                  <span>{chat.name}</span>
+                </div>
+              ))}
+          </div>
+        </div>
+      )}
       <div className={classes['img-and-input-wrapper']}>
         <div className={classes['profile-img-wrapper']}>
           <img
@@ -221,19 +231,6 @@ const UserProfile = ({ uid, personalProfile }) => {
         name="email"
         required
       />
-      {/* TODO: REMOVE INLINE STYLING, ADD REMOVE FEAT  */}
-      {newValues?.technologies.length > 0 && (
-        <div>
-          {newValues?.technologies?.map((tech) => (
-            <div
-              key={tech.id}
-              style={{ height: 20, display: 'flex', objectFit: 'contain' }}
-            >
-              <img style={{ height: 30 }} src={tech.logo} alt={tech.name} />
-            </div>
-          ))}
-        </div>
-      )}
       {isEditing ? (
         <>
           <input
