@@ -166,21 +166,23 @@ const UserProfile = ({ uid, personalProfile }) => {
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search for technologies..."
           />
-          <div className={classes['search-results']}>
-            {filteredChatsData &&
-              filteredChatsData.map((chat) => (
-                <div
-                  className={classes['search-result']}
-                  onClick={() => handleSelectChat(chat)}
-                  key={chat.id}
-                >
-                  <div className={classes['search-result-img-wrapper']}>
-                    <img src={chat.logo} alt={chat.name} />
+          {searchTerm && (
+            <div className={classes['search-results']}>
+              {filteredChatsData &&
+                filteredChatsData.map((chat) => (
+                  <div
+                    className={classes['search-result']}
+                    onClick={() => handleSelectChat(chat)}
+                    key={chat.id}
+                  >
+                    <div className={classes['search-result-img-wrapper']}>
+                      <img src={chat.logo} alt={chat.name} />
+                    </div>
+                    <span>{chat.name}</span>
                   </div>
-                  <span>{chat.name}</span>
-                </div>
-              ))}
-          </div>
+                ))}
+            </div>
+          )}
         </div>
       )}
       <div className={classes['img-and-input-wrapper']}>
