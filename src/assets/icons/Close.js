@@ -6,7 +6,7 @@ export const Close = ({ ...props }) => {
       height="20"
       {...props}
     >
-      <title>Close</title>
+      <title>{props.title || 'Close'}</title>
       <g id="Menu / Close_LG">
         <path
           id="Vector"

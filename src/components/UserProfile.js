@@ -136,7 +136,6 @@ const UserProfile = ({ uid, personalProfile }) => {
     }
     setSearchTerm('');
   };
-  
 
   const handleRemoveTech = (tech) => {
     setNewValues((values) => ({
@@ -163,7 +162,10 @@ const UserProfile = ({ uid, personalProfile }) => {
             <div key={tech.id}>
               {isEditing && (
                 <button type="button">
-                  <Close onClick={() => handleRemoveTech(tech)} />
+                  <Close
+                    title="Remove"
+                    onClick={() => handleRemoveTech(tech)}
+                  />
                 </button>
               )}
               <img src={tech.logo} alt={tech.name} />
