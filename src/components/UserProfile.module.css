@@ -99,13 +99,36 @@
 
 .technologies-container {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.8rem;
 }
 
 .technologies-container div {
   display: flex;
+  position: relative;
   height: 40px;
   aspect-ratio: 1/1;
+}
+
+.technologies-container button {
+  padding: 0.1rem;
+  background-color: #161617;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+.technologies-container button svg {
+  height: .7rem;
+}
+
+.technologies-container button:hover {
+  background-color: #242526;
 }
 
 .technologies-search {

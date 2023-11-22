@@ -4,6 +4,7 @@ import userPlaceholder from '../assets/img/user-placeholder.png';
 import { updateEmail, updateProfile } from 'firebase/auth';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { Edit } from '../assets/icons/Edit';
+import { Close } from '../assets/icons/Close';
 import { Upload } from '../assets/icons/Upload';
 import { Linkedin } from '../assets/icons/Linkedin';
 import {
@@ -126,8 +127,7 @@ const UserProfile = ({ uid, personalProfile }) => {
     }
   }, [searchTerm]);
 
-  const handleSelectTech = (tech) => {
-    // TODO: IMPROVE !!!
+  const handleAddTech = (tech) => {
     if (!newValues.technologies.some((item) => item.id === tech.id)) {
       setNewValues((values) => ({
         ...values,
@@ -135,6 +135,16 @@ const UserProfile = ({ uid, personalProfile }) => {
       }));
     }
     setSearchTerm('');
+  };
+  
+
+  const handleRemoveTech = (tech) => {
+    setNewValues((values) => ({
+      ...values,
+      technologies: values.technologies.filter(
+        (technology) => technology.id !== tech.id
+      ),
+    }));
   };
 
   return (
@@ -147,17 +157,20 @@ const UserProfile = ({ uid, personalProfile }) => {
         name="title"
         disabled={!isEditing}
       />
-      {/* ADD REMOVE FEAT  */}
       {newValues?.technologies.length > 0 && (
         <div className={classes['technologies-container']}>
           {newValues.technologies.map((tech) => (
             <div key={tech.id}>
+              {isEditing && (
+                <button type="button">
+                  <Close onClick={() => handleRemoveTech(tech)} />
+                </button>
+              )}
               <img src={tech.logo} alt={tech.name} />
             </div>
           ))}
         </div>
       )}
-      {/* TODO:  IMPROVE */}
       {isEditing && (
         <div className={classes['technologies-search']}>
           <input
@@ -172,7 +185,7 @@ const UserProfile = ({ uid, personalProfile }) => {
                 filteredChatsData.map((tech) => (
                   <div
                     className={classes['search-result']}
-                    onClick={() => handleSelectTech(tech)}
+                    onClick={() => handleAddTech(tech)}
                     key={tech.id}
                   >
                     <div className={classes['search-result-img-wrapper']}>
