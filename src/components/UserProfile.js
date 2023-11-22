@@ -126,12 +126,12 @@ const UserProfile = ({ uid, personalProfile }) => {
     }
   }, [searchTerm]);
 
-  const handleSelectChat = (chat) => {
+  const handleSelectTech = (tech) => {
     // TODO: IMPROVE !!!
-    if (!newValues.technologies.includes(chat)) {
+    if (!newValues.technologies.some((item) => item.id === tech.id)) {
       setNewValues((values) => ({
         ...values,
-        technologies: [...values.technologies, chat],
+        technologies: [...values.technologies, tech],
       }));
     }
     setSearchTerm('');
@@ -157,7 +157,7 @@ const UserProfile = ({ uid, personalProfile }) => {
           ))}
         </div>
       )}
-      {/* TODO:  IMPROVE   */}
+      {/* TODO:  IMPROVE */}
       {isEditing && (
         <div className={classes['technologies-search']}>
           <input
@@ -169,16 +169,16 @@ const UserProfile = ({ uid, personalProfile }) => {
           {searchTerm && (
             <div className={classes['search-results']}>
               {filteredChatsData?.length > 0 ? (
-                filteredChatsData.map((chat) => (
+                filteredChatsData.map((tech) => (
                   <div
                     className={classes['search-result']}
-                    onClick={() => handleSelectChat(chat)}
-                    key={chat.id}
+                    onClick={() => handleSelectTech(tech)}
+                    key={tech.id}
                   >
                     <div className={classes['search-result-img-wrapper']}>
-                      <img src={chat.logo} alt={chat.name} />
+                      <img src={tech.logo} alt={tech.name} />
                     </div>
-                    <span>{chat.name}</span>
+                    <span>{tech.name}</span>
                   </div>
                 ))
               ) : (
