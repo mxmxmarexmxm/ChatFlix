@@ -168,7 +168,7 @@ const UserProfile = ({ uid, personalProfile }) => {
           />
           {searchTerm && (
             <div className={classes['search-results']}>
-              {filteredChatsData &&
+              {filteredChatsData?.length > 0 ? (
                 filteredChatsData.map((chat) => (
                   <div
                     className={classes['search-result']}
@@ -180,7 +180,12 @@ const UserProfile = ({ uid, personalProfile }) => {
                     </div>
                     <span>{chat.name}</span>
                   </div>
-                ))}
+                ))
+              ) : (
+                <div className={classes['search-result']}>
+                  <span>No results found...</span>
+                </div>
+              )}
             </div>
           )}
         </div>
