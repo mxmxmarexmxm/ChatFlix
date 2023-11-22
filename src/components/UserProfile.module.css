@@ -100,13 +100,16 @@
 
 .technologies-container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: 0.8rem;
 }
 
 .technologies-container div {
   display: flex;
   position: relative;
-  height: 40px;
+  height: 35px;
   aspect-ratio: 1/1;
 }
 
