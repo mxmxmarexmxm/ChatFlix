@@ -33,7 +33,7 @@ const Header = ({ handleSearch, searchTerm }) => {
         <img src={logo} alt="chatflix-logo" />
       </div>
       <div className={classes['input-wrapper']}>
-        <Close onClick={() => handleSearch('')} />
+        <Close onClick={() => handleSearch('')} title="Remove" />
         <input
           type="text"
           value={searchTerm}
