@@ -10,7 +10,7 @@ import UserProfile from '../UserProfile';
 import useClickOutside from '../../hooks/useClickOutside';
 import { Close } from '../../assets/icons/Close';
 
-const Header = ({ handleSearch, searchTerm }) => {
+const Header = ({ setSearchTerm, searchTerm }) => {
   const { openModal, closeModal } = useModal();
   const [openMenu, setOpenMenu] = useState(false);
   const { user } = useContext(AuthContext);
@@ -33,11 +33,11 @@ const Header = ({ handleSearch, searchTerm }) => {
         <img src={logo} alt="chatflix-logo" />
       </div>
       <div className={classes['input-wrapper']}>
-        <Close onClick={() => handleSearch('')} title="Remove" />
+        <Close onClick={() => setSearchTerm('')} title="Remove" />
         <input
           type="text"
           value={searchTerm}
-          onChange={(e) => handleSearch(e.target.value)}
+          onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search..."
         />
       </div>

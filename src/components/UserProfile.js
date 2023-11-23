@@ -30,7 +30,7 @@ const UserProfile = ({ uid, personalProfile }) => {
     technologies: [],
   });
   const [status, setStatus] = useState('');
-  const { searchTerm, handleSearch, filteredChatsData } = useChatsSearch();
+  const { searchTerm, setSearchTerm, filteredChatsData } = useChatsSearch();
   const storage = getStorage();
 
   useEffect(() => {
@@ -120,7 +120,7 @@ const UserProfile = ({ uid, personalProfile }) => {
         technologies: [...values.technologies, tech],
       }));
     }
-    handleSearch('');
+    setSearchTerm('');
   };
 
   const handleRemoveTech = (tech) => {
@@ -164,7 +164,7 @@ const UserProfile = ({ uid, personalProfile }) => {
           <input
             type="text"
             value={searchTerm}
-            onChange={(e) => handleSearch(e.target.value)}
+            onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search for technologies..."
           />
           {searchTerm && (

@@ -12,11 +12,11 @@ import useChatsSearch from '../hooks/useChatsSearch.js';
 const HomeScreen = () => {
   const [showChatHeads, setShowChatHeads] = useState(false);
   const { activeChatsBottom, activeChatsRight } = useChatContext();
-  const { searchTerm, handleSearch, filteredChatsData } = useChatsSearch(true);
+  const { searchTerm, setSearchTerm, filteredChatsData } = useChatsSearch(true);
 
   return (
     <div className={classes['home-screen']}>
-      <Header handleSearch={handleSearch} searchTerm={searchTerm} />
+      <Header setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
       <div className={classes['chat-rows-container']}>
         {rowTitles.map((title) => (
           <ChatRow

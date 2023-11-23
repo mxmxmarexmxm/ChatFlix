@@ -17,13 +17,9 @@ const useChatsSearch = (isHomeScreen) => {
     setFilteredChatsData(filteredChatsData);
   }, [searchTerm, isHomeScreen, favoriteChats]);
 
-  const handleSearch = (term) => {
-    setSearchTerm(term);
-  };
-
   return {
     searchTerm,
-    handleSearch,
+    setSearchTerm,
     filteredChatsData,
   };
 };
