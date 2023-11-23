@@ -113,6 +113,10 @@
   aspect-ratio: 1/1;
 }
 
+.technologies-container img{
+  border-radius: 8%;
+}
+
 .technologies-container button {
   padding: 0.1rem;
   background-color: #161617;
