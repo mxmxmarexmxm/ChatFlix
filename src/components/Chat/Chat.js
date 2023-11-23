@@ -24,7 +24,7 @@ const Chat = ({ chat, isFullScreen, setShowSideChats }) => {
   const { user } = useContext(AuthContext);
   const messagesContainerRef = useRef();
   const chatInputRef = useRef();
-  const { openModal } = useModal();
+  const { openModal, modalVisible } = useModal();
   const replayToUserData = useUserData(messageToReplay?.uid);
   const replayToDisplayName =
     user?.uid === messageToReplay?.uid
@@ -193,7 +193,8 @@ const Chat = ({ chat, isFullScreen, setShowSideChats }) => {
       if (event.keyCode === 27) {
         if (isFullScreen) {
           toggleFullScreenHandler(chat.id);
-        } else {
+        }
+        if (!isFullScreen && !modalVisible) {
           setDisplayMessages(false);
         }
       }
@@ -203,7 +204,7 @@ const Chat = ({ chat, isFullScreen, setShowSideChats }) => {
     return () => {
       window.removeEventListener('keydown', handleEsc);
     };
-  }, []);
+  }, [modalVisible]);
 
   useEffect(() => {
     const messagesContainer = messagesContainerRef?.current;
