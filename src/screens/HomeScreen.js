@@ -1,5 +1,5 @@
 import classes from './HomeScreen.module.css';
-import { chatsData, rowTitles } from '../data/data.js';
+import { rowTitles } from '../data/data.js';
 import { useState } from 'react';
 import Chat from '../components/Chat/Chat.js';
 import ChatRow from '../components/ChatRow.js';
@@ -7,17 +7,12 @@ import ToggleChatHeadsBtn from '../components/UI/ToggleChatHeadsBtn.js';
 import Header from '../components/UI/Header.js';
 import ChatHead from '../components/Chat/ChatHead.js';
 import { useChatContext } from '../context/ChatContext.js';
-import useSearch from '../hooks/useSearch.js';
+import useChatsSearch from '../hooks/useChatsSearch.js';
 
 const HomeScreen = () => {
-  const { searchTerm, handleSearch } = useSearch();
   const [showChatHeads, setShowChatHeads] = useState(false);
-  const { activeChatsBottom, activeChatsRight, favoriteChats } =
-    useChatContext();
-
-  const filteredChatsData = [...chatsData, ...favoriteChats].filter((chat) =>
-    chat.name.toLocaleLowerCase().startsWith(searchTerm.toLocaleLowerCase())
-  );
+  const { activeChatsBottom, activeChatsRight } = useChatContext();
+  const { searchTerm, handleSearch, filteredChatsData } = useChatsSearch(true);
 
   return (
     <div className={classes['home-screen']}>

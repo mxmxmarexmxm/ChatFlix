@@ -13,10 +13,11 @@ import {
 } from '../services/UserServices';
 import GithubIcon from '../assets/icons/Github';
 import Loader from './UI/Loader';
-import { chatsData } from '../data/data.js';
+import useChatsSearch from '../hooks/useChatsSearch.js';
 
 const UserProfile = ({ uid, personalProfile }) => {
   const [user, setUser] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
   const [newPhoto, setNewPhoto] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [newValues, setNewValues] = useState({
@@ -28,8 +29,8 @@ const UserProfile = ({ uid, personalProfile }) => {
     github: '',
     technologies: [],
   });
-  const [isEditing, setIsEditing] = useState(false);
   const [status, setStatus] = useState('');
+  const { searchTerm, handleSearch, filteredChatsData } = useChatsSearch();
   const storage = getStorage();
 
   useEffect(() => {
@@ -112,21 +113,6 @@ const UserProfile = ({ uid, personalProfile }) => {
     setNewValues({ ...newValues, [e.target.name]: e.target.value });
   };
 
-  /* TODO: IMPROVE  SEARCH !!! */
-  const [filteredChatsData, setFilteredChatsData] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
-
-  useEffect(() => {
-    if (searchTerm) {
-      const filteredChatsData = chatsData.filter((chat) =>
-        chat.name.toLocaleLowerCase().startsWith(searchTerm.toLocaleLowerCase())
-      );
-      setFilteredChatsData(filteredChatsData);
-    } else {
-      setFilteredChatsData(null);
-    }
-  }, [searchTerm]);
-
   const handleAddTech = (tech) => {
     if (!newValues.technologies.some((item) => item.id === tech.id)) {
       setNewValues((values) => ({
@@ -134,7 +120,7 @@ const UserProfile = ({ uid, personalProfile }) => {
         technologies: [...values.technologies, tech],
       }));
     }
-    setSearchTerm('');
+    handleSearch('');
   };
 
   const handleRemoveTech = (tech) => {
@@ -178,7 +164,7 @@ const UserProfile = ({ uid, personalProfile }) => {
           <input
             type="text"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) => handleSearch(e.target.value)}
             placeholder="Search for technologies..."
           />
           {searchTerm && (
