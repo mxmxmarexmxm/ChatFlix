@@ -3,14 +3,14 @@ import { useModal } from '../../context/ModalContext';
 import { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../../Firebase/context';
 import logo from '../../assets/img/logo.png';
-import { signOut } from '../../services/AuthServices';
+import { logOut } from '../../services/AuthServices';
 import userPlaceholder from '../../assets/img/user-placeholder.png';
 import AuthForm from '../../auth/AuthForm';
 import UserProfile from '../UserProfile';
 import useClickOutside from '../../hooks/useClickOutside';
 import { Close } from '../../assets/icons/Close';
 import { Profile } from '../../assets/icons/Profile';
-import { LogOut } from '../../assets/icons/LogOut';
+import { LogOutIcon } from '../../assets/icons/LogOutIcon';
 
 const Header = ({ setSearchTerm, searchTerm }) => {
   const { openModal, closeModal } = useModal();
@@ -18,8 +18,8 @@ const Header = ({ setSearchTerm, searchTerm }) => {
   const { user } = useContext(AuthContext);
   const menuRef = useRef(null);
 
-  const signOutHandler = () => {
-    signOut();
+  const logOutHandler = () => {
+    logOut();
     closeModal();
     setOpenMenu(false);
   };
@@ -57,24 +57,24 @@ const Header = ({ setSearchTerm, searchTerm }) => {
           </div>
           {openMenu && (
             <ul>
-            <li>
-              <button
-                onClick={() =>
-                  openModal(<UserProfile personalProfile={user} />)
-                }
-                aria-label="Your Profile"
-              >
-                <Profile />
-                Your Profile
-              </button>
-            </li>
-            <li>
-              <button onClick={logOutHandler} aria-label="Log Out">
-                <LogOutIcon />
-                Log Out
-              </button>
-            </li>
-          </ul>
+              <li>
+                <button
+                  onClick={() =>
+                    openModal(<UserProfile personalProfile={user} />)
+                  }
+                  aria-label="Your Profile"
+                >
+                  <Profile />
+                  Your Profile
+                </button>
+              </li>
+              <li>
+                <button onClick={logOutHandler} aria-label="Log Out">
+                  <LogOutIcon />
+                  Log Out
+                </button>
+              </li>
+            </ul>
           )}
         </div>
       ) : (

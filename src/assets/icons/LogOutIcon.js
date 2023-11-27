@@ -1,4 +1,4 @@
-export const LogOut = ({ ...props }) => {
+export const LogOutIcon = ({ ...props }) => {
   return (
     <svg
       viewBox="0 0 24 24"
