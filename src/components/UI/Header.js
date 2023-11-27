@@ -57,23 +57,24 @@ const Header = ({ setSearchTerm, searchTerm }) => {
           </div>
           {openMenu && (
             <ul>
-              <li>
-                <button
-                  onClick={() =>
-                    openModal(<UserProfile personalProfile={user} />)
-                  }
-                >
-                  <Profile />
-                  Your Profile
-                </button>
-              </li>
-              <li>
-                <button onClick={signOutHandler}>
-                  <LogOut />
-                  Sign Out
-                </button>
-              </li>
-            </ul>
+            <li>
+              <button
+                onClick={() =>
+                  openModal(<UserProfile personalProfile={user} />)
+                }
+                aria-label="Your Profile"
+              >
+                <Profile />
+                Your Profile
+              </button>
+            </li>
+            <li>
+              <button onClick={logOutHandler} aria-label="Log Out">
+                <LogOutIcon />
+                Log Out
+              </button>
+            </li>
+          </ul>
           )}
         </div>
       ) : (
