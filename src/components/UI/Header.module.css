@@ -117,6 +117,13 @@ header {
   border: none;
   font-weight: inherit;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+}
+
+.drop-menu svg {
+  height: 1.1rem;
 }
 
 @media only screen and (min-width: 756px) {

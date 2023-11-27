@@ -9,6 +9,8 @@ import AuthForm from '../../auth/AuthForm';
 import UserProfile from '../UserProfile';
 import useClickOutside from '../../hooks/useClickOutside';
 import { Close } from '../../assets/icons/Close';
+import { Profile } from '../../assets/icons/Profile';
+import { LogOut } from '../../assets/icons/LogOut';
 
 const Header = ({ setSearchTerm, searchTerm }) => {
   const { openModal, closeModal } = useModal();
@@ -61,11 +63,15 @@ const Header = ({ setSearchTerm, searchTerm }) => {
                     openModal(<UserProfile personalProfile={user} />)
                   }
                 >
+                  <Profile />
                   Your Profile
                 </button>
               </li>
               <li>
-                <button onClick={signOutHandler}>Sign Out</button>
+                <button onClick={signOutHandler}>
+                  <LogOut />
+                  Sign Out
+                </button>
               </li>
             </ul>
           )}
