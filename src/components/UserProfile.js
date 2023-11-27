@@ -7,13 +7,11 @@ import { Edit } from '../assets/icons/Edit';
 import { Close } from '../assets/icons/Close';
 import { Upload } from '../assets/icons/Upload';
 import { Linkedin } from '../assets/icons/Linkedin';
-import {
-  getUserDataFromFirestore,
-  updateUserDataInFirestore,
-} from '../services/UserServices';
+import { updateUserDataInFirestore } from '../services/UserServices';
 import GithubIcon from '../assets/icons/Github';
 import Loader from './UI/Loader';
 import useChatsSearch from '../hooks/useChatsSearch.js';
+import useUserData from '../hooks/useUserData.js';
 
 const UserProfile = ({ uid, personalProfile }) => {
   const [user, setUser] = useState(null);
@@ -32,27 +30,17 @@ const UserProfile = ({ uid, personalProfile }) => {
   const [status, setStatus] = useState('');
   const { searchTerm, setSearchTerm, filteredChatsData } = useChatsSearch();
   const storage = getStorage();
+  const userData = useUserData(personalProfile?.uid || uid);
 
   useEffect(() => {
-    // Fetch user data when the component mounts
-    const fetchUserData = async () => {
-      const userData = await getUserDataFromFirestore(
-        personalProfile?.uid || uid
-      );
-      setFormValues({
-        displayName: userData.displayName,
-        title: userData.title,
-        aboutMe: userData.aboutMe,
-        email: userData.email,
-        linkedin: userData.linkedin,
-        github: userData.github,
-        technologies: userData.technologies,
-      });
+    // Initialize user profile data when the component mounts
+    const initializeUserProfile = () => {
+      setFormValues(userData);
       setUser(personalProfile || userData);
     };
 
-    fetchUserData();
-  }, [uid, personalProfile]);
+    userData && initializeUserProfile();
+  }, [userData, personalProfile]);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
