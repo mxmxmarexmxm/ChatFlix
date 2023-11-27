@@ -74,12 +74,14 @@ export const ChatProvider = ({ children }) => {
 
   // Close chat handler, for each scenario.
   const closeChatHandler = (id) => {
-    let allChats = [...activeChatsBottom, ...activeChatsRight];
-    const isFirst = allChats[0].id === id;
+    let activeChats = [...activeChatsBottom, ...activeChatsRight];
+    const isFirst = activeChats[0].id === id;
     const isFullScreen = id === fullScreenChat?.id;
 
     if (isFullScreen) {
-      isFirst ? setFullScreenChat(allChats[1]) : setFullScreenChat(allChats[0]);
+      isFirst
+        ? setFullScreenChat(activeChats[1])
+        : setFullScreenChat(activeChats[0]);
     }
 
     setActiveChatsBottom(activeChatsBottom.filter((chat) => chat?.id !== id));
