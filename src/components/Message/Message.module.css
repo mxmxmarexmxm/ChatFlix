@@ -222,9 +222,13 @@
   gap: 5px;
   color: white;
   position: absolute;
-  bottom: -1.1rem;
+  transform: translate(0, -30%);
   right: 0;
   cursor: pointer;
+}
+
+.received .reactions-wrapper {
+  left: 0;
 }
 
 .reactions-wrapper div {
