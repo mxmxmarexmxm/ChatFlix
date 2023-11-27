@@ -20,7 +20,7 @@ const UserProfile = ({ uid, personalProfile }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [newPhoto, setNewPhoto] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
-  const [newValues, setNewValues] = useState({
+  const [formValues, setFormValues] = useState({
     displayName: '',
     title: '',
     aboutMe: '',
@@ -39,7 +39,7 @@ const UserProfile = ({ uid, personalProfile }) => {
       const userData = await getUserDataFromFirestore(
         personalProfile?.uid || uid
       );
-      setNewValues({
+      setFormValues({
         displayName: userData.displayName,
         title: userData.title,
         aboutMe: userData.aboutMe,
@@ -77,10 +77,10 @@ const UserProfile = ({ uid, personalProfile }) => {
 
     try {
       setStatus('loading');
-      await updateProfile(user, newValues);
-      await updateUserDataInFirestore(user.uid, newValues);
-      if (newValues.email !== user.email) {
-        await updateEmail(user, newValues.email);
+      await updateProfile(user, formValues);
+      await updateUserDataInFirestore(user.uid, formValues);
+      if (formValues.email !== user.email) {
+        await updateEmail(user, formValues.email);
       }
       if (newPhoto) {
         const storageRef = ref(
@@ -110,12 +110,12 @@ const UserProfile = ({ uid, personalProfile }) => {
   };
 
   const handleInputChange = (e) => {
-    setNewValues({ ...newValues, [e.target.name]: e.target.value });
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
   const handleAddTech = (tech) => {
-    if (!newValues.technologies.some((item) => item.id === tech.id)) {
-      setNewValues((values) => ({
+    if (!formValues.technologies.some((item) => item.id === tech.id)) {
+      setFormValues((values) => ({
         ...values,
         technologies: [...values.technologies, tech],
       }));
@@ -124,7 +124,7 @@ const UserProfile = ({ uid, personalProfile }) => {
   };
 
   const handleRemoveTech = (tech) => {
-    setNewValues((values) => ({
+    setFormValues((values) => ({
       ...values,
       technologies: values.technologies.filter(
         (technology) => technology.id !== tech.id
@@ -136,15 +136,15 @@ const UserProfile = ({ uid, personalProfile }) => {
     <form onSubmit={handleFormSubmit} className={classes['user-card']}>
       <input
         type="text"
-        value={newValues.title}
+        value={formValues.title}
         onChange={handleInputChange}
         placeholder="Title"
         name="title"
         disabled={!isEditing}
       />
-      {newValues?.technologies.length > 0 && (
+      {formValues?.technologies.length > 0 && (
         <div className={classes['technologies-container']}>
-          {newValues.technologies.map((tech) => (
+          {formValues.technologies.map((tech) => (
             <div key={tech.id}>
               {isEditing && (
                 <button type="button">
@@ -213,7 +213,7 @@ const UserProfile = ({ uid, personalProfile }) => {
       </div>
       <input
         type="text"
-        value={newValues.displayName}
+        value={formValues.displayName}
         onChange={handleInputChange}
         placeholder="Enter new username"
         disabled={!isEditing}
@@ -224,7 +224,7 @@ const UserProfile = ({ uid, personalProfile }) => {
 
       <textarea
         type="text"
-        value={newValues.aboutMe}
+        value={formValues.aboutMe}
         onChange={handleInputChange}
         placeholder="About Me"
         name="aboutMe"
@@ -232,7 +232,7 @@ const UserProfile = ({ uid, personalProfile }) => {
       />
       <input
         type="email"
-        value={newValues.email}
+        value={formValues.email}
         onChange={handleInputChange}
         placeholder="email"
         disabled={!isEditing}
@@ -243,14 +243,14 @@ const UserProfile = ({ uid, personalProfile }) => {
         <>
           <input
             type="url"
-            value={newValues.linkedin}
+            value={formValues.linkedin}
             onChange={handleInputChange}
             name="linkedin"
             placeholder="Linkedin"
           />
           <input
             type="url"
-            value={newValues.github}
+            value={formValues.github}
             onChange={handleInputChange}
             placeholder="Github"
             name="github"
@@ -259,24 +259,24 @@ const UserProfile = ({ uid, personalProfile }) => {
       ) : (
         <div className={classes['social-media-icon-wrapper']}>
           <a
-            href={newValues?.linkedin || undefined}
+            href={formValues?.linkedin || undefined}
             target="_blank"
             rel="noopener noreferrer"
           >
             <Linkedin
               className={`${classes['social-media-icon']} ${
-                !newValues?.linkedin && classes['social-media-icon-disabled']
+                !formValues?.linkedin && classes['social-media-icon-disabled']
               }`}
             />
           </a>
           <a
-            href={newValues?.github || undefined}
+            href={formValues?.github || undefined}
             target="_blank"
             rel="noopener noreferrer"
           >
             <GithubIcon
               className={`${classes['social-media-icon']} ${
-                !newValues?.github && classes['social-media-icon-disabled']
+                !formValues?.github && classes['social-media-icon-disabled']
               }`}
             />
           </a>
