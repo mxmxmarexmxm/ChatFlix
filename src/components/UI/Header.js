@@ -87,7 +87,7 @@ const Header = ({ setSearchTerm, searchTerm }) => {
                     initialChecked={settings?.notificationsSound}
                     label="Sound"
                     icon={<Sound />}
-                    onSoundToggle={onSoundToggle}
+                    onToggle={onSoundToggle}
                   />
                 </div>
               </li>
