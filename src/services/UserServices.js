@@ -19,6 +19,7 @@ export const addUserToFirestore = async (user) => {
         linkedin: '',
         github: '',
         technologies: [],
+        notificationsSound: true,
       });
     } else {
       console.log('User document already exists in Firestore.');

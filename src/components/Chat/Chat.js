@@ -11,6 +11,7 @@ import ChatInterface from './ChatInterface';
 import useUserData from '../../hooks/useUserData';
 import useChatMessages from '../../hooks/useChatMessages';
 import { useChatContext } from '../../context/ChatContext';
+import { useSettingsContext } from '../../context/SettingsContext';
 
 const Chat = ({ chat, isFullScreen, setShowSideChats }) => {
   const [dispalyMessages, setDisplayMessages] = useState(true);
@@ -22,6 +23,7 @@ const Chat = ({ chat, isFullScreen, setShowSideChats }) => {
   const [isAtBottom, setIsAtBottom] = useState(true);
   const [notify] = useSound(notificationSound);
   const { user } = useContext(AuthContext);
+  const { settings } = useSettingsContext();
   const messagesContainerRef = useRef();
   const chatInputRef = useRef();
   const { openModal, modalVisible } = useModal();
@@ -69,10 +71,10 @@ const Chat = ({ chat, isFullScreen, setShowSideChats }) => {
 
   // Get notification when message arrives
   useEffect(() => {
-    if (unreadMessages > 0) {
+    if (unreadMessages > 0 && settings?.notificationsSound) {
       notify();
     }
-  }, [unreadMessages, notify]);
+  }, [unreadMessages, notify, settings?.notificationsSound]);
 
   const handleInputChange = (e) => {
     const chatInputRefCurr = chatInputRef.current;

@@ -11,11 +11,14 @@ import useClickOutside from '../../hooks/useClickOutside';
 import { Close } from '../../assets/icons/Close';
 import { Profile } from '../../assets/icons/Profile';
 import { LogOutIcon } from '../../assets/icons/LogOutIcon';
+import Toggle from './Toggle';
+import { useSettingsContext } from '../../context/SettingsContext';
 
 const Header = ({ setSearchTerm, searchTerm }) => {
   const { openModal, closeModal } = useModal();
   const [openMenu, setOpenMenu] = useState(false);
   const { user } = useContext(AuthContext);
+  const { settings, setSettings } = useSettingsContext();
   const menuRef = useRef(null);
 
   const logOutHandler = () => {
@@ -28,6 +31,15 @@ const Header = ({ setSearchTerm, searchTerm }) => {
   useClickOutside(menuRef, () => {
     setOpenMenu(false);
   });
+
+  const onSoundToggle = () => {
+    setSettings((currSettings) => {
+      return {
+        ...currSettings,
+        notificationsSound: !currSettings.notificationsSound,
+      };
+    });
+  };
 
   return (
     <header>
@@ -67,6 +79,15 @@ const Header = ({ setSearchTerm, searchTerm }) => {
                   <Profile />
                   Your Profile
                 </button>
+              </li>
+              <li>
+                <div>
+                  <Toggle
+                    initialChecked={settings?.notificationsSound}
+                    label="Sound"
+                    onSoundToggle={onSoundToggle}
+                  />
+                </div>
               </li>
               <li>
                 <button onClick={logOutHandler} aria-label="Log Out">
