@@ -11,6 +11,7 @@ import useClickOutside from '../../hooks/useClickOutside';
 import { Close } from '../../assets/icons/Close';
 import { Profile } from '../../assets/icons/Profile';
 import { LogOutIcon } from '../../assets/icons/LogOutIcon';
+import { Sound } from '../../assets/icons/Sound';
 import Toggle from './Toggle';
 import { useSettingsContext } from '../../context/SettingsContext';
 
@@ -85,6 +86,7 @@ const Header = ({ setSearchTerm, searchTerm }) => {
                   <Toggle
                     initialChecked={settings?.notificationsSound}
                     label="Sound"
+                    icon={<Sound />}
                     onSoundToggle={onSoundToggle}
                   />
                 </div>

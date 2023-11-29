@@ -119,11 +119,18 @@ header {
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: .8rem;
+  gap: 1rem;
+}
+
+
+.drop-menu li div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .drop-menu svg {
-  height: 1.1rem;
+  height: 1.3rem;
 }
 
 @media only screen and (min-width: 756px) {
