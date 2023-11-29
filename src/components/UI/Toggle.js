@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './Toggle.module.css';
+import classes from './Toggle.module.css';
 
 const Toggle = ({ label, onToggle, initialChecked, icon }) => {
   const [checked, setChecked] = useState(initialChecked || false);
@@ -10,11 +10,15 @@ const Toggle = ({ label, onToggle, initialChecked, icon }) => {
   };
 
   return (
-    <div className={styles['toggle-container']}>
-      {icon && <div className={styles['toggle-icon']}>{icon}</div>}
-      <label className={styles['toggle-label']}>{label}</label>
-      <div className={styles['toggle-wrapper']} onClick={handleToggle}>
-        <div className={`${styles['toggle-slider']} ${checked && styles.checked}`} />
+    <div className={classes['toggle-container']}>
+      {icon && <div className={classes['toggle-icon']}>{icon}</div>}
+      <label>{label}</label>
+      <div className={classes['toggle-wrapper']} onClick={handleToggle}>
+        <div
+          className={`${classes['toggle-slider']} ${
+            checked && classes.checked
+          }`}
+        />
       </div>
     </div>
   );
