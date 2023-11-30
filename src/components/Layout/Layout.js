@@ -9,10 +9,13 @@ const Layout = () => {
   const { settings } = useSettingsContext();
   const { fullScreenChat } = useChatContext();
   const content = fullScreenChat ? <FullScreen /> : <HomeScreen />;
+
   return (
     <div
       className={`${classes.layout} ${
-        !settings.darkMode ? classes['light-mode'] : ''
+        typeof settings.darkMode === 'boolean' && !settings?.darkMode
+          ? classes['light-mode']
+          : ''
       }`}
     >
       {content}
