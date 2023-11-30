@@ -23,9 +23,14 @@ export const SettingsProvider = ({ children }) => {
   // Load settings when the component mounts and when the user changes.
   useEffect(() => {
     user &&
-      getUserDataFromFirestore(user.uid).then(({ notificationsSound }) => {
-        setSettings({ notificationsSound: notificationsSound });
-      });
+      getUserDataFromFirestore(user.uid).then(
+        ({ notificationsSound, darkMode }) => {
+          setSettings({
+            notificationsSound: notificationsSound,
+            darkMode: darkMode,
+          });
+        }
+      );
   }, [user]);
 
   return (

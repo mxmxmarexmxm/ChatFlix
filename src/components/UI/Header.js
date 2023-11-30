@@ -42,6 +42,15 @@ const Header = ({ setSearchTerm, searchTerm }) => {
     });
   };
 
+  const onModeToggle = () => {
+    setSettings((currSettings) => {
+      return {
+        ...currSettings,
+        darkMode: !currSettings.darkMode,
+      };
+    });
+  };
+
   return (
     <header>
       <div className={classes['header-logo-wrapper']}>
@@ -88,6 +97,15 @@ const Header = ({ setSearchTerm, searchTerm }) => {
                     label="Sound"
                     icon={<Sound />}
                     onToggle={onSoundToggle}
+                  />
+                </div>
+              </li>
+              <li>
+                <div>
+                  <Toggle
+                    initialChecked={settings?.darkMode}
+                    label="Dark Mode"
+                    onToggle={onModeToggle}
                   />
                 </div>
               </li>
