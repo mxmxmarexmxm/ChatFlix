@@ -6,9 +6,11 @@ import placeholder from '../assets/img/placeholder.png';
 import useWindowWidth from '../hooks/useWindowWidth';
 import { useChatContext } from '../context/ChatContext';
 import UnreadFavChatBadge from './UI/UnreadFavChatBadge';
+import { useSettingsContext } from '../context/SettingsContext';
 
 const ChatRow = ({ rowTitle, filteredChatsData }) => {
   const { selectChatHandler } = useChatContext();
+  const { settings } = useSettingsContext();
 
   const { width } = useWindowWidth();
   const chatRowRef = useRef();
@@ -56,7 +58,11 @@ const ChatRow = ({ rowTitle, filteredChatsData }) => {
             >
               {haveScrool && <LeftArrow />}
             </button>
-            <div className={classes['chats-outer-wrapper']}>
+            <div
+              className={`${classes['chats-outer-wrapper']} ${
+                settings.darkMode ? 'dark-mode' : ''
+              }`}
+            >
               <div ref={chatRowRef} className={classes['chats-inner-wrapper']}>
                 {chats.map((chat) => (
                   <div className={classes['logo-container']} key={chat.id}>
