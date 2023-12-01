@@ -55,38 +55,42 @@ ChatFlix is a web application built with React, Firebase, and CSS modules, with 
 
     - Users receive audible notifications when new messages arrive, ensuring they don't miss important updates.
 
-11. **Message Replay**
+11. **Notification Sound Control**
+
+    - Enable users to easily turn notification sounds on or off according to their preference.
+
+12. **Message Replay**
 
     - Users can revisit past messages for reference.
 
-12. **Scroll to Replayed Message**
+13. **Scroll to Replayed Message**
 
     - Conveniently scroll to the message being replayed for context.
 
-13. **Preview Other Users' Profiles**
+14. **Preview Other Users' Profiles**
 
     - Users can view the profiles of other ChatFlix members to learn more about them.
 
-14. **Scroll to Bottom of Chat**
+15. **Scroll to Bottom of Chat**
 
     - Easily navigate to the latest messages by scrolling to the bottom of the chat.
 
-15. **Message Reactions**
+16. **Message Reactions**
 
     React to messages with various emojis and expressions to engage in conversations.
 
-16. **Sending Code Blocks**
+17. **Sending Code Blocks**
 
     - Share code snippets with syntax highlighting, and preview in a VS Dark theme.
     - Users can expand code snippets to full-screen for a more detailed view.
     - Users can easily copy code
 
-17. **Image Sending in Chat**
+18. **Image Sending in Chat**
 
         - Send and receive images within chat messages for better communication.
         - Multiple Images: Users can send multiple images at once.
 
-18. **Image Preview and Carousel**
+19. **Image Preview and Carousel**
 
     - Users can view images in full size and navigate through multiple images sent in a single message using a carousel.
     - Keyboard arrows provide easy navigation for a smoother image-browsing experience.
