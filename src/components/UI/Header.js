@@ -3,6 +3,7 @@ import { useModal } from '../../context/ModalContext';
 import { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../../Firebase/context';
 import logo from '../../assets/img/logo.png';
+import logoLight from '../../assets/img/logo-light.png';
 import { logOut } from '../../services/AuthServices';
 import userPlaceholder from '../../assets/img/user-placeholder.png';
 import AuthForm from '../../auth/AuthForm';
@@ -61,7 +62,11 @@ const Header = ({ setSearchTerm, searchTerm }) => {
       }`}
     >
       <div className={classes['header-logo-wrapper']}>
-        <img src={logo} alt="chatflix-logo" />
+        {typeof settings.darkMode === 'boolean' && !settings.darkMode ? (
+          <img src={logoLight} alt="chatflix-logo" />
+        ) : (
+          <img src={logo} alt="chatflix-logo" />
+        )}
       </div>
       <div className={classes['input-wrapper']}>
         {searchTerm.length > 0 && (
