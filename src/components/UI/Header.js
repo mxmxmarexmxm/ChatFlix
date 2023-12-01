@@ -9,6 +9,7 @@ import AuthForm from '../../auth/AuthForm';
 import UserProfile from '../UserProfile';
 import useClickOutside from '../../hooks/useClickOutside';
 import { Close } from '../../assets/icons/Close';
+import { Dark } from '../../assets/icons/Dark';
 import { Profile } from '../../assets/icons/Profile';
 import { LogOutIcon } from '../../assets/icons/LogOutIcon';
 import { Sound } from '../../assets/icons/Sound';
@@ -111,6 +112,7 @@ const Header = ({ setSearchTerm, searchTerm }) => {
                   <Toggle
                     initialChecked={settings?.darkMode}
                     label="Dark Mode"
+                    icon={<Dark />}
                     onToggle={onModeToggle}
                   />
                 </div>
