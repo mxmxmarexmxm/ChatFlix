@@ -52,7 +52,13 @@ const Header = ({ setSearchTerm, searchTerm }) => {
   };
 
   return (
-    <header>
+    <header
+      className={`${
+        typeof settings.darkMode === 'boolean' && !settings.darkMode
+          ? classes['light-mode']
+          : ''
+      }`}
+    >
       <div className={classes['header-logo-wrapper']}>
         <img src={logo} alt="chatflix-logo" />
       </div>
