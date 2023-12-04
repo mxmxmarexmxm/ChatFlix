@@ -90,6 +90,7 @@
   height: 100%;
   width: 50px;
   pointer-events: none;
+  z-index: 1;
 }
 
 .chats-outer-wrapper.dark-mode::before {
