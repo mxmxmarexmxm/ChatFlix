@@ -93,14 +93,19 @@
   z-index: 1;
 }
 
-.chats-outer-wrapper.dark-mode::before {
+.chats-outer-wrapper::before {
   left: 0;
-  background: linear-gradient(90deg, #141414, transparent);
+  background: linear-gradient(90deg, #141414, transparent );
 }
 
-.chats-outer-wrapper.dark-mode::after {
+.chats-outer-wrapper::after {
   right: 0;
   background: linear-gradient(90deg, transparent, #141414);
+}
+
+.chats-outer-wrapper.light-mode::before,
+.chats-outer-wrapper.light-mode::after {
+  background: none;
 }
 
 .logo-container:hover {
