@@ -90,12 +90,12 @@
   height: 100%;
   width: 50px;
   pointer-events: none;
-  z-index: 1;
 }
 
 .chats-outer-wrapper::before {
   left: 0;
-  background: linear-gradient(90deg, #141414, transparent );
+  z-index: 1;
+  background: linear-gradient(90deg, #141414, transparent);
 }
 
 .chats-outer-wrapper::after {
