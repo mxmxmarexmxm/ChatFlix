@@ -67,11 +67,11 @@ ChatFlix is a web application built with React, Firebase, and CSS modules. The a
 
     - Conveniently scroll to the message being replayed for context.
 
-14. **Preview Other Users' Profiles**
+14. **Preview Other Users Profiles**
 
     - Users can view the profiles of other ChatFlix members to learn more about them.
 
-15. **Scroll to Bottom of Chat**
+15. **Scroll to the Bottom of the Chat**
 
     - Easily navigate to the latest messages by scrolling to the bottom of the chat.
 
@@ -87,8 +87,8 @@ ChatFlix is a web application built with React, Firebase, and CSS modules. The a
 
 18. **Image Sending in Chat**
 
-        - Send and receive images within chat messages for better communication.
-        - Multiple Images: Users can send multiple images at once.
+    - Send and receive images within chat messages for better communication.
+    - Multiple Images: Users can send multiple images at once.
 
 19. **Image Preview and Carousel**
 
