@@ -1,6 +1,6 @@
 # ChatFlix
 
-ChatFlix is a web application built with React, Firebase, and CSS modules, with authentication via Gmail. The app is designed to look and feel like NetFlix, but instead of movies, it is all about programming and related topics."
+ChatFlix is a web application built with React, Firebase, and CSS modules. The app is designed to look and feel like NetFlix, but instead of movies, it is all about programming and related topics.
 
 ## Features
 
