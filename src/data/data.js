@@ -332,6 +332,17 @@ const chatsDataWitouthId = [
     logo: 'https://d3ml3b6vywsj0z.cloudfront.net/website/product-images/Broadcom.png',
     tags: ['Version Control Systems'],
   },
+  // Markup
+  {
+    name: 'XML',
+    logo: 'https://cdn.iconscout.com/icon/free/png-256/free-xml-file-7724008-6291700.png?f=webp',
+    tags: ['markup']
+  },
+  {
+    name: 'XHTML',
+    logo: 'https://cdn.iconscout.com/icon/free/png-256/free-xhtml-3-1127930.png?f=webp',
+    tags: ['markup']
+  },
 ];
 
 export const chatsData = chatsDataWitouthId.map((chat) => ({
