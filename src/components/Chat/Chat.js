@@ -170,7 +170,7 @@ const Chat = ({ chat, isFullScreen, setShowSideChats }) => {
 
   // Send message on enter press
   const onEnterPress = (e) => {
-    if (e.keyCode === 13 && e.shiftKey === false) {
+    if (e.keyCode === 13 && e.shiftKey === false && !imgUploadLoading) {
       e.preventDefault(); // Prevent Enter from creating a new line
       sendMessage(e);
     }
