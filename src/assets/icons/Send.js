@@ -1,11 +1,9 @@
 export const Send = ({ ...props }) => {
   return (
-    // <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
     <svg
       width="32px"
       height="32px"
       viewBox="0 -0.5 25 25"
-      fill="gray"
       xmlns="http://www.w3.org/2000/svg"
       { ...props }
     >
