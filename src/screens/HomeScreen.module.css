@@ -17,6 +17,7 @@
   overflow: visible;
   justify-content: right;
   pointer-events: visible;
+  z-index: 5;
 }
 
 .active-chats-bottom {
