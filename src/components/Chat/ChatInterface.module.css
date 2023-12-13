@@ -251,6 +251,12 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  fill: gray;
+}
+
+.chat form button[type='submit']:disabled {
+  opacity: 0.2;
+  cursor: wait;
 }
 
 .chat form .is-code-btn svg {

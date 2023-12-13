@@ -206,7 +206,7 @@ const ChatInterface = ({
               onKeyDown={onEnterPress}
               onClick={markAllAsRead}
             />
-            <button type="submit">
+            <button type="submit" disabled={imgUploadLoading}>
               <Send />
             </button>
           </form>
