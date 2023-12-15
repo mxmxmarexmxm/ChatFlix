@@ -233,7 +233,11 @@ const Chat = ({ chat, isFullScreen, setShowSideChats }) => {
       chatInputRef?.current?.focus();
     };
 
-    focusInput();
+    // TODO: IMPROVE
+    // Focus chat input for non-mobile users
+    if (!/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      focusInput();
+    }
   }, [messageToReplay, dispalyMessages]);
 
   const toggleFullScreen = (event) => {
