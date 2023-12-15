@@ -8,6 +8,7 @@ import { useChatContext } from '../../context/ChatContext';
 const ChatHead = ({ chat }) => {
   const { unreadMessages } = useChatMessages(chat.name);
   const { selectChatHandler, closeChatHandler } = useChatContext();
+
   return (
     <div
       className={classes['chat-head']}
@@ -23,10 +24,7 @@ const ChatHead = ({ chat }) => {
           className={classes['close-icon-wrapper']}
           onClick={(e) => e.stopPropagation()}
         >
-          <Close
-            onClick={() => closeChatHandler(chat.id)}
-            className={classes['close-icon']}
-          />
+          <Close onClick={() => closeChatHandler(chat.id)} />
         </div>
       </div>
       <div className={classes['logo-wrappper']}>
