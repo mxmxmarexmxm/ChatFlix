@@ -6,11 +6,7 @@ import { Minus } from '../../assets/icons/Minus';
 const ToggleChatHeadsBtn = ({ onClick, showChatHeads }) => {
   return (
     <div className={classes['icon-wrapper']} onClick={onClick}>
-      {showChatHeads ? (
-        <Minus height="50px" className={classes.icon} />
-      ) : (
-        <Plus height="50px" className={classes.icon} />
-      )}
+      {showChatHeads ? <Minus /> : <Plus />}
     </div>
   );
 };
