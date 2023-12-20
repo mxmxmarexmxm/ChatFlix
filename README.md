@@ -106,7 +106,6 @@ ChatFlix is easy to customize to your needs. Here are the steps:
 ```
 {
   name,
-  id,
   logo,
   tags,
 }
