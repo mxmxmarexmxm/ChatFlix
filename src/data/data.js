@@ -60,6 +60,11 @@ const chatsDataWitouthId = [
     logo: 'https://static.macupdate.com/products/56919/l/electron-logo.png?v=1668663792',
     tags: ['frontend', 'frameworks', 'frontend frameworks', 'JS'],
   },
+  {
+    name: 'TypeScript',
+    logo: 'https://static-00.iconduck.com/assets.00/typescript-original-icon-256x256-8tv470uf.png',
+    tags: ['frontend', 'backend', 'Programming languages', 'JS'],
+  },
   // Frontend (CSS)
   {
     name: 'Bootstrap',
