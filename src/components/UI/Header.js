@@ -55,14 +55,10 @@ const Header = ({ setSearchTerm, searchTerm }) => {
 
   return (
     <header
-      className={`${
-        typeof settings.darkMode === 'boolean' && !settings.darkMode
-          ? classes['light-mode']
-          : ''
-      }`}
+      className={`${settings.darkMode === false ? classes['light-mode'] : ''}`}
     >
       <div className={classes['header-logo-wrapper']}>
-        {typeof settings.darkMode === 'boolean' && !settings.darkMode ? (
+        {settings.darkMode === false ? (
           <img src={logoLight} alt="chatflix-logo" />
         ) : (
           <img src={logo} alt="chatflix-logo" />
@@ -114,7 +110,7 @@ const Header = ({ setSearchTerm, searchTerm }) => {
                   />
                 </div>
               </li>
-              <li>
+              {/* <li>
                 <div>
                   <Toggle
                     initialChecked={settings?.darkMode}
@@ -123,7 +119,7 @@ const Header = ({ setSearchTerm, searchTerm }) => {
                     onToggle={onModeToggle}
                   />
                 </div>
-              </li>
+              </li> */}
               <li>
                 <button onClick={logOutHandler} aria-label="Log Out">
                   <LogOutIcon />

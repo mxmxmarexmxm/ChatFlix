@@ -60,9 +60,7 @@ const ChatRow = ({ rowTitle, filteredChatsData }) => {
             </button>
             <div
               className={`${classes['chats-outer-wrapper']} ${
-                typeof settings.darkMode === 'boolean' && !settings.darkMode
-                  ? classes['light-mode']
-                  : ''
+                settings.darkMode === false ? classes['light-mode'] : ''
               }`}
             >
               <div ref={chatRowRef} className={classes['chats-inner-wrapper']}>

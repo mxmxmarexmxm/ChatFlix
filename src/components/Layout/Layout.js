@@ -13,9 +13,7 @@ const Layout = () => {
   return (
     <div
       className={`${classes.layout} ${
-        typeof settings.darkMode === 'boolean' && !settings?.darkMode
-          ? classes['light-mode']
-          : ''
+        settings.darkMode === false ? classes['light-mode'] : ''
       }`}
     >
       {content}
