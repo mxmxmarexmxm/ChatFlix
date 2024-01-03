@@ -12,6 +12,7 @@ import { useModal } from '../context/ModalContext';
 import { Google } from '../assets/icons/Google';
 import ResetPasswordForm from './ResetPasswordForm';
 import { Eye } from '../assets/icons/Eye';
+import { EyeOff } from '../assets/icons/EyeOff';
 
 const AuthForm = () => {
   const [formData, setFormData] = useState({
@@ -140,7 +141,11 @@ const AuthForm = () => {
             placeholder="Password"
             required
           />
-          <Eye onClick={() => setShowPassword((showPass) => !showPass)} />
+          {showPassword ? (
+            <EyeOff onClick={() => setShowPassword((showPass) => !showPass)} />
+          ) : (
+            <Eye onClick={() => setShowPassword((showPass) => !showPass)} />
+          )}
         </div>
         {!haveAccount && (
           <div className={classes['password-input-wrapper']}>
@@ -152,7 +157,13 @@ const AuthForm = () => {
               placeholder="Confirm password"
               required
             />
-            <Eye onClick={() => setShowPassword((showPass) => !showPass)} />
+            {showPassword ? (
+              <EyeOff
+                onClick={() => setShowPassword((showPass) => !showPass)}
+              />
+            ) : (
+              <Eye onClick={() => setShowPassword((showPass) => !showPass)} />
+            )}
           </div>
         )}
         {
