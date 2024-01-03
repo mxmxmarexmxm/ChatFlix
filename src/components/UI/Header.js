@@ -10,7 +10,7 @@ import AuthForm from '../../auth/AuthForm';
 import UserProfile from '../UserProfile';
 import useClickOutside from '../../hooks/useClickOutside';
 import { Close } from '../../assets/icons/Close';
-import { Dark } from '../../assets/icons/Dark';
+// import { Dark } from '../../assets/icons/Dark';
 import { Profile } from '../../assets/icons/Profile';
 import { LogOutIcon } from '../../assets/icons/LogOutIcon';
 import { Sound } from '../../assets/icons/Sound';
@@ -44,14 +44,14 @@ const Header = ({ setSearchTerm, searchTerm }) => {
     });
   };
 
-  const onModeToggle = () => {
-    setSettings((currSettings) => {
-      return {
-        ...currSettings,
-        darkMode: !currSettings.darkMode,
-      };
-    });
-  };
+  // const onModeToggle = () => {
+  //   setSettings((currSettings) => {
+  //     return {
+  //       ...currSettings,
+  //       darkMode: !currSettings.darkMode,
+  //     };
+  //   });
+  // };
 
   return (
     <header
