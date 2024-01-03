@@ -46,6 +46,19 @@
   border: none;
 }
 
+.password-input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrapper svg {
+  height: 1.5rem;
+  display: inline;
+  margin-left: -2rem;
+  cursor: pointer;
+  fill: white;
+}
+
 .form-wrapper button[type='submit'] {
   padding: 0.7rem 2rem;
   font-size: 1.1rem;

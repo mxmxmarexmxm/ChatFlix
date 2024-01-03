@@ -11,6 +11,7 @@ import { addUserToFirestore } from '../services/UserServices';
 import { useModal } from '../context/ModalContext';
 import { Google } from '../assets/icons/Google';
 import ResetPasswordForm from './ResetPasswordForm';
+import { Eye } from '../assets/icons/Eye';
 
 const AuthForm = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +20,7 @@ const AuthForm = () => {
     passwordConfirm: '',
     displayName: '',
   });
+  const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const [haveAccount, setHaveAccount] = useState(true);
   const [forgotPassword, setForgotPassword] = useState(false);
@@ -128,24 +130,30 @@ const AuthForm = () => {
           placeholder="Email"
           required
         />
-        <input
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          autoComplete="current-password"
-          placeholder="Password"
-          required
-        />
-        {!haveAccount && (
+        <div className={classes['password-input-wrapper']}>
           <input
-            type="password"
-            name="passwordConfirm"
-            value={formData.passwordConfirm}
+            type={showPassword ? 'text' : 'password'}
+            name="password"
+            value={formData.password}
             onChange={handleChange}
-            placeholder="Confirm password"
+            autoComplete="current-password"
+            placeholder="Password"
             required
           />
+          <Eye onClick={() => setShowPassword((showPass) => !showPass)} />
+        </div>
+        {!haveAccount && (
+          <div className={classes['password-input-wrapper']}>
+            <input
+              type={showPassword ? 'text' : 'password'}
+              name="passwordConfirm"
+              value={formData.passwordConfirm}
+              onChange={handleChange}
+              placeholder="Confirm password"
+              required
+            />
+            <Eye onClick={() => setShowPassword((showPass) => !showPass)} />
+          </div>
         )}
         {
           <div>
