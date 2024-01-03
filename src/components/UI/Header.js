@@ -18,8 +18,8 @@ import Toggle from './Toggle';
 import { useSettingsContext } from '../../context/SettingsContext';
 
 const Header = ({ setSearchTerm, searchTerm }) => {
-  const { openModal, closeModal } = useModal();
   const [openMenu, setOpenMenu] = useState(false);
+  const { openModal, closeModal } = useModal();
   const { user } = useContext(AuthContext);
   const { settings, setSettings } = useSettingsContext();
   const menuRef = useRef(null);
