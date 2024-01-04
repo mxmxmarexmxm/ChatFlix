@@ -13,6 +13,8 @@ import { Google } from '../assets/icons/Google';
 import ResetPasswordForm from './ResetPasswordForm';
 import { Eye } from '../assets/icons/Eye';
 import { EyeOff } from '../assets/icons/EyeOff';
+const passwordRegex =
+  '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$';
 
 const AuthForm = () => {
   const [formData, setFormData] = useState({
@@ -41,6 +43,12 @@ const AuthForm = () => {
     if (!haveAccount) {
       if (formData.password !== formData.passwordConfirm) {
         setErrorMessage('Passwords do not match, please retype');
+        return;
+      }
+      if (!formData.password.match(passwordRegex)) {
+        setErrorMessage(
+          'Minimum eight characters, at least one letter, one number and one special character:'
+        );
         return;
       }
       createUserWithEmailAndPassword(auth, formData.email, formData.password)
