@@ -66,20 +66,17 @@
   .side-chat-fullscreen h2 {
     display: block;
   }
+
   .side-chat-fullscreen {
     padding: 1rem;
     align-items: center;
   }
+
   .close-icon-side {
     font-size: 1.5rem;
     background-color: transparent;
   }
-  .badge-wrapper {
-    background-color: transparent;
-  }
-  .badge-wrapper:hover {
-    background-color: #242526;
-  }
+
   .badges-container-side {
     position: static;
   }
