@@ -47,7 +47,7 @@ const AuthForm = () => {
       }
       if (!formData.password.match(passwordRegex)) {
         setErrorMessage(
-          'Minimum eight characters, at least one letter, one number and one special character:'
+          'Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and be at least eight characters long.'
         );
         return;
       }
