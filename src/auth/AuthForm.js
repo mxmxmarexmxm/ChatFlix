@@ -119,7 +119,12 @@ const AuthForm = () => {
       {/* <button className={classes['continue-btn']} onClick={signFb}>
         <Google height="20px" /> Continue with FACEBOOK
       </button> */}
-      <span>or</span>
+      <div className={classes['or-container']}>
+        <div></div>
+        <span>or</span>
+        <div></div>
+      </div>
+
       <form onSubmit={handleSubmit}>
         {!haveAccount && (
           <input
