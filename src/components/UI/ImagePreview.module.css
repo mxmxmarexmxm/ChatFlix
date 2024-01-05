@@ -58,6 +58,10 @@
   opacity: 0.7;
 }
 
+.previewed-image {
+  border: 1px solid white;
+}
+
 .controls {
   position: absolute;
   display: flex;
