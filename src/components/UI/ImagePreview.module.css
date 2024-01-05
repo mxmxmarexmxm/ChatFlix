@@ -65,6 +65,7 @@
   width: 100%;
   top: 41%;
   left: 0;
+  visibility: hidden;
 }
 
 .controls button {
@@ -83,5 +84,9 @@
   .image-preview {
     width: calc(100vw - 130px);
     height: calc(100vh - 110px);
+  }
+
+  .controls {
+    visibility: visible;
   }
 }
