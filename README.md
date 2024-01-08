@@ -4,6 +4,8 @@ ChatFlix is a web application built with React, Firebase, and CSS modules. The a
 
 You can check out the live demo of ChatFlix [here](https://mxmxmarexmxm.github.io/ChatFlix/).
 
+  <div style="text-align:center"><img src="./src/assets/img/ChatFlixPreview.png" alt='ChatFlixPreview'/></div>
+
 ## Features
 
 1.  **Authentication Options**
