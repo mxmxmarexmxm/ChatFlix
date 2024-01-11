@@ -31,6 +31,11 @@
   padding: 0 0.5rem;
 }
 
+pre {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
 .modal pre {
   padding: 1rem;
   border-radius: 1rem;
