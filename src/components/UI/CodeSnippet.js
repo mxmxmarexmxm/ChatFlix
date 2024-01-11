@@ -7,7 +7,7 @@ import { CopySuccess } from '../../assets/icons/CopySuccess';
 import { useModal } from '../../context/ModalContext';
 import { useSettingsContext } from '../../context/SettingsContext';
 
-const CodeSnippet = ({ code, language, settingsTheme, isSettings }) => {
+const CodeSnippet = ({ code, language, settingsTheme }) => {
   const [successfulCopy, setSuccessfulCopy] = useState(false);
   const { settings } = useSettingsContext();
   const { openModal } = useModal();
@@ -25,7 +25,7 @@ const CodeSnippet = ({ code, language, settingsTheme, isSettings }) => {
 
   return (
     <div className={classes['code-snippet']}>
-      {!isSettings && (
+      {!settingsTheme && (
         <div className={classes['buttons-wrapper']}>
           <button
             className={classes['expand-btn']}
@@ -46,7 +46,9 @@ const CodeSnippet = ({ code, language, settingsTheme, isSettings }) => {
         </div>
       )}
       <Highlight
-        theme={settingsTheme ? themes[settingsTheme] : themes[settings.codeTheme]}
+        theme={
+          settingsTheme ? themes[settingsTheme] : themes[settings.codeTheme]
+        }
         code={code}
         language={language || 'javascript'}
       >
