@@ -5,9 +5,11 @@ import { Expand } from '../../assets/icons/Expand';
 import classes from './CodeSnippet.module.css';
 import { CopySuccess } from '../../assets/icons/CopySuccess';
 import { useModal } from '../../context/ModalContext';
+import { useSettingsContext } from '../../context/SettingsContext';
 
-const CodeSnippet = ({ code, language }) => {
+const CodeSnippet = ({ code, language, settingsTheme, isSettings }) => {
   const [successfulCopy, setSuccessfulCopy] = useState(false);
+  const { settings } = useSettingsContext();
   const { openModal } = useModal();
 
   useEffect(() => {
@@ -23,22 +25,28 @@ const CodeSnippet = ({ code, language }) => {
 
   return (
     <div className={classes['code-snippet']}>
-      <div className={classes['buttons-wrapper']}>
-        <button
-          className={classes['expand-btn']}
-          onClick={() => openModal(<CodeSnippet code={code} />, 'Code Preview')}
-        >
-          <Expand />
-        </button>
-        <button
-          className={` ${successfulCopy ? classes['successful-copy-btn'] : ''}`}
-          onClick={handleClipboardCopy}
-        >
-          {successfulCopy ? <CopySuccess /> : <Copy />}
-        </button>
-      </div>
+      {!isSettings && (
+        <div className={classes['buttons-wrapper']}>
+          <button
+            className={classes['expand-btn']}
+            onClick={() =>
+              openModal(<CodeSnippet code={code} />, 'Code Preview')
+            }
+          >
+            <Expand />
+          </button>
+          <button
+            className={`${
+              successfulCopy ? classes['successful-copy-btn'] : ''
+            }`}
+            onClick={handleClipboardCopy}
+          >
+            {successfulCopy ? <CopySuccess /> : <Copy />}
+          </button>
+        </div>
+      )}
       <Highlight
-        theme={themes.vsDark}
+        theme={settingsTheme ? themes[settingsTheme] : themes[settings.codeTheme]}
         code={code}
         language={language || 'javascript'}
       >

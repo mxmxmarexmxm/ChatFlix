@@ -23,3 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 old/**
 .idea/**
+src/services/LoadMessages.js
+src/assets/icons/Email.js

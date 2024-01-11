@@ -1,0 +1,26 @@
+.code-container {
+  display: flex;
+  color: white;
+  max-width: 1000px;
+  flex-wrap: wrap;
+  gap: 1rem;
+  overflow-y: auto;
+}
+
+.code-theme {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* gap: .5rem;
+  min-width: 40%; */
+}
+
+/* TODO: IMPROVE UI, UPDATE MOBILE PREVIEW */
+/* .code-theme pre {
+  font-size: 0.6rem;
+  padding: .9rem;
+} */
+
+.code-container input {
+  margin-right: 1rem;
+}

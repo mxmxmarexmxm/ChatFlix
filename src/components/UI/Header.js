@@ -16,6 +16,7 @@ import { LogOutIcon } from '../../assets/icons/LogOutIcon';
 import { Sound } from '../../assets/icons/Sound';
 import Toggle from './Toggle';
 import { useSettingsContext } from '../../context/SettingsContext';
+import CodeSettings from './CodeThemeSettings';
 
 const Header = ({ setSearchTerm, searchTerm }) => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -109,6 +110,15 @@ const Header = ({ setSearchTerm, searchTerm }) => {
                     onToggle={onSoundToggle}
                   />
                 </div>
+              </li>
+              <li>
+                <button
+                  onClick={() => openModal(<CodeSettings />)}
+                  aria-label="Code Theme"
+                >
+                  <Profile />
+                  Code Theme
+                </button>
               </li>
               {/* <li>
                 <div>

@@ -24,10 +24,11 @@ export const SettingsProvider = ({ children }) => {
   useEffect(() => {
     user &&
       getUserDataFromFirestore(user.uid).then(
-        ({ notificationsSound, darkMode }) => {
+        ({ notificationsSound, darkMode, codeTheme }) => {
           setSettings({
             notificationsSound: notificationsSound,
             darkMode: darkMode,
+            codeTheme: codeTheme,
           });
         }
       );
