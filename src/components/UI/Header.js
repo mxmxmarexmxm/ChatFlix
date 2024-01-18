@@ -14,7 +14,6 @@ import { Close } from '../../assets/icons/Close';
 import { Profile } from '../../assets/icons/Profile';
 import { LogOutIcon } from '../../assets/icons/LogOutIcon';
 import { Sound } from '../../assets/icons/Sound';
-import { CodeVector } from '../../assets/icons/CodeVector';
 import Toggle from './Toggle';
 import { useSettingsContext } from '../../context/SettingsContext';
 import CodeSettings from './CodeThemeSettings';
@@ -117,7 +116,7 @@ const Header = ({ setSearchTerm, searchTerm }) => {
                   onClick={() => openModal(<CodeSettings />)}
                   aria-label="Code Theme"
                 >
-                  <CodeVector />
+                  <Profile />
                   Code Theme
                 </button>
               </li>
